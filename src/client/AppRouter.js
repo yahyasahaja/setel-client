@@ -5,6 +5,9 @@ import axios from 'axios'
 
 //SCREENS
 import Home from './screens/Home'
+import Drophere from './screens/Drophere'
+import Store from './screens/Store'
+import NotFoundPage from './screens/NotFoundPage'
 
 //CONFIG
 import {
@@ -24,7 +27,10 @@ export default class AppRouter extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={Home} />
+          <Route path="/drophere" component={Drophere} />
+          <Route path="/store" component={Store} />
+          <Route path="/" exact component={Home} />
+          <Route path="*" component={NotFoundPage} />
         </Switch>
       </BrowserRouter>
     )
