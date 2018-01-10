@@ -61,7 +61,7 @@ const stepReducer = (state = null, action) => {
   return state
 }
 
-const formDataReducer = (state = {}, actions) => {
+const formDataReducer = (state = {}, action) => {
   if (action.type === UPDATE_SELECTED) 
     return { ...state, [action.id]: {
       [action.key]: action.value,

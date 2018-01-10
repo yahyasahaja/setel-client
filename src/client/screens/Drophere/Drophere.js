@@ -1,16 +1,19 @@
-/*
-TODOS:
-  DROPHERE PAGE, THERE'S ORDER BUTTON, NAVIGATE TO /drophere/order/1
-*/
-
 //MODULES
 import React, { Component }  from 'react'
+
+//STYLES
+import styles from './css/drophere.scss'
+
+//COMPONENTS
+import DrophereMenu from '../../components/DrophereMenu'
 
 //COMPONENT
 export default class Home extends Component {
   render() {
     return (
-      <h1>Hi react!</h1>
+      <div className={styles.container}>
+        <DrophereMenu />
+      </div>
     )
   }
 }

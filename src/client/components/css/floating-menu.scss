@@ -1,0 +1,10 @@
+@import '../../assets/css/config.scss';
+
+.container { 
+  display: block;
+  min-height: 80px;
+  background: hsla(0,0%,100%,.8902);
+  width: 100%;
+  padding: 10px;
+  box-shadow: 0 0 20px 0 hsla(0,0%,63%,.67843);
+}

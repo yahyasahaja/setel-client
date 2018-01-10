@@ -4,7 +4,7 @@ import axios from 'axios'
 
 //TYPES
 export const UPDATE_SELECTED = 'updateSelected'
-export const UPDATE_STEP = 'updateCurrentStep'
+export const UPDATE_CURRENT_STEP = 'updateCurrentStep'
 export const GOTO_NEXT_STEP = 'gotoNextStep'
 export const GOTO_PREV_STEP = 'gotoNextStep'
 export const INIT_STEP = 'initStep'
