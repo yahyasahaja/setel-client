@@ -8,8 +8,8 @@ import styles from './css/index.scss'
 export default class Login extends Component {
   render() {
     return (
-      <div className={styles.container}>
-        <h1>Hi react!</h1>
+      <div className={styles.loginbackgroundcolor}>
+        
       </div>
     )
   }
