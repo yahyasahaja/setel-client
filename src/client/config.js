@@ -5,5 +5,5 @@ export const DROPHERE_STEP = 'currentStep'
 export default {
   END_POINT_URL,
   TOKEN,
-  DROPHERE_STEP
+  DROPHERE_STEP,
 }

@@ -31934,6 +31934,10 @@ var _Footer = __webpack_require__(302);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
+var _Desktop = __webpack_require__(336);
+
+var _Desktop2 = _interopRequireDefault(_Desktop);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31965,7 +31969,11 @@ var DrophereMenu = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: _index2.default.container },
-        _react2.default.createElement(_FloatingMenu2.default, null),
+        _react2.default.createElement(
+          _FloatingMenu2.default,
+          null,
+          _react2.default.createElement(_Desktop2.default, null)
+        ),
         _react2.default.createElement(_Footer2.default, null)
       );
     }
@@ -32826,7 +32834,7 @@ exports = module.exports = __webpack_require__(11)();
 
 
 // module
-exports.push([module.i, ".floating-menu--container--B0JF-i_w {\n  display: block;\n  min-height: 80px;\n  background: rgba(255, 255, 255, .8902);\n  width: 100%;\n  padding: 10px;\n  -webkit-box-shadow: 0 0 20px 0 rgba(161, 161, 161, .67843);\n          box-shadow: 0 0 20px 0 rgba(161, 161, 161, .67843); }\n", "", {"version":3,"sources":["/./src/client/components/css/floating-menu.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;EACjB,uCAAuC;EACvC,YAAY;EACZ,cAAc;EACd,2DAA2D;UACnD,mDAAmD,EAAE","file":"floating-menu.scss","sourcesContent":[".container {\n  display: block;\n  min-height: 80px;\n  background: rgba(255, 255, 255, .8902);\n  width: 100%;\n  padding: 10px;\n  -webkit-box-shadow: 0 0 20px 0 rgba(161, 161, 161, .67843);\n          box-shadow: 0 0 20px 0 rgba(161, 161, 161, .67843); }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".floating-menu--container--B0JF-i_w {\n  display: block;\n  background: rgba(255, 255, 255, .8902);\n  width: 100%;\n  padding: 15px;\n  -webkit-box-shadow: 0 0 20px 0 rgba(161, 161, 161, .67843);\n          box-shadow: 0 0 20px 0 rgba(161, 161, 161, .67843); }\n", "", {"version":3,"sources":["/./src/client/components/css/floating-menu.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,uCAAuC;EACvC,YAAY;EACZ,cAAc;EACd,2DAA2D;UACnD,mDAAmD,EAAE","file":"floating-menu.scss","sourcesContent":[".container {\n  display: block;\n  background: rgba(255, 255, 255, .8902);\n  width: 100%;\n  padding: 15px;\n  -webkit-box-shadow: 0 0 20px 0 rgba(161, 161, 161, .67843);\n          box-shadow: 0 0 20px 0 rgba(161, 161, 161, .67843); }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
@@ -32922,12 +32930,13 @@ exports = module.exports = __webpack_require__(11)();
 
 
 // module
-exports.push([module.i, ".index--container--HxCVULEV {\n  display: block; }\n\n.index--loginbackgroundcolor--1HQI8sId {\n  background-color: #3a3779; }\n", "", {"version":3,"sources":["/./src/client/screens/Login/css/index.scss"],"names":[],"mappings":"AAAA;EACE,eAAe,EAAE;;AAEnB;EACE,0BAA0B,EAAE","file":"index.scss","sourcesContent":[".container {\n  display: block; }\n\n.loginbackgroundcolor {\n  background-color: #3a3779; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".index--container--HxCVULEV {\n  display: block; }\n\n.index--loginbackgroundcolor--1HQI8sId {\n  background-color: #3a3779; }\n\n.index--loginareacolor--q6hFRGYb {\n  background-color: white; }\n", "", {"version":3,"sources":["/./src/client/screens/Login/css/index.scss"],"names":[],"mappings":"AAAA;EACE,eAAe,EAAE;;AAEnB;EACE,0BAA0B,EAAE;;AAE9B;EACE,wBAAwB,EAAE","file":"index.scss","sourcesContent":[".container {\n  display: block; }\n\n.loginbackgroundcolor {\n  background-color: #3a3779; }\n\n.loginareacolor {\n  background-color: white; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
 	"container": "index--container--HxCVULEV",
-	"loginbackgroundcolor": "index--loginbackgroundcolor--1HQI8sId"
+	"loginbackgroundcolor": "index--loginbackgroundcolor--1HQI8sId",
+	"loginareacolor": "index--loginareacolor--q6hFRGYb"
 };
 
 /***/ }),
@@ -33311,6 +33320,320 @@ if(false) {
 	if(!content.locals) {
 		module.hot.accept("!!../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../node_modules/postcss-loader/lib/index.js!../../../../../node_modules/sass-loader/lib/loader.js!./index.scss", function() {
 			var newContent = require("!!../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../node_modules/postcss-loader/lib/index.js!../../../../../node_modules/sass-loader/lib/loader.js!./index.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 336 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(60);
+
+var _axios = __webpack_require__(68);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _desktop = __webpack_require__(340);
+
+var _desktop2 = _interopRequireDefault(_desktop);
+
+var _RoundedButton = __webpack_require__(337);
+
+var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
+
+var _config = __webpack_require__(123);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
+
+
+//STYLES
+
+
+//COMPONENTS
+
+
+//CONFIG
+
+
+//COMPONENT
+var Desktop = function (_Component) {
+  _inherits(Desktop, _Component);
+
+  function Desktop() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Desktop);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Desktop.__proto__ || Object.getPrototypeOf(Desktop)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      user: null
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Desktop, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      if (localStorage.getItem(_config.TOKEN)) _axios2.default.get('/json/example-user').then(function (res) {
+        _this2.setState({ user: res.data.user });
+      });
+    }
+  }, {
+    key: 'renderUserMenu',
+    value: function renderUserMenu() {
+      if (!this.state.user) return _react2.default.createElement(
+        'div',
+        { className: _desktop2.default['no-user'] },
+        _react2.default.createElement(
+          _RoundedButton2.default,
+          { to: '/register' },
+          'SIGN UP'
+        ),
+        _react2.default.createElement(
+          _RoundedButton2.default,
+          { to: '/login' },
+          'SIGN IN'
+        )
+      );
+
+      return _react2.default.createElement('div', { className: _desktop2.default.user });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: _desktop2.default.container },
+        _react2.default.createElement(
+          'div',
+          { className: _desktop2.default['logo-wrapper'] },
+          _react2.default.createElement('img', { src: '/img/drop-here.png', alt: 'Logo' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _desktop2.default.menu },
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/drophere' },
+            'SETEL DROPHERE'
+          ),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/store' },
+            'SETEL STORE'
+          )
+        ),
+        this.renderUserMenu()
+      );
+    }
+  }]);
+
+  return Desktop;
+}(_react.Component);
+
+exports.default = Desktop;
+
+/***/ }),
+/* 337 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(60);
+
+var _roundedButton = __webpack_require__(341);
+
+var _roundedButton2 = _interopRequireDefault(_roundedButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
+
+
+//STYLES
+
+
+//COMPONENT
+var RoundedButton = function (_Component) {
+  _inherits(RoundedButton, _Component);
+
+  function RoundedButton() {
+    _classCallCheck(this, RoundedButton);
+
+    return _possibleConstructorReturn(this, (RoundedButton.__proto__ || Object.getPrototypeOf(RoundedButton)).apply(this, arguments));
+  }
+
+  _createClass(RoundedButton, [{
+    key: 'renderButton',
+    value: function renderButton() {
+      if (this.props.to) return _react2.default.createElement(
+        _reactRouterDom.Link,
+        {
+          to: this.props.to,
+          onClick: this.props.onClick
+        },
+        this.props.children
+      );
+
+      return _react2.default.createElement(
+        'button',
+        {
+          type: this.props.type || 'submit',
+          onClick: this.props.onClick
+        },
+        this.props.children
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: _roundedButton2.default.container },
+        this.renderButton()
+      );
+    }
+  }]);
+
+  return RoundedButton;
+}(_react.Component);
+
+exports.default = RoundedButton;
+
+/***/ }),
+/* 338 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(11)();
+// imports
+
+
+// module
+exports.push([module.i, ".desktop--container--1aPmCjZb {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between; }\n  .desktop--container--1aPmCjZb .desktop--logo-wrapper--2PIZPTmF {\n    display: block;\n    height: 43px;\n    margin-left: 20px; }\n    .desktop--container--1aPmCjZb .desktop--logo-wrapper--2PIZPTmF img {\n      height: 100%; }\n  .desktop--container--1aPmCjZb .desktop--menu--1FS4_arG {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 100%;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n    .desktop--container--1aPmCjZb .desktop--menu--1FS4_arG a {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      padding: 10px;\n      font-size: 12pt;\n      margin: 0 10px;\n      color: #929292; }\n      .desktop--container--1aPmCjZb .desktop--menu--1FS4_arG a:hover {\n        color: #3a3779; }\n  .desktop--container--1aPmCjZb .desktop--no-user--1UwGSOpr {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n", "", {"version":3,"sources":["/./src/client/components/DrophereMenu/css/desktop.scss"],"names":[],"mappings":"AAAA;EACE,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,0BAA0B;MACtB,uBAAuB;UACnB,+BAA+B,EAAE;EACzC;IACE,eAAe;IACf,aAAa;IACb,kBAAkB,EAAE;IACpB;MACE,aAAa,EAAE;EACnB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,aAAa;IACb,yBAAyB;QACrB,sBAAsB;YAClB,wBAAwB,EAAE;IAClC;MACE,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,yBAAyB;UACrB,sBAAsB;cAClB,wBAAwB;MAChC,0BAA0B;UACtB,uBAAuB;cACnB,oBAAoB;MAC5B,cAAc;MACd,gBAAgB;MAChB,eAAe;MACf,eAAe,EAAE;MACjB;QACE,eAAe,EAAE;EACvB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,yBAAyB;QACrB,sBAAsB;YAClB,wBAAwB,EAAE","file":"desktop.scss","sourcesContent":[".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between; }\n  .container .logo-wrapper {\n    display: block;\n    height: 43px;\n    margin-left: 20px; }\n    .container .logo-wrapper img {\n      height: 100%; }\n  .container .menu {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 100%;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n    .container .menu a {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      padding: 10px;\n      font-size: 12pt;\n      margin: 0 10px;\n      color: #929292; }\n      .container .menu a:hover {\n        color: #3a3779; }\n  .container .no-user {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "desktop--container--1aPmCjZb",
+	"logo-wrapper": "desktop--logo-wrapper--2PIZPTmF",
+	"menu": "desktop--menu--1FS4_arG",
+	"no-user": "desktop--no-user--1UwGSOpr"
+};
+
+/***/ }),
+/* 339 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(11)();
+// imports
+
+
+// module
+exports.push([module.i, ".rounded-button--container--xC5IlffG {\n  display: block;\n  margin: 0 10px; }\n  .rounded-button--container--xC5IlffG button, .rounded-button--container--xC5IlffG a {\n    padding: 8px 20px;\n    border-radius: 100px;\n    border: solid 2px #3a3779;\n    cursor: pointer;\n    background: white;\n    -webkit-transition: .3s;\n    transition: .3s;\n    color: #3a3779;\n    display: block;\n    font-weight: 400; }\n    .rounded-button--container--xC5IlffG button:hover, .rounded-button--container--xC5IlffG a:hover {\n      background-color: #3a3779;\n      color: white;\n      -webkit-transition: .3s;\n      transition: .3s; }\n    .rounded-button--container--xC5IlffG button:active, .rounded-button--container--xC5IlffG a:active {\n      -webkit-box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, .2);\n              box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, .2);\n      color: white;\n      -webkit-transition: .01s;\n      transition: .01s; }\n", "", {"version":3,"sources":["/./src/client/components/css/rounded-button.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,eAAe,EAAE;EACjB;IACE,kBAAkB;IAClB,qBAAqB;IACrB,0BAA0B;IAC1B,gBAAgB;IAChB,kBAAkB;IAClB,wBAAwB;IACxB,gBAAgB;IAChB,eAAe;IACf,eAAe;IACf,iBAAiB,EAAE;IACnB;MACE,0BAA0B;MAC1B,aAAa;MACb,wBAAwB;MACxB,gBAAgB,EAAE;IACpB;MACE,0DAA0D;cAClD,kDAAkD;MAC1D,aAAa;MACb,yBAAyB;MACzB,iBAAiB,EAAE","file":"rounded-button.scss","sourcesContent":[".container {\n  display: block;\n  margin: 0 10px; }\n  .container button, .container a {\n    padding: 8px 20px;\n    border-radius: 100px;\n    border: solid 2px #3a3779;\n    cursor: pointer;\n    background: white;\n    -webkit-transition: .3s;\n    transition: .3s;\n    color: #3a3779;\n    display: block;\n    font-weight: 400; }\n    .container button:hover, .container a:hover {\n      background-color: #3a3779;\n      color: white;\n      -webkit-transition: .3s;\n      transition: .3s; }\n    .container button:active, .container a:active {\n      -webkit-box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, .2);\n              box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, .2);\n      color: white;\n      -webkit-transition: .01s;\n      transition: .01s; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "rounded-button--container--xC5IlffG"
+};
+
+/***/ }),
+/* 340 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(338);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(13)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../node_modules/postcss-loader/lib/index.js!../../../../../node_modules/sass-loader/lib/loader.js!./desktop.scss", function() {
+			var newContent = require("!!../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../node_modules/postcss-loader/lib/index.js!../../../../../node_modules/sass-loader/lib/loader.js!./desktop.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 341 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(339);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(13)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js??ref--1-1!../../../../node_modules/postcss-loader/lib/index.js!../../../../node_modules/sass-loader/lib/loader.js!./rounded-button.scss", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js??ref--1-1!../../../../node_modules/postcss-loader/lib/index.js!../../../../node_modules/sass-loader/lib/loader.js!./rounded-button.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
