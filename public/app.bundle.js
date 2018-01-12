@@ -32065,10 +32065,6 @@ var _FloatingMenu = __webpack_require__(302);
 
 var _FloatingMenu2 = _interopRequireDefault(_FloatingMenu);
 
-var _Footer = __webpack_require__(303);
-
-var _Footer2 = _interopRequireDefault(_Footer);
-
 var _Desktop = __webpack_require__(300);
 
 var _Desktop2 = _interopRequireDefault(_Desktop);
@@ -32108,8 +32104,7 @@ var DrophereMenu = function (_Component) {
           _FloatingMenu2.default,
           null,
           _react2.default.createElement(_Desktop2.default, null)
-        ),
-        _react2.default.createElement(_Footer2.default, null)
+        )
       );
     }
   }]);
@@ -32359,7 +32354,7 @@ var RoundedButton = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: _roundedButton2.default.container },
+        { style: this.props.style, className: _roundedButton2.default.container },
         this.renderButton()
       );
     }
@@ -32395,6 +32390,10 @@ var _DrophereMenu = __webpack_require__(301);
 
 var _DrophereMenu2 = _interopRequireDefault(_DrophereMenu);
 
+var _RoundedButton = __webpack_require__(304);
+
+var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -32411,30 +32410,77 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 //COMPONENT
-var Home = function (_Component) {
-  _inherits(Home, _Component);
+var Drophere = function (_Component) {
+  _inherits(Drophere, _Component);
 
-  function Home() {
-    _classCallCheck(this, Home);
+  function Drophere() {
+    _classCallCheck(this, Drophere);
 
-    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Drophere.__proto__ || Object.getPrototypeOf(Drophere)).apply(this, arguments));
   }
 
-  _createClass(Home, [{
-    key: 'render',
+  _createClass(Drophere, [{
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
-        'div',
+        "div",
         { className: _drophere2.default.container },
-        _react2.default.createElement(_DrophereMenu2.default, null)
+        _react2.default.createElement(
+          "div",
+          { className: _drophere2.default.flexboxcontainer },
+          _react2.default.createElement(
+            "div",
+            { className: _drophere2.default.flexboxitem },
+            _react2.default.createElement("img", { className: _drophere2.default.imglogo, src: "/img/drop-here.png" })
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: _drophere2.default.flexboxcontainer },
+          _react2.default.createElement(
+            "div",
+            { className: _drophere2.default.flexboxitem },
+            _react2.default.createElement(
+              "p",
+              { className: _drophere2.default.textdrophere },
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt ut labore et dolore magna aliqua. Ut enim ad veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat."
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: _drophere2.default.flexboxcontainer },
+          _react2.default.createElement(
+            "div",
+            { className: _drophere2.default.flexboxitem },
+            _react2.default.createElement(
+              _RoundedButton2.default,
+              {
+                style: {
+                  width: 165,
+                  paddingBottom: 178,
+                  marginLeft: 612,
+                  marginRight: 589,
+                  marginTop: 98
+                },
+                to: "/drophere/order/0"
+              },
+              _react2.default.createElement(
+                "p",
+                { className: _drophere2.default.order },
+                "ORDER"
+              )
+            )
+          )
+        )
       );
     }
   }]);
 
-  return Home;
+  return Drophere;
 }(_react.Component);
 
-exports.default = Home;
+exports.default = Drophere;
 
 /***/ }),
 /* 306 */
@@ -32647,6 +32693,14 @@ var _Order = __webpack_require__(307);
 
 var _Order2 = _interopRequireDefault(_Order);
 
+var _DrophereMenu = __webpack_require__(301);
+
+var _DrophereMenu2 = _interopRequireDefault(_DrophereMenu);
+
+var _Footer = __webpack_require__(303);
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -32678,12 +32732,14 @@ var MainDrophere = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: _index2.default.container },
+        _react2.default.createElement(_DrophereMenu2.default, null),
         _react2.default.createElement(
           _reactRouterDom.Switch,
           null,
           _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/:orderId', component: _Order2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere', component: _Drophere2.default })
-        )
+        ),
+        _react2.default.createElement(_Footer2.default, null)
       );
     }
   }]);
@@ -32766,6 +32822,10 @@ var _index = __webpack_require__(338);
 
 var _index2 = _interopRequireDefault(_index);
 
+var _RoundedButton = __webpack_require__(304);
+
+var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -32776,6 +32836,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 //STYLES
+
+
+//COMPONENTS
 
 
 //COMPONENT
@@ -32810,7 +32873,9 @@ var Login = function (_Component) {
           ),
           _react2.default.createElement(
             "div",
-            { className: _index2.default.flexboxcontainer + ' ' + _index2.default.ksztat2container },
+            {
+              className: _index2.default.flexboxcontainer + " " + _index2.default.ksztat2container
+            },
             _react2.default.createElement(
               "div",
               { className: _index2.default.flexboxitem },
@@ -32825,19 +32890,23 @@ var Login = function (_Component) {
               { className: _index2.default.flexboxitem },
               _react2.default.createElement(
                 "p",
-                { className: _index2.default.login },
+                { className: _index2.default.loginandregisterheading },
                 "LOGIN"
               )
             ),
             _react2.default.createElement(
               "div",
-              { className: _index2.default.flexboxitem + ' ' + _index2.default.flexboxtogglebutton },
-              _react2.default.createElement("img", { src: "img/min.svg", className: _index2.default.togglebutton })
+              {
+                className: _index2.default.flexboxitem + " " + _index2.default.flexboxtogglebutton
+              },
+              _react2.default.createElement("img", { src: "img/min.svg", className: _index2.default.togglebuttonmin })
             )
           ),
           _react2.default.createElement(
             "div",
-            { className: _index2.default.flexboxcontainer + ' ' + _index2.default.inputusercontainer },
+            {
+              className: _index2.default.flexboxcontainer + " " + _index2.default.inputusercontainer
+            },
             _react2.default.createElement(
               "div",
               { className: _index2.default.flexboxitem },
@@ -32855,7 +32924,9 @@ var Login = function (_Component) {
           ),
           _react2.default.createElement(
             "div",
-            { className: _index2.default.flexboxcontainer + ' ' + _index2.default.inputpasswordcontainer },
+            {
+              className: _index2.default.flexboxcontainer + " " + _index2.default.inputpasswordcontainer
+            },
             _react2.default.createElement(
               "div",
               { className: _index2.default.flexboxitem },
@@ -32873,7 +32944,9 @@ var Login = function (_Component) {
           ),
           _react2.default.createElement(
             "div",
-            { className: _index2.default.flexboxcontainer + ' ' + _index2.default.signupgoogletextcontainer },
+            {
+              className: _index2.default.flexboxcontainer + " " + _index2.default.signupgoogletextcontainer
+            },
             _react2.default.createElement(
               "div",
               { className: _index2.default.flexboxitem },
@@ -32890,16 +32963,43 @@ var Login = function (_Component) {
             _react2.default.createElement(
               "div",
               { className: _index2.default.flexboxitem },
-              _react2.default.createElement("img", { src: "img/google.png", srcset: "img/google@2x.png", className: _index2.default.googlelogin })
+              _react2.default.createElement("img", {
+                src: "img/google.png",
+                srcset: "img/google@2x.png",
+                className: _index2.default.googlelogin
+              })
             ),
             _react2.default.createElement(
               "div",
-              { className: _index2.default.flexboxitem + ' ' + _index2.default.flexlogin },
+              { className: _index2.default.flexboxitem + " " + _index2.default.flexlogin },
               _react2.default.createElement(
                 "p",
                 { className: _index2.default.loginbottom },
                 "LOGIN"
               )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: _index2.default.flexboxcontainer },
+            _react2.default.createElement(
+              "div",
+              { className: _index2.default.flexboxitem + " " + _index2.default.flexlogin },
+              _react2.default.createElement(
+                "p",
+                { className: _index2.default.loginandregisterheading },
+                "REGISTER"
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              {
+                className: _index2.default.flexboxitem + " " + _index2.default.flexboxtogglebutton
+              },
+              _react2.default.createElement("img", {
+                src: "img/cross.svg",
+                className: _index2.default.togglebuttoncross
+              })
             )
           )
         )
@@ -33319,14 +33419,19 @@ exports.locals = {
 
 exports = module.exports = __webpack_require__(8)();
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto:300,700);", ""]);
 
 // module
-exports.push([module.i, ".drophere--container--1Cfgol-H {\n  display: block; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/css/drophere.scss"],"names":[],"mappings":"AAAA;EACE,eAAe,EAAE","file":"drophere.scss","sourcesContent":[".container {\n  display: block; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".drophere--container--1Cfgol-H {\n  display: block; }\n  .drophere--container--1Cfgol-H .drophere--flexboxcontainer--3i4Wgvz9 {\n    margin: 0;\n    padding: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row wrap;\n            flex-direction: row wrap;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n    .drophere--container--1Cfgol-H .drophere--flexboxcontainer--3i4Wgvz9 .drophere--flexboxitem--2VyYAq26 {\n      -webkit-box-flex: 1;\n          -ms-flex-positive: 1;\n              flex-grow: 1; }\n      .drophere--container--1Cfgol-H .drophere--flexboxcontainer--3i4Wgvz9 .drophere--flexboxitem--2VyYAq26 .drophere--imglogo--1NZL2I4Q {\n        margin-left: 590px;\n        margin-top: 109px;\n        margin-right: 544px; }\n      .drophere--container--1Cfgol-H .drophere--flexboxcontainer--3i4Wgvz9 .drophere--flexboxitem--2VyYAq26 .drophere--textdrophere--1-eIse52 {\n        width: 675px;\n        height: 83px;\n        font-family: \"Roboto\", sans-serif;\n        font-size: 18px;\n        font-weight: 300;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: normal;\n        letter-spacing: 2.9px;\n        text-align: center;\n        color: #3a3779;\n        margin-left: 357px;\n        margin-top: 75px;\n        margin-right: 334px;\n        text-align: center; }\n      .drophere--container--1Cfgol-H .drophere--flexboxcontainer--3i4Wgvz9 .drophere--flexboxitem--2VyYAq26 .drophere--order--2QR61N4X {\n        height: 13px;\n        font-family: \"Roboto\", sans-serif;\n        font-size: 16px;\n        font-weight: normal;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: normal;\n        letter-spacing: normal;\n        text-align: center; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/css/drophere.scss"],"names":[],"mappings":"AACA;EACE,eAAe,EAAE;EACjB;IACE,UAAU;IACV,WAAW;IACX,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,+BAA+B;IAC/B,8BAA8B;QAC1B,6BAA6B;YACzB,yBAAyB;IACjC,yBAAyB;QACrB,sBAAsB;YAClB,wBAAwB;IAChC,0BAA0B;QACtB,uBAAuB;YACnB,oBAAoB,EAAE;IAC9B;MACE,oBAAoB;UAChB,qBAAqB;cACjB,aAAa,EAAE;MACvB;QACE,mBAAmB;QACnB,kBAAkB;QAClB,oBAAoB,EAAE;MACxB;QACE,aAAa;QACb,aAAa;QACb,kCAAkC;QAClC,gBAAgB;QAChB,iBAAiB;QACjB,mBAAmB;QACnB,qBAAqB;QACrB,oBAAoB;QACpB,sBAAsB;QACtB,mBAAmB;QACnB,eAAe;QACf,mBAAmB;QACnB,iBAAiB;QACjB,oBAAoB;QACpB,mBAAmB,EAAE;MACvB;QACE,aAAa;QACb,kCAAkC;QAClC,gBAAgB;QAChB,oBAAoB;QACpB,mBAAmB;QACnB,qBAAqB;QACrB,oBAAoB;QACpB,uBAAuB;QACvB,mBAAmB,EAAE","file":"drophere.scss","sourcesContent":["@import url(\"https://fonts.googleapis.com/css?family=Roboto:300,700\");\n.container {\n  display: block; }\n  .container .flexboxcontainer {\n    margin: 0;\n    padding: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row wrap;\n            flex-direction: row wrap;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n    .container .flexboxcontainer .flexboxitem {\n      -webkit-box-flex: 1;\n          -ms-flex-positive: 1;\n              flex-grow: 1; }\n      .container .flexboxcontainer .flexboxitem .imglogo {\n        margin-left: 590px;\n        margin-top: 109px;\n        margin-right: 544px; }\n      .container .flexboxcontainer .flexboxitem .textdrophere {\n        width: 675px;\n        height: 83px;\n        font-family: \"Roboto\", sans-serif;\n        font-size: 18px;\n        font-weight: 300;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: normal;\n        letter-spacing: 2.9px;\n        text-align: center;\n        color: #3a3779;\n        margin-left: 357px;\n        margin-top: 75px;\n        margin-right: 334px;\n        text-align: center; }\n      .container .flexboxcontainer .flexboxitem .order {\n        height: 13px;\n        font-family: \"Roboto\", sans-serif;\n        font-size: 16px;\n        font-weight: normal;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: normal;\n        letter-spacing: normal;\n        text-align: center; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
-	"container": "drophere--container--1Cfgol-H"
+	"container": "drophere--container--1Cfgol-H",
+	"flexboxcontainer": "drophere--flexboxcontainer--3i4Wgvz9",
+	"flexboxitem": "drophere--flexboxitem--2VyYAq26",
+	"imglogo": "drophere--imglogo--1NZL2I4Q",
+	"textdrophere": "drophere--textdrophere--1-eIse52",
+	"order": "drophere--order--2QR61N4X"
 };
 
 /***/ }),
@@ -33354,7 +33459,7 @@ exports = module.exports = __webpack_require__(8)();
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto:300,700);", ""]);
 
 // module
-exports.push([module.i, ".index--container--HxCVULEV {\n  display: block;\n  background-color: #3a3779; }\n  .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb {\n    background-color: #fbfbfb;\n    width: 352px;\n    height: 521px;\n    top: 50%;\n    left: 50%;\n    margin-left: -176px;\n    margin-top: -260.5px;\n    position: absolute; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 {\n      margin: 0;\n      padding: 0;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row wrap;\n              flex-direction: row wrap;\n      -ms-flex-pack: distribute;\n          justify-content: space-around; }\n      .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG {\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        width: 117.33333px; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--logo--3eYJ-5Xs {\n          margin-top: 30px;\n          width: 138px;\n          height: 71px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--login--3k4KqZDU {\n          -webkit-box-flex: 2;\n              -ms-flex-positive: 2;\n                  flex-grow: 2;\n          font-family: \"Roboto\", sans-serif;\n          width: 75px;\n          height: 17px;\n          font-size: 22px;\n          font-weight: bold;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 3.5px;\n          text-align: left;\n          color: #000000;\n          margin-left: 47px;\n          margin-top: 18px; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--togglebutton--3ne9fm52 {\n          width: 16px;\n          height: 2px;\n          -o-object-fit: contain;\n             object-fit: contain;\n          background-color: #000000; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--user--1aQPOfYu {\n          font-family: \"Roboto\", sans-serif;\n          margin-left: 46px;\n          width: 34px;\n          height: 9px;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--input--GN4o0PKD {\n          font-family: \"Roboto\", sans-serif;\n          padding: 10px 18px 11px 18px;\n          -ms-flex-item-align: center;\n              align-self: center;\n          border-style: none;\n          width: 138px;\n          height: 31px;\n          background-color: #e8e8e8;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--password--2AxrnDkj {\n          width: 75px;\n          height: 9px;\n          margin-left: 46px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--signup--2Wbv23Be {\n          margin-left: 48px;\n          font-family: \"Roboto\", sans-serif;\n          width: 87px;\n          height: 10px;\n          font-size: 10px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: normal;\n          text-align: left;\n          color: #000000; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--googlelogin--Xo_GgP96 {\n          margin-left: 44px;\n          width: 95px;\n          height: 28px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--loginbottom--1VVabeYT {\n          margin-right: -60px;\n          height: 9px;\n          font-family: 'Roboto', sans-serif;\n          font-size: 12px;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: center;\n          color: #3a3779; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--ksztat2container--stv8z9hW {\n      margin-top: 30px; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxtogglebutton--3ir3doHk {\n      -ms-flex-item-align: center;\n          align-self: center;\n      text-align: end;\n      margin-right: 27px; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexlogin--39_GFWI9 {\n      -ms-flex-item-align: center;\n          align-self: center; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--inputusercontainer--2IGC_IfC {\n      margin-top: 28px; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--inputpasswordcontainer--3gFHJ6Wj {\n      margin-top: 19px; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--signupgoogletextcontainer--3mO3DSR0 {\n      margin-top: 5px; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--rowksztat2--1m3J8h1U {\n      width: 84px;\n      height: 1px;\n      -o-object-fit: contain;\n         object-fit: contain;\n      background-color: #000000;\n      margin-left: 47px; }\n", "", {"version":3,"sources":["/./src/client/screens/Login/css/index.scss"],"names":[],"mappings":"AACA;EACE,eAAe;EACf,0BAA0B,EAAE;EAC5B;IACE,0BAA0B;IAC1B,aAAa;IACb,cAAc;IACd,SAAS;IACT,UAAU;IACV,oBAAoB;IACpB,qBAAqB;IACrB,mBAAmB,EAAE;IACrB;MACE,UAAU;MACV,WAAW;MACX,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,+BAA+B;MAC/B,8BAA8B;UAC1B,6BAA6B;cACzB,yBAAyB;MACjC,0BAA0B;UACtB,8BAA8B,EAAE;MACpC;QACE,oBAAoB;YAChB,qBAAqB;gBACjB,aAAa;QACrB,mBAAmB,EAAE;QACrB;UACE,iBAAiB;UACjB,aAAa;UACb,aAAa;UACb,uBAAuB;aACpB,oBAAoB,EAAE;QAC3B;UACE,oBAAoB;cAChB,qBAAqB;kBACjB,aAAa;UACrB,kCAAkC;UAClC,YAAY;UACZ,aAAa;UACb,gBAAgB;UAChB,kBAAkB;UAClB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe;UACf,kBAAkB;UAClB,iBAAiB,EAAE;QACrB;UACE,YAAY;UACZ,YAAY;UACZ,uBAAuB;aACpB,oBAAoB;UACvB,0BAA0B,EAAE;QAC9B;UACE,kCAAkC;UAClC,kBAAkB;UAClB,YAAY;UACZ,YAAY;UACZ,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kCAAkC;UAClC,6BAA6B;UAC7B,4BAA4B;cACxB,mBAAmB;UACvB,mBAAmB;UACnB,aAAa;UACb,aAAa;UACb,0BAA0B;UAC1B,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,YAAY;UACZ,YAAY;UACZ,kBAAkB;UAClB,kCAAkC;UAClC,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kBAAkB;UAClB,kCAAkC;UAClC,YAAY;UACZ,aAAa;UACb,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,uBAAuB;UACvB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kBAAkB;UAClB,YAAY;UACZ,aAAa;UACb,uBAAuB;aACpB,oBAAoB,EAAE;QAC3B;UACE,oBAAoB;UACpB,YAAY;UACZ,kCAAkC;UAClC,gBAAgB;UAChB,oBAAoB;UACpB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,mBAAmB;UACnB,eAAe,EAAE;IACvB;MACE,iBAAiB,EAAE;IACrB;MACE,4BAA4B;UACxB,mBAAmB;MACvB,gBAAgB;MAChB,mBAAmB,EAAE;IACvB;MACE,4BAA4B;UACxB,mBAAmB,EAAE;IAC3B;MACE,iBAAiB,EAAE;IACrB;MACE,iBAAiB,EAAE;IACrB;MACE,gBAAgB,EAAE;IACpB;MACE,YAAY;MACZ,YAAY;MACZ,uBAAuB;SACpB,oBAAoB;MACvB,0BAA0B;MAC1B,kBAAkB,EAAE","file":"index.scss","sourcesContent":["@import url(\"https://fonts.googleapis.com/css?family=Roboto:300,700\");\n.container {\n  display: block;\n  background-color: #3a3779; }\n  .container .loginareacolor {\n    background-color: #fbfbfb;\n    width: 352px;\n    height: 521px;\n    top: 50%;\n    left: 50%;\n    margin-left: -176px;\n    margin-top: -260.5px;\n    position: absolute; }\n    .container .loginareacolor .flexboxcontainer {\n      margin: 0;\n      padding: 0;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row wrap;\n              flex-direction: row wrap;\n      -ms-flex-pack: distribute;\n          justify-content: space-around; }\n      .container .loginareacolor .flexboxcontainer .flexboxitem {\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        width: 117.33333px; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .logo {\n          margin-top: 30px;\n          width: 138px;\n          height: 71px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .login {\n          -webkit-box-flex: 2;\n              -ms-flex-positive: 2;\n                  flex-grow: 2;\n          font-family: \"Roboto\", sans-serif;\n          width: 75px;\n          height: 17px;\n          font-size: 22px;\n          font-weight: bold;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 3.5px;\n          text-align: left;\n          color: #000000;\n          margin-left: 47px;\n          margin-top: 18px; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .togglebutton {\n          width: 16px;\n          height: 2px;\n          -o-object-fit: contain;\n             object-fit: contain;\n          background-color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .user {\n          font-family: \"Roboto\", sans-serif;\n          margin-left: 46px;\n          width: 34px;\n          height: 9px;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .input {\n          font-family: \"Roboto\", sans-serif;\n          padding: 10px 18px 11px 18px;\n          -ms-flex-item-align: center;\n              align-self: center;\n          border-style: none;\n          width: 138px;\n          height: 31px;\n          background-color: #e8e8e8;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .password {\n          width: 75px;\n          height: 9px;\n          margin-left: 46px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .signup {\n          margin-left: 48px;\n          font-family: \"Roboto\", sans-serif;\n          width: 87px;\n          height: 10px;\n          font-size: 10px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: normal;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .googlelogin {\n          margin-left: 44px;\n          width: 95px;\n          height: 28px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .loginbottom {\n          margin-right: -60px;\n          height: 9px;\n          font-family: 'Roboto', sans-serif;\n          font-size: 12px;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: center;\n          color: #3a3779; }\n    .container .loginareacolor .ksztat2container {\n      margin-top: 30px; }\n    .container .loginareacolor .flexboxtogglebutton {\n      -ms-flex-item-align: center;\n          align-self: center;\n      text-align: end;\n      margin-right: 27px; }\n    .container .loginareacolor .flexlogin {\n      -ms-flex-item-align: center;\n          align-self: center; }\n    .container .loginareacolor .inputusercontainer {\n      margin-top: 28px; }\n    .container .loginareacolor .inputpasswordcontainer {\n      margin-top: 19px; }\n    .container .loginareacolor .signupgoogletextcontainer {\n      margin-top: 5px; }\n    .container .loginareacolor .rowksztat2 {\n      width: 84px;\n      height: 1px;\n      -o-object-fit: contain;\n         object-fit: contain;\n      background-color: #000000;\n      margin-left: 47px; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".index--container--HxCVULEV {\n  display: block;\n  background-color: #3a3779; }\n  .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb {\n    background-color: #fbfbfb;\n    width: 352px;\n    height: 521px;\n    top: 50%;\n    left: 50%;\n    margin-left: -176px;\n    margin-top: -260.5px;\n    position: absolute; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 {\n      margin: 0;\n      padding: 0;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row wrap;\n              flex-direction: row wrap;\n      -ms-flex-pack: distribute;\n          justify-content: space-around; }\n      .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG {\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        width: 117.33333px; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--logo--3eYJ-5Xs {\n          margin-top: 30px;\n          width: 138px;\n          height: 71px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--loginandregisterheading--1Aq1-KVZ {\n          -webkit-box-flex: 2;\n              -ms-flex-positive: 2;\n                  flex-grow: 2;\n          font-family: \"Roboto\", sans-serif;\n          width: 75px;\n          height: 17px;\n          font-size: 22px;\n          font-weight: bold;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 3.5px;\n          text-align: left;\n          color: #000000;\n          margin-left: 47px;\n          margin-top: 18px; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--togglebuttonmin--NMgkrq2W {\n          width: 16px;\n          height: 2px;\n          -o-object-fit: contain;\n             object-fit: contain;\n          background-color: #000000; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--togglebuttoncross--1G3co6Eh {\n          width: 18px;\n          height: 18px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--user--1aQPOfYu {\n          font-family: \"Roboto\", sans-serif;\n          margin-left: 46px;\n          width: 34px;\n          height: 9px;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--input--GN4o0PKD {\n          font-family: \"Roboto\", sans-serif;\n          padding: 10px 18px 11px 18px;\n          -ms-flex-item-align: center;\n              align-self: center;\n          border-style: none;\n          width: 138px;\n          height: 31px;\n          background-color: #e8e8e8;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--password--2AxrnDkj {\n          width: 75px;\n          height: 9px;\n          margin-left: 46px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--signup--2Wbv23Be {\n          margin-left: 48px;\n          font-family: \"Roboto\", sans-serif;\n          width: 87px;\n          height: 10px;\n          font-size: 10px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: normal;\n          text-align: left;\n          color: #000000; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--googlelogin--Xo_GgP96 {\n          margin-left: 44px;\n          width: 95px;\n          height: 28px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxcontainer--3Moq4p-8 .index--flexboxitem---ay5UMlG .index--loginbottom--1VVabeYT {\n          margin-right: -60px;\n          height: 9px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: center;\n          color: #3a3779; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--ksztat2container--stv8z9hW {\n      margin-top: 30px; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexboxtogglebutton--3ir3doHk {\n      -ms-flex-item-align: center;\n          align-self: center;\n      text-align: end;\n      margin-right: 27px; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--flexlogin--39_GFWI9 {\n      -ms-flex-item-align: center;\n          align-self: center; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--inputusercontainer--2IGC_IfC {\n      margin-top: 28px; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--inputpasswordcontainer--3gFHJ6Wj {\n      margin-top: 19px; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--signupgoogletextcontainer--3mO3DSR0 {\n      margin-top: 5px; }\n    .index--container--HxCVULEV .index--loginareacolor--q6hFRGYb .index--rowksztat2--1m3J8h1U {\n      width: 84px;\n      height: 1px;\n      -o-object-fit: contain;\n         object-fit: contain;\n      background-color: #000000;\n      margin-left: 47px; }\n", "", {"version":3,"sources":["/./src/client/screens/Login/css/index.scss"],"names":[],"mappings":"AACA;EACE,eAAe;EACf,0BAA0B,EAAE;EAC5B;IACE,0BAA0B;IAC1B,aAAa;IACb,cAAc;IACd,SAAS;IACT,UAAU;IACV,oBAAoB;IACpB,qBAAqB;IACrB,mBAAmB,EAAE;IACrB;MACE,UAAU;MACV,WAAW;MACX,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,+BAA+B;MAC/B,8BAA8B;UAC1B,6BAA6B;cACzB,yBAAyB;MACjC,0BAA0B;UACtB,8BAA8B,EAAE;MACpC;QACE,oBAAoB;YAChB,qBAAqB;gBACjB,aAAa;QACrB,mBAAmB,EAAE;QACrB;UACE,iBAAiB;UACjB,aAAa;UACb,aAAa;UACb,uBAAuB;aACpB,oBAAoB,EAAE;QAC3B;UACE,oBAAoB;cAChB,qBAAqB;kBACjB,aAAa;UACrB,kCAAkC;UAClC,YAAY;UACZ,aAAa;UACb,gBAAgB;UAChB,kBAAkB;UAClB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe;UACf,kBAAkB;UAClB,iBAAiB,EAAE;QACrB;UACE,YAAY;UACZ,YAAY;UACZ,uBAAuB;aACpB,oBAAoB;UACvB,0BAA0B,EAAE;QAC9B;UACE,YAAY;UACZ,aAAa;UACb,uBAAuB;aACpB,oBAAoB,EAAE;QAC3B;UACE,kCAAkC;UAClC,kBAAkB;UAClB,YAAY;UACZ,YAAY;UACZ,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kCAAkC;UAClC,6BAA6B;UAC7B,4BAA4B;cACxB,mBAAmB;UACvB,mBAAmB;UACnB,aAAa;UACb,aAAa;UACb,0BAA0B;UAC1B,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,YAAY;UACZ,YAAY;UACZ,kBAAkB;UAClB,kCAAkC;UAClC,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kBAAkB;UAClB,kCAAkC;UAClC,YAAY;UACZ,aAAa;UACb,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,uBAAuB;UACvB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kBAAkB;UAClB,YAAY;UACZ,aAAa;UACb,uBAAuB;aACpB,oBAAoB,EAAE;QAC3B;UACE,oBAAoB;UACpB,YAAY;UACZ,kCAAkC;UAClC,gBAAgB;UAChB,oBAAoB;UACpB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,mBAAmB;UACnB,eAAe,EAAE;IACvB;MACE,iBAAiB,EAAE;IACrB;MACE,4BAA4B;UACxB,mBAAmB;MACvB,gBAAgB;MAChB,mBAAmB,EAAE;IACvB;MACE,4BAA4B;UACxB,mBAAmB,EAAE;IAC3B;MACE,iBAAiB,EAAE;IACrB;MACE,iBAAiB,EAAE;IACrB;MACE,gBAAgB,EAAE;IACpB;MACE,YAAY;MACZ,YAAY;MACZ,uBAAuB;SACpB,oBAAoB;MACvB,0BAA0B;MAC1B,kBAAkB,EAAE","file":"index.scss","sourcesContent":["@import url(\"https://fonts.googleapis.com/css?family=Roboto:300,700\");\n.container {\n  display: block;\n  background-color: #3a3779; }\n  .container .loginareacolor {\n    background-color: #fbfbfb;\n    width: 352px;\n    height: 521px;\n    top: 50%;\n    left: 50%;\n    margin-left: -176px;\n    margin-top: -260.5px;\n    position: absolute; }\n    .container .loginareacolor .flexboxcontainer {\n      margin: 0;\n      padding: 0;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row wrap;\n              flex-direction: row wrap;\n      -ms-flex-pack: distribute;\n          justify-content: space-around; }\n      .container .loginareacolor .flexboxcontainer .flexboxitem {\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        width: 117.33333px; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .logo {\n          margin-top: 30px;\n          width: 138px;\n          height: 71px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .loginandregisterheading {\n          -webkit-box-flex: 2;\n              -ms-flex-positive: 2;\n                  flex-grow: 2;\n          font-family: \"Roboto\", sans-serif;\n          width: 75px;\n          height: 17px;\n          font-size: 22px;\n          font-weight: bold;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 3.5px;\n          text-align: left;\n          color: #000000;\n          margin-left: 47px;\n          margin-top: 18px; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .togglebuttonmin {\n          width: 16px;\n          height: 2px;\n          -o-object-fit: contain;\n             object-fit: contain;\n          background-color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .togglebuttoncross {\n          width: 18px;\n          height: 18px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .user {\n          font-family: \"Roboto\", sans-serif;\n          margin-left: 46px;\n          width: 34px;\n          height: 9px;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .input {\n          font-family: \"Roboto\", sans-serif;\n          padding: 10px 18px 11px 18px;\n          -ms-flex-item-align: center;\n              align-self: center;\n          border-style: none;\n          width: 138px;\n          height: 31px;\n          background-color: #e8e8e8;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .password {\n          width: 75px;\n          height: 9px;\n          margin-left: 46px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .signup {\n          margin-left: 48px;\n          font-family: \"Roboto\", sans-serif;\n          width: 87px;\n          height: 10px;\n          font-size: 10px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: normal;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .googlelogin {\n          margin-left: 44px;\n          width: 95px;\n          height: 28px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .loginbottom {\n          margin-right: -60px;\n          height: 9px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: center;\n          color: #3a3779; }\n    .container .loginareacolor .ksztat2container {\n      margin-top: 30px; }\n    .container .loginareacolor .flexboxtogglebutton {\n      -ms-flex-item-align: center;\n          align-self: center;\n      text-align: end;\n      margin-right: 27px; }\n    .container .loginareacolor .flexlogin {\n      -ms-flex-item-align: center;\n          align-self: center; }\n    .container .loginareacolor .inputusercontainer {\n      margin-top: 28px; }\n    .container .loginareacolor .inputpasswordcontainer {\n      margin-top: 19px; }\n    .container .loginareacolor .signupgoogletextcontainer {\n      margin-top: 5px; }\n    .container .loginareacolor .rowksztat2 {\n      width: 84px;\n      height: 1px;\n      -o-object-fit: contain;\n         object-fit: contain;\n      background-color: #000000;\n      margin-left: 47px; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
@@ -33363,8 +33468,9 @@ exports.locals = {
 	"flexboxcontainer": "index--flexboxcontainer--3Moq4p-8",
 	"flexboxitem": "index--flexboxitem---ay5UMlG",
 	"logo": "index--logo--3eYJ-5Xs",
-	"login": "index--login--3k4KqZDU",
-	"togglebutton": "index--togglebutton--3ne9fm52",
+	"loginandregisterheading": "index--loginandregisterheading--1Aq1-KVZ",
+	"togglebuttonmin": "index--togglebuttonmin--NMgkrq2W",
+	"togglebuttoncross": "index--togglebuttoncross--1G3co6Eh",
 	"user": "index--user--1aQPOfYu",
 	"input": "index--input--GN4o0PKD",
 	"password": "index--password--2AxrnDkj",

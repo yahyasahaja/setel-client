@@ -40,7 +40,7 @@ $heightlogin: 521px;
           object-fit: contain;
         }
 
-        .login {
+        .loginandregisterheading {
           flex-grow: 2;
           font-family: "Roboto", sans-serif;
           width: 75px;
@@ -57,11 +57,18 @@ $heightlogin: 521px;
           margin-top: 18px;
         }
 
-        .togglebutton {
+        .togglebuttonmin {
           width: 16px;
           height: 2px;
           object-fit: contain;
           background-color: #000000;
+        }
+
+        .togglebuttoncross {
+          width: 18px;
+          height: 18px;
+          object-fit: contain;
+
         }
 
         .user {
@@ -137,7 +144,7 @@ $heightlogin: 521px;
         .loginbottom {
           margin-right: -60px;
           height: 9px;
-          font-family: 'Roboto', sans-serif;
+          font-family: "Roboto", sans-serif;
           font-size: 12px;
           font-weight: normal;
           font-style: normal;
@@ -147,9 +154,6 @@ $heightlogin: 521px;
           text-align: center;
           color: #3a3779;
         }
-
-        
-
       }
     }
 
@@ -163,7 +167,7 @@ $heightlogin: 521px;
       margin-right: 27px;
     }
 
-    .flexlogin{
+    .flexlogin {
       align-self: center;
     }
 

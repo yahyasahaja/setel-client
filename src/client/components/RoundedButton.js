@@ -25,7 +25,7 @@ export default class RoundedButton extends Component {
 
   render() {
     return (
-      <div className={styles.container} >
+      <div style={this.props.style} className={styles.container} >
         {this.renderButton()}
       </div>
     )
