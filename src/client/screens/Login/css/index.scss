@@ -22,9 +22,7 @@ $heightlogin: 521px;
     background-color: #fbfbfb;
     @include center($widthlogin, $heightlogin);
 
-    .ksztat2container{
-      margin-top: 10px;
-    }
+    
 
     .flexboxcontainer {
       margin: 0;
@@ -67,6 +65,10 @@ $heightlogin: 521px;
           background-color: #000000;
         }
       }
+    }
+
+    .ksztat2container{
+      margin-top: 10px;
     }
 
     .rowksztat2 {

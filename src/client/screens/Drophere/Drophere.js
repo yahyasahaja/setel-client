@@ -8,11 +8,12 @@ import styles from './css/drophere.scss'
 import DrophereMenu from '../../components/DrophereMenu'
 
 //COMPONENT
-export default class Home extends Component {
+export default class Drophere extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <DrophereMenu />
+        TODO:<br />
+        CLICK ORDER ID AND GOTO /drophere/order/0
       </div>
     )
   }
