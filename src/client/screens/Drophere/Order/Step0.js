@@ -9,7 +9,7 @@ export default class Step0 extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <h1>Hi react!</h1>
+        
       </div>
     )
   }

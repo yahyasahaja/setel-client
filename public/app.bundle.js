@@ -32439,7 +32439,7 @@ var Drophere = function (_Component) {
           _react2.default.createElement(
             "div",
             { className: _drophere2.default.logo },
-            _react2.default.createElement("img", { className: _drophere2.default.imglogo, src: "/img/drop-here.png" })
+            _react2.default.createElement("img", { src: "/img/drop-here.png" })
           ),
           _react2.default.createElement(
             "p",
@@ -32507,15 +32507,7 @@ var Step0 = function (_Component) {
   _createClass(Step0, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { className: _step2.default.container },
-        _react2.default.createElement(
-          'h1',
-          null,
-          'Hi react!'
-        )
-      );
+      return _react2.default.createElement('div', { className: _step2.default.container });
     }
   }]);
 
@@ -33367,7 +33359,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, ".index--container--jMilm1Ec {\n  width: 100%;\n  padding: 20px;\n  min-height: 80%;\n  padding-top: 100px; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/index.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,cAAc;EACd,gBAAgB;EAChB,mBAAmB,EAAE","file":"index.scss","sourcesContent":[".container {\n  width: 100%;\n  padding: 20px;\n  min-height: 80%;\n  padding-top: 100px; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".index--container--jMilm1Ec {\n  width: 100%;\n  padding: 20px;\n  min-height: 80%;\n  padding-top: 100px;\n  background: white; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/index.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,cAAc;EACd,gBAAgB;EAChB,mBAAmB;EACnB,kBAAkB,EAAE","file":"index.scss","sourcesContent":[".container {\n  width: 100%;\n  padding: 20px;\n  min-height: 80%;\n  padding-top: 100px;\n  background: white; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
@@ -33383,11 +33375,18 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, ".step1--container--3jXQyMYV {\n  display: block; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/step1.scss"],"names":[],"mappings":"AAAA;EACE,eAAe,EAAE","file":"step1.scss","sourcesContent":[".container {\n  display: block; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".step1--container--3jXQyMYV {\n  display: block;\n  padding: 20px;\n  height: 100%;\n  padding-bottom: 40px; }\n  .step1--container--3jXQyMYV .step1--up--39o2Xj7I {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 90%;\n    padding: 30px 20px; }\n    .step1--container--3jXQyMYV .step1--up--39o2Xj7I .step1--drop-container--327MQEqx {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      background: #ecf2f3;\n      border: solid 1px #d2d7d8;\n      border-radius: 10px;\n      width: 65%;\n      height: 400px; }\n      .step1--container--3jXQyMYV .step1--up--39o2Xj7I .step1--drop-container--327MQEqx .step1--or--3hfaygdU {\n        margin: 10px 0; }\n      .step1--container--3jXQyMYV .step1--up--39o2Xj7I .step1--drop-container--327MQEqx label .step1--button--YHiSktJe {\n        padding: 5px 20px;\n        border: solid 1px #acacac;\n        border-radius: 10px;\n        color: #acacac;\n        cursor: pointer; }\n        .step1--container--3jXQyMYV .step1--up--39o2Xj7I .step1--drop-container--327MQEqx label .step1--button--YHiSktJe:hover {\n          border-color: #3a3779;\n          background: #3a3779;\n          color: white; }\n      .step1--container--3jXQyMYV .step1--up--39o2Xj7I .step1--drop-container--327MQEqx label input {\n        display: none; }\n    .step1--container--3jXQyMYV .step1--up--39o2Xj7I .step1--on-drag-over--22QiW69X {\n      background: #3a3779;\n      color: white; }\n      .step1--container--3jXQyMYV .step1--up--39o2Xj7I .step1--on-drag-over--22QiW69X label .step1--button--YHiSktJe {\n        color: white;\n        border-color: white; }\n        .step1--container--3jXQyMYV .step1--up--39o2Xj7I .step1--on-drag-over--22QiW69X label .step1--button--YHiSktJe:hover {\n          border-color: white;\n          color: white; }\n    .step1--container--3jXQyMYV .step1--up--39o2Xj7I .step1--info--viMiuPYm {\n      display: block;\n      margin-left: 5%;\n      width: 25%; }\n      .step1--container--3jXQyMYV .step1--up--39o2Xj7I .step1--info--viMiuPYm h1 {\n        border-bottom: 2px solid #5a5a5a;\n        font-weight: 400; }\n      .step1--container--3jXQyMYV .step1--up--39o2Xj7I .step1--info--viMiuPYm ol {\n        margin: 10px 0;\n        padding: 0 20px; }\n  .step1--container--3jXQyMYV .step1--down--3dDT60oT {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n    .step1--container--3jXQyMYV .step1--down--3dDT60oT .step1--button--YHiSktJe {\n      display: block; }\n      .step1--container--3jXQyMYV .step1--down--3dDT60oT .step1--button--YHiSktJe a, .step1--container--3jXQyMYV .step1--down--3dDT60oT .step1--button--YHiSktJe button {\n        padding: 5px 50px; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/step1.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,cAAc;EACd,aAAa;EACb,qBAAqB,EAAE;EACvB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,YAAY;IACZ,mBAAmB,EAAE;IACrB;MACE,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,yBAAyB;UACrB,sBAAsB;cAClB,wBAAwB;MAChC,0BAA0B;UACtB,uBAAuB;cACnB,oBAAoB;MAC5B,6BAA6B;MAC7B,8BAA8B;UAC1B,2BAA2B;cACvB,uBAAuB;MAC/B,oBAAoB;MACpB,0BAA0B;MAC1B,oBAAoB;MACpB,WAAW;MACX,cAAc,EAAE;MAChB;QACE,eAAe,EAAE;MACnB;QACE,kBAAkB;QAClB,0BAA0B;QAC1B,oBAAoB;QACpB,eAAe;QACf,gBAAgB,EAAE;QAClB;UACE,sBAAsB;UACtB,oBAAoB;UACpB,aAAa,EAAE;MACnB;QACE,cAAc,EAAE;IACpB;MACE,oBAAoB;MACpB,aAAa,EAAE;MACf;QACE,aAAa;QACb,oBAAoB,EAAE;QACtB;UACE,oBAAoB;UACpB,aAAa,EAAE;IACrB;MACE,eAAe;MACf,gBAAgB;MAChB,WAAW,EAAE;MACb;QACE,iCAAiC;QACjC,iBAAiB,EAAE;MACrB;QACE,eAAe;QACf,gBAAgB,EAAE;EACxB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,sBAAsB;QAClB,mBAAmB;YACf,0BAA0B,EAAE;IACpC;MACE,eAAe,EAAE;MACjB;QACE,kBAAkB,EAAE","file":"step1.scss","sourcesContent":[".container {\n  display: block;\n  padding: 20px;\n  height: 100%;\n  padding-bottom: 40px; }\n  .container .up {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 90%;\n    padding: 30px 20px; }\n    .container .up .drop-container {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      background: #ecf2f3;\n      border: solid 1px #d2d7d8;\n      border-radius: 10px;\n      width: 65%;\n      height: 400px; }\n      .container .up .drop-container .or {\n        margin: 10px 0; }\n      .container .up .drop-container label .button {\n        padding: 5px 20px;\n        border: solid 1px #acacac;\n        border-radius: 10px;\n        color: #acacac;\n        cursor: pointer; }\n        .container .up .drop-container label .button:hover {\n          border-color: #3a3779;\n          background: #3a3779;\n          color: white; }\n      .container .up .drop-container label input {\n        display: none; }\n    .container .up .on-drag-over {\n      background: #3a3779;\n      color: white; }\n      .container .up .on-drag-over label .button {\n        color: white;\n        border-color: white; }\n        .container .up .on-drag-over label .button:hover {\n          border-color: white;\n          color: white; }\n    .container .up .info {\n      display: block;\n      margin-left: 5%;\n      width: 25%; }\n      .container .up .info h1 {\n        border-bottom: 2px solid #5a5a5a;\n        font-weight: 400; }\n      .container .up .info ol {\n        margin: 10px 0;\n        padding: 0 20px; }\n  .container .down {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n    .container .down .button {\n      display: block; }\n      .container .down .button a, .container .down .button button {\n        padding: 5px 50px; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
-	"container": "step1--container--3jXQyMYV"
+	"container": "step1--container--3jXQyMYV",
+	"up": "step1--up--39o2Xj7I",
+	"drop-container": "step1--drop-container--327MQEqx",
+	"or": "step1--or--3hfaygdU",
+	"button": "step1--button--YHiSktJe",
+	"on-drag-over": "step1--on-drag-over--22QiW69X",
+	"info": "step1--info--viMiuPYm",
+	"down": "step1--down--3dDT60oT"
 };
 
 /***/ }),
@@ -33922,7 +33921,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, ".step0--container--2RUYfzjL {\n  display: block; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/step0.scss"],"names":[],"mappings":"AAAA;EACE,eAAe,EAAE","file":"step0.scss","sourcesContent":[".container {\n  display: block; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".step0--container--2RUYfzjL {\n  padding: 14px 308px 1570px 200px;\n  margin-left: 148px;\n  width: 70%;\n  height: 100%;\n  border: solid 1px #b7b7b7; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/step0.scss"],"names":[],"mappings":"AAAA;EACE,iCAAiC;EACjC,mBAAmB;EACnB,WAAW;EACX,aAAa;EACb,0BAA0B,EAAE","file":"step0.scss","sourcesContent":[".container {\n  padding: 14px 308px 1570px 200px;\n  margin-left: 148px;\n  width: 70%;\n  height: 100%;\n  border: solid 1px #b7b7b7; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
@@ -34000,23 +33999,166 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 //COMPONETNS
 
 
+//INNER_CONFIG
+var DRAG_ENTER = 0;
+var DRAG_OVER = 1;
+var DRAG_LEAVE = 2;
+var DRAG_DROP = 3;
+
 //COMPONENT
+
 var Step0 = function (_Component) {
   _inherits(Step0, _Component);
 
   function Step0() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, Step0);
 
-    return _possibleConstructorReturn(this, (Step0.__proto__ || Object.getPrototypeOf(Step0)).apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Step0.__proto__ || Object.getPrototypeOf(Step0)).call.apply(_ref, [this].concat(args))), _this), _this.onFileUploadChange = function (e) {
+      e.preventDefault();
+
+      _this.handleFileUpload(e.target.files[0]);
+    }, _this.handleFileUpload = function (file) {
+      console.log('uploading file ', file.name, ' ...');
+    }, _this.state = {
+      uploading: false,
+      dragStateId: -1
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Step0, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      window.ondragenter = function (e) {
+        e.preventDefault();
+        _this2.setState({ dragStateId: DRAG_ENTER });
+      };
+      window.ondragover = function (e) {
+        e.preventDefault();
+        if (_this2.state.dragStateId != DRAG_OVER) _this2.setState({ dragStateId: DRAG_OVER });
+      };
+      window.ondragleave = function (e) {
+        e.preventDefault();
+        _this2.setState({ dragStateId: DRAG_LEAVE });
+      };
+      window.ondrop = function (e) {
+        e.preventDefault();
+
+        _this2.setState({ dragStateId: DRAG_DROP, uploading: true });
+        _this2.handleFileUpload(e.dataTransfer.files.item(0));
+      };
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      window.ondragenter = undefined;
+      window.ondragover = undefined;
+      window.ondragleave = undefined;
+      window.ondrop = undefined;
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var dragStateId = this.state.dragStateId;
+
+
       return _react2.default.createElement(
         'div',
         { className: _step2.default.container },
-        _react2.default.createElement('div', { className: _step2.default['drop-container'] })
+        _react2.default.createElement(
+          'div',
+          { className: _step2.default.up },
+          _react2.default.createElement(
+            'div',
+            { className: _step2.default['drop-container'] + ' ' + (dragStateId === DRAG_OVER || dragStateId == DRAG_ENTER ? _step2.default['on-drag-over'] : '') },
+            _react2.default.createElement(
+              'span',
+              null,
+              'DRAG YOUR DESIGN HERE'
+            ),
+            _react2.default.createElement(
+              'span',
+              { className: _step2.default.or },
+              'OR'
+            ),
+            _react2.default.createElement(
+              'label',
+              { 'for': 'upload-file' },
+              _react2.default.createElement(
+                'div',
+                { className: _step2.default.button, onClick: function onClick(e) {} },
+                'UPLOAD DESIGN'
+              ),
+              _react2.default.createElement('input', {
+                type: 'file', name: 'upload-file',
+                id: 'upload-file', disabled: this.state.uploading,
+                onChange: this.onFileUploadChange
+              })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _step2.default.info },
+            _react2.default.createElement(
+              'h1',
+              null,
+              'Design'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Requirements:',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement(
+                'ol',
+                null,
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Lorem impsum dolor'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Lorem impsum dolor'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Lorem impsum dolor'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Lorem impsum dolor'
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _step2.default.down },
+          _react2.default.createElement(
+            _RoundedButton2.default,
+            { to: '/drophere/order/2', className: _step2.default.button },
+            'BACK'
+          ),
+          _react2.default.createElement(
+            _RoundedButton2.default,
+            { to: '/drophere/order/0', className: _step2.default.button, primary: true },
+            'NEXT'
+          )
+        )
       );
     }
   }]);
