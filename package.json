@@ -45,6 +45,7 @@
     "react-redux": "^5.0.6",
     "react-router": "^2.8.1",
     "react-router-dom": "^4.2.2",
+    "react-toolbox": "^2.0.0-beta.12",
     "redux": "^3.7.2",
     "redux-promise": "^0.5.3",
     "sequelize": "^4.31.0"

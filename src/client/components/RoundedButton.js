@@ -24,8 +24,12 @@ export default class RoundedButton extends Component {
   }
 
   render() {
+    let { style, className, primary } = this.props
     return (
-      <div style={this.props.style} className={styles.container} >
+      <div 
+        style={style} 
+        className={`${styles.container} ${className} ${primary ? styles.primary : ''}`} 
+      >
         {this.renderButton()}
       </div>
     )
