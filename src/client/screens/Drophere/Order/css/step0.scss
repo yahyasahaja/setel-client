@@ -1,11 +1,90 @@
 .container {
   background: white;
+  height: 2300px;
 
   .wrapper {
-    padding: 14px 308px 100px 146px;
+    padding: 16px 213px 19px 77px;
     border: solid 1px #b7b7b7;
     width: 70%;
     margin-left: 146px;
-    height: 1570px;
+    height: 2200px;
+
+    .form {
+      width: 100%;
+      p {
+        font-size: 16px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        text-align: left;
+        color: rgba(0, 0, 0, 0.38);
+      }
+
+      .text {
+        margin-left: 10px;
+      }
+
+      .textmargin {
+        margin-top: 34px;
+      }
+
+      .postalcodeandcolor {
+        width: 20%;
+        margin-left: 10px;
+      }
+
+      .smalltext {
+        font-size: 11px;
+      }
+
+      .flexcontainer {
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
+
+        .flexitem {
+          align-self: flex-start;
+          width: 100%;
+
+          .sizetext {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .orderformtext {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    font-size: 30px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.8;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+  }
+
+  .rowform {
+    position: absolute;
+    top: 20%;
+    right: 1.5%;
+    width: 207px;
+    height: 1px;
+    background-color: #000000;
+  }
+
+  .button {
+    position: absolute;
+    padding-top: 30px;
+    right: 5%;
+    width: 165px;
+    height: 42px;
+    text-align: center;
   }
 }
