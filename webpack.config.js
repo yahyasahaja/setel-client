@@ -23,12 +23,13 @@ module.exports = {
       {
         test: /(\.js|\.jsx)$/,
         loader: 'babel-loader',
+        exclude: /node_modules/,
         query: {
           presets: ['react', 'es2015', 'es2016', 'es2017', 'stage-2'],
         },
       },
       {
-        test: /(\.scss)$/,
+        test: /(\.css|\.scss)$/,
         use: [
           'style-loader',
           {

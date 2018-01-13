@@ -1,5 +1,6 @@
 //MODULES
 import React, { Component }  from 'react'
+import Input from 'react-toolbox/lib/input'
 
 //STYLES
 import styles from './css/step1.scss'
