@@ -34334,11 +34334,7 @@ var Drophere = function (_Component) {
           ),
           _react2.default.createElement(
             _RoundedButton2.default,
-            {
-              to: "/drophere/order/0",
-              className: _drophere2.default.button,
-              primary: true
-            },
+            { to: "/drophere/order/0", className: _drophere2.default.button, primary: true },
             "ORDER"
           )
         )
@@ -34496,6 +34492,10 @@ var _Step = __webpack_require__(328);
 
 var _Step2 = _interopRequireDefault(_Step);
 
+var _Step3 = __webpack_require__(370);
+
+var _Step4 = _interopRequireDefault(_Step3);
+
 var _actions = __webpack_require__(137);
 
 var _actions2 = _interopRequireDefault(_actions);
@@ -34539,25 +34539,18 @@ var Order = function (_Component) {
     key: 'componentWillMount',
     value: function componentWillMount() {
       //init drophere step with current step at 0 and the maximum step is at step 2
-      this.props.initStep(_config.DROPHERE_STEP, 0, 2);
+      //this.props.initStep(DROPHERE_STEP, 0, 2)
     }
   }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      //If there's no any current match and [DROPHERE_STEP] props, just let it update
-      if (!this.props.match || !nextProps.match) return true;
-      if (!this.props[_config.DROPHERE_STEP] || !nextProps[_config.DROPHERE_STEP]) return true;
-
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      //If there's no any current match and [DROPHERE_STEP] props, just let it update)
       var orderStepIdOnURL = nextProps.match.params.orderId;
       var step = nextProps[_config.DROPHERE_STEP];
 
-      if (orderStepIdOnURL > step.maxCurrentStep) {
-        //If url order id is more than current page, goto page 0 and don't update props
-        this.props.history.push('/drophere/order/' + step.currentStep);
-        return false;
-      }
+      if (!step) return;
 
-      return true;
+      if (orderStepIdOnURL > step.maxCurrentStep) this.props.history.push('/drophere/order/' + step.maxCurrentStep);
     }
   }, {
     key: 'render',
@@ -34568,9 +34561,9 @@ var Order = function (_Component) {
         _react2.default.createElement(
           _reactRouterDom.Switch,
           null,
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/0', component: _Step2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/1', component: _Step2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/2', component: _Step2.default })
+          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/0', exact: true, component: _Step2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/1', exact: true, component: _Step4.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/2', exact: true, component: _Step2.default })
         )
       );
     }
@@ -35384,7 +35377,7 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, ".index--container--2g1bKLNn {\n  width: 100%;\n  padding: 20px;\n  min-height: 80%;\n  padding-top: 100px; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/index.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,cAAc;EACd,gBAAgB;EAChB,mBAAmB,EAAE","file":"index.scss","sourcesContent":[".container {\n  width: 100%;\n  padding: 20px;\n  min-height: 80%;\n  padding-top: 100px; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".index--container--2g1bKLNn {\n  width: 100%;\n  padding: 20px;\n  min-height: 80%;\n  padding-top: 100px;\n  background: white; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/index.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,cAAc;EACd,gBAAgB;EAChB,mBAAmB;EACnB,kBAAkB,EAAE","file":"index.scss","sourcesContent":[".container {\n  width: 100%;\n  padding: 20px;\n  min-height: 80%;\n  padding-top: 100px;\n  background: white; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
@@ -35417,7 +35410,7 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, ".drophere--container--1Cfgol-H {\n  width: 100%;\n  padding: 20px;\n  height: 80%;\n  padding-top: 100px; }\n  .drophere--container--1Cfgol-H .drophere--wrapper--3_-csr05 {\n    display: block;\n    margin: auto;\n    max-width: 600px;\n    font-size: 16px;\n    text-align: center;\n    height: 100%; }\n    .drophere--container--1Cfgol-H .drophere--wrapper--3_-csr05 .drophere--logo--8mV6WxKx {\n      display: block;\n      margin-top: 10%; }\n      .drophere--container--1Cfgol-H .drophere--wrapper--3_-csr05 .drophere--logo--8mV6WxKx img {\n        margin: auto;\n        display: block; }\n    .drophere--container--1Cfgol-H .drophere--wrapper--3_-csr05 .drophere--text--3eW0H-nj {\n      margin: 50px 0; }\n    .drophere--container--1Cfgol-H .drophere--wrapper--3_-csr05 .drophere--button--3jLRSslq {\n      display: inline-block; }\n      .drophere--container--1Cfgol-H .drophere--wrapper--3_-csr05 .drophere--button--3jLRSslq a, .drophere--container--1Cfgol-H .drophere--wrapper--3_-csr05 .drophere--button--3jLRSslq button {\n        padding: 5px 50px; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/css/drophere.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,cAAc;EACd,YAAY;EACZ,mBAAmB,EAAE;EACrB;IACE,eAAe;IACf,aAAa;IACb,iBAAiB;IACjB,gBAAgB;IAChB,mBAAmB;IACnB,aAAa,EAAE;IACf;MACE,eAAe;MACf,gBAAgB,EAAE;MAClB;QACE,aAAa;QACb,eAAe,EAAE;IACrB;MACE,eAAe,EAAE;IACnB;MACE,sBAAsB,EAAE;MACxB;QACE,kBAAkB,EAAE","file":"drophere.scss","sourcesContent":[".container {\n  width: 100%;\n  padding: 20px;\n  height: 80%;\n  padding-top: 100px; }\n  .container .wrapper {\n    display: block;\n    margin: auto;\n    max-width: 600px;\n    font-size: 16px;\n    text-align: center;\n    height: 100%; }\n    .container .wrapper .logo {\n      display: block;\n      margin-top: 10%; }\n      .container .wrapper .logo img {\n        margin: auto;\n        display: block; }\n    .container .wrapper .text {\n      margin: 50px 0; }\n    .container .wrapper .button {\n      display: inline-block; }\n      .container .wrapper .button a, .container .wrapper .button button {\n        padding: 5px 50px; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".drophere--container--1Cfgol-H {\n  width: 100%;\n  padding: 20px;\n  height: 100%;\n  padding-top: 100px; }\n  .drophere--container--1Cfgol-H .drophere--wrapper--3_-csr05 {\n    display: block;\n    margin: auto;\n    max-width: 600px;\n    font-size: 16px;\n    text-align: center;\n    height: 100%; }\n    .drophere--container--1Cfgol-H .drophere--wrapper--3_-csr05 .drophere--logo--8mV6WxKx {\n      display: block;\n      margin-top: 10%; }\n      .drophere--container--1Cfgol-H .drophere--wrapper--3_-csr05 .drophere--logo--8mV6WxKx img {\n        margin: auto;\n        display: block; }\n    .drophere--container--1Cfgol-H .drophere--wrapper--3_-csr05 .drophere--text--3eW0H-nj {\n      margin: 80px 0; }\n    .drophere--container--1Cfgol-H .drophere--wrapper--3_-csr05 .drophere--button--3jLRSslq {\n      display: inline-block; }\n      .drophere--container--1Cfgol-H .drophere--wrapper--3_-csr05 .drophere--button--3jLRSslq a, .drophere--container--1Cfgol-H .drophere--wrapper--3_-csr05 .drophere--button--3jLRSslq button {\n        padding: 5px 50px; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/css/drophere.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,cAAc;EACd,aAAa;EACb,mBAAmB,EAAE;EACrB;IACE,eAAe;IACf,aAAa;IACb,iBAAiB;IACjB,gBAAgB;IAChB,mBAAmB;IACnB,aAAa,EAAE;IACf;MACE,eAAe;MACf,gBAAgB,EAAE;MAClB;QACE,aAAa;QACb,eAAe,EAAE;IACrB;MACE,eAAe,EAAE;IACnB;MACE,sBAAsB,EAAE;MACxB;QACE,kBAAkB,EAAE","file":"drophere.scss","sourcesContent":[".container {\n  width: 100%;\n  padding: 20px;\n  height: 100%;\n  padding-top: 100px; }\n  .container .wrapper {\n    display: block;\n    margin: auto;\n    max-width: 600px;\n    font-size: 16px;\n    text-align: center;\n    height: 100%; }\n    .container .wrapper .logo {\n      display: block;\n      margin-top: 10%; }\n      .container .wrapper .logo img {\n        margin: auto;\n        display: block; }\n    .container .wrapper .text {\n      margin: 80px 0; }\n    .container .wrapper .button {\n      display: inline-block; }\n      .container .wrapper .button a, .container .wrapper .button button {\n        padding: 5px 50px; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
@@ -36016,6 +36009,269 @@ if(false) {
 	if(!content.locals) {
 		module.hot.accept("!!../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../node_modules/postcss-loader/lib/index.js!../../../../../node_modules/sass-loader/lib/loader.js!./index.scss", function() {
 			var newContent = require("!!../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../node_modules/postcss-loader/lib/index.js!../../../../../node_modules/sass-loader/lib/loader.js!./index.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 370 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _step = __webpack_require__(372);
+
+var _step2 = _interopRequireDefault(_step);
+
+var _RoundedButton = __webpack_require__(71);
+
+var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
+
+
+//STYLES
+
+
+//COMPONETNS
+
+
+//INNER_CONFIG
+var DRAG_ENTER = 0;
+var DRAG_OVER = 1;
+var DRAG_LEAVE = 2;
+var DRAG_DROP = 3;
+
+//COMPONENT
+
+var Step0 = function (_Component) {
+  _inherits(Step0, _Component);
+
+  function Step0() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Step0);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Step0.__proto__ || Object.getPrototypeOf(Step0)).call.apply(_ref, [this].concat(args))), _this), _this.onFileUploadChange = function (e) {
+      e.preventDefault();
+
+      _this.handleFileUpload(e.target.files[0]);
+    }, _this.handleFileUpload = function (file) {
+      console.log('uploading file ', file.name, ' ...');
+    }, _this.state = {
+      uploading: false,
+      dragStateId: -1
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Step0, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      window.ondragenter = function (e) {
+        e.preventDefault();
+        _this2.setState({ dragStateId: DRAG_ENTER });
+      };
+      window.ondragover = function (e) {
+        e.preventDefault();
+        if (_this2.state.dragStateId != DRAG_OVER) _this2.setState({ dragStateId: DRAG_OVER });
+      };
+      window.ondragleave = function (e) {
+        e.preventDefault();
+        _this2.setState({ dragStateId: DRAG_LEAVE });
+      };
+      window.ondrop = function (e) {
+        e.preventDefault();
+
+        _this2.setState({ dragStateId: DRAG_DROP, uploading: true });
+        _this2.handleFileUpload(e.dataTransfer.files.item(0));
+      };
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      window.ondragenter = undefined;
+      window.ondragover = undefined;
+      window.ondragleave = undefined;
+      window.ondrop = undefined;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var dragStateId = this.state.dragStateId;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: _step2.default.container },
+        _react2.default.createElement(
+          'div',
+          { className: _step2.default.up },
+          _react2.default.createElement(
+            'div',
+            { className: _step2.default['drop-container'] + ' ' + (dragStateId === DRAG_OVER || dragStateId == DRAG_ENTER ? _step2.default['on-drag-over'] : '') },
+            _react2.default.createElement(
+              'span',
+              null,
+              'DRAG YOUR DESIGN HERE'
+            ),
+            _react2.default.createElement(
+              'span',
+              { className: _step2.default.or },
+              'OR'
+            ),
+            _react2.default.createElement(
+              'label',
+              { 'for': 'upload-file' },
+              _react2.default.createElement(
+                'div',
+                { className: _step2.default.button, onClick: function onClick(e) {} },
+                'UPLOAD DESIGN'
+              ),
+              _react2.default.createElement('input', {
+                type: 'file', name: 'upload-file',
+                id: 'upload-file', disabled: this.state.uploading,
+                onChange: this.onFileUploadChange
+              })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _step2.default.info },
+            _react2.default.createElement(
+              'h1',
+              null,
+              'Design'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Requirements:',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement(
+                'ol',
+                null,
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Lorem impsum dolor'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Lorem impsum dolor'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Lorem impsum dolor'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Lorem impsum dolor'
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _step2.default.down },
+          _react2.default.createElement(
+            _RoundedButton2.default,
+            { to: '/drophere/order/2', className: _step2.default.button },
+            'BACK'
+          ),
+          _react2.default.createElement(
+            _RoundedButton2.default,
+            { to: '/drophere/order/0', className: _step2.default.button, primary: true },
+            'NEXT'
+          )
+        )
+      );
+    }
+  }]);
+
+  return Step0;
+}(_react.Component);
+
+exports.default = Step0;
+
+/***/ }),
+/* 371 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)();
+// imports
+
+
+// module
+exports.push([module.i, ".step1--container--lO3vqsi2 {\n  display: block;\n  padding: 20px;\n  height: 100%;\n  padding-bottom: 40px; }\n  .step1--container--lO3vqsi2 .step1--up--2EZMlmz- {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 90%;\n    padding: 30px 20px; }\n    .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--drop-container--3zzxFkV5 {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      background: #ecf2f3;\n      border: solid 1px #d2d7d8;\n      border-radius: 10px;\n      width: 65%;\n      height: 400px; }\n      .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--drop-container--3zzxFkV5 .step1--or--25tTJel8 {\n        margin: 10px 0; }\n      .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--drop-container--3zzxFkV5 label .step1--button--3etAi5Z5 {\n        padding: 5px 20px;\n        border: solid 1px #acacac;\n        border-radius: 10px;\n        color: #acacac;\n        cursor: pointer; }\n        .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--drop-container--3zzxFkV5 label .step1--button--3etAi5Z5:hover {\n          border-color: #3a3779;\n          background: #3a3779;\n          color: white; }\n      .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--drop-container--3zzxFkV5 label input {\n        display: none; }\n    .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--on-drag-over--2u1uHfui {\n      background: #3a3779;\n      color: white; }\n      .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--on-drag-over--2u1uHfui label .step1--button--3etAi5Z5 {\n        color: white;\n        border-color: white; }\n        .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--on-drag-over--2u1uHfui label .step1--button--3etAi5Z5:hover {\n          border-color: white;\n          color: white; }\n    .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--info--2JFEGCoE {\n      display: block;\n      margin-left: 5%;\n      width: 25%; }\n      .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--info--2JFEGCoE h1 {\n        border-bottom: 2px solid #5a5a5a;\n        font-weight: 400; }\n      .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--info--2JFEGCoE ol {\n        margin: 10px 0;\n        padding: 0 20px; }\n  .step1--container--lO3vqsi2 .step1--down--2vaOKN77 {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n    .step1--container--lO3vqsi2 .step1--down--2vaOKN77 .step1--button--3etAi5Z5 {\n      display: block; }\n      .step1--container--lO3vqsi2 .step1--down--2vaOKN77 .step1--button--3etAi5Z5 a, .step1--container--lO3vqsi2 .step1--down--2vaOKN77 .step1--button--3etAi5Z5 button {\n        padding: 5px 50px; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/step1.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,cAAc;EACd,aAAa;EACb,qBAAqB,EAAE;EACvB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,YAAY;IACZ,mBAAmB,EAAE;IACrB;MACE,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,yBAAyB;UACrB,sBAAsB;cAClB,wBAAwB;MAChC,0BAA0B;UACtB,uBAAuB;cACnB,oBAAoB;MAC5B,6BAA6B;MAC7B,8BAA8B;UAC1B,2BAA2B;cACvB,uBAAuB;MAC/B,oBAAoB;MACpB,0BAA0B;MAC1B,oBAAoB;MACpB,WAAW;MACX,cAAc,EAAE;MAChB;QACE,eAAe,EAAE;MACnB;QACE,kBAAkB;QAClB,0BAA0B;QAC1B,oBAAoB;QACpB,eAAe;QACf,gBAAgB,EAAE;QAClB;UACE,sBAAsB;UACtB,oBAAoB;UACpB,aAAa,EAAE;MACnB;QACE,cAAc,EAAE;IACpB;MACE,oBAAoB;MACpB,aAAa,EAAE;MACf;QACE,aAAa;QACb,oBAAoB,EAAE;QACtB;UACE,oBAAoB;UACpB,aAAa,EAAE;IACrB;MACE,eAAe;MACf,gBAAgB;MAChB,WAAW,EAAE;MACb;QACE,iCAAiC;QACjC,iBAAiB,EAAE;MACrB;QACE,eAAe;QACf,gBAAgB,EAAE;EACxB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,sBAAsB;QAClB,mBAAmB;YACf,0BAA0B,EAAE;IACpC;MACE,eAAe,EAAE;MACjB;QACE,kBAAkB,EAAE","file":"step1.scss","sourcesContent":[".container {\n  display: block;\n  padding: 20px;\n  height: 100%;\n  padding-bottom: 40px; }\n  .container .up {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 90%;\n    padding: 30px 20px; }\n    .container .up .drop-container {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      background: #ecf2f3;\n      border: solid 1px #d2d7d8;\n      border-radius: 10px;\n      width: 65%;\n      height: 400px; }\n      .container .up .drop-container .or {\n        margin: 10px 0; }\n      .container .up .drop-container label .button {\n        padding: 5px 20px;\n        border: solid 1px #acacac;\n        border-radius: 10px;\n        color: #acacac;\n        cursor: pointer; }\n        .container .up .drop-container label .button:hover {\n          border-color: #3a3779;\n          background: #3a3779;\n          color: white; }\n      .container .up .drop-container label input {\n        display: none; }\n    .container .up .on-drag-over {\n      background: #3a3779;\n      color: white; }\n      .container .up .on-drag-over label .button {\n        color: white;\n        border-color: white; }\n        .container .up .on-drag-over label .button:hover {\n          border-color: white;\n          color: white; }\n    .container .up .info {\n      display: block;\n      margin-left: 5%;\n      width: 25%; }\n      .container .up .info h1 {\n        border-bottom: 2px solid #5a5a5a;\n        font-weight: 400; }\n      .container .up .info ol {\n        margin: 10px 0;\n        padding: 0 20px; }\n  .container .down {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n    .container .down .button {\n      display: block; }\n      .container .down .button a, .container .down .button button {\n        padding: 5px 50px; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "step1--container--lO3vqsi2",
+	"up": "step1--up--2EZMlmz-",
+	"drop-container": "step1--drop-container--3zzxFkV5",
+	"or": "step1--or--25tTJel8",
+	"button": "step1--button--3etAi5Z5",
+	"on-drag-over": "step1--on-drag-over--2u1uHfui",
+	"info": "step1--info--2JFEGCoE",
+	"down": "step1--down--2vaOKN77"
+};
+
+/***/ }),
+/* 372 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(371);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(8)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step1.scss", function() {
+			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step1.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
