@@ -32553,6 +32553,10 @@ var _Step = __webpack_require__(306);
 
 var _Step2 = _interopRequireDefault(_Step);
 
+var _Step3 = __webpack_require__(344);
+
+var _Step4 = _interopRequireDefault(_Step3);
+
 var _actions = __webpack_require__(126);
 
 var _actions2 = _interopRequireDefault(_actions);
@@ -32596,25 +32600,18 @@ var Order = function (_Component) {
     key: 'componentWillMount',
     value: function componentWillMount() {
       //init drophere step with current step at 0 and the maximum step is at step 2
-      this.props.initStep(_config.DROPHERE_STEP, 0, 2);
+      //this.props.initStep(DROPHERE_STEP, 0, 2)
     }
   }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      //If there's no any current match and [DROPHERE_STEP] props, just let it update
-      if (!this.props.match || !nextProps.match) return true;
-      if (!this.props[_config.DROPHERE_STEP] || !nextProps[_config.DROPHERE_STEP]) return true;
-
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      //If there's no any current match and [DROPHERE_STEP] props, just let it update)
       var orderStepIdOnURL = nextProps.match.params.orderId;
       var step = nextProps[_config.DROPHERE_STEP];
 
-      if (orderStepIdOnURL > step.maxCurrentStep) {
-        //If url order id is more than current page, goto page 0 and don't update props
-        this.props.history.push('/drophere/order/' + step.currentStep);
-        return false;
-      }
+      if (!step) return;
 
-      return true;
+      if (orderStepIdOnURL > step.maxCurrentStep) this.props.history.push('/drophere/order/' + step.maxCurrentStep);
     }
   }, {
     key: 'render',
@@ -32625,9 +32622,9 @@ var Order = function (_Component) {
         _react2.default.createElement(
           _reactRouterDom.Switch,
           null,
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/0', component: _Step2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/1', component: _Step2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/2', component: _Step2.default })
+          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/0', exact: true, component: _Step2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/1', exact: true, component: _Step4.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/2', exact: true, component: _Step2.default })
         )
       );
     }
@@ -33378,7 +33375,22 @@ exports.locals = {
 };
 
 /***/ }),
-/* 322 */,
+/* 322 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(8)();
+// imports
+
+
+// module
+exports.push([module.i, ".step1--container--3jXQyMYV {\n  display: block; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/step1.scss"],"names":[],"mappings":"AAAA;EACE,eAAe,EAAE","file":"step1.scss","sourcesContent":[".container {\n  display: block; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "step1--container--3jXQyMYV"
+};
+
+/***/ }),
 /* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -33387,7 +33399,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, ".drophere--container--1GUXJccg {\n  width: 100%;\n  padding: 20px;\n  height: 80%;\n  padding-top: 100px; }\n  .drophere--container--1GUXJccg .drophere--wrapper--1EzTLIfY {\n    display: block;\n    margin: auto;\n    max-width: 600px;\n    font-size: 16px;\n    text-align: center;\n    height: 100%; }\n    .drophere--container--1GUXJccg .drophere--wrapper--1EzTLIfY .drophere--logo--3UtAphVe {\n      display: block;\n      margin-top: 10%; }\n      .drophere--container--1GUXJccg .drophere--wrapper--1EzTLIfY .drophere--logo--3UtAphVe img {\n        margin: auto;\n        display: block; }\n    .drophere--container--1GUXJccg .drophere--wrapper--1EzTLIfY .drophere--text--iD6tAbuS {\n      margin: 50px 0; }\n    .drophere--container--1GUXJccg .drophere--wrapper--1EzTLIfY .drophere--button--1rroW8-y {\n      display: inline-block; }\n      .drophere--container--1GUXJccg .drophere--wrapper--1EzTLIfY .drophere--button--1rroW8-y a, .drophere--container--1GUXJccg .drophere--wrapper--1EzTLIfY .drophere--button--1rroW8-y button {\n        padding: 5px 50px; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/css/drophere.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,cAAc;EACd,YAAY;EACZ,mBAAmB,EAAE;EACrB;IACE,eAAe;IACf,aAAa;IACb,iBAAiB;IACjB,gBAAgB;IAChB,mBAAmB;IACnB,aAAa,EAAE;IACf;MACE,eAAe;MACf,gBAAgB,EAAE;MAClB;QACE,aAAa;QACb,eAAe,EAAE;IACrB;MACE,eAAe,EAAE;IACnB;MACE,sBAAsB,EAAE;MACxB;QACE,kBAAkB,EAAE","file":"drophere.scss","sourcesContent":[".container {\n  width: 100%;\n  padding: 20px;\n  height: 80%;\n  padding-top: 100px; }\n  .container .wrapper {\n    display: block;\n    margin: auto;\n    max-width: 600px;\n    font-size: 16px;\n    text-align: center;\n    height: 100%; }\n    .container .wrapper .logo {\n      display: block;\n      margin-top: 10%; }\n      .container .wrapper .logo img {\n        margin: auto;\n        display: block; }\n    .container .wrapper .text {\n      margin: 50px 0; }\n    .container .wrapper .button {\n      display: inline-block; }\n      .container .wrapper .button a, .container .wrapper .button button {\n        padding: 5px 50px; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".drophere--container--1GUXJccg {\n  width: 100%;\n  padding: 20px;\n  height: 100%;\n  padding-top: 100px; }\n  .drophere--container--1GUXJccg .drophere--wrapper--1EzTLIfY {\n    display: block;\n    margin: auto;\n    max-width: 600px;\n    font-size: 16px;\n    text-align: center;\n    height: 100%; }\n    .drophere--container--1GUXJccg .drophere--wrapper--1EzTLIfY .drophere--logo--3UtAphVe {\n      display: block;\n      margin-top: 10%; }\n      .drophere--container--1GUXJccg .drophere--wrapper--1EzTLIfY .drophere--logo--3UtAphVe img {\n        margin: auto;\n        display: block; }\n    .drophere--container--1GUXJccg .drophere--wrapper--1EzTLIfY .drophere--text--iD6tAbuS {\n      margin: 80px 0; }\n    .drophere--container--1GUXJccg .drophere--wrapper--1EzTLIfY .drophere--button--1rroW8-y {\n      display: inline-block; }\n      .drophere--container--1GUXJccg .drophere--wrapper--1EzTLIfY .drophere--button--1rroW8-y a, .drophere--container--1GUXJccg .drophere--wrapper--1EzTLIfY .drophere--button--1rroW8-y button {\n        padding: 5px 50px; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/css/drophere.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,cAAc;EACd,aAAa;EACb,mBAAmB,EAAE;EACrB;IACE,eAAe;IACf,aAAa;IACb,iBAAiB;IACjB,gBAAgB;IAChB,mBAAmB;IACnB,aAAa,EAAE;IACf;MACE,eAAe;MACf,gBAAgB,EAAE;MAClB;QACE,aAAa;QACb,eAAe,EAAE;IACrB;MACE,eAAe,EAAE;IACnB;MACE,sBAAsB,EAAE;MACxB;QACE,kBAAkB,EAAE","file":"drophere.scss","sourcesContent":[".container {\n  width: 100%;\n  padding: 20px;\n  height: 100%;\n  padding-top: 100px; }\n  .container .wrapper {\n    display: block;\n    margin: auto;\n    max-width: 600px;\n    font-size: 16px;\n    text-align: center;\n    height: 100%; }\n    .container .wrapper .logo {\n      display: block;\n      margin-top: 10%; }\n      .container .wrapper .logo img {\n        margin: auto;\n        display: block; }\n    .container .wrapper .text {\n      margin: 80px 0; }\n    .container .wrapper .button {\n      display: inline-block; }\n      .container .wrapper .button a, .container .wrapper .button button {\n        padding: 5px 50px; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
@@ -33685,7 +33697,37 @@ if(false) {
 }
 
 /***/ }),
-/* 335 */,
+/* 335 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(322);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(10)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step1.scss", function() {
+			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step1.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
 /* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -33917,6 +33959,72 @@ if(false) {
 	// When the module is disposed, remove the <style> tags
 	module.hot.dispose(function() { update(); });
 }
+
+/***/ }),
+/* 344 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _step = __webpack_require__(335);
+
+var _step2 = _interopRequireDefault(_step);
+
+var _RoundedButton = __webpack_require__(68);
+
+var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
+
+
+//STYLES
+
+
+//COMPONETNS
+
+
+//COMPONENT
+var Step0 = function (_Component) {
+  _inherits(Step0, _Component);
+
+  function Step0() {
+    _classCallCheck(this, Step0);
+
+    return _possibleConstructorReturn(this, (Step0.__proto__ || Object.getPrototypeOf(Step0)).apply(this, arguments));
+  }
+
+  _createClass(Step0, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: _step2.default.container },
+        _react2.default.createElement('div', { className: _step2.default['drop-container'] })
+      );
+    }
+  }]);
+
+  return Step0;
+}(_react.Component);
+
+exports.default = Step0;
 
 /***/ })
 /******/ ]);

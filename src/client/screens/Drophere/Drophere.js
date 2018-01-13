@@ -26,9 +26,7 @@ export default class Drophere extends Component {
         </p>
         
 
-        <RoundedButton to="/drophere/order/0" className={styles.button} primary>
-          ORDER
-        </RoundedButton>
+        <RoundedButton to="/drophere/order/0" className={styles.button} primary>ORDER</RoundedButton>
         </div>
       </div>
     );
