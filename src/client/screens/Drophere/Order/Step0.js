@@ -1,18 +1,18 @@
 //MODULES
-import React, { Component } from "react";
-import Input from "react-toolbox/lib/input";
-import { RadioGroup, RadioButton } from "react-toolbox/lib/radio";
-import Dropdown from "react-toolbox/lib/dropdown";
+import React, { Component } from "react"
+import Input from "react-toolbox/lib/input"
+import { RadioGroup, RadioButton } from "react-toolbox/lib/radio"
+import Dropdown from "react-toolbox/lib/dropdown"
 
 //STYLES
-import styles from "./css/step0.scss";
-import radiotheme from "./css/radio-button-theme.scss";
-import dropdowntheme from "./css/dropdown-theme.scss";
-import sizetheme from "./css/dropdown-size-theme.scss";
-import quantitytheme from "./css/input-quantity-theme.scss";
+import styles from "./css/step0.scss"
+import radiotheme from "./css/radio-button-theme.scss"
+import dropdowntheme from "./css/dropdown-theme.scss"
+import sizetheme from "./css/dropdown-size-theme.scss"
+import quantitytheme from "./css/input-quantity-theme.scss"
 
 //COMPONENTS
-import RoundedButton from "../../../components/RoundedButton";
+import RoundedButton from "../../../components/RoundedButton"
 
 //COMPONENT
 export default class Step0 extends Component {
@@ -32,7 +32,7 @@ export default class Step0 extends Component {
       color: "",
       size: "",
       quantity: ""
-    };
+    }
   }
 
   cities = [
@@ -40,49 +40,31 @@ export default class Step0 extends Component {
     { value: "MLG", label: "Malang" },
     { value: "JKT", label: "Jakarta" },
     { value: "MKS", label: "Makassar" }
-  ];
+  ]
 
   regions = [
     { value: "Wonosari", label: "Wonosari" },
     { value: "Wonokromo", label: "Wonokromo" },
     { value: "Simpang", label: "Simpang" }
-  ];
+  ]
 
   sizes = [
     { value: "S", label: "S" },
     { value: "M", label: "M" },
     { value: "L", label: "L" },
     { value: "XL", label: "XL" }
-  ];
+  ]
 
   handleChange = (name, value) => {
     this.setState({
       ...this.state,
       [name]: value
-    });
-  };
+    })
+  }
 
   render() {
     return (
       <div className={styles.container}>
-<<<<<<< HEAD
-        <div className={styles.wrapper} />
-        <form>
-          <Input type="text" name="name" label="Name" value={this.state.name} onChange={this.handleChange.bind(this, 'name')}/>
-          <Input type="tel" name="phone" label="Phone" value={this.state.phone} onChange={this.handleChange.bind(this, 'phone')}/>
-          <Input type="email" name="email" label="Email" value={this.state.email} onChange={this.handleChange.bind(this, 'email')}/>
-          <Input type="text" name="company" label="Company" value={this.state.company} onChange={this.handleChange.bind(this, 'company')}/>
-          <p>Role</p>
-          <RadioGroup name="role" value={this.state.role} onChange={this.handleChange.bind(this, 'role')}>
-            <RadioButton label ="Business Owner" value="busowner"/>
-            <RadioButton label ="Management" value="management"/>
-            <RadioButton label ="Staf" value="staf"/>
-            <RadioButton label ="Others" value="other"/>
-          </RadioGroup>
-          <p>Shipping Address</p>
-            
-        </form>
-=======
         <div className={styles.wrapper}>
           <form className={styles.form}>
             <Input
@@ -197,10 +179,10 @@ export default class Step0 extends Component {
             <Input
               type="text"
               className={styles.postalcodeandcolor}
-              name="postalCode"
+              name="color"
               label="Base Color"
-              value={this.state.postalCode}
-              onChange={this.handleChange.bind(this, "postalCode")}
+              value={this.state.color}
+              onChange={this.handleChange.bind(this, "color")}
             />
             <div className={styles.flexcontainer}>
               <div className={styles.flexitem}>
@@ -317,7 +299,6 @@ export default class Step0 extends Component {
         <p className={styles.orderformtext}>Order Form</p>
         <hr className ={styles.rowform}/>
         <RoundedButton to="/drophere/order/1" className={styles.button} primary>NEXT</RoundedButton>
->>>>>>> 9168772ba797b237a770fe2317b228ccc76a95d1
       </div>
     );
   }
