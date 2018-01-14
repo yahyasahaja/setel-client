@@ -98,8 +98,8 @@ export default class Step0 extends Component {
         </div>
 
         <div className={styles.down}>
-          <RoundedButton to="/drophere/order/2" className={styles.button}>BACK</RoundedButton>
-          <RoundedButton to="/drophere/order/0" className={styles.button} primary>NEXT</RoundedButton>
+          <RoundedButton to="/drophere/order/0" className={styles.button}>BACK</RoundedButton>
+          <RoundedButton to="/drophere/order/2" className={styles.button} primary>NEXT</RoundedButton>
         </div>
       </div>
     )

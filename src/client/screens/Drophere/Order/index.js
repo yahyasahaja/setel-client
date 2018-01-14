@@ -9,6 +9,10 @@ import styles from './css/index.scss'
 //COMPONETNS
 import Step0 from './Step0'
 import Step1 from './Step1'
+import Step2 from './Step2'
+import Step3 from './Step3'
+import Step4 from './Step4'
+import Step5 from './Step5'
 
 //REDUX_ACTIONS
 import actions from '../../../services/actions'
@@ -40,7 +44,10 @@ class Order extends Component {
       <Switch>
         <Route path="/drophere/order/0" exact component={Step0} />
         <Route path="/drophere/order/1" exact component={Step1} />
-        <Route path="/drophere/order/2" exact component={Step0} />
+        <Route path="/drophere/order/2" exact component={Step2} />
+        <Route path="/drophere/order/3" exact component={Step3} />
+        <Route path="/drophere/order/4" exact component={Step4} />
+        <Route path="/drophere/order/5" exact component={Step5} />
       </Switch>
       </div>
     )

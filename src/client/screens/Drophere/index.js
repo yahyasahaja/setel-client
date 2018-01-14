@@ -16,12 +16,12 @@ export default class MainDrophere extends Component {
   render() {
     return (
       <div className={styles.container}>
-      <DrophereMenu />
       <Switch> 
         <Route path="/drophere/order/:orderId" component={Order} />
         <Route path="/drophere" component={Drophere} />
       </Switch>
       <Footer />
+      <DrophereMenu />
       </div>
     )
   }
