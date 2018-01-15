@@ -17,7 +17,7 @@ import RoundedButton from "../../../components/RoundedButton"
 //COMPONENT
 export default class Step0 extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       name: "",
       phone: "",
@@ -300,6 +300,6 @@ export default class Step0 extends Component {
         <hr className ={styles.rowform}/>
         <RoundedButton to="/drophere/order/1" className={styles.button} primary>NEXT</RoundedButton>
       </div>
-    );
+    )
   }
 }

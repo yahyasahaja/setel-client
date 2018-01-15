@@ -1,13 +1,13 @@
 //MODULES
-import React, { Component } from "react";
-import _ from "lodash";
+import React, { Component } from "react"
+import _ from "lodash"
 
 //STYLES
-import styles from "./css/step3.scss";
+import styles from "./css/step3.scss"
 
 //COMPONENTS
-import DataDisplay from "../../../components/DataDisplay";
-import RoundedButton from "../../../components/RoundedButton";
+import DataDisplay from "../../../components/DataDisplay"
+import RoundedButton from "../../../components/RoundedButton"
 
 const buyerinfo = [
   { name: "Name:", value: "Zain Fikri" },
@@ -28,7 +28,7 @@ export default class Drophere extends Component {
     if (buyerinfo)
       return _.map(buyerinfo, (data, i) => {
         return <DataDisplay name={data.name} value={data.value} key={i} />;
-      });
+      })
   }
 
   render() {
@@ -112,6 +112,6 @@ export default class Drophere extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }

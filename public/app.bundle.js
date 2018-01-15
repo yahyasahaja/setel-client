@@ -247,6 +247,62 @@ module.exports = reactProdInvariant;
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function() {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		var result = [];
+		for(var i = 0; i < this.length; i++) {
+			var item = this[i];
+			if(item[2]) {
+				result.push("@media " + item[2] + "{" + item[1] + "}");
+			} else {
+				result.push(item[1]);
+			}
+		}
+		return result.join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -602,62 +658,6 @@ function updateLink (link, options, obj) {
 
 	if(oldSrc) URL.revokeObjectURL(oldSrc);
 }
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function() {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		var result = [];
-		for(var i = 0; i < this.length; i++) {
-			var item = this[i];
-			if(item[2]) {
-				result.push("@media " + item[2] + "{" + item[1] + "}");
-			} else {
-				result.push(item[1]);
-			}
-		}
-		return result.join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
 
 
 /***/ }),
@@ -25302,7 +25302,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -31913,7 +31913,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -34478,7 +34478,7 @@ var _lodash = __webpack_require__(38);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _step = __webpack_require__(77);
+var _step = __webpack_require__(397);
 
 var _step2 = _interopRequireDefault(_step);
 
@@ -34516,12 +34516,108 @@ var Drophere = function (_Component) {
   }
 
   _createClass(Drophere, [{
+    key: "renderPayment",
+    value: function renderPayment() {
+      if (paymentinfo) return _lodash2.default.map(paymentinfo, function (data, i) {
+        return _react2.default.createElement(_DataDisplay2.default, { value: data.value, key: i });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
         "div",
         { className: _step2.default.container },
-        "Hi..."
+        _react2.default.createElement(
+          "div",
+          { className: _step2.default.infoflex },
+          _react2.default.createElement(
+            "h1",
+            null,
+            "Payment"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: _step2.default.wrapper },
+          _react2.default.createElement(
+            "div",
+            { className: _step2.default.contentflex },
+            _react2.default.createElement(
+              "p",
+              null,
+              "Order number: #0097"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: _step2.default.content },
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.title },
+              "Checkout Successful"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.text },
+              "Complete The Payment"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.smallertext },
+              "Remaining time of your payment"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.time },
+              "05 : 59 : 50"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.text + ' ' + _step2.default.margintext },
+              "Total cost to be paid"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.cost },
+              "Rp. 2.800.000"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.text + ' ' + _step2.default.margintext },
+              "Please transfer to the following Setel's bank account number"
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.bank },
+              _react2.default.createElement("img", null),
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.text },
+                "Lowokwaru"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.text + ' ' + _step2.default.accnumber },
+                "165 524 789 26"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.nomargin },
+                "PT. Setel"
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: _step2.default.down },
+          _react2.default.createElement(
+            _RoundedButton2.default,
+            { className: _step2.default.button, to: "/drophere/order/5", primary: true },
+            "CONFIRMATION"
+          )
+        )
       );
     }
   }]);
@@ -34552,7 +34648,11 @@ var _lodash = __webpack_require__(38);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _step = __webpack_require__(77);
+var _dropdown = __webpack_require__(346);
+
+var _dropdown2 = _interopRequireDefault(_dropdown);
+
+var _step = __webpack_require__(399);
 
 var _step2 = _interopRequireDefault(_step);
 
@@ -34583,19 +34683,62 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Drophere = function (_Component) {
   _inherits(Drophere, _Component);
 
-  function Drophere() {
+  function Drophere(props) {
     _classCallCheck(this, Drophere);
 
-    return _possibleConstructorReturn(this, (Drophere.__proto__ || Object.getPrototypeOf(Drophere)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Drophere.__proto__ || Object.getPrototypeOf(Drophere)).call(this, props));
+
+    _this.handleChange = function (value) {
+      _this.setState({
+        bankName: value
+      });
+    };
+
+    _this.bank = [{ value: "Mandiri", name: "Mandiri" }, { value: "BCA", name: "BCA" }, { value: "BNI", name: "BNI" }, { value: "BTN", name: "BTN" }];
+    _this.DATA = [{ name: _react2.default.createElement(
+        'p',
+        null,
+        'Order Number'
+      ), value: _react2.default.createElement(
+        'p',
+        null,
+        '#0097'
+      ) }, { name: _react2.default.createElement(
+        'p',
+        null,
+        'To Bank Account'
+      ), value: function value() {
+        _react2.default.createElement(_dropdown2.default, { source: _this.bank, value: _this.state.bankName, onChange: _this.handleChange });
+      } }];
+
+    _this.state = {
+      bankName: "Mandiri"
+    };
+    return _this;
   }
 
   _createClass(Drophere, [{
-    key: "render",
+    key: 'renderContent',
+    value: function renderContent() {
+      if (this.DATA) return _lodash2.default.map(this.DATA, function (data, i) {
+        return _react2.default.createElement(_DataDisplay2.default, { name: data.name, value: typeof data.value === 'function' ? data.value() : data.value, key: i });
+      });
+    }
+  }, {
+    key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        "div",
+        'div',
         { className: _step2.default.container },
-        "Hi..."
+        _react2.default.createElement(
+          'div',
+          { className: _step2.default.wrapper },
+          _react2.default.createElement(
+            'div',
+            { className: _step2.default.content },
+            this.renderContent()
+          )
+        )
       );
     }
   }]);
@@ -36236,7 +36379,7 @@ module.exports = factory;
 /* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36264,7 +36407,7 @@ exports.locals = {
 /* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36294,7 +36437,7 @@ exports.locals = {
 /* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36316,7 +36459,7 @@ exports.locals = {
 /* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36335,7 +36478,7 @@ exports.locals = {
 /* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36349,7 +36492,7 @@ exports.push([module.i, "", "", {"version":3,"sources":[],"names":[],"mappings":
 /* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36368,7 +36511,7 @@ exports.locals = {
 /* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36384,7 +36527,7 @@ exports.locals = {
 /* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36402,7 +36545,7 @@ exports.locals = {
 /* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36418,7 +36561,7 @@ exports.locals = {
 /* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36439,7 +36582,7 @@ exports.locals = {
 /* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36456,7 +36599,7 @@ exports.locals = {
 /* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36473,7 +36616,7 @@ exports.locals = {
 /* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36490,7 +36633,7 @@ exports.locals = {
 /* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36506,7 +36649,7 @@ exports.locals = {
 /* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36524,7 +36667,7 @@ exports.locals = {
 /* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36543,7 +36686,7 @@ exports.locals = {
 /* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36571,7 +36714,7 @@ exports.locals = {
 /* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36594,7 +36737,7 @@ exports.locals = {
 /* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36617,7 +36760,7 @@ exports.locals = {
 /* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36651,7 +36794,7 @@ exports.locals = {
 /* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36671,7 +36814,7 @@ exports.locals = {
 /* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36687,7 +36830,7 @@ exports.locals = {
 /* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36723,7 +36866,7 @@ exports.locals = {
 /* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36739,7 +36882,7 @@ exports.locals = {
 /* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -36755,7 +36898,7 @@ exports.locals = {
 /* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)();
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -53385,7 +53528,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53416,7 +53559,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53447,7 +53590,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53478,7 +53621,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53509,7 +53652,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53540,7 +53683,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53571,7 +53714,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53602,7 +53745,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53633,7 +53776,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53664,7 +53807,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53695,7 +53838,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53726,7 +53869,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53757,7 +53900,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53788,7 +53931,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53819,7 +53962,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53850,7 +53993,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53881,7 +54024,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53912,7 +54055,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53943,7 +54086,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53974,7 +54117,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -54005,7 +54148,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -54036,7 +54179,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -54067,7 +54210,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -54098,7 +54241,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -54280,6 +54423,116 @@ function symbolObservablePonyfill(root) {
 
 	return result;
 };
+
+/***/ }),
+/* 396 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
+// imports
+
+
+// module
+exports.push([module.i, ".step4--container--38K3ePx- {\n  display: block;\n  height: 100%;\n  width: 100%; }\n  .step4--container--38K3ePx- .step4--wrapper--2o4Cny63 {\n    width: 749px;\n    height: 770px;\n    border: solid 1px #b7b7b7;\n    margin: 8px 348px 59px 269px; }\n    .step4--container--38K3ePx- .step4--wrapper--2o4Cny63 .step4--content--ynDyuE3k {\n      margin: auto;\n      max-width: 70%;\n      text-align: center; }\n      .step4--container--38K3ePx- .step4--wrapper--2o4Cny63 .step4--content--ynDyuE3k p {\n        text-align: center; }\n      .step4--container--38K3ePx- .step4--wrapper--2o4Cny63 .step4--content--ynDyuE3k .step4--title--2jkwddgp {\n        font-size: 24px;\n        font-weight: normal;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 1;\n        letter-spacing: normal;\n        color: #000000; }\n      .step4--container--38K3ePx- .step4--wrapper--2o4Cny63 .step4--content--ynDyuE3k .step4--text--7cp3wDJm {\n        font-size: 18px;\n        font-weight: 300;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 1.33;\n        letter-spacing: normal;\n        margin-top: 39px;\n        color: #000000; }\n      .step4--container--38K3ePx- .step4--wrapper--2o4Cny63 .step4--content--ynDyuE3k .step4--smallertext--13ebkPbw {\n        margin-top: 41px;\n        font-size: 16px;\n        font-weight: 300;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 1.5;\n        letter-spacing: normal;\n        color: #000000; }\n      .step4--container--38K3ePx- .step4--wrapper--2o4Cny63 .step4--content--ynDyuE3k .step4--margintext--1PvzPnAe {\n        margin-top: 73px; }\n      .step4--container--38K3ePx- .step4--wrapper--2o4Cny63 .step4--content--ynDyuE3k .step4--time--38izEItv {\n        font-size: 48px;\n        font-weight: bold;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 0;\n        letter-spacing: normal;\n        color: #000000; }\n      .step4--container--38K3ePx- .step4--wrapper--2o4Cny63 .step4--content--ynDyuE3k .step4--cost--b7ckvSXw {\n        font-size: 24px;\n        font-weight: bold;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 0;\n        letter-spacing: normal;\n        color: #000000; }\n      .step4--container--38K3ePx- .step4--wrapper--2o4Cny63 .step4--content--ynDyuE3k .step4--bank--2NwTSLQd {\n        width: 214px;\n        height: 200px;\n        -o-object-fit: contain;\n           object-fit: contain;\n        border: solid 1px #b7b7b7;\n        margin: auto; }\n        .step4--container--38K3ePx- .step4--wrapper--2o4Cny63 .step4--content--ynDyuE3k .step4--bank--2NwTSLQd .step4--accnumber--2Nh_xRfH {\n          font-weight: normal; }\n        .step4--container--38K3ePx- .step4--wrapper--2o4Cny63 .step4--content--ynDyuE3k .step4--bank--2NwTSLQd .step4--nomargin--2oikVb5A {\n          font-weight: 300;\n          font-size: 18px;\n          color: #000000; }\n    .step4--container--38K3ePx- .step4--wrapper--2o4Cny63 .step4--contentflex--23qI_zyB {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: end;\n          -ms-flex-pack: end;\n              justify-content: flex-end; }\n      .step4--container--38K3ePx- .step4--wrapper--2o4Cny63 .step4--contentflex--23qI_zyB p {\n        margin-right: 15px;\n        margin-top: 11px;\n        font-family: 'Roboto', sans-serif;\n        font-size: 18px;\n        color: #000000; }\n  .step4--container--38K3ePx- .step4--down--1Ew--1zj {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    padding-bottom: 50px; }\n    .step4--container--38K3ePx- .step4--down--1Ew--1zj .step4--button--1AdFRP4r {\n      width: 170px;\n      height: 10px;\n      text-align: center;\n      font-size: 14px; }\n\n.step4--infoflex--4HYOtPlJ {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end; }\n  .step4--infoflex--4HYOtPlJ h1 {\n    width: 207px;\n    border-bottom: solid 1px #000000;\n    font-weight: normal;\n    font-style: normal;\n    font-stretch: normal;\n    letter-spacing: normal;\n    text-align: left;\n    margin-right: 2%;\n    color: #000000; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/step4.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,aAAa;EACb,YAAY,EAAE;EACd;IACE,aAAa;IACb,cAAc;IACd,0BAA0B;IAC1B,6BAA6B,EAAE;IAC/B;MACE,aAAa;MACb,eAAe;MACf,mBAAmB,EAAE;MACrB;QACE,mBAAmB,EAAE;MACvB;QACE,gBAAgB;QAChB,oBAAoB;QACpB,mBAAmB;QACnB,qBAAqB;QACrB,eAAe;QACf,uBAAuB;QACvB,eAAe,EAAE;MACnB;QACE,gBAAgB;QAChB,iBAAiB;QACjB,mBAAmB;QACnB,qBAAqB;QACrB,kBAAkB;QAClB,uBAAuB;QACvB,iBAAiB;QACjB,eAAe,EAAE;MACnB;QACE,iBAAiB;QACjB,gBAAgB;QAChB,iBAAiB;QACjB,mBAAmB;QACnB,qBAAqB;QACrB,iBAAiB;QACjB,uBAAuB;QACvB,eAAe,EAAE;MACnB;QACE,iBAAiB,EAAE;MACrB;QACE,gBAAgB;QAChB,kBAAkB;QAClB,mBAAmB;QACnB,qBAAqB;QACrB,eAAe;QACf,uBAAuB;QACvB,eAAe,EAAE;MACnB;QACE,gBAAgB;QAChB,kBAAkB;QAClB,mBAAmB;QACnB,qBAAqB;QACrB,eAAe;QACf,uBAAuB;QACvB,eAAe,EAAE;MACnB;QACE,aAAa;QACb,cAAc;QACd,uBAAuB;WACpB,oBAAoB;QACvB,0BAA0B;QAC1B,aAAa,EAAE;QACf;UACE,oBAAoB,EAAE;QACxB;UACE,iBAAiB;UACjB,gBAAgB;UAChB,eAAe,EAAE;IACvB;MACE,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,sBAAsB;UAClB,mBAAmB;cACf,0BAA0B,EAAE;MACpC;QACE,mBAAmB;QACnB,iBAAiB;QACjB,kCAAkC;QAClC,gBAAgB;QAChB,eAAe,EAAE;EACvB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,sBAAsB;QAClB,mBAAmB;YACf,0BAA0B;IAClC,qBAAqB,EAAE;IACvB;MACE,aAAa;MACb,aAAa;MACb,mBAAmB;MACnB,gBAAgB,EAAE;;AAExB;EACE,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,sBAAsB;MAClB,mBAAmB;UACf,0BAA0B,EAAE;EACpC;IACE,aAAa;IACb,iCAAiC;IACjC,oBAAoB;IACpB,mBAAmB;IACnB,qBAAqB;IACrB,uBAAuB;IACvB,iBAAiB;IACjB,iBAAiB;IACjB,eAAe,EAAE","file":"step4.scss","sourcesContent":[".container {\n  display: block;\n  height: 100%;\n  width: 100%; }\n  .container .wrapper {\n    width: 749px;\n    height: 770px;\n    border: solid 1px #b7b7b7;\n    margin: 8px 348px 59px 269px; }\n    .container .wrapper .content {\n      margin: auto;\n      max-width: 70%;\n      text-align: center; }\n      .container .wrapper .content p {\n        text-align: center; }\n      .container .wrapper .content .title {\n        font-size: 24px;\n        font-weight: normal;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 1;\n        letter-spacing: normal;\n        color: #000000; }\n      .container .wrapper .content .text {\n        font-size: 18px;\n        font-weight: 300;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 1.33;\n        letter-spacing: normal;\n        margin-top: 39px;\n        color: #000000; }\n      .container .wrapper .content .smallertext {\n        margin-top: 41px;\n        font-size: 16px;\n        font-weight: 300;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 1.5;\n        letter-spacing: normal;\n        color: #000000; }\n      .container .wrapper .content .margintext {\n        margin-top: 73px; }\n      .container .wrapper .content .time {\n        font-size: 48px;\n        font-weight: bold;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 0;\n        letter-spacing: normal;\n        color: #000000; }\n      .container .wrapper .content .cost {\n        font-size: 24px;\n        font-weight: bold;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 0;\n        letter-spacing: normal;\n        color: #000000; }\n      .container .wrapper .content .bank {\n        width: 214px;\n        height: 200px;\n        -o-object-fit: contain;\n           object-fit: contain;\n        border: solid 1px #b7b7b7;\n        margin: auto; }\n        .container .wrapper .content .bank .accnumber {\n          font-weight: normal; }\n        .container .wrapper .content .bank .nomargin {\n          font-weight: 300;\n          font-size: 18px;\n          color: #000000; }\n    .container .wrapper .contentflex {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: end;\n          -ms-flex-pack: end;\n              justify-content: flex-end; }\n      .container .wrapper .contentflex p {\n        margin-right: 15px;\n        margin-top: 11px;\n        font-family: 'Roboto', sans-serif;\n        font-size: 18px;\n        color: #000000; }\n  .container .down {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    padding-bottom: 50px; }\n    .container .down .button {\n      width: 170px;\n      height: 10px;\n      text-align: center;\n      font-size: 14px; }\n\n.infoflex {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end; }\n  .infoflex h1 {\n    width: 207px;\n    border-bottom: solid 1px #000000;\n    font-weight: normal;\n    font-style: normal;\n    font-stretch: normal;\n    letter-spacing: normal;\n    text-align: left;\n    margin-right: 2%;\n    color: #000000; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "step4--container--38K3ePx-",
+	"wrapper": "step4--wrapper--2o4Cny63",
+	"content": "step4--content--ynDyuE3k",
+	"title": "step4--title--2jkwddgp",
+	"text": "step4--text--7cp3wDJm",
+	"smallertext": "step4--smallertext--13ebkPbw",
+	"margintext": "step4--margintext--1PvzPnAe",
+	"time": "step4--time--38izEItv",
+	"cost": "step4--cost--b7ckvSXw",
+	"bank": "step4--bank--2NwTSLQd",
+	"accnumber": "step4--accnumber--2Nh_xRfH",
+	"nomargin": "step4--nomargin--2oikVb5A",
+	"contentflex": "step4--contentflex--23qI_zyB",
+	"down": "step4--down--1Ew--1zj",
+	"button": "step4--button--1AdFRP4r",
+	"infoflex": "step4--infoflex--4HYOtPlJ"
+};
+
+/***/ }),
+/* 397 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(396);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step4.scss", function() {
+			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step4.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 398 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
+// imports
+
+
+// module
+exports.push([module.i, ".step5--container--lp7FW-0S {\n  display: block;\n  width: 100%;\n  height: 100%; }\n  .step5--container--lp7FW-0S .step5--wrapper--C1JKAp8E {\n    width: 811px;\n    height: 449px;\n    border: solid 1px #b7b7b7;\n    margin: 86px 348px 40px 207px;\n    padding: 43px 136px 32px 71px; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/step5.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,YAAY;EACZ,aAAa,EAAE;EACf;IACE,aAAa;IACb,cAAc;IACd,0BAA0B;IAC1B,8BAA8B;IAC9B,8BAA8B,EAAE","file":"step5.scss","sourcesContent":[".container {\n  display: block;\n  width: 100%;\n  height: 100%; }\n  .container .wrapper {\n    width: 811px;\n    height: 449px;\n    border: solid 1px #b7b7b7;\n    margin: 86px 348px 40px 207px;\n    padding: 43px 136px 32px 71px; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "step5--container--lp7FW-0S",
+	"wrapper": "step5--wrapper--C1JKAp8E"
+};
+
+/***/ }),
+/* 399 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(398);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step5.scss", function() {
+			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step5.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);
