@@ -1,8 +1,6 @@
 @import "../../../assets/css/config.scss";
-
 $widthlogin: 352px;
 $heightlogin: 521px;
-
 @mixin center($width, $height) {
   width: $width;
   height: $height;
@@ -16,29 +14,24 @@ $heightlogin: 521px;
 .container {
   display: block;
   background-color: #3a3779;
-
   .loginareacolor {
     background-color: #fbfbfb;
     @include center($widthlogin, $heightlogin);
-
     .flexboxcontainer {
       margin: 0;
       padding: 0;
       display: flex;
       flex-direction: row wrap;
       justify-content: space-around;
-
       .flexboxitem {
         flex-grow: 1;
         width: $widthlogin/3;
-
         .logo {
           margin-top: 30px;
           width: 138px;
           height: 71px;
           object-fit: contain;
         }
-
         .loginandregisterheading {
           flex-grow: 2;
           font-family: "Roboto", sans-serif;
@@ -55,21 +48,17 @@ $heightlogin: 521px;
           margin-left: 47px;
           margin-top: 18px;
         }
-
         .togglebuttonmin {
           width: 16px;
           height: 2px;
           object-fit: contain;
           background-color: #000000;
         }
-
         .togglebuttoncross {
           width: 18px;
           height: 18px;
           object-fit: contain;
-
         }
-
         .user {
           font-family: "Roboto", sans-serif;
           margin-left: 46px;
@@ -84,7 +73,6 @@ $heightlogin: 521px;
           text-align: left;
           color: #000000;
         }
-
         .input {
           font-family: "Roboto", sans-serif;
           padding: 10px 18px 11px 18px;
@@ -102,7 +90,6 @@ $heightlogin: 521px;
           text-align: left;
           color: #000000;
         }
-
         .password {
           width: 75px;
           height: 9px;
@@ -117,7 +104,6 @@ $heightlogin: 521px;
           text-align: left;
           color: #000000;
         }
-
         .signup {
           margin-left: 48px;
           font-family: "Roboto", sans-serif;
@@ -132,14 +118,12 @@ $heightlogin: 521px;
           text-align: left;
           color: #000000;
         }
-
         .googlelogin {
           margin-left: 44px;
           width: 95px;
           height: 28px;
           object-fit: contain;
         }
-
         .loginbottom {
           margin-right: -60px;
           height: 9px;
@@ -155,33 +139,26 @@ $heightlogin: 521px;
         }
       }
     }
-
     .ksztat2container {
       margin-top: 30px;
     }
-
     .flexboxtogglebutton {
       align-self: center;
       text-align: end;
       margin-right: 27px;
     }
-
     .flexlogin {
       align-self: center;
     }
-
     .inputusercontainer {
       margin-top: 28px;
     }
-
     .inputpasswordcontainer {
       margin-top: 19px;
     }
-
     .signupgoogletextcontainer {
       margin-top: 5px;
     }
-
     .rowksztat2 {
       width: 84px;
       height: 1px;

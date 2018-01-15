@@ -32398,10 +32398,10 @@ var Step0 = function (_Component) {
             _react2.default.createElement(_input2.default, {
               type: "text",
               className: _step2.default.postalcodeandcolor,
-              name: "postalCode",
+              name: "color",
               label: "Base Color",
-              value: this.state.postalCode,
-              onChange: this.handleChange.bind(this, "postalCode")
+              value: this.state.color,
+              onChange: this.handleChange.bind(this, "color")
             }),
             _react2.default.createElement(
               "div",
@@ -33110,7 +33110,7 @@ var _lodash = __webpack_require__(35);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _step = __webpack_require__(42);
+var _step = __webpack_require__(399);
 
 var _step2 = _interopRequireDefault(_step);
 
@@ -33137,7 +33137,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 //COMPONENTS
 
 
+var buyerinfo = [{ name: "Name:", value: "Zain Fikri" }, {
+  name: "Address shipping:",
+  value: "Jalan Terusan Piranha, Malang, Jawa Timur, 63172"
+}, { name: "Product category:", value: "T-Shirt" }, { name: "Product name:", value: "Cotton30s" }, { name: "Base color:", value: "#020266" }, { name: "Size:", value: "M(10),L(20),XL(9)" }, { name: "Payment method:", value: "COD" }];
+
 //COMPONENT
+
 var Drophere = function (_Component) {
   _inherits(Drophere, _Component);
 
@@ -33148,12 +33154,168 @@ var Drophere = function (_Component) {
   }
 
   _createClass(Drophere, [{
+    key: "renderInformation",
+    value: function renderInformation() {
+      if (buyerinfo) return _lodash2.default.map(buyerinfo, function (data, i) {
+        return _react2.default.createElement(_DataDisplay2.default, { name: data.name, value: data.value, key: i });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
         "div",
         { className: _step2.default.container },
-        "Hi..."
+        _react2.default.createElement(
+          "div",
+          { className: _step2.default.wrapper },
+          _react2.default.createElement(
+            "div",
+            { className: _step2.default.cartcontainer },
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.cartflex },
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.title },
+                "Previews Design"
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.info },
+              _react2.default.createElement(
+                "h1",
+                null,
+                "Cart"
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: _step2.default.cartcontainer },
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.cartflex },
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.preview },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.pic },
+                  "GAMBAR MASUK SINI"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.cartflex },
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.title },
+                "Information"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.info },
+                this.renderInformation()
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.title },
+                "Total Cost"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.margincost },
+                "Rp. 2.800.000"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.editorder },
+                _react2.default.createElement(
+                  "div",
+                  { className: _step2.default.flexgrowitem + " " + _step2.default.widthitem },
+                  _react2.default.createElement(
+                    "div",
+                    { className: _step2.default.editorderitem },
+                    _react2.default.createElement("img", { className: _step2.default.img, src: "/img/cross.svg" })
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    {
+                      className: _step2.default.editorderitem + " " + _step2.default.sizeorderitem
+                    },
+                    _react2.default.createElement(
+                      "p",
+                      { className: _step2.default.editordertext },
+                      "cancel order"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: _step2.default.flexgrowitem },
+                  _react2.default.createElement(
+                    "div",
+                    { className: _step2.default.editorderitem },
+                    _react2.default.createElement("img", {
+                      className: _step2.default.img,
+                      src: "/img/ic-save-black-24-dp.png"
+                    })
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    {
+                      className: _step2.default.editorderitem + " " + _step2.default.sizeorderitem
+                    },
+                    _react2.default.createElement(
+                      "p",
+                      { className: _step2.default.editordertext },
+                      "save pdf"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: _step2.default.flexgrowitem },
+                  _react2.default.createElement(
+                    "div",
+                    { className: _step2.default.editorderitem },
+                    _react2.default.createElement("img", {
+                      className: _step2.default.img,
+                      src: "/img/ic-mode-edit-black-36-dp.png"
+                    })
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    {
+                      className: _step2.default.editorderitem + " " + _step2.default.sizeorderitem
+                    },
+                    _react2.default.createElement(
+                      "p",
+                      { className: _step2.default.editordertext },
+                      "edit information"
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: _step2.default.down },
+            _react2.default.createElement(
+              _RoundedButton2.default,
+              {
+                to: "/drophere/order/4",
+                className: _step2.default.button,
+                primary: true
+              },
+              "GO TO PAYMENT"
+            )
+          )
+        )
       );
     }
   }]);
@@ -33184,7 +33346,7 @@ var _lodash = __webpack_require__(35);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _step = __webpack_require__(42);
+var _step = __webpack_require__(400);
 
 var _step2 = _interopRequireDefault(_step);
 
@@ -33222,12 +33384,108 @@ var Drophere = function (_Component) {
   }
 
   _createClass(Drophere, [{
+    key: "renderPayment",
+    value: function renderPayment() {
+      if (paymentinfo) return _lodash2.default.map(paymentinfo, function (data, i) {
+        return _react2.default.createElement(_DataDisplay2.default, { value: data.value, key: i });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
         "div",
         { className: _step2.default.container },
-        "Hi..."
+        _react2.default.createElement(
+          "div",
+          { className: _step2.default.infoflex },
+          _react2.default.createElement(
+            "h1",
+            null,
+            "Payment"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: _step2.default.wrapper },
+          _react2.default.createElement(
+            "div",
+            { className: _step2.default.contentflex },
+            _react2.default.createElement(
+              "p",
+              null,
+              "Order number: #0097"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: _step2.default.content },
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.title },
+              "Checkout Successful"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.text },
+              "Complete The Payment"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.smallertext },
+              "Remaining time of your payment"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.time },
+              "05 : 59 : 50"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.text + ' ' + _step2.default.margintext },
+              "Total cost to be paid"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.cost },
+              "Rp. 2.800.000"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.text + ' ' + _step2.default.margintext },
+              "Please transfer to the following Setel's bank account number"
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.bank },
+              _react2.default.createElement("img", null),
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.text },
+                "Lowokwaru"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.text + ' ' + _step2.default.accnumber },
+                "165 524 789 26"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.nomargin },
+                "PT. Setel"
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: _step2.default.down },
+          _react2.default.createElement(
+            _RoundedButton2.default,
+            { className: _step2.default.button, to: "/drophere/order/5", primary: true },
+            "CONFIRMATION"
+          )
+        )
       );
     }
   }]);
@@ -33258,7 +33516,11 @@ var _lodash = __webpack_require__(35);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _step = __webpack_require__(42);
+var _dropdown = __webpack_require__(380);
+
+var _dropdown2 = _interopRequireDefault(_dropdown);
+
+var _step = __webpack_require__(401);
 
 var _step2 = _interopRequireDefault(_step);
 
@@ -33289,19 +33551,63 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Drophere = function (_Component) {
   _inherits(Drophere, _Component);
 
-  function Drophere() {
+  function Drophere(props) {
     _classCallCheck(this, Drophere);
 
-    return _possibleConstructorReturn(this, (Drophere.__proto__ || Object.getPrototypeOf(Drophere)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Drophere.__proto__ || Object.getPrototypeOf(Drophere)).call(this, props));
+
+    _this.handleChange = function (value) {
+      _this.setState({
+        bankName: value
+      });
+    };
+
+    _this.bank = [{ value: "Mandiri", name: "Mandiri" }, { value: "BCA", name: "BCA" }, { value: "BNI", name: "BNI" }, { value: "BTN", name: "BTN" }];
+    _this.DATA = [{ name: _react2.default.createElement(
+        'p',
+        null,
+        'Order Number'
+      ), value: _react2.default.createElement(
+        'p',
+        null,
+        '#0097'
+      ) }, { name: _react2.default.createElement(
+        'p',
+        null,
+        'To Bank Account'
+      ), value: function value() {
+        return _react2.default.createElement(_dropdown2.default, { source: _this.bank, value: _this.state.bankName, onChange: _this.handleChange });
+      } }];
+
+    _this.state = {
+      bankName: "Mandiri"
+    };
+    return _this;
   }
 
   _createClass(Drophere, [{
-    key: "render",
+    key: 'renderContent',
+    value: function renderContent() {
+      if (this.DATA) return _lodash2.default.map(this.DATA, function (data, i) {
+        return _react2.default.createElement(_DataDisplay2.default, { name: data.name, value: typeof data.value === 'function' ? data.value() : data.value, key: i });
+      });
+    }
+  }, {
+    key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        "div",
+        'div',
         { className: _step2.default.container },
-        "Hi..."
+        _react2.default.createElement(
+          'div',
+          { className: _step2.default.wrapper },
+          _react2.default.createElement(
+            'div',
+            { className: _step2.default.content },
+            this.renderContent(),
+            _react2.default.createElement(_dropdown2.default, { source: this.bank, value: this.state.bankName, onChange: this.handleChange })
+          )
+        )
       );
     }
   }]);
@@ -33552,6 +33858,10 @@ var _index = __webpack_require__(395);
 
 var _index2 = _interopRequireDefault(_index);
 
+var _Header = __webpack_require__(402);
+
+var _Header2 = _interopRequireDefault(_Header);
+
 var _Footer = __webpack_require__(159);
 
 var _Footer2 = _interopRequireDefault(_Footer);
@@ -33587,6 +33897,7 @@ var Home = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: _index2.default.container },
+        _react2.default.createElement(_Header2.default, null),
         _react2.default.createElement(_Footer2.default, null)
       );
     }
@@ -33793,7 +34104,7 @@ var Login = function (_Component) {
                 className: _index2.default.flexboxitem + " " + _index2.default.flexboxtogglebutton
               },
               _react2.default.createElement("img", {
-                src: "img/cross.svg",
+                src: "img/blackcross.svg",
                 className: _index2.default.togglebuttoncross
               })
             )
@@ -52927,12 +53238,11 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, ".dropdown-size-theme--dropdown--2nkSbkOI {\n  width: 66px; }\n\n.dropdown-size-theme--value--3i0S1pZ4 {\n  opacity: 0.6;\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: left;\n  color: rgba(76, 76, 76, .6); }\n\n.dropdown-size-theme--values--3lS2dJA- {\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: left;\n  color: rgba(76, 76, 76, .6); }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/dropdown-size-theme.scss"],"names":[],"mappings":"AAAA;EACE,YAAY,EAAE;;AAEhB;EACE,aAAa;EACb,gBAAgB;EAChB,oBAAoB;EACpB,mBAAmB;EACnB,qBAAqB;EACrB,oBAAoB;EACpB,sBAAsB;EACtB,iBAAiB;EACjB,4BAA4B,EAAE;;AAEhC;EACE,gBAAgB;EAChB,oBAAoB;EACpB,mBAAmB;EACnB,qBAAqB;EACrB,oBAAoB;EACpB,sBAAsB;EACtB,iBAAiB;EACjB,4BAA4B,EAAE","file":"dropdown-size-theme.scss","sourcesContent":[".dropdown {\n  width: 66px; }\n\n.value {\n  opacity: 0.6;\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: left;\n  color: rgba(76, 76, 76, .6); }\n\n.values {\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: left;\n  color: rgba(76, 76, 76, .6); }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".dropdown-size-theme--dropdown--2nkSbkOI {\n  width: 66px; }\n\n.dropdown-size-theme--values--3lS2dJA- {\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: left;\n  color: rgba(76, 76, 76, .6); }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/dropdown-size-theme.scss"],"names":[],"mappings":"AAAA;EACE,YAAY,EAAE;;AAEhB;EACE,gBAAgB;EAChB,oBAAoB;EACpB,mBAAmB;EACnB,qBAAqB;EACrB,oBAAoB;EACpB,sBAAsB;EACtB,iBAAiB;EACjB,4BAA4B,EAAE","file":"dropdown-size-theme.scss","sourcesContent":[".dropdown {\n  width: 66px; }\n\n.values {\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: left;\n  color: rgba(76, 76, 76, .6); }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
 	"dropdown": "dropdown-size-theme--dropdown--2nkSbkOI",
-	"value": "dropdown-size-theme--value--3i0S1pZ4",
 	"values": "dropdown-size-theme--values--3lS2dJA-"
 };
 
@@ -52945,12 +53255,11 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, ".dropdown-theme--dropdown--1-_Agfos {\n  width: 220px;\n  margin-left: 10px; }\n\n.dropdown-theme--value--3mpcVbUU {\n  opacity: 0.6;\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: left;\n  color: rgba(76, 76, 76, .6); }\n\n.dropdown-theme--values--38jxYf3o {\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: left;\n  color: rgba(76, 76, 76, .6); }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/dropdown-theme.scss"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,kBAAkB,EAAE;;AAEtB;EACE,aAAa;EACb,gBAAgB;EAChB,oBAAoB;EACpB,mBAAmB;EACnB,qBAAqB;EACrB,oBAAoB;EACpB,sBAAsB;EACtB,iBAAiB;EACjB,4BAA4B,EAAE;;AAEhC;EACE,gBAAgB;EAChB,oBAAoB;EACpB,mBAAmB;EACnB,qBAAqB;EACrB,oBAAoB;EACpB,sBAAsB;EACtB,iBAAiB;EACjB,4BAA4B,EAAE","file":"dropdown-theme.scss","sourcesContent":[".dropdown {\n  width: 220px;\n  margin-left: 10px; }\n\n.value {\n  opacity: 0.6;\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: left;\n  color: rgba(76, 76, 76, .6); }\n\n.values {\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: left;\n  color: rgba(76, 76, 76, .6); }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".dropdown-theme--dropdown--1-_Agfos {\n  width: 220px;\n  margin-left: 10px; }\n\n.dropdown-theme--values--38jxYf3o {\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: left;\n  color: rgba(76, 76, 76, .6); }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/dropdown-theme.scss"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,kBAAkB,EAAE;;AAEtB;EACE,gBAAgB;EAChB,oBAAoB;EACpB,mBAAmB;EACnB,qBAAqB;EACrB,oBAAoB;EACpB,sBAAsB;EACtB,iBAAiB;EACjB,4BAA4B,EAAE","file":"dropdown-theme.scss","sourcesContent":[".dropdown {\n  width: 220px;\n  margin-left: 10px; }\n\n.values {\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: left;\n  color: rgba(76, 76, 76, .6); }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
 	"dropdown": "dropdown-theme--dropdown--1-_Agfos",
-	"value": "dropdown-theme--value--3mpcVbUU",
 	"values": "dropdown-theme--values--38jxYf3o"
 };
 
@@ -52963,12 +53272,11 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, ".input-quantity-theme--hint--3ICj3zVi {\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: center;\n  color: rgba(76, 76, 76, .6); }\n\n.input-quantity-theme--input--3ISPZiGs {\n  opacity: 0.6;\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: left;\n  color: rgba(76, 76, 76, .6); }\n\n.input-quantity-theme--bar--218vcGkJ {\n  width: 30%; }\n\n.input-quantity-theme--inputElement--1EVjX6pK {\n  width: 30%; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/input-quantity-theme.scss"],"names":[],"mappings":"AAAA;EACE,gBAAgB;EAChB,oBAAoB;EACpB,mBAAmB;EACnB,qBAAqB;EACrB,oBAAoB;EACpB,sBAAsB;EACtB,mBAAmB;EACnB,4BAA4B,EAAE;;AAEhC;EACE,aAAa;EACb,gBAAgB;EAChB,oBAAoB;EACpB,mBAAmB;EACnB,qBAAqB;EACrB,oBAAoB;EACpB,sBAAsB;EACtB,iBAAiB;EACjB,4BAA4B,EAAE;;AAEhC;EACE,WAAW,EAAE;;AAEf;EACE,WAAW,EAAE","file":"input-quantity-theme.scss","sourcesContent":[".hint {\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: center;\n  color: rgba(76, 76, 76, .6); }\n\n.input {\n  opacity: 0.6;\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: left;\n  color: rgba(76, 76, 76, .6); }\n\n.bar {\n  width: 30%; }\n\n.inputElement {\n  width: 30%; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".input-quantity-theme--hint--3ICj3zVi {\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: center;\n  color: rgba(76, 76, 76, .6); }\n\n.input-quantity-theme--bar--218vcGkJ {\n  width: 30%; }\n\n.input-quantity-theme--inputElement--1EVjX6pK {\n  width: 30%; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/input-quantity-theme.scss"],"names":[],"mappings":"AAAA;EACE,gBAAgB;EAChB,oBAAoB;EACpB,mBAAmB;EACnB,qBAAqB;EACrB,oBAAoB;EACpB,sBAAsB;EACtB,mBAAmB;EACnB,4BAA4B,EAAE;;AAEhC;EACE,WAAW,EAAE;;AAEf;EACE,WAAW,EAAE","file":"input-quantity-theme.scss","sourcesContent":[".hint {\n  font-size: 11px;\n  font-weight: normal;\n  font-style: normal;\n  font-stretch: normal;\n  line-height: normal;\n  letter-spacing: 0.3px;\n  text-align: center;\n  color: rgba(76, 76, 76, .6); }\n\n.bar {\n  width: 30%; }\n\n.inputElement {\n  width: 30%; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
 	"hint": "input-quantity-theme--hint--3ICj3zVi",
-	"input": "input-quantity-theme--input--3ISPZiGs",
 	"bar": "input-quantity-theme--bar--218vcGkJ",
 	"inputElement": "input-quantity-theme--inputElement--1EVjX6pK"
 };
@@ -54110,6 +54418,287 @@ if(false) {
 	if(!content.locals) {
 		module.hot.accept("!!../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../node_modules/postcss-loader/lib/index.js!../../../../../node_modules/sass-loader/lib/loader.js!./index.scss", function() {
 			var newContent = require("!!../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../node_modules/postcss-loader/lib/index.js!../../../../../node_modules/sass-loader/lib/loader.js!./index.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 396 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)();
+// imports
+
+
+// module
+exports.push([module.i, ".step3--container--H48d0nDT {\n  display: block; }\n  .step3--container--H48d0nDT .step3--wrapper--2x6EphSH {\n    width: 60%; }\n    .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row wrap;\n              flex-direction: row wrap;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between; }\n      .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk .step3--cartflex--3gPt52pg {\n        width: 535px; }\n        .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk .step3--cartflex--3gPt52pg .step3--title--7d3j6OK_ {\n          margin-left: 30px;\n          font-size: 18px;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: 1.33;\n          letter-spacing: normal;\n          text-align: left;\n          color: #000000; }\n        .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk .step3--cartflex--3gPt52pg .step3--margincost--1HTqvo4L {\n          margin-left: 30px;\n          font-size: 15px; }\n        .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk .step3--cartflex--3gPt52pg .step3--preview--rfvESlCz {\n          width: 503px;\n          height: 508px;\n          border: solid 1px #b8b8b8;\n          margin: 6px 30px 76px 39px;\n          padding: 25px; }\n          .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk .step3--cartflex--3gPt52pg .step3--preview--rfvESlCz .step3--pic--1_CJ2Ufd {\n            margin: auto;\n            text-align: center;\n            width: 100%; }\n        .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk .step3--cartflex--3gPt52pg .step3--info--rD951kNj {\n          margin-left: 30px;\n          width: 100%; }\n        .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk .step3--cartflex--3gPt52pg .step3--editorder--1aDfpePJ {\n          margin-left: 30px;\n          margin-top: 40px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-pack: start;\n              -ms-flex-pack: start;\n                  justify-content: flex-start;\n          width: 400px; }\n          .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk .step3--cartflex--3gPt52pg .step3--editorder--1aDfpePJ .step3--flexgrowitem--1Lq-K7sO {\n            -webkit-box-flex: 2;\n                -ms-flex-positive: 2;\n                    flex-grow: 2;\n            display: -webkit-box;\n            display: -ms-flexbox;\n            display: flex; }\n            .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk .step3--cartflex--3gPt52pg .step3--editorder--1aDfpePJ .step3--flexgrowitem--1Lq-K7sO .step3--editorderitem--1f9EkXrR {\n              width: 30px;\n              -ms-flex-item-align: center;\n                  align-self: center; }\n              .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk .step3--cartflex--3gPt52pg .step3--editorder--1aDfpePJ .step3--flexgrowitem--1Lq-K7sO .step3--editorderitem--1f9EkXrR .step3--img--HMkjZcMR {\n                width: 17px;\n                height: 17px;\n                -o-object-fit: contain;\n                   object-fit: contain; }\n            .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk .step3--cartflex--3gPt52pg .step3--editorder--1aDfpePJ .step3--flexgrowitem--1Lq-K7sO .step3--sizeorderitem--1qYF8ST5 {\n              width: 70px; }\n          .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk .step3--cartflex--3gPt52pg .step3--editorder--1aDfpePJ .step3--widthitem--3D2vvesK {\n            width: 100%; }\n          .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk .step3--cartflex--3gPt52pg .step3--editorder--1aDfpePJ .step3--saveedit--2RsBe2L9 {\n            -webkit-box-flex: 1;\n                -ms-flex-positive: 1;\n                    flex-grow: 1; }\n          .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--cartcontainer--2A-st-hk .step3--cartflex--3gPt52pg .step3--editorder--1aDfpePJ .step3--editordertext--34x03asY {\n            width: 100px;\n            font-size: 12px;\n            font-weight: 100;\n            font-style: normal;\n            font-stretch: normal;\n            line-height: 1.5;\n            letter-spacing: normal;\n            text-align: left; }\n    .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--info--rD951kNj {\n      width: 25%;\n      display: block; }\n      .step3--container--H48d0nDT .step3--wrapper--2x6EphSH .step3--info--rD951kNj h1 {\n        border-bottom: 2px solid #5a5a5a;\n        font-weight: 400; }\n  .step3--container--H48d0nDT .step3--down--3jhErO0z {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    width: 1250px; }\n    .step3--container--H48d0nDT .step3--down--3jhErO0z .step3--button--2J5vwBDe {\n      width: 165px;\n      height: 42px;\n      text-align: center; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/step3.scss"],"names":[],"mappings":"AAAA;EACE,eAAe,EAAE;EACjB;IACE,WAAW,EAAE;IACb;MACE,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,+BAA+B;MAC/B,8BAA8B;UAC1B,6BAA6B;cACzB,yBAAyB;MACjC,0BAA0B;UACtB,uBAAuB;cACnB,+BAA+B,EAAE;MACzC;QACE,aAAa,EAAE;QACf;UACE,kBAAkB;UAClB,gBAAgB;UAChB,oBAAoB;UACpB,mBAAmB;UACnB,qBAAqB;UACrB,kBAAkB;UAClB,uBAAuB;UACvB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kBAAkB;UAClB,gBAAgB,EAAE;QACpB;UACE,aAAa;UACb,cAAc;UACd,0BAA0B;UAC1B,2BAA2B;UAC3B,cAAc,EAAE;UAChB;YACE,aAAa;YACb,mBAAmB;YACnB,YAAY,EAAE;QAClB;UACE,kBAAkB;UAClB,YAAY,EAAE;QAChB;UACE,kBAAkB;UAClB,iBAAiB;UACjB,qBAAqB;UACrB,qBAAqB;UACrB,cAAc;UACd,wBAAwB;cACpB,qBAAqB;kBACjB,4BAA4B;UACpC,aAAa,EAAE;UACf;YACE,oBAAoB;gBAChB,qBAAqB;oBACjB,aAAa;YACrB,qBAAqB;YACrB,qBAAqB;YACrB,cAAc,EAAE;YAChB;cACE,YAAY;cACZ,4BAA4B;kBACxB,mBAAmB,EAAE;cACzB;gBACE,YAAY;gBACZ,aAAa;gBACb,uBAAuB;mBACpB,oBAAoB,EAAE;YAC7B;cACE,YAAY,EAAE;UAClB;YACE,YAAY,EAAE;UAChB;YACE,oBAAoB;gBAChB,qBAAqB;oBACjB,aAAa,EAAE;UACzB;YACE,aAAa;YACb,gBAAgB;YAChB,iBAAiB;YACjB,mBAAmB;YACnB,qBAAqB;YACrB,iBAAiB;YACjB,uBAAuB;YACvB,iBAAiB,EAAE;IAC3B;MACE,WAAW;MACX,eAAe,EAAE;MACjB;QACE,iCAAiC;QACjC,iBAAiB,EAAE;EACzB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,sBAAsB;QAClB,mBAAmB;YACf,0BAA0B;IAClC,cAAc,EAAE;IAChB;MACE,aAAa;MACb,aAAa;MACb,mBAAmB,EAAE","file":"step3.scss","sourcesContent":[".container {\n  display: block; }\n  .container .wrapper {\n    width: 60%; }\n    .container .wrapper .cartcontainer {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row wrap;\n              flex-direction: row wrap;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between; }\n      .container .wrapper .cartcontainer .cartflex {\n        width: 535px; }\n        .container .wrapper .cartcontainer .cartflex .title {\n          margin-left: 30px;\n          font-size: 18px;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: 1.33;\n          letter-spacing: normal;\n          text-align: left;\n          color: #000000; }\n        .container .wrapper .cartcontainer .cartflex .margincost {\n          margin-left: 30px;\n          font-size: 15px; }\n        .container .wrapper .cartcontainer .cartflex .preview {\n          width: 503px;\n          height: 508px;\n          border: solid 1px #b8b8b8;\n          margin: 6px 30px 76px 39px;\n          padding: 25px; }\n          .container .wrapper .cartcontainer .cartflex .preview .pic {\n            margin: auto;\n            text-align: center;\n            width: 100%; }\n        .container .wrapper .cartcontainer .cartflex .info {\n          margin-left: 30px;\n          width: 100%; }\n        .container .wrapper .cartcontainer .cartflex .editorder {\n          margin-left: 30px;\n          margin-top: 40px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-pack: start;\n              -ms-flex-pack: start;\n                  justify-content: flex-start;\n          width: 400px; }\n          .container .wrapper .cartcontainer .cartflex .editorder .flexgrowitem {\n            -webkit-box-flex: 2;\n                -ms-flex-positive: 2;\n                    flex-grow: 2;\n            display: -webkit-box;\n            display: -ms-flexbox;\n            display: flex; }\n            .container .wrapper .cartcontainer .cartflex .editorder .flexgrowitem .editorderitem {\n              width: 30px;\n              -ms-flex-item-align: center;\n                  align-self: center; }\n              .container .wrapper .cartcontainer .cartflex .editorder .flexgrowitem .editorderitem .img {\n                width: 17px;\n                height: 17px;\n                -o-object-fit: contain;\n                   object-fit: contain; }\n            .container .wrapper .cartcontainer .cartflex .editorder .flexgrowitem .sizeorderitem {\n              width: 70px; }\n          .container .wrapper .cartcontainer .cartflex .editorder .widthitem {\n            width: 100%; }\n          .container .wrapper .cartcontainer .cartflex .editorder .saveedit {\n            -webkit-box-flex: 1;\n                -ms-flex-positive: 1;\n                    flex-grow: 1; }\n          .container .wrapper .cartcontainer .cartflex .editorder .editordertext {\n            width: 100px;\n            font-size: 12px;\n            font-weight: 100;\n            font-style: normal;\n            font-stretch: normal;\n            line-height: 1.5;\n            letter-spacing: normal;\n            text-align: left; }\n    .container .wrapper .info {\n      width: 25%;\n      display: block; }\n      .container .wrapper .info h1 {\n        border-bottom: 2px solid #5a5a5a;\n        font-weight: 400; }\n  .container .down {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    width: 1250px; }\n    .container .down .button {\n      width: 165px;\n      height: 42px;\n      text-align: center; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "step3--container--H48d0nDT",
+	"wrapper": "step3--wrapper--2x6EphSH",
+	"cartcontainer": "step3--cartcontainer--2A-st-hk",
+	"cartflex": "step3--cartflex--3gPt52pg",
+	"title": "step3--title--7d3j6OK_",
+	"margincost": "step3--margincost--1HTqvo4L",
+	"preview": "step3--preview--rfvESlCz",
+	"pic": "step3--pic--1_CJ2Ufd",
+	"info": "step3--info--rD951kNj",
+	"editorder": "step3--editorder--1aDfpePJ",
+	"flexgrowitem": "step3--flexgrowitem--1Lq-K7sO",
+	"editorderitem": "step3--editorderitem--1f9EkXrR",
+	"img": "step3--img--HMkjZcMR",
+	"sizeorderitem": "step3--sizeorderitem--1qYF8ST5",
+	"widthitem": "step3--widthitem--3D2vvesK",
+	"saveedit": "step3--saveedit--2RsBe2L9",
+	"editordertext": "step3--editordertext--34x03asY",
+	"down": "step3--down--3jhErO0z",
+	"button": "step3--button--2J5vwBDe"
+};
+
+/***/ }),
+/* 397 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)();
+// imports
+
+
+// module
+exports.push([module.i, ".step4--container--1fQVz72_ {\n  display: block;\n  height: 100%;\n  width: 100%; }\n  .step4--container--1fQVz72_ .step4--wrapper--Qnh-Ku7w {\n    width: 749px;\n    height: 770px;\n    border: solid 1px #b7b7b7;\n    margin: 8px 348px 59px 269px; }\n    .step4--container--1fQVz72_ .step4--wrapper--Qnh-Ku7w .step4--content--1yIQPYxe {\n      margin: auto;\n      max-width: 70%;\n      text-align: center; }\n      .step4--container--1fQVz72_ .step4--wrapper--Qnh-Ku7w .step4--content--1yIQPYxe p {\n        text-align: center; }\n      .step4--container--1fQVz72_ .step4--wrapper--Qnh-Ku7w .step4--content--1yIQPYxe .step4--title--2qRMIRj_ {\n        font-size: 24px;\n        font-weight: normal;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 1;\n        letter-spacing: normal;\n        color: #000000; }\n      .step4--container--1fQVz72_ .step4--wrapper--Qnh-Ku7w .step4--content--1yIQPYxe .step4--text--1NuglcOS {\n        font-size: 18px;\n        font-weight: 300;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 1.33;\n        letter-spacing: normal;\n        margin-top: 39px;\n        color: #000000; }\n      .step4--container--1fQVz72_ .step4--wrapper--Qnh-Ku7w .step4--content--1yIQPYxe .step4--smallertext--3vyVIVox {\n        margin-top: 41px;\n        font-size: 16px;\n        font-weight: 300;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 1.5;\n        letter-spacing: normal;\n        color: #000000; }\n      .step4--container--1fQVz72_ .step4--wrapper--Qnh-Ku7w .step4--content--1yIQPYxe .step4--margintext--2iDQ46xt {\n        margin-top: 73px; }\n      .step4--container--1fQVz72_ .step4--wrapper--Qnh-Ku7w .step4--content--1yIQPYxe .step4--time--2VnsxbVO {\n        font-size: 48px;\n        font-weight: bold;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 0;\n        letter-spacing: normal;\n        color: #000000; }\n      .step4--container--1fQVz72_ .step4--wrapper--Qnh-Ku7w .step4--content--1yIQPYxe .step4--cost--34ZHd725 {\n        font-size: 24px;\n        font-weight: bold;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 0;\n        letter-spacing: normal;\n        color: #000000; }\n      .step4--container--1fQVz72_ .step4--wrapper--Qnh-Ku7w .step4--content--1yIQPYxe .step4--bank--P1RbRtDv {\n        width: 214px;\n        height: 200px;\n        -o-object-fit: contain;\n           object-fit: contain;\n        border: solid 1px #b7b7b7;\n        margin: auto; }\n        .step4--container--1fQVz72_ .step4--wrapper--Qnh-Ku7w .step4--content--1yIQPYxe .step4--bank--P1RbRtDv .step4--accnumber--24urdpDS {\n          font-weight: normal; }\n        .step4--container--1fQVz72_ .step4--wrapper--Qnh-Ku7w .step4--content--1yIQPYxe .step4--bank--P1RbRtDv .step4--nomargin--1Y44Fz1Y {\n          font-weight: 300;\n          font-size: 18px;\n          color: #000000; }\n    .step4--container--1fQVz72_ .step4--wrapper--Qnh-Ku7w .step4--contentflex--16XvBJYl {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: end;\n          -ms-flex-pack: end;\n              justify-content: flex-end; }\n      .step4--container--1fQVz72_ .step4--wrapper--Qnh-Ku7w .step4--contentflex--16XvBJYl p {\n        margin-right: 15px;\n        margin-top: 11px;\n        font-family: 'Roboto', sans-serif;\n        font-size: 18px;\n        color: #000000; }\n  .step4--container--1fQVz72_ .step4--down--2dNiFSn1 {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    padding-bottom: 50px; }\n    .step4--container--1fQVz72_ .step4--down--2dNiFSn1 .step4--button--3dDnDlx- {\n      width: 170px;\n      height: 10px;\n      text-align: center;\n      font-size: 14px; }\n\n.step4--infoflex--1imcPJbJ {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end; }\n  .step4--infoflex--1imcPJbJ h1 {\n    width: 207px;\n    border-bottom: solid 1px #000000;\n    font-weight: normal;\n    font-style: normal;\n    font-stretch: normal;\n    letter-spacing: normal;\n    text-align: left;\n    margin-right: 2%;\n    color: #000000; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/step4.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,aAAa;EACb,YAAY,EAAE;EACd;IACE,aAAa;IACb,cAAc;IACd,0BAA0B;IAC1B,6BAA6B,EAAE;IAC/B;MACE,aAAa;MACb,eAAe;MACf,mBAAmB,EAAE;MACrB;QACE,mBAAmB,EAAE;MACvB;QACE,gBAAgB;QAChB,oBAAoB;QACpB,mBAAmB;QACnB,qBAAqB;QACrB,eAAe;QACf,uBAAuB;QACvB,eAAe,EAAE;MACnB;QACE,gBAAgB;QAChB,iBAAiB;QACjB,mBAAmB;QACnB,qBAAqB;QACrB,kBAAkB;QAClB,uBAAuB;QACvB,iBAAiB;QACjB,eAAe,EAAE;MACnB;QACE,iBAAiB;QACjB,gBAAgB;QAChB,iBAAiB;QACjB,mBAAmB;QACnB,qBAAqB;QACrB,iBAAiB;QACjB,uBAAuB;QACvB,eAAe,EAAE;MACnB;QACE,iBAAiB,EAAE;MACrB;QACE,gBAAgB;QAChB,kBAAkB;QAClB,mBAAmB;QACnB,qBAAqB;QACrB,eAAe;QACf,uBAAuB;QACvB,eAAe,EAAE;MACnB;QACE,gBAAgB;QAChB,kBAAkB;QAClB,mBAAmB;QACnB,qBAAqB;QACrB,eAAe;QACf,uBAAuB;QACvB,eAAe,EAAE;MACnB;QACE,aAAa;QACb,cAAc;QACd,uBAAuB;WACpB,oBAAoB;QACvB,0BAA0B;QAC1B,aAAa,EAAE;QACf;UACE,oBAAoB,EAAE;QACxB;UACE,iBAAiB;UACjB,gBAAgB;UAChB,eAAe,EAAE;IACvB;MACE,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,sBAAsB;UAClB,mBAAmB;cACf,0BAA0B,EAAE;MACpC;QACE,mBAAmB;QACnB,iBAAiB;QACjB,kCAAkC;QAClC,gBAAgB;QAChB,eAAe,EAAE;EACvB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,sBAAsB;QAClB,mBAAmB;YACf,0BAA0B;IAClC,qBAAqB,EAAE;IACvB;MACE,aAAa;MACb,aAAa;MACb,mBAAmB;MACnB,gBAAgB,EAAE;;AAExB;EACE,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,sBAAsB;MAClB,mBAAmB;UACf,0BAA0B,EAAE;EACpC;IACE,aAAa;IACb,iCAAiC;IACjC,oBAAoB;IACpB,mBAAmB;IACnB,qBAAqB;IACrB,uBAAuB;IACvB,iBAAiB;IACjB,iBAAiB;IACjB,eAAe,EAAE","file":"step4.scss","sourcesContent":[".container {\n  display: block;\n  height: 100%;\n  width: 100%; }\n  .container .wrapper {\n    width: 749px;\n    height: 770px;\n    border: solid 1px #b7b7b7;\n    margin: 8px 348px 59px 269px; }\n    .container .wrapper .content {\n      margin: auto;\n      max-width: 70%;\n      text-align: center; }\n      .container .wrapper .content p {\n        text-align: center; }\n      .container .wrapper .content .title {\n        font-size: 24px;\n        font-weight: normal;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 1;\n        letter-spacing: normal;\n        color: #000000; }\n      .container .wrapper .content .text {\n        font-size: 18px;\n        font-weight: 300;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 1.33;\n        letter-spacing: normal;\n        margin-top: 39px;\n        color: #000000; }\n      .container .wrapper .content .smallertext {\n        margin-top: 41px;\n        font-size: 16px;\n        font-weight: 300;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 1.5;\n        letter-spacing: normal;\n        color: #000000; }\n      .container .wrapper .content .margintext {\n        margin-top: 73px; }\n      .container .wrapper .content .time {\n        font-size: 48px;\n        font-weight: bold;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 0;\n        letter-spacing: normal;\n        color: #000000; }\n      .container .wrapper .content .cost {\n        font-size: 24px;\n        font-weight: bold;\n        font-style: normal;\n        font-stretch: normal;\n        line-height: 0;\n        letter-spacing: normal;\n        color: #000000; }\n      .container .wrapper .content .bank {\n        width: 214px;\n        height: 200px;\n        -o-object-fit: contain;\n           object-fit: contain;\n        border: solid 1px #b7b7b7;\n        margin: auto; }\n        .container .wrapper .content .bank .accnumber {\n          font-weight: normal; }\n        .container .wrapper .content .bank .nomargin {\n          font-weight: 300;\n          font-size: 18px;\n          color: #000000; }\n    .container .wrapper .contentflex {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: end;\n          -ms-flex-pack: end;\n              justify-content: flex-end; }\n      .container .wrapper .contentflex p {\n        margin-right: 15px;\n        margin-top: 11px;\n        font-family: 'Roboto', sans-serif;\n        font-size: 18px;\n        color: #000000; }\n  .container .down {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    padding-bottom: 50px; }\n    .container .down .button {\n      width: 170px;\n      height: 10px;\n      text-align: center;\n      font-size: 14px; }\n\n.infoflex {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end; }\n  .infoflex h1 {\n    width: 207px;\n    border-bottom: solid 1px #000000;\n    font-weight: normal;\n    font-style: normal;\n    font-stretch: normal;\n    letter-spacing: normal;\n    text-align: left;\n    margin-right: 2%;\n    color: #000000; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "step4--container--1fQVz72_",
+	"wrapper": "step4--wrapper--Qnh-Ku7w",
+	"content": "step4--content--1yIQPYxe",
+	"title": "step4--title--2qRMIRj_",
+	"text": "step4--text--1NuglcOS",
+	"smallertext": "step4--smallertext--3vyVIVox",
+	"margintext": "step4--margintext--2iDQ46xt",
+	"time": "step4--time--2VnsxbVO",
+	"cost": "step4--cost--34ZHd725",
+	"bank": "step4--bank--P1RbRtDv",
+	"accnumber": "step4--accnumber--24urdpDS",
+	"nomargin": "step4--nomargin--1Y44Fz1Y",
+	"contentflex": "step4--contentflex--16XvBJYl",
+	"down": "step4--down--2dNiFSn1",
+	"button": "step4--button--3dDnDlx-",
+	"infoflex": "step4--infoflex--1imcPJbJ"
+};
+
+/***/ }),
+/* 398 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)();
+// imports
+
+
+// module
+exports.push([module.i, ".step5--container--3eXsy9II {\n  display: block;\n  width: 100%;\n  height: 100%; }\n  .step5--container--3eXsy9II .step5--wrapper--1bXCfcd7 {\n    width: 811px;\n    height: 449px;\n    border: solid 1px #b7b7b7;\n    margin: 86px 348px 40px 207px;\n    padding: 43px 136px 32px 71px; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/step5.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,YAAY;EACZ,aAAa,EAAE;EACf;IACE,aAAa;IACb,cAAc;IACd,0BAA0B;IAC1B,8BAA8B;IAC9B,8BAA8B,EAAE","file":"step5.scss","sourcesContent":[".container {\n  display: block;\n  width: 100%;\n  height: 100%; }\n  .container .wrapper {\n    width: 811px;\n    height: 449px;\n    border: solid 1px #b7b7b7;\n    margin: 86px 348px 40px 207px;\n    padding: 43px 136px 32px 71px; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "step5--container--3eXsy9II",
+	"wrapper": "step5--wrapper--1bXCfcd7"
+};
+
+/***/ }),
+/* 399 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(396);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(8)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step3.scss", function() {
+			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step3.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 400 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(397);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(8)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step4.scss", function() {
+			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step4.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 401 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(398);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(8)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step5.scss", function() {
+			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step5.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 402 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _header = __webpack_require__(404);
+
+var _header2 = _interopRequireDefault(_header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
+
+
+//STYLES
+
+
+//COMPONENT
+var Header = function (_Component) {
+  _inherits(Header, _Component);
+
+  function Header() {
+    _classCallCheck(this, Header);
+
+    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+  }
+
+  _createClass(Header, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: _header2.default.container },
+        _react2.default.createElement('div', { className: _header2.default.up })
+      );
+    }
+  }]);
+
+  return Header;
+}(_react.Component);
+
+exports.default = Header;
+
+/***/ }),
+/* 403 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)();
+// imports
+
+
+// module
+exports.push([module.i, ".header--container--1D7yP65u {\n  display: block; }\n", "", {"version":3,"sources":["/./src/client/screens/Home/css/header.scss"],"names":[],"mappings":"AAAA;EACE,eAAe,EAAE","file":"header.scss","sourcesContent":[".container {\n  display: block; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "header--container--1D7yP65u"
+};
+
+/***/ }),
+/* 404 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(403);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(8)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../node_modules/postcss-loader/lib/index.js!../../../../../node_modules/sass-loader/lib/loader.js!./header.scss", function() {
+			var newContent = require("!!../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../node_modules/postcss-loader/lib/index.js!../../../../../node_modules/sass-loader/lib/loader.js!./header.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});

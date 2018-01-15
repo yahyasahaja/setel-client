@@ -1,23 +1,23 @@
 //MODULES
-import React, { Component } from "react";
-import Input from "react-toolbox/lib/input";
-import { RadioGroup, RadioButton } from "react-toolbox/lib/radio";
-import Dropdown from "react-toolbox/lib/dropdown";
+import React, { Component } from "react"
+import Input from "react-toolbox/lib/input"
+import { RadioGroup, RadioButton } from "react-toolbox/lib/radio"
+import Dropdown from "react-toolbox/lib/dropdown"
 
 //STYLES
-import styles from "./css/step0.scss";
-import radiotheme from "./css/radio-button-theme.scss";
-import dropdowntheme from "./css/dropdown-theme.scss";
-import sizetheme from "./css/dropdown-size-theme.scss";
-import quantitytheme from "./css/input-quantity-theme.scss";
+import styles from "./css/step0.scss"
+import radiotheme from "./css/radio-button-theme.scss"
+import dropdowntheme from "./css/dropdown-theme.scss"
+import sizetheme from "./css/dropdown-size-theme.scss"
+import quantitytheme from "./css/input-quantity-theme.scss"
 
 //COMPONENTS
-import RoundedButton from "../../../components/RoundedButton";
+import RoundedButton from "../../../components/RoundedButton"
 
 //COMPONENT
 export default class Step0 extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       name: "",
       phone: "",
@@ -32,7 +32,7 @@ export default class Step0 extends Component {
       color: "",
       size: "",
       quantity: ""
-    };
+    }
   }
 
   cities = [
@@ -40,27 +40,27 @@ export default class Step0 extends Component {
     { value: "MLG", label: "Malang" },
     { value: "JKT", label: "Jakarta" },
     { value: "MKS", label: "Makassar" }
-  ];
+  ]
 
   regions = [
     { value: "Wonosari", label: "Wonosari" },
     { value: "Wonokromo", label: "Wonokromo" },
     { value: "Simpang", label: "Simpang" }
-  ];
+  ]
 
   sizes = [
     { value: "S", label: "S" },
     { value: "M", label: "M" },
     { value: "L", label: "L" },
     { value: "XL", label: "XL" }
-  ];
+  ]
 
   handleChange = (name, value) => {
     this.setState({
       ...this.state,
       [name]: value
-    });
-  };
+    })
+  }
 
   render() {
     return (
@@ -179,10 +179,10 @@ export default class Step0 extends Component {
             <Input
               type="text"
               className={styles.postalcodeandcolor}
-              name="postalCode"
+              name="color"
               label="Base Color"
-              value={this.state.postalCode}
-              onChange={this.handleChange.bind(this, "postalCode")}
+              value={this.state.color}
+              onChange={this.handleChange.bind(this, "color")}
             />
             <div className={styles.flexcontainer}>
               <div className={styles.flexitem}>
@@ -300,6 +300,6 @@ export default class Step0 extends Component {
         <hr className ={styles.rowform}/>
         <RoundedButton to="/drophere/order/1" className={styles.button} primary>NEXT</RoundedButton>
       </div>
-    );
+    )
   }
 }

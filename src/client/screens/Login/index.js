@@ -90,7 +90,7 @@ export default class Login extends Component {
               className={styles.flexboxitem + " " + styles.flexboxtogglebutton}
             >
               <img
-                src="img/cross.svg"
+                src="img/blackcross.svg"
                 className={styles.togglebuttoncross}
               />
             </div>
