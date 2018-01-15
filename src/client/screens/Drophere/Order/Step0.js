@@ -65,24 +65,6 @@ export default class Step0 extends Component {
   render() {
     return (
       <div className={styles.container}>
-<<<<<<< HEAD
-        <div className={styles.wrapper} />
-        <form>
-          <Input type="text" name="name" label="Name" value={this.state.name} onChange={this.handleChange.bind(this, 'name')}/>
-          <Input type="tel" name="phone" label="Phone" value={this.state.phone} onChange={this.handleChange.bind(this, 'phone')}/>
-          <Input type="email" name="email" label="Email" value={this.state.email} onChange={this.handleChange.bind(this, 'email')}/>
-          <Input type="text" name="company" label="Company" value={this.state.company} onChange={this.handleChange.bind(this, 'company')}/>
-          <p>Role</p>
-          <RadioGroup name="role" value={this.state.role} onChange={this.handleChange.bind(this, 'role')}>
-            <RadioButton label ="Business Owner" value="busowner"/>
-            <RadioButton label ="Management" value="management"/>
-            <RadioButton label ="Staf" value="staf"/>
-            <RadioButton label ="Others" value="other"/>
-          </RadioGroup>
-          <p>Shipping Address</p>
-            
-        </form>
-=======
         <div className={styles.wrapper}>
           <form className={styles.form}>
             <Input
@@ -317,7 +299,6 @@ export default class Step0 extends Component {
         <p className={styles.orderformtext}>Order Form</p>
         <hr className ={styles.rowform}/>
         <RoundedButton to="/drophere/order/1" className={styles.button} primary>NEXT</RoundedButton>
->>>>>>> 9168772ba797b237a770fe2317b228ccc76a95d1
       </div>
     );
   }
