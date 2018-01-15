@@ -34,14 +34,15 @@ export default class Drophere extends Component {
   render() {
     return (
       <div className={styles.container}>
+        <div className={styles.info}>
+          <h1>Cart</h1>
+        </div>
         <div className={styles.wrapper}>
           <div className={styles.cartcontainer}>
             <div className={styles.cartflex}>
               <p className={styles.title}>Previews Design</p>
             </div>
-            <div className={styles.info}>
-              <h1>Cart</h1>
-            </div>
+
           </div>
           <div className={styles.cartcontainer}>
             <div className={styles.cartflex}>
@@ -51,10 +52,9 @@ export default class Drophere extends Component {
             </div>
             <div className={styles.cartflex}>
               <p className={styles.title}>Information</p>
-              <div className={styles.info}>{this.renderInformation()}</div>
+              <div className={styles.infoorder}>{this.renderInformation()}</div>
               <p className={styles.title}>Total Cost</p>
               <p className={styles.margincost}>Rp. 2.800.000</p>
-
               <div className={styles.editorder}>
                 <div className={styles.flexgrowitem + " " + styles.widthitem}>
                   <div className={styles.editorderitem}>
@@ -101,15 +101,15 @@ export default class Drophere extends Component {
               </div>
             </div>
           </div>
-          <div className={styles.down}>
-            <RoundedButton
-              to="/drophere/order/4"
-              className={styles.button}
-              primary
-            >
-              GO TO PAYMENT
+        </div>
+        <div className={styles.down}>
+          <RoundedButton
+            to="/drophere/order/4"
+            className={styles.button}
+            primary
+          >
+            GO TO PAYMENT
             </RoundedButton>
-          </div>
         </div>
       </div>
     )
