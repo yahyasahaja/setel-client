@@ -5,13 +5,15 @@ import React, { Component } from "react";
 import styles from "./css/drophere.scss";
 
 //COMPONENTS
-import DrophereMenu from "../../components/DrophereMenu";
 import RoundedButton from "../../components/RoundedButton";
+import DrophereMenu from '../../components/DrophereMenu'
+import Footer from '../../components/Footer'
 
 //COMPONENT
 export default class Drophere extends Component {
   render() {
     return (
+      <div>
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.logo}>
@@ -27,6 +29,9 @@ export default class Drophere extends Component {
 
         <RoundedButton to="/drophere/order/0" className={styles.button} primary>ORDER</RoundedButton>
         </div>
+      </div>
+      <Footer />
+      <DrophereMenu />
       </div>
     )
   }

@@ -1,8 +1,29 @@
 .container {
   width: 100%;
-  padding: 20px;
-  min-height: 80%;
-  padding-top: 100px;
-  background: white;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  
+  .preview {
+    width: 40%;
+    background: #e6e6e6;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+  }
 
+  .content-wrapper {
+    width: 60%;
+    padding: 20px;
+    height: 100%;
+    background: white;
+    margin-left: 40%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+    .content {
+      padding-top: 100px;
+    }
+  }
 }

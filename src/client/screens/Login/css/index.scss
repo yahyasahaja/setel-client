@@ -1,6 +1,6 @@
 @import "../../../assets/css/config.scss";
 $widthlogin: 352px;
-$heightlogin: 521px;
+$heightlogin: 650px;
 @mixin center($width, $height) {
   width: $width;
   height: $height;
@@ -58,6 +58,7 @@ $heightlogin: 521px;
           width: 18px;
           height: 18px;
           object-fit: contain;
+          margin-top: 10px;
         }
         .user {
           font-family: "Roboto", sans-serif;
@@ -161,6 +162,13 @@ $heightlogin: 521px;
     }
     .rowksztat2 {
       width: 84px;
+      height: 1px;
+      object-fit: contain;
+      background-color: #000000;
+      margin-left: 47px;
+    }
+    .rowksztat22 {
+      width: 127px;
       height: 1px;
       object-fit: contain;
       background-color: #000000;

@@ -15,7 +15,7 @@ import quantitytheme from "./css/input-quantity-theme.scss"
 import RoundedButton from "../../../components/RoundedButton"
 
 //COMPONENT
-export default class Step0 extends Component {
+export default class DrophereForm extends Component {
   constructor(props) {
     super(props)
     this.state = {

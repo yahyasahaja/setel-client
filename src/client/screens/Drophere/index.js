@@ -8,8 +8,6 @@ import styles from './css/index.scss'
 //COMPONETNS
 import Drophere from './Drophere'
 import Order from './Order'
-import DrophereMenu from '../../components/DrophereMenu'
-import Footer from '../../components/Footer'
 
 //COMPONENT
 export default class MainDrophere extends Component {
@@ -20,8 +18,6 @@ export default class MainDrophere extends Component {
         <Route path="/drophere/order/:orderId" component={Order} />
         <Route path="/drophere" component={Drophere} />
       </Switch>
-      <Footer />
-      <DrophereMenu />
       </div>
     )
   }

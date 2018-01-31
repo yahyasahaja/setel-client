@@ -1,14 +1,20 @@
 //MODULES
-import React, { Component } from "react";
+import React, { Component } from "react"
 
 //STYLES
-import styles from "./css/index.scss";
+import styles from "./css/index.scss"
 
 //COMPONENTS
-import RoundedButton from "../../components/RoundedButton";
+import RoundedButton from "../../components/RoundedButton"
 
 //COMPONENT
 export default class Login extends Component {
+
+  state = {
+    showLogin: true,
+    showRegister: false
+  }
+  
   render() {
     return (
       <div className={styles.container}>
@@ -82,6 +88,13 @@ export default class Login extends Component {
               <p className={styles.loginbottom}>LOGIN</p>
             </div>
           </div>
+          <div
+            className={styles.flexboxcontainer}
+          >
+            <div className={styles.flexboxitem}>
+              <img className={styles.rowksztat22} src="/img/kszta-t-2.svg" />
+            </div>
+          </div>
           <div className={styles.flexboxcontainer}>
             <div className={styles.flexboxitem + " " + styles.flexlogin}>
               <p className={styles.loginandregisterheading}>REGISTER</p>
@@ -97,6 +110,6 @@ export default class Login extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }

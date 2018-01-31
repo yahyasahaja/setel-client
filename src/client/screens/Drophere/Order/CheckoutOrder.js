@@ -28,7 +28,7 @@ const DATA = [
 ]
 
 //COMPONENT
-export default class Drophere extends Component {
+export default class CheckoutOrder extends Component {
   renderContent() {
     if (DATA) return _.map(DATA, (data, i) => {
       return <DataDisplay name={data.name} value={data.value} key={i} />

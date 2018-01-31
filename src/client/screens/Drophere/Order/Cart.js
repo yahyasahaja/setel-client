@@ -23,7 +23,7 @@ const buyerinfo = [
 ];
 
 //COMPONENT
-export default class Drophere extends Component {
+export default class Cart extends Component {
   renderInformation() {
     if (buyerinfo)
       return _.map(buyerinfo, (data, i) => {

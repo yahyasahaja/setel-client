@@ -33201,13 +33201,17 @@ var _drophere = __webpack_require__(393);
 
 var _drophere2 = _interopRequireDefault(_drophere);
 
+var _RoundedButton = __webpack_require__(17);
+
+var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
+
 var _DrophereMenu = __webpack_require__(84);
 
 var _DrophereMenu2 = _interopRequireDefault(_DrophereMenu);
 
-var _RoundedButton = __webpack_require__(17);
+var _Footer = __webpack_require__(85);
 
-var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
+var _Footer2 = _interopRequireDefault(_Footer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33239,980 +33243,32 @@ var Drophere = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         "div",
-        { className: _drophere2.default.container },
+        null,
         _react2.default.createElement(
           "div",
-          { className: _drophere2.default.wrapper },
+          { className: _drophere2.default.container },
           _react2.default.createElement(
             "div",
-            { className: _drophere2.default.logo },
-            _react2.default.createElement("img", { src: "/img/drop-here.png" })
-          ),
-          _react2.default.createElement(
-            "p",
-            { className: _drophere2.default.text },
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt ut labore et dolore magna aliqua. Ut enim ad veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat."
-          ),
-          _react2.default.createElement(
-            _RoundedButton2.default,
-            { to: "/drophere/order/0", className: _drophere2.default.button, primary: true },
-            "ORDER"
-          )
-        )
-      );
-    }
-  }]);
-
-  return Drophere;
-}(_react.Component);
-
-exports.default = Drophere;
-
-/***/ }),
-/* 170 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _input = __webpack_require__(45);
-
-var _input2 = _interopRequireDefault(_input);
-
-var _radio = __webpack_require__(352);
-
-var _dropdown = __webpack_require__(128);
-
-var _dropdown2 = _interopRequireDefault(_dropdown);
-
-var _step = __webpack_require__(387);
-
-var _step2 = _interopRequireDefault(_step);
-
-var _radioButtonTheme = __webpack_require__(386);
-
-var _radioButtonTheme2 = _interopRequireDefault(_radioButtonTheme);
-
-var _dropdownTheme = __webpack_require__(383);
-
-var _dropdownTheme2 = _interopRequireDefault(_dropdownTheme);
-
-var _dropdownSizeTheme = __webpack_require__(382);
-
-var _dropdownSizeTheme2 = _interopRequireDefault(_dropdownSizeTheme);
-
-var _inputQuantityTheme = __webpack_require__(385);
-
-var _inputQuantityTheme2 = _interopRequireDefault(_inputQuantityTheme);
-
-var _RoundedButton = __webpack_require__(17);
-
-var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
-
-
-//STYLES
-
-
-//COMPONENTS
-
-
-//COMPONENT
-var Step0 = function (_Component) {
-  _inherits(Step0, _Component);
-
-  function Step0(props) {
-    _classCallCheck(this, Step0);
-
-    var _this = _possibleConstructorReturn(this, (Step0.__proto__ || Object.getPrototypeOf(Step0)).call(this, props));
-
-    _this.cities = [{ value: "SBY", label: "Surabaya" }, { value: "MLG", label: "Malang" }, { value: "JKT", label: "Jakarta" }, { value: "MKS", label: "Makassar" }];
-    _this.regions = [{ value: "Wonosari", label: "Wonosari" }, { value: "Wonokromo", label: "Wonokromo" }, { value: "Simpang", label: "Simpang" }];
-    _this.sizes = [{ value: "S", label: "S" }, { value: "M", label: "M" }, { value: "L", label: "L" }, { value: "XL", label: "XL" }];
-
-    _this.handleChange = function (name, value) {
-      _this.setState(_extends({}, _this.state, _defineProperty({}, name, value)));
-    };
-
-    _this.state = {
-      name: "",
-      phone: "",
-      email: "",
-      company: "",
-      role: "",
-      city: "SBY",
-      region: "Wonosari",
-      postalCode: "",
-      category: "",
-      productName: "",
-      color: "",
-      size: "",
-      quantity: ""
-    };
-    return _this;
-  }
-
-  _createClass(Step0, [{
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        { className: _step2.default.container },
-        _react2.default.createElement(
-          "div",
-          { className: _step2.default.wrapper },
-          _react2.default.createElement(
-            "form",
-            { className: _step2.default.form },
-            _react2.default.createElement(_input2.default, {
-              type: "text",
-              name: "name",
-              label: "Name",
-              value: this.state.name,
-              onChange: this.handleChange.bind(this, "name")
-            }),
-            _react2.default.createElement(_input2.default, {
-              type: "tel",
-              name: "phone",
-              label: "Phone",
-              value: this.state.phone,
-              onChange: this.handleChange.bind(this, "phone")
-            }),
-            _react2.default.createElement(_input2.default, {
-              type: "email",
-              name: "email",
-              label: "Email",
-              value: this.state.email,
-              onChange: this.handleChange.bind(this, "email")
-            }),
-            _react2.default.createElement(_input2.default, {
-              type: "text",
-              name: "company",
-              label: "Company",
-              value: this.state.company,
-              onChange: this.handleChange.bind(this, "company")
-            }),
+            { className: _drophere2.default.wrapper },
             _react2.default.createElement(
-              "p",
-              null,
-              "Role"
-            ),
-            _react2.default.createElement(
-              _radio.RadioGroup,
-              {
-                name: "role",
-                value: this.state.role,
-                onChange: this.handleChange.bind(this, "role")
-              },
-              _react2.default.createElement(_radio.RadioButton, {
-                theme: _radioButtonTheme2.default,
-                label: "Business Owner",
-                value: "busowner"
-              }),
-              _react2.default.createElement(_radio.RadioButton, {
-                theme: _radioButtonTheme2.default,
-                label: "Management",
-                value: "management"
-              }),
-              _react2.default.createElement(_radio.RadioButton, { theme: _radioButtonTheme2.default, label: "Staf", value: "staf" }),
-              _react2.default.createElement(_radio.RadioButton, { theme: _radioButtonTheme2.default, label: "Others", value: "other" })
+              "div",
+              { className: _drophere2.default.logo },
+              _react2.default.createElement("img", { src: "/img/drop-here.png" })
             ),
             _react2.default.createElement(
               "p",
-              { className: _step2.default.textmargin },
-              "Shipping Address"
-            ),
-            _react2.default.createElement(
-              "p",
-              { className: _step2.default.text },
-              "City"
-            ),
-            _react2.default.createElement(_dropdown2.default, {
-              theme: _dropdownTheme2.default,
-              source: this.cities,
-              value: this.state.city,
-              onChange: this.handleChange.bind(this, "city")
-            }),
-            _react2.default.createElement(
-              "p",
-              { className: _step2.default.text },
-              "Region"
-            ),
-            _react2.default.createElement(_dropdown2.default, {
-              theme: _dropdownTheme2.default,
-              source: this.regions,
-              value: this.state.region,
-              onChange: this.handleChange.bind(this, "region")
-            }),
-            _react2.default.createElement(_input2.default, {
-              type: "text",
-              className: _step2.default.postalcodeandcolor,
-              name: "postalCode",
-              label: "Postal Code",
-              value: this.state.postalCode,
-              onChange: this.handleChange.bind(this, "postalCode")
-            }),
-            _react2.default.createElement(
-              "p",
-              null,
-              "Product Category"
-            ),
-            _react2.default.createElement(
-              _radio.RadioGroup,
-              {
-                name: "category",
-                value: this.state.category,
-                onChange: this.handleChange.bind(this, "category")
-              },
-              _react2.default.createElement(_radio.RadioButton, { theme: _radioButtonTheme2.default, label: "T-Shirt", value: "t-shirt" }),
-              _react2.default.createElement(_radio.RadioButton, { theme: _radioButtonTheme2.default, label: "Hoodie", value: "hoodie" }),
-              _react2.default.createElement(_radio.RadioButton, { theme: _radioButtonTheme2.default, label: "Jacket", value: "jacket" }),
-              _react2.default.createElement(_radio.RadioButton, { theme: _radioButtonTheme2.default, label: "Jersey", value: "jersey" })
-            ),
-            _react2.default.createElement(
-              "p",
-              { className: _step2.default.textmargin },
-              "Product Name"
-            ),
-            _react2.default.createElement(
-              _radio.RadioGroup,
-              {
-                name: "productName",
-                value: this.state.productName,
-                onChange: this.handleChange.bind(this, "productName")
-              },
-              _react2.default.createElement(_radio.RadioButton, {
-                theme: _radioButtonTheme2.default,
-                label: "Cotton 30s",
-                value: "cotton30s"
-              }),
-              _react2.default.createElement(_radio.RadioButton, {
-                theme: _radioButtonTheme2.default,
-                label: "Cotton 30s",
-                value: "cotton40s"
-              }),
-              _react2.default.createElement(_radio.RadioButton, {
-                theme: _radioButtonTheme2.default,
-                label: "Cotton 30s",
-                value: "cotton50s"
-              }),
-              _react2.default.createElement(_radio.RadioButton, {
-                theme: _radioButtonTheme2.default,
-                label: "Cotton 30s",
-                value: "cotton60s"
-              })
-            ),
-            _react2.default.createElement(
-              "p",
-              { className: _step2.default.textmargin },
-              "Base Color"
-            ),
-            _react2.default.createElement(_input2.default, {
-              type: "text",
-              className: _step2.default.postalcodeandcolor,
-              name: "color",
-              label: "Base Color",
-              value: this.state.color,
-              onChange: this.handleChange.bind(this, "color")
-            }),
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.flexcontainer },
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  null,
-                  "Size"
-                ),
-                _react2.default.createElement(_dropdown2.default, {
-                  theme: _dropdownSizeTheme2.default,
-                  source: this.sizes,
-                  value: this.state.size,
-                  onChange: this.handleChange.bind(this, "size")
-                }),
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.smalltext },
-                  "Add size"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  null,
-                  "Quantity"
-                ),
-                _react2.default.createElement(_input2.default, {
-                  type: "number",
-                  name: "quantity",
-                  hint: "1",
-                  theme: _inputQuantityTheme2.default,
-                  value: this.state.quantity,
-                  onChange: this.handleChange.bind(this, "quantity")
-                })
-              )
-            ),
-            _react2.default.createElement(
-              "p",
-              null,
-              "Size Guideline"
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.flexcontainer },
-              _react2.default.createElement("div", { className: _step2.default.flexitem }),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "P"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "L"
-                )
-              )
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.flexcontainer },
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "M"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "72"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "30"
-                )
-              )
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.flexcontainer },
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "L"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "74"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "31"
-                )
-              )
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.flexcontainer },
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "XL"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "76"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "32"
-                )
-              )
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.flexcontainer },
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "XXL"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "78"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "33"
-                )
-              )
-            ),
-            _react2.default.createElement(
-              "p",
-              { className: _step2.default.textmargin },
-              "Price Guideline"
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.flexcontainer },
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "M"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "Rp. 70.000/pcs"
-                )
-              )
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.flexcontainer },
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "L"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "Rp. 70.000/pcs"
-                )
-              )
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.flexcontainer },
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "XM"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "Rp. 70.000/pcs"
-                )
-              )
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.flexcontainer },
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "XXL"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.flexitem },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.sizetext },
-                  "Rp. 75.000/pcs"
-                )
-              )
-            )
-          )
-        ),
-        _react2.default.createElement(
-          "p",
-          { className: _step2.default.orderformtext },
-          "Order Form"
-        ),
-        _react2.default.createElement("hr", { className: _step2.default.rowform }),
-        _react2.default.createElement(
-          _RoundedButton2.default,
-          { to: "/drophere/order/1", className: _step2.default.button, primary: true },
-          "NEXT"
-        )
-      );
-    }
-  }]);
-
-  return Step0;
-}(_react.Component);
-
-exports.default = Step0;
-
-/***/ }),
-/* 171 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _input = __webpack_require__(45);
-
-var _input2 = _interopRequireDefault(_input);
-
-var _step = __webpack_require__(388);
-
-var _step2 = _interopRequireDefault(_step);
-
-var _RoundedButton = __webpack_require__(17);
-
-var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
-
-
-//STYLES
-
-
-//COMPONETNS
-
-
-//INNER_CONFIG
-var DRAG_ENTER = 0;
-var DRAG_OVER = 1;
-var DRAG_LEAVE = 2;
-var DRAG_DROP = 3;
-
-//COMPONENT
-
-var Step0 = function (_Component) {
-  _inherits(Step0, _Component);
-
-  function Step0() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Step0);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Step0.__proto__ || Object.getPrototypeOf(Step0)).call.apply(_ref, [this].concat(args))), _this), _this.onFileUploadChange = function (e) {
-      e.preventDefault();
-
-      _this.handleFileUpload(e.target.files[0]);
-    }, _this.handleFileUpload = function (file) {
-      console.log('uploading file ', file.name, ' ...');
-    }, _this.state = {
-      uploading: false,
-      dragStateId: -1
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(Step0, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      window.ondragenter = function (e) {
-        e.preventDefault();
-        _this2.setState({ dragStateId: DRAG_ENTER });
-      };
-      window.ondragover = function (e) {
-        e.preventDefault();
-        if (_this2.state.dragStateId != DRAG_OVER) _this2.setState({ dragStateId: DRAG_OVER });
-      };
-      window.ondragleave = function (e) {
-        e.preventDefault();
-        _this2.setState({ dragStateId: DRAG_LEAVE });
-      };
-      window.ondrop = function (e) {
-        e.preventDefault();
-
-        _this2.setState({ dragStateId: DRAG_DROP, uploading: true });
-        _this2.handleFileUpload(e.dataTransfer.files.item(0));
-      };
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      window.ondragenter = undefined;
-      window.ondragover = undefined;
-      window.ondragleave = undefined;
-      window.ondrop = undefined;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var dragStateId = this.state.dragStateId;
-
-
-      return _react2.default.createElement(
-        'div',
-        { className: _step2.default.container },
-        _react2.default.createElement(
-          'div',
-          { className: _step2.default.up },
-          _react2.default.createElement(
-            'div',
-            { className: _step2.default['drop-container'] + ' ' + (dragStateId === DRAG_OVER || dragStateId == DRAG_ENTER ? _step2.default['on-drag-over'] : '') },
-            _react2.default.createElement(
-              'span',
-              null,
-              'DRAG YOUR DESIGN HERE'
-            ),
-            _react2.default.createElement(
-              'span',
-              { className: _step2.default.or },
-              'OR'
-            ),
-            _react2.default.createElement(
-              'label',
-              { 'for': 'upload-file' },
-              _react2.default.createElement(
-                'div',
-                { className: _step2.default.button, onClick: function onClick(e) {} },
-                'UPLOAD DESIGN'
-              ),
-              _react2.default.createElement('input', {
-                type: 'file', name: 'upload-file',
-                id: 'upload-file', disabled: this.state.uploading,
-                onChange: this.onFileUploadChange
-              })
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: _step2.default.info },
-            _react2.default.createElement(
-              'h1',
-              null,
-              'Design'
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              'Requirements:',
-              _react2.default.createElement('br', null),
-              _react2.default.createElement(
-                'ol',
-                null,
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Lorem impsum dolor'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Lorem impsum dolor'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Lorem impsum dolor'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Lorem impsum dolor'
-                )
-              )
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: _step2.default.down },
-          _react2.default.createElement(
-            _RoundedButton2.default,
-            { to: '/drophere/order/0', className: _step2.default.button },
-            'BACK'
-          ),
-          _react2.default.createElement(
-            _RoundedButton2.default,
-            { to: '/drophere/order/2', className: _step2.default.button, primary: true },
-            'NEXT'
-          )
-        )
-      );
-    }
-  }]);
-
-  return Step0;
-}(_react.Component);
-
-exports.default = Step0;
-
-/***/ }),
-/* 172 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _lodash = __webpack_require__(38);
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
-var _step = __webpack_require__(389);
-
-var _step2 = _interopRequireDefault(_step);
-
-var _DataDisplay = __webpack_require__(36);
-
-var _DataDisplay2 = _interopRequireDefault(_DataDisplay);
-
-var _RoundedButton = __webpack_require__(17);
-
-var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
-
-
-//STYLES
-
-
-//COMPONENTS
-
-
-//INNER_CONFIG
-var DATA = [{ name: 'Name', value: 'Zain Fikri' }, { name: 'Phone', value: 'Zain Fikri' }, { name: 'Email', value: 'Zain Fikri' }, { name: 'Company, Role', value: 'Zain Fikri' }, { name: 'Shipping Address', value: 'Zain Fikri' }, { name: 'Product Category', value: 'Zain Fikri' }, { name: 'Product Name', value: 'Cotton 30s' }, { name: 'Size and Quality', value: _react2.default.createElement(
-    "div",
-    { className: _step2.default.sizequality },
-    _react2.default.createElement(
-      "div",
-      { className: _step2.default.size },
-      _react2.default.createElement(
-        "span",
-        null,
-        "M"
-      ),
-      _react2.default.createElement(
-        "span",
-        null,
-        "10"
-      )
-    ),
-    _react2.default.createElement(
-      "div",
-      { className: _step2.default.size },
-      _react2.default.createElement(
-        "span",
-        null,
-        "L"
-      ),
-      _react2.default.createElement(
-        "span",
-        null,
-        "20"
-      )
-    ),
-    _react2.default.createElement(
-      "div",
-      { className: _step2.default.size },
-      _react2.default.createElement(
-        "span",
-        null,
-        "XL"
-      ),
-      _react2.default.createElement(
-        "span",
-        null,
-        "9"
-      )
-    )
-  ) }, { name: 'Total Cost', value: 'Zain Fikri' }, { name: 'Payment Method', value: 'Zain Fikri' }];
-
-//COMPONENT
-
-var Drophere = function (_Component) {
-  _inherits(Drophere, _Component);
-
-  function Drophere() {
-    _classCallCheck(this, Drophere);
-
-    return _possibleConstructorReturn(this, (Drophere.__proto__ || Object.getPrototypeOf(Drophere)).apply(this, arguments));
-  }
-
-  _createClass(Drophere, [{
-    key: "renderContent",
-    value: function renderContent() {
-      if (DATA) return _lodash2.default.map(DATA, function (data, i) {
-        return _react2.default.createElement(_DataDisplay2.default, { name: data.name, value: data.value, key: i });
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        { className: _step2.default.container },
-        _react2.default.createElement(
-          "form",
-          null,
-          _react2.default.createElement(
-            "div",
-            { className: _step2.default.up },
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.content },
-              this.renderContent()
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.info },
-              _react2.default.createElement(
-                "h1",
-                null,
-                "Checkout Order"
-              )
-            )
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: _step2.default.down },
-            _react2.default.createElement(
-              _RoundedButton2.default,
-              { to: "/drophere/order/1", className: _step2.default.button },
-              "BACK"
+              { className: _drophere2.default.text },
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt ut labore et dolore magna aliqua. Ut enim ad veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat."
             ),
             _react2.default.createElement(
               _RoundedButton2.default,
-              { to: "/drophere/order/3", className: _step2.default.button, primary: true },
-              "NEXT"
+              { to: "/drophere/order/0", className: _drophere2.default.button, primary: true },
+              "ORDER"
             )
           )
-        )
+        ),
+        _react2.default.createElement(_Footer2.default, null),
+        _react2.default.createElement(_DrophereMenu2.default, null)
       );
     }
   }]);
@@ -34223,563 +33279,12 @@ var Drophere = function (_Component) {
 exports.default = Drophere;
 
 /***/ }),
-/* 173 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _lodash = __webpack_require__(38);
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
-var _step = __webpack_require__(390);
-
-var _step2 = _interopRequireDefault(_step);
-
-var _DataDisplay = __webpack_require__(36);
-
-var _DataDisplay2 = _interopRequireDefault(_DataDisplay);
-
-var _RoundedButton = __webpack_require__(17);
-
-var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
-
-
-//STYLES
-
-
-//COMPONENTS
-
-
-var buyerinfo = [{ name: "Name:", value: "Zain Fikri" }, {
-  name: "Address shipping:",
-  value: "Jalan Terusan Piranha, Malang, Jawa Timur, 63172"
-}, { name: "Product category:", value: "T-Shirt" }, { name: "Product name:", value: "Cotton30s" }, { name: "Base color:", value: "#020266" }, { name: "Size:", value: "M(10),L(20),XL(9)" }, { name: "Payment method:", value: "COD" }];
-
-//COMPONENT
-
-var Drophere = function (_Component) {
-  _inherits(Drophere, _Component);
-
-  function Drophere() {
-    _classCallCheck(this, Drophere);
-
-    return _possibleConstructorReturn(this, (Drophere.__proto__ || Object.getPrototypeOf(Drophere)).apply(this, arguments));
-  }
-
-  _createClass(Drophere, [{
-    key: "renderInformation",
-    value: function renderInformation() {
-      if (buyerinfo) return _lodash2.default.map(buyerinfo, function (data, i) {
-        return _react2.default.createElement(_DataDisplay2.default, { name: data.name, value: data.value, key: i });
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        { className: _step2.default.container },
-        _react2.default.createElement(
-          "div",
-          { className: _step2.default.info },
-          _react2.default.createElement(
-            "h1",
-            null,
-            "Cart"
-          )
-        ),
-        _react2.default.createElement(
-          "div",
-          { className: _step2.default.wrapper },
-          _react2.default.createElement(
-            "div",
-            { className: _step2.default.cartcontainer },
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.cartflex },
-              _react2.default.createElement(
-                "p",
-                { className: _step2.default.title },
-                "Previews Design"
-              )
-            )
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: _step2.default.cartcontainer },
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.cartflex },
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.preview },
-                _react2.default.createElement(
-                  "p",
-                  { className: _step2.default.pic },
-                  "GAMBAR MASUK SINI"
-                )
-              )
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.cartflex },
-              _react2.default.createElement(
-                "p",
-                { className: _step2.default.title },
-                "Information"
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.infoorder },
-                this.renderInformation()
-              ),
-              _react2.default.createElement(
-                "p",
-                { className: _step2.default.title },
-                "Total Cost"
-              ),
-              _react2.default.createElement(
-                "p",
-                { className: _step2.default.margincost },
-                "Rp. 2.800.000"
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: _step2.default.editorder },
-                _react2.default.createElement(
-                  "div",
-                  { className: _step2.default.flexgrowitem + " " + _step2.default.widthitem },
-                  _react2.default.createElement(
-                    "div",
-                    { className: _step2.default.editorderitem },
-                    _react2.default.createElement("img", { className: _step2.default.img, src: "/img/cross.svg" })
-                  ),
-                  _react2.default.createElement(
-                    "div",
-                    {
-                      className: _step2.default.editorderitem + " " + _step2.default.sizeorderitem
-                    },
-                    _react2.default.createElement(
-                      "p",
-                      { className: _step2.default.editordertext },
-                      "cancel order"
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  "div",
-                  { className: _step2.default.flexgrowitem },
-                  _react2.default.createElement(
-                    "div",
-                    { className: _step2.default.editorderitem },
-                    _react2.default.createElement("img", {
-                      className: _step2.default.img,
-                      src: "/img/ic-save-black-24-dp.png"
-                    })
-                  ),
-                  _react2.default.createElement(
-                    "div",
-                    {
-                      className: _step2.default.editorderitem + " " + _step2.default.sizeorderitem
-                    },
-                    _react2.default.createElement(
-                      "p",
-                      { className: _step2.default.editordertext },
-                      "save pdf"
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  "div",
-                  { className: _step2.default.flexgrowitem },
-                  _react2.default.createElement(
-                    "div",
-                    { className: _step2.default.editorderitem },
-                    _react2.default.createElement("img", {
-                      className: _step2.default.img,
-                      src: "/img/ic-mode-edit-black-36-dp.png"
-                    })
-                  ),
-                  _react2.default.createElement(
-                    "div",
-                    {
-                      className: _step2.default.editorderitem + " " + _step2.default.sizeorderitem
-                    },
-                    _react2.default.createElement(
-                      "p",
-                      { className: _step2.default.editordertext },
-                      "edit information"
-                    )
-                  )
-                )
-              )
-            )
-          )
-        ),
-        _react2.default.createElement(
-          "div",
-          { className: _step2.default.down },
-          _react2.default.createElement(
-            _RoundedButton2.default,
-            {
-              to: "/drophere/order/4",
-              className: _step2.default.button,
-              primary: true
-            },
-            "GO TO PAYMENT"
-          )
-        )
-      );
-    }
-  }]);
-
-  return Drophere;
-}(_react.Component);
-
-exports.default = Drophere;
-
-/***/ }),
-/* 174 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _lodash = __webpack_require__(38);
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
-var _step = __webpack_require__(391);
-
-var _step2 = _interopRequireDefault(_step);
-
-var _DataDisplay = __webpack_require__(36);
-
-var _DataDisplay2 = _interopRequireDefault(_DataDisplay);
-
-var _RoundedButton = __webpack_require__(17);
-
-var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
-
-
-//STYLES
-
-
-//COMPONENTS
-
-
-//COMPONENT
-var Drophere = function (_Component) {
-  _inherits(Drophere, _Component);
-
-  function Drophere() {
-    _classCallCheck(this, Drophere);
-
-    return _possibleConstructorReturn(this, (Drophere.__proto__ || Object.getPrototypeOf(Drophere)).apply(this, arguments));
-  }
-
-  _createClass(Drophere, [{
-    key: "renderPayment",
-    value: function renderPayment() {
-      if (paymentinfo) return _lodash2.default.map(paymentinfo, function (data, i) {
-        return _react2.default.createElement(_DataDisplay2.default, { value: data.value, key: i });
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        { className: _step2.default.container },
-        _react2.default.createElement(
-          "div",
-          { className: _step2.default.infoflex },
-          _react2.default.createElement(
-            "h1",
-            null,
-            "Payment"
-          )
-        ),
-        _react2.default.createElement(
-          "div",
-          { className: _step2.default.wrapper },
-          _react2.default.createElement(
-            "div",
-            { className: _step2.default.contentflex },
-            _react2.default.createElement(
-              "p",
-              null,
-              "Order number: #0097"
-            )
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: _step2.default.content },
-            _react2.default.createElement(
-              "p",
-              { className: _step2.default.title },
-              "Checkout Successful"
-            ),
-            _react2.default.createElement(
-              "p",
-              { className: _step2.default.text },
-              "Complete The Payment"
-            ),
-            _react2.default.createElement(
-              "p",
-              { className: _step2.default.smallertext },
-              "Remaining time of your payment"
-            ),
-            _react2.default.createElement(
-              "p",
-              { className: _step2.default.time },
-              "05 : 59 : 50"
-            ),
-            _react2.default.createElement(
-              "p",
-              { className: _step2.default.text + ' ' + _step2.default.margintext },
-              "Total cost to be paid"
-            ),
-            _react2.default.createElement(
-              "p",
-              { className: _step2.default.cost },
-              "Rp. 2.800.000"
-            ),
-            _react2.default.createElement(
-              "p",
-              { className: _step2.default.text + ' ' + _step2.default.margintext },
-              "Please transfer to the following Setel's bank account number"
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: _step2.default.bank },
-              _react2.default.createElement("img", null),
-              _react2.default.createElement(
-                "p",
-                { className: _step2.default.text },
-                "Lowokwaru"
-              ),
-              _react2.default.createElement(
-                "p",
-                { className: _step2.default.text + ' ' + _step2.default.accnumber },
-                "165 524 789 26"
-              ),
-              _react2.default.createElement(
-                "p",
-                { className: _step2.default.nomargin },
-                "PT. Setel"
-              )
-            )
-          )
-        ),
-        _react2.default.createElement(
-          "div",
-          { className: _step2.default.down },
-          _react2.default.createElement(
-            _RoundedButton2.default,
-            { className: _step2.default.button, to: "/drophere/order/5", primary: true },
-            "CONFIRMATION"
-          )
-        )
-      );
-    }
-  }]);
-
-  return Drophere;
-}(_react.Component);
-
-exports.default = Drophere;
-
-/***/ }),
-/* 175 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _lodash = __webpack_require__(38);
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
-var _dropdown = __webpack_require__(128);
-
-var _dropdown2 = _interopRequireDefault(_dropdown);
-
-var _input = __webpack_require__(45);
-
-var _input2 = _interopRequireDefault(_input);
-
-var _step = __webpack_require__(392);
-
-var _step2 = _interopRequireDefault(_step);
-
-var _DataDisplay = __webpack_require__(36);
-
-var _DataDisplay2 = _interopRequireDefault(_DataDisplay);
-
-var _RoundedButton = __webpack_require__(17);
-
-var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
-
-
-//STYLES
-
-
-//COMPONENTS
-
-
-//COMPONENT
-var Drophere = function (_Component) {
-  _inherits(Drophere, _Component);
-
-  function Drophere() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Drophere);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Drophere.__proto__ || Object.getPrototypeOf(Drophere)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      bankName: "Mandiri",
-      bankAccount: "",
-      accountName: ""
-    }, _this.handleChange = function (name, value) {
-      _this.setState(_extends({}, _this.state, _defineProperty({}, name, value)));
-    }, _this.bank = [{ value: "Mandiri", label: "Mandiri" }, { value: "BCA", label: "BCA" }, { value: "BNI", label: "BNI" }, { value: "BTN", label: "BTN" }], _this.DATA = [{ name: _react2.default.createElement(
-        'p',
-        null,
-        'Order Number'
-      ), value: _react2.default.createElement(
-        'p',
-        { className: _step2.default.text },
-        '#0097'
-      ) }, { name: _react2.default.createElement(
-        'p',
-        null,
-        'To Bank Account'
-      ), value: function value() {
-        return _react2.default.createElement(_dropdown2.default, { source: _this.bank, value: _this.state.bankName, onChange: _this.handleChange.bind(_this, "bankName") });
-      } }, { name: _react2.default.createElement(
-        'p',
-        null,
-        'From Bank Account'
-      ), value: function value() {
-        return _react2.default.createElement(_input2.default, { type: 'text', value: _this.state.bankAccount, onChange: _this.handleChange.bind(_this, "bankAccount") });
-      } }, { name: _react2.default.createElement(
-        'p',
-        null,
-        'Account Name'
-      ), value: function value() {
-        return _react2.default.createElement(_input2.default, { type: 'text', value: _this.state.accountName, onChange: _this.handleChange.bind(_this, "accountName") });
-      } }], _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(Drophere, [{
-    key: 'renderContent',
-    value: function renderContent() {
-      if (this.DATA) return _lodash2.default.map(this.DATA, function (data, i) {
-        return _react2.default.createElement(_DataDisplay2.default, { name: data.name, value: typeof data.value === 'function' ? data.value() : data.value, key: i });
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { className: _step2.default.container },
-        _react2.default.createElement(
-          'div',
-          { className: _step2.default.wrapper },
-          _react2.default.createElement(
-            'div',
-            { className: _step2.default.content },
-            this.renderContent(),
-            _react2.default.createElement(_dropdown2.default, { source: this.bank, value: this.state.bankName, onChange: this.handleChange })
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: _step2.default.down },
-          _react2.default.createElement(
-            _RoundedButton2.default,
-            { className: _step2.default.button, to: '/drophere/order/6', primary: true },
-            'SUBMIT'
-          )
-        )
-      );
-    }
-  }]);
-
-  return Drophere;
-}(_react.Component);
-
-exports.default = Drophere;
-
-/***/ }),
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
 /* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -34804,29 +33309,33 @@ var _index = __webpack_require__(384);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _Step = __webpack_require__(170);
+var _DrophereForm = __webpack_require__(409);
 
-var _Step2 = _interopRequireDefault(_Step);
+var _DrophereForm2 = _interopRequireDefault(_DrophereForm);
 
-var _Step3 = __webpack_require__(171);
+var _DragDesign = __webpack_require__(408);
 
-var _Step4 = _interopRequireDefault(_Step3);
+var _DragDesign2 = _interopRequireDefault(_DragDesign);
 
-var _Step5 = __webpack_require__(172);
+var _CheckoutOrder = __webpack_require__(406);
 
-var _Step6 = _interopRequireDefault(_Step5);
+var _CheckoutOrder2 = _interopRequireDefault(_CheckoutOrder);
 
-var _Step7 = __webpack_require__(173);
+var _Cart = __webpack_require__(405);
 
-var _Step8 = _interopRequireDefault(_Step7);
+var _Cart2 = _interopRequireDefault(_Cart);
 
-var _Step9 = __webpack_require__(174);
+var _Payment = __webpack_require__(410);
 
-var _Step10 = _interopRequireDefault(_Step9);
+var _Payment2 = _interopRequireDefault(_Payment);
 
-var _Step11 = __webpack_require__(175);
+var _Confirmation = __webpack_require__(407);
 
-var _Step12 = _interopRequireDefault(_Step11);
+var _Confirmation2 = _interopRequireDefault(_Confirmation);
+
+var _Desktop = __webpack_require__(167);
+
+var _Desktop2 = _interopRequireDefault(_Desktop);
 
 var _actions = __webpack_require__(86);
 
@@ -34891,14 +33400,28 @@ var Order = function (_Component) {
         'div',
         { className: _index2.default.container },
         _react2.default.createElement(
-          _reactRouterDom.Switch,
-          null,
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/0', exact: true, component: _Step2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/1', exact: true, component: _Step4.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/2', exact: true, component: _Step6.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/3', exact: true, component: _Step8.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/4', exact: true, component: _Step10.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/5', exact: true, component: _Step12.default })
+          'div',
+          { className: _index2.default.preview },
+          'Preview..'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _index2.default['content-wrapper'] },
+          _react2.default.createElement(_Desktop2.default, null),
+          _react2.default.createElement(
+            'div',
+            { className: _index2.default.content },
+            _react2.default.createElement(
+              _reactRouterDom.Switch,
+              null,
+              _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/0', exact: true, component: _DrophereForm2.default }),
+              _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/1', exact: true, component: _DragDesign2.default }),
+              _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/2', exact: true, component: _CheckoutOrder2.default }),
+              _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/3', exact: true, component: _Cart2.default }),
+              _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/4', exact: true, component: _Payment2.default }),
+              _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/5', exact: true, component: _Confirmation2.default })
+            )
+          )
         )
       );
     }
@@ -34943,14 +33466,6 @@ var _Order = __webpack_require__(176);
 
 var _Order2 = _interopRequireDefault(_Order);
 
-var _DrophereMenu = __webpack_require__(84);
-
-var _DrophereMenu2 = _interopRequireDefault(_DrophereMenu);
-
-var _Footer = __webpack_require__(85);
-
-var _Footer2 = _interopRequireDefault(_Footer);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34987,9 +33502,7 @@ var MainDrophere = function (_Component) {
           null,
           _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere/order/:orderId', component: _Order2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: '/drophere', component: _Drophere2.default })
-        ),
-        _react2.default.createElement(_Footer2.default, null),
-        _react2.default.createElement(_DrophereMenu2.default, null)
+        )
       );
     }
   }]);
@@ -35174,9 +33687,20 @@ var Login = function (_Component) {
   _inherits(Login, _Component);
 
   function Login() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, Login);
 
-    return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Login.__proto__ || Object.getPrototypeOf(Login)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      showLogin: true,
+      showRegister: false
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Login, [{
@@ -35305,6 +33829,17 @@ var Login = function (_Component) {
                 { className: _index2.default.loginbottom },
                 "LOGIN"
               )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            {
+              className: _index2.default.flexboxcontainer
+            },
+            _react2.default.createElement(
+              "div",
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement("img", { className: _index2.default.rowksztat22, src: "/img/kszta-t-2.svg" })
             )
           ),
           _react2.default.createElement(
@@ -35450,9 +33985,221 @@ var Register = function (_Component) {
         'div',
         { className: _index2.default.container },
         _react2.default.createElement(
-          'h1',
-          null,
-          'Hi react!'
+          'div',
+          { className: _index2.default.loginareacolor },
+          _react2.default.createElement(
+            'div',
+            { className: _index2.default.flexboxcontainer },
+            _react2.default.createElement('div', { className: _index2.default.flexboxitem }),
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement('img', { className: _index2.default.logo, src: '/img/logo.png' })
+            ),
+            _react2.default.createElement('div', { className: _index2.default.flexboxitem })
+          ),
+          _react2.default.createElement(
+            'div',
+            {
+              className: _index2.default.flexboxcontainer + " " + _index2.default.ksztat2container
+            },
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement('img', { className: _index2.default.rowksztat2, src: '/img/kszta-t-2.svg' })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _index2.default.flexboxcontainer },
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement(
+                'p',
+                { className: _index2.default.loginandregisterheading },
+                'LOGIN'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              {
+                className: _index2.default.flexboxitem + " " + _index2.default.flexboxtogglebutton
+              },
+              _react2.default.createElement('img', {
+                src: 'img/blackcross.svg',
+                className: _index2.default.togglebuttoncross
+              })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            {
+              className: _index2.default.flexboxcontainer
+            },
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement('img', { className: _index2.default.rowksztat22, src: '/img/kszta-t-2.svg' })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _index2.default.flexboxcontainer },
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem + " " + _index2.default.flexlogin },
+              _react2.default.createElement(
+                'p',
+                { className: _index2.default.loginandregisterheading },
+                'REGISTER'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              {
+                className: _index2.default.flexboxitem + " " + _index2.default.flexboxtogglebutton
+              },
+              _react2.default.createElement('img', { src: 'img/min.svg', className: _index2.default.togglebuttonmin })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            {
+              className: _index2.default.flexboxcontainer + " " + _index2.default.inputusercontainer
+            },
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement(
+                'p',
+                { className: _index2.default.user },
+                'USER'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement('input', { className: _index2.default.input, type: 'text' })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            {
+              className: _index2.default.flexboxcontainer + " " + _index2.default.inputemailcontainer
+            },
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement(
+                'p',
+                { className: _index2.default.user },
+                'EMAIL'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement('input', { className: _index2.default.input, type: 'text' })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            {
+              className: _index2.default.flexboxcontainer + " " + _index2.default.inputpasswordcontainer
+            },
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement(
+                'p',
+                { className: _index2.default.password },
+                'PASSWORD'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement('input', { className: _index2.default.input, type: 'password' })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            {
+              className: _index2.default.flexboxcontainer + " " + _index2.default.inputpasswordcontainer
+            },
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement(
+                'p',
+                { className: _index2.default.password },
+                'CONFIRM'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement('input', { className: _index2.default.input, type: 'password' })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            {
+              className: _index2.default.flexboxcontainer + " " + _index2.default.inputpasswordcontainer
+            },
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement(
+                'p',
+                { className: _index2.default.password },
+                'PHONE'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement('input', { className: _index2.default.input, type: 'tel' })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            {
+              className: _index2.default.flexboxcontainer + " " + _index2.default.signupgoogletextcontainer
+            },
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement(
+                'p',
+                { className: _index2.default.signup },
+                'Sign up with Google'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _index2.default.flexboxcontainer },
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem },
+              _react2.default.createElement('img', {
+                src: 'img/google.png',
+                srcset: 'img/google@2x.png',
+                className: _index2.default.googlelogin
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: _index2.default.flexboxitem + " " + _index2.default.flexlogin },
+              _react2.default.createElement(
+                'p',
+                { className: _index2.default.loginbottom },
+                'SIGN UP'
+              )
+            )
+          )
         )
       );
     }
@@ -36747,11 +35494,14 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, ".index--container--jMilm1Ec {\n  width: 100%;\n  padding: 20px;\n  min-height: 80%;\n  padding-top: 100px;\n  background: white; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/index.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,cAAc;EACd,gBAAgB;EAChB,mBAAmB;EACnB,kBAAkB,EAAE","file":"index.scss","sourcesContent":[".container {\n  width: 100%;\n  padding: 20px;\n  min-height: 80%;\n  padding-top: 100px;\n  background: white; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".index--container--jMilm1Ec {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: relative; }\n  .index--container--jMilm1Ec .index--preview--1sI5dNA6 {\n    width: 40%;\n    background: #e6e6e6;\n    position: absolute;\n    left: 0;\n    top: 0;\n    height: 100%; }\n  .index--container--jMilm1Ec .index--content-wrapper--18GRksAL {\n    width: 60%;\n    padding: 20px;\n    height: 100%;\n    background: white;\n    margin-left: 40%;\n    overflow-y: auto;\n    overflow-x: hidden; }\n    .index--container--jMilm1Ec .index--content-wrapper--18GRksAL .index--content--33Ujmx-q {\n      padding-top: 100px; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/index.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,aAAa;EACb,iBAAiB;EACjB,mBAAmB,EAAE;EACrB;IACE,WAAW;IACX,oBAAoB;IACpB,mBAAmB;IACnB,QAAQ;IACR,OAAO;IACP,aAAa,EAAE;EACjB;IACE,WAAW;IACX,cAAc;IACd,aAAa;IACb,kBAAkB;IAClB,iBAAiB;IACjB,iBAAiB;IACjB,mBAAmB,EAAE;IACrB;MACE,mBAAmB,EAAE","file":"index.scss","sourcesContent":[".container {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: relative; }\n  .container .preview {\n    width: 40%;\n    background: #e6e6e6;\n    position: absolute;\n    left: 0;\n    top: 0;\n    height: 100%; }\n  .container .content-wrapper {\n    width: 60%;\n    padding: 20px;\n    height: 100%;\n    background: white;\n    margin-left: 40%;\n    overflow-y: auto;\n    overflow-x: hidden; }\n    .container .content-wrapper .content {\n      padding-top: 100px; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
-	"container": "index--container--jMilm1Ec"
+	"container": "index--container--jMilm1Ec",
+	"preview": "index--preview--1sI5dNA6",
+	"content-wrapper": "index--content-wrapper--18GRksAL",
+	"content": "index--content--33Ujmx-q"
 };
 
 /***/ }),
@@ -37028,7 +35778,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, ".index--container--2O4CKmsA {\n  display: block;\n  background-color: #3a3779; }\n  .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 {\n    background-color: #fbfbfb;\n    width: 352px;\n    height: 521px;\n    top: 50%;\n    left: 50%;\n    margin-left: -176px;\n    margin-top: -260.5px;\n    position: absolute; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu {\n      margin: 0;\n      padding: 0;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row wrap;\n              flex-direction: row wrap;\n      -ms-flex-pack: distribute;\n          justify-content: space-around; }\n      .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW {\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        width: 117.33333px; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--logo--3R7Z0bWL {\n          margin-top: 30px;\n          width: 138px;\n          height: 71px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--loginandregisterheading--3EEnrQmd {\n          -webkit-box-flex: 2;\n              -ms-flex-positive: 2;\n                  flex-grow: 2;\n          font-family: \"Roboto\", sans-serif;\n          width: 75px;\n          height: 17px;\n          font-size: 22px;\n          font-weight: bold;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 3.5px;\n          text-align: left;\n          color: #000000;\n          margin-left: 47px;\n          margin-top: 18px; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--togglebuttonmin--uHT03OhN {\n          width: 16px;\n          height: 2px;\n          -o-object-fit: contain;\n             object-fit: contain;\n          background-color: #000000; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--togglebuttoncross--sQl-_ldN {\n          width: 18px;\n          height: 18px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--user--3gNEPsr- {\n          font-family: \"Roboto\", sans-serif;\n          margin-left: 46px;\n          width: 34px;\n          height: 9px;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--input--2UCwx3_o {\n          font-family: \"Roboto\", sans-serif;\n          padding: 10px 18px 11px 18px;\n          -ms-flex-item-align: center;\n              align-self: center;\n          border-style: none;\n          width: 138px;\n          height: 31px;\n          background-color: #e8e8e8;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--password--1XTI3gyi {\n          width: 75px;\n          height: 9px;\n          margin-left: 46px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--signup--2SGkxj5G {\n          margin-left: 48px;\n          font-family: \"Roboto\", sans-serif;\n          width: 87px;\n          height: 10px;\n          font-size: 10px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: normal;\n          text-align: left;\n          color: #000000; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--googlelogin--29oxZw0i {\n          margin-left: 44px;\n          width: 95px;\n          height: 28px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--loginbottom--2cdBVJ2X {\n          margin-right: -60px;\n          height: 9px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: center;\n          color: #3a3779; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--ksztat2container--344aTo8V {\n      margin-top: 30px; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxtogglebutton--B53MmuJX {\n      -ms-flex-item-align: center;\n          align-self: center;\n      text-align: end;\n      margin-right: 27px; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexlogin--PAxxhJ4j {\n      -ms-flex-item-align: center;\n          align-self: center; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--inputusercontainer--2-d2Ca89 {\n      margin-top: 28px; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--inputpasswordcontainer--336I81pU {\n      margin-top: 19px; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--signupgoogletextcontainer--7ej4JJ8h {\n      margin-top: 5px; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--rowksztat2--1KUT60nU {\n      width: 84px;\n      height: 1px;\n      -o-object-fit: contain;\n         object-fit: contain;\n      background-color: #000000;\n      margin-left: 47px; }\n", "", {"version":3,"sources":["/./src/client/screens/Login/css/index.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,0BAA0B,EAAE;EAC5B;IACE,0BAA0B;IAC1B,aAAa;IACb,cAAc;IACd,SAAS;IACT,UAAU;IACV,oBAAoB;IACpB,qBAAqB;IACrB,mBAAmB,EAAE;IACrB;MACE,UAAU;MACV,WAAW;MACX,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,+BAA+B;MAC/B,8BAA8B;UAC1B,6BAA6B;cACzB,yBAAyB;MACjC,0BAA0B;UACtB,8BAA8B,EAAE;MACpC;QACE,oBAAoB;YAChB,qBAAqB;gBACjB,aAAa;QACrB,mBAAmB,EAAE;QACrB;UACE,iBAAiB;UACjB,aAAa;UACb,aAAa;UACb,uBAAuB;aACpB,oBAAoB,EAAE;QAC3B;UACE,oBAAoB;cAChB,qBAAqB;kBACjB,aAAa;UACrB,kCAAkC;UAClC,YAAY;UACZ,aAAa;UACb,gBAAgB;UAChB,kBAAkB;UAClB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe;UACf,kBAAkB;UAClB,iBAAiB,EAAE;QACrB;UACE,YAAY;UACZ,YAAY;UACZ,uBAAuB;aACpB,oBAAoB;UACvB,0BAA0B,EAAE;QAC9B;UACE,YAAY;UACZ,aAAa;UACb,uBAAuB;aACpB,oBAAoB,EAAE;QAC3B;UACE,kCAAkC;UAClC,kBAAkB;UAClB,YAAY;UACZ,YAAY;UACZ,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kCAAkC;UAClC,6BAA6B;UAC7B,4BAA4B;cACxB,mBAAmB;UACvB,mBAAmB;UACnB,aAAa;UACb,aAAa;UACb,0BAA0B;UAC1B,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,YAAY;UACZ,YAAY;UACZ,kBAAkB;UAClB,kCAAkC;UAClC,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kBAAkB;UAClB,kCAAkC;UAClC,YAAY;UACZ,aAAa;UACb,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,uBAAuB;UACvB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kBAAkB;UAClB,YAAY;UACZ,aAAa;UACb,uBAAuB;aACpB,oBAAoB,EAAE;QAC3B;UACE,oBAAoB;UACpB,YAAY;UACZ,kCAAkC;UAClC,gBAAgB;UAChB,oBAAoB;UACpB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,mBAAmB;UACnB,eAAe,EAAE;IACvB;MACE,iBAAiB,EAAE;IACrB;MACE,4BAA4B;UACxB,mBAAmB;MACvB,gBAAgB;MAChB,mBAAmB,EAAE;IACvB;MACE,4BAA4B;UACxB,mBAAmB,EAAE;IAC3B;MACE,iBAAiB,EAAE;IACrB;MACE,iBAAiB,EAAE;IACrB;MACE,gBAAgB,EAAE;IACpB;MACE,YAAY;MACZ,YAAY;MACZ,uBAAuB;SACpB,oBAAoB;MACvB,0BAA0B;MAC1B,kBAAkB,EAAE","file":"index.scss","sourcesContent":[".container {\n  display: block;\n  background-color: #3a3779; }\n  .container .loginareacolor {\n    background-color: #fbfbfb;\n    width: 352px;\n    height: 521px;\n    top: 50%;\n    left: 50%;\n    margin-left: -176px;\n    margin-top: -260.5px;\n    position: absolute; }\n    .container .loginareacolor .flexboxcontainer {\n      margin: 0;\n      padding: 0;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row wrap;\n              flex-direction: row wrap;\n      -ms-flex-pack: distribute;\n          justify-content: space-around; }\n      .container .loginareacolor .flexboxcontainer .flexboxitem {\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        width: 117.33333px; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .logo {\n          margin-top: 30px;\n          width: 138px;\n          height: 71px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .loginandregisterheading {\n          -webkit-box-flex: 2;\n              -ms-flex-positive: 2;\n                  flex-grow: 2;\n          font-family: \"Roboto\", sans-serif;\n          width: 75px;\n          height: 17px;\n          font-size: 22px;\n          font-weight: bold;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 3.5px;\n          text-align: left;\n          color: #000000;\n          margin-left: 47px;\n          margin-top: 18px; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .togglebuttonmin {\n          width: 16px;\n          height: 2px;\n          -o-object-fit: contain;\n             object-fit: contain;\n          background-color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .togglebuttoncross {\n          width: 18px;\n          height: 18px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .user {\n          font-family: \"Roboto\", sans-serif;\n          margin-left: 46px;\n          width: 34px;\n          height: 9px;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .input {\n          font-family: \"Roboto\", sans-serif;\n          padding: 10px 18px 11px 18px;\n          -ms-flex-item-align: center;\n              align-self: center;\n          border-style: none;\n          width: 138px;\n          height: 31px;\n          background-color: #e8e8e8;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .password {\n          width: 75px;\n          height: 9px;\n          margin-left: 46px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .signup {\n          margin-left: 48px;\n          font-family: \"Roboto\", sans-serif;\n          width: 87px;\n          height: 10px;\n          font-size: 10px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: normal;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .googlelogin {\n          margin-left: 44px;\n          width: 95px;\n          height: 28px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .loginbottom {\n          margin-right: -60px;\n          height: 9px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: center;\n          color: #3a3779; }\n    .container .loginareacolor .ksztat2container {\n      margin-top: 30px; }\n    .container .loginareacolor .flexboxtogglebutton {\n      -ms-flex-item-align: center;\n          align-self: center;\n      text-align: end;\n      margin-right: 27px; }\n    .container .loginareacolor .flexlogin {\n      -ms-flex-item-align: center;\n          align-self: center; }\n    .container .loginareacolor .inputusercontainer {\n      margin-top: 28px; }\n    .container .loginareacolor .inputpasswordcontainer {\n      margin-top: 19px; }\n    .container .loginareacolor .signupgoogletextcontainer {\n      margin-top: 5px; }\n    .container .loginareacolor .rowksztat2 {\n      width: 84px;\n      height: 1px;\n      -o-object-fit: contain;\n         object-fit: contain;\n      background-color: #000000;\n      margin-left: 47px; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".index--container--2O4CKmsA {\n  display: block;\n  background-color: #3a3779; }\n  .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 {\n    background-color: #fbfbfb;\n    width: 352px;\n    height: 650px;\n    top: 50%;\n    left: 50%;\n    margin-left: -176px;\n    margin-top: -325px;\n    position: absolute; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu {\n      margin: 0;\n      padding: 0;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row wrap;\n              flex-direction: row wrap;\n      -ms-flex-pack: distribute;\n          justify-content: space-around; }\n      .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW {\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        width: 117.33333px; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--logo--3R7Z0bWL {\n          margin-top: 30px;\n          width: 138px;\n          height: 71px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--loginandregisterheading--3EEnrQmd {\n          -webkit-box-flex: 2;\n              -ms-flex-positive: 2;\n                  flex-grow: 2;\n          font-family: \"Roboto\", sans-serif;\n          width: 75px;\n          height: 17px;\n          font-size: 22px;\n          font-weight: bold;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 3.5px;\n          text-align: left;\n          color: #000000;\n          margin-left: 47px;\n          margin-top: 18px; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--togglebuttonmin--uHT03OhN {\n          width: 16px;\n          height: 2px;\n          -o-object-fit: contain;\n             object-fit: contain;\n          background-color: #000000; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--togglebuttoncross--sQl-_ldN {\n          width: 18px;\n          height: 18px;\n          -o-object-fit: contain;\n             object-fit: contain;\n          margin-top: 10px; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--user--3gNEPsr- {\n          font-family: \"Roboto\", sans-serif;\n          margin-left: 46px;\n          width: 34px;\n          height: 9px;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--input--2UCwx3_o {\n          font-family: \"Roboto\", sans-serif;\n          padding: 10px 18px 11px 18px;\n          -ms-flex-item-align: center;\n              align-self: center;\n          border-style: none;\n          width: 138px;\n          height: 31px;\n          background-color: #e8e8e8;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--password--1XTI3gyi {\n          width: 75px;\n          height: 9px;\n          margin-left: 46px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--signup--2SGkxj5G {\n          margin-left: 48px;\n          font-family: \"Roboto\", sans-serif;\n          width: 87px;\n          height: 10px;\n          font-size: 10px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: normal;\n          text-align: left;\n          color: #000000; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--googlelogin--29oxZw0i {\n          margin-left: 44px;\n          width: 95px;\n          height: 28px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxcontainer--3_n9mzFu .index--flexboxitem--2HvBPZUW .index--loginbottom--2cdBVJ2X {\n          margin-right: -60px;\n          height: 9px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: center;\n          color: #3a3779; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--ksztat2container--344aTo8V {\n      margin-top: 30px; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexboxtogglebutton--B53MmuJX {\n      -ms-flex-item-align: center;\n          align-self: center;\n      text-align: end;\n      margin-right: 27px; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--flexlogin--PAxxhJ4j {\n      -ms-flex-item-align: center;\n          align-self: center; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--inputusercontainer--2-d2Ca89 {\n      margin-top: 28px; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--inputpasswordcontainer--336I81pU {\n      margin-top: 19px; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--signupgoogletextcontainer--7ej4JJ8h {\n      margin-top: 5px; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--rowksztat2--1KUT60nU {\n      width: 84px;\n      height: 1px;\n      -o-object-fit: contain;\n         object-fit: contain;\n      background-color: #000000;\n      margin-left: 47px; }\n    .index--container--2O4CKmsA .index--loginareacolor--3uWTLX-9 .index--rowksztat22--2CdGo3Dg {\n      width: 127px;\n      height: 1px;\n      -o-object-fit: contain;\n         object-fit: contain;\n      background-color: #000000;\n      margin-left: 47px; }\n", "", {"version":3,"sources":["/./src/client/screens/Login/css/index.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,0BAA0B,EAAE;EAC5B;IACE,0BAA0B;IAC1B,aAAa;IACb,cAAc;IACd,SAAS;IACT,UAAU;IACV,oBAAoB;IACpB,mBAAmB;IACnB,mBAAmB,EAAE;IACrB;MACE,UAAU;MACV,WAAW;MACX,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,+BAA+B;MAC/B,8BAA8B;UAC1B,6BAA6B;cACzB,yBAAyB;MACjC,0BAA0B;UACtB,8BAA8B,EAAE;MACpC;QACE,oBAAoB;YAChB,qBAAqB;gBACjB,aAAa;QACrB,mBAAmB,EAAE;QACrB;UACE,iBAAiB;UACjB,aAAa;UACb,aAAa;UACb,uBAAuB;aACpB,oBAAoB,EAAE;QAC3B;UACE,oBAAoB;cAChB,qBAAqB;kBACjB,aAAa;UACrB,kCAAkC;UAClC,YAAY;UACZ,aAAa;UACb,gBAAgB;UAChB,kBAAkB;UAClB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe;UACf,kBAAkB;UAClB,iBAAiB,EAAE;QACrB;UACE,YAAY;UACZ,YAAY;UACZ,uBAAuB;aACpB,oBAAoB;UACvB,0BAA0B,EAAE;QAC9B;UACE,YAAY;UACZ,aAAa;UACb,uBAAuB;aACpB,oBAAoB;UACvB,iBAAiB,EAAE;QACrB;UACE,kCAAkC;UAClC,kBAAkB;UAClB,YAAY;UACZ,YAAY;UACZ,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kCAAkC;UAClC,6BAA6B;UAC7B,4BAA4B;cACxB,mBAAmB;UACvB,mBAAmB;UACnB,aAAa;UACb,aAAa;UACb,0BAA0B;UAC1B,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,YAAY;UACZ,YAAY;UACZ,kBAAkB;UAClB,kCAAkC;UAClC,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kBAAkB;UAClB,kCAAkC;UAClC,YAAY;UACZ,aAAa;UACb,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,uBAAuB;UACvB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kBAAkB;UAClB,YAAY;UACZ,aAAa;UACb,uBAAuB;aACpB,oBAAoB,EAAE;QAC3B;UACE,oBAAoB;UACpB,YAAY;UACZ,kCAAkC;UAClC,gBAAgB;UAChB,oBAAoB;UACpB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,mBAAmB;UACnB,eAAe,EAAE;IACvB;MACE,iBAAiB,EAAE;IACrB;MACE,4BAA4B;UACxB,mBAAmB;MACvB,gBAAgB;MAChB,mBAAmB,EAAE;IACvB;MACE,4BAA4B;UACxB,mBAAmB,EAAE;IAC3B;MACE,iBAAiB,EAAE;IACrB;MACE,iBAAiB,EAAE;IACrB;MACE,gBAAgB,EAAE;IACpB;MACE,YAAY;MACZ,YAAY;MACZ,uBAAuB;SACpB,oBAAoB;MACvB,0BAA0B;MAC1B,kBAAkB,EAAE;IACtB;MACE,aAAa;MACb,YAAY;MACZ,uBAAuB;SACpB,oBAAoB;MACvB,0BAA0B;MAC1B,kBAAkB,EAAE","file":"index.scss","sourcesContent":[".container {\n  display: block;\n  background-color: #3a3779; }\n  .container .loginareacolor {\n    background-color: #fbfbfb;\n    width: 352px;\n    height: 650px;\n    top: 50%;\n    left: 50%;\n    margin-left: -176px;\n    margin-top: -325px;\n    position: absolute; }\n    .container .loginareacolor .flexboxcontainer {\n      margin: 0;\n      padding: 0;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row wrap;\n              flex-direction: row wrap;\n      -ms-flex-pack: distribute;\n          justify-content: space-around; }\n      .container .loginareacolor .flexboxcontainer .flexboxitem {\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        width: 117.33333px; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .logo {\n          margin-top: 30px;\n          width: 138px;\n          height: 71px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .loginandregisterheading {\n          -webkit-box-flex: 2;\n              -ms-flex-positive: 2;\n                  flex-grow: 2;\n          font-family: \"Roboto\", sans-serif;\n          width: 75px;\n          height: 17px;\n          font-size: 22px;\n          font-weight: bold;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 3.5px;\n          text-align: left;\n          color: #000000;\n          margin-left: 47px;\n          margin-top: 18px; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .togglebuttonmin {\n          width: 16px;\n          height: 2px;\n          -o-object-fit: contain;\n             object-fit: contain;\n          background-color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .togglebuttoncross {\n          width: 18px;\n          height: 18px;\n          -o-object-fit: contain;\n             object-fit: contain;\n          margin-top: 10px; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .user {\n          font-family: \"Roboto\", sans-serif;\n          margin-left: 46px;\n          width: 34px;\n          height: 9px;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .input {\n          font-family: \"Roboto\", sans-serif;\n          padding: 10px 18px 11px 18px;\n          -ms-flex-item-align: center;\n              align-self: center;\n          border-style: none;\n          width: 138px;\n          height: 31px;\n          background-color: #e8e8e8;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .password {\n          width: 75px;\n          height: 9px;\n          margin-left: 46px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .signup {\n          margin-left: 48px;\n          font-family: \"Roboto\", sans-serif;\n          width: 87px;\n          height: 10px;\n          font-size: 10px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: normal;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .googlelogin {\n          margin-left: 44px;\n          width: 95px;\n          height: 28px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .loginbottom {\n          margin-right: -60px;\n          height: 9px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: center;\n          color: #3a3779; }\n    .container .loginareacolor .ksztat2container {\n      margin-top: 30px; }\n    .container .loginareacolor .flexboxtogglebutton {\n      -ms-flex-item-align: center;\n          align-self: center;\n      text-align: end;\n      margin-right: 27px; }\n    .container .loginareacolor .flexlogin {\n      -ms-flex-item-align: center;\n          align-self: center; }\n    .container .loginareacolor .inputusercontainer {\n      margin-top: 28px; }\n    .container .loginareacolor .inputpasswordcontainer {\n      margin-top: 19px; }\n    .container .loginareacolor .signupgoogletextcontainer {\n      margin-top: 5px; }\n    .container .loginareacolor .rowksztat2 {\n      width: 84px;\n      height: 1px;\n      -o-object-fit: contain;\n         object-fit: contain;\n      background-color: #000000;\n      margin-left: 47px; }\n    .container .loginareacolor .rowksztat22 {\n      width: 127px;\n      height: 1px;\n      -o-object-fit: contain;\n         object-fit: contain;\n      background-color: #000000;\n      margin-left: 47px; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
@@ -37052,7 +35802,8 @@ exports.locals = {
 	"inputusercontainer": "index--inputusercontainer--2-d2Ca89",
 	"inputpasswordcontainer": "index--inputpasswordcontainer--336I81pU",
 	"signupgoogletextcontainer": "index--signupgoogletextcontainer--7ej4JJ8h",
-	"rowksztat2": "index--rowksztat2--1KUT60nU"
+	"rowksztat2": "index--rowksztat2--1KUT60nU",
+	"rowksztat22": "index--rowksztat22--2CdGo3Dg"
 };
 
 /***/ }),
@@ -37080,11 +35831,33 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, ".index--container--2Y8RV60H {\n  display: block; }\n", "", {"version":3,"sources":["/./src/client/screens/Register/css/index.scss"],"names":[],"mappings":"AAAA;EACE,eAAe,EAAE","file":"index.scss","sourcesContent":[".container {\n  display: block; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".index--container--2Y8RV60H {\n  display: block;\n  background-color: #3a3779; }\n  .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 {\n    background-color: #fbfbfb;\n    width: 352px;\n    height: 650px;\n    top: 50%;\n    left: 50%;\n    margin-left: -176px;\n    margin-top: -325px;\n    position: absolute; }\n    .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--flexboxcontainer--BLw75Wrh {\n      margin: 0;\n      padding: 0;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row wrap;\n              flex-direction: row wrap;\n      -ms-flex-pack: distribute;\n          justify-content: space-around; }\n      .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--flexboxcontainer--BLw75Wrh .index--flexboxitem--1vYAKYN5 {\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        width: 117.33333px; }\n        .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--flexboxcontainer--BLw75Wrh .index--flexboxitem--1vYAKYN5 .index--logo--3B07NlNC {\n          margin-top: 30px;\n          width: 138px;\n          height: 71px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--flexboxcontainer--BLw75Wrh .index--flexboxitem--1vYAKYN5 .index--loginandregisterheading--1OK2fq2m {\n          -webkit-box-flex: 2;\n              -ms-flex-positive: 2;\n                  flex-grow: 2;\n          font-family: \"Roboto\", sans-serif;\n          width: 75px;\n          height: 17px;\n          font-size: 22px;\n          font-weight: bold;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 3.5px;\n          text-align: left;\n          color: #000000;\n          margin-left: 47px;\n          margin-top: 18px; }\n        .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--flexboxcontainer--BLw75Wrh .index--flexboxitem--1vYAKYN5 .index--togglebuttonmin--7AeEwsKK {\n          width: 16px;\n          height: 2px;\n          -o-object-fit: contain;\n             object-fit: contain;\n          background-color: #000000; }\n        .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--flexboxcontainer--BLw75Wrh .index--flexboxitem--1vYAKYN5 .index--togglebuttoncross--Mepy7c-G {\n          width: 18px;\n          height: 18px;\n          -o-object-fit: contain;\n             object-fit: contain;\n          margin-top: 10px; }\n        .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--flexboxcontainer--BLw75Wrh .index--flexboxitem--1vYAKYN5 .index--user--3LcmPS9m {\n          font-family: \"Roboto\", sans-serif;\n          margin-left: 46px;\n          width: 34px;\n          height: 9px;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--flexboxcontainer--BLw75Wrh .index--flexboxitem--1vYAKYN5 .index--input--1Lq_r69R {\n          font-family: \"Roboto\", sans-serif;\n          padding: 10px 18px 11px 18px;\n          -ms-flex-item-align: center;\n              align-self: center;\n          border-style: none;\n          width: 138px;\n          height: 31px;\n          background-color: #e8e8e8;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--flexboxcontainer--BLw75Wrh .index--flexboxitem--1vYAKYN5 .index--password--1iXgqxCx {\n          width: 75px;\n          height: 9px;\n          margin-left: 46px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--flexboxcontainer--BLw75Wrh .index--flexboxitem--1vYAKYN5 .index--signup--1EZd-egE {\n          margin-left: 48px;\n          font-family: \"Roboto\", sans-serif;\n          width: 87px;\n          height: 10px;\n          font-size: 10px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: normal;\n          text-align: left;\n          color: #000000; }\n        .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--flexboxcontainer--BLw75Wrh .index--flexboxitem--1vYAKYN5 .index--googlelogin--1iEdtjx4 {\n          margin-left: 44px;\n          width: 95px;\n          height: 28px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--flexboxcontainer--BLw75Wrh .index--flexboxitem--1vYAKYN5 .index--loginbottom--3YJWqERr {\n          margin-right: -60px;\n          height: 9px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: center;\n          color: #3a3779; }\n    .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--ksztat2container--3OjkEu6e {\n      margin-top: 30px; }\n    .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--flexboxtogglebutton--3Cd29Fxy {\n      -ms-flex-item-align: center;\n          align-self: center;\n      text-align: end;\n      margin-right: 27px; }\n    .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--flexlogin--1nWSCYnh {\n      -ms-flex-item-align: center;\n          align-self: center; }\n    .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--inputusercontainer--Rzcb7_9w {\n      margin-top: 28px; }\n    .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--inputemailcontainer--OO8UPROi {\n      margin-top: 19px; }\n    .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--inputpasswordcontainer--3ivO6GVs {\n      margin-top: 19px; }\n    .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--signupgoogletextcontainer--3s0KOcfj {\n      margin-top: 5px; }\n    .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--rowksztat2--2520HH5W {\n      width: 84px;\n      height: 1px;\n      -o-object-fit: contain;\n         object-fit: contain;\n      background-color: #000000;\n      margin-left: 47px; }\n    .index--container--2Y8RV60H .index--loginareacolor--Inj2G3i7 .index--rowksztat22--f336SmGR {\n      width: 127px;\n      height: 1px;\n      -o-object-fit: contain;\n         object-fit: contain;\n      background-color: #000000;\n      margin-left: 47px; }\n", "", {"version":3,"sources":["/./src/client/screens/Register/css/index.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,0BAA0B,EAAE;EAC5B;IACE,0BAA0B;IAC1B,aAAa;IACb,cAAc;IACd,SAAS;IACT,UAAU;IACV,oBAAoB;IACpB,mBAAmB;IACnB,mBAAmB,EAAE;IACrB;MACE,UAAU;MACV,WAAW;MACX,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,+BAA+B;MAC/B,8BAA8B;UAC1B,6BAA6B;cACzB,yBAAyB;MACjC,0BAA0B;UACtB,8BAA8B,EAAE;MACpC;QACE,oBAAoB;YAChB,qBAAqB;gBACjB,aAAa;QACrB,mBAAmB,EAAE;QACrB;UACE,iBAAiB;UACjB,aAAa;UACb,aAAa;UACb,uBAAuB;aACpB,oBAAoB,EAAE;QAC3B;UACE,oBAAoB;cAChB,qBAAqB;kBACjB,aAAa;UACrB,kCAAkC;UAClC,YAAY;UACZ,aAAa;UACb,gBAAgB;UAChB,kBAAkB;UAClB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe;UACf,kBAAkB;UAClB,iBAAiB,EAAE;QACrB;UACE,YAAY;UACZ,YAAY;UACZ,uBAAuB;aACpB,oBAAoB;UACvB,0BAA0B,EAAE;QAC9B;UACE,YAAY;UACZ,aAAa;UACb,uBAAuB;aACpB,oBAAoB;UACvB,iBAAiB,EAAE;QACrB;UACE,kCAAkC;UAClC,kBAAkB;UAClB,YAAY;UACZ,YAAY;UACZ,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kCAAkC;UAClC,6BAA6B;UAC7B,4BAA4B;cACxB,mBAAmB;UACvB,mBAAmB;UACnB,aAAa;UACb,aAAa;UACb,0BAA0B;UAC1B,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,YAAY;UACZ,YAAY;UACZ,kBAAkB;UAClB,kCAAkC;UAClC,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kBAAkB;UAClB,kCAAkC;UAClC,YAAY;UACZ,aAAa;UACb,gBAAgB;UAChB,iBAAiB;UACjB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,uBAAuB;UACvB,iBAAiB;UACjB,eAAe,EAAE;QACnB;UACE,kBAAkB;UAClB,YAAY;UACZ,aAAa;UACb,uBAAuB;aACpB,oBAAoB,EAAE;QAC3B;UACE,oBAAoB;UACpB,YAAY;UACZ,kCAAkC;UAClC,gBAAgB;UAChB,oBAAoB;UACpB,mBAAmB;UACnB,qBAAqB;UACrB,oBAAoB;UACpB,sBAAsB;UACtB,mBAAmB;UACnB,eAAe,EAAE;IACvB;MACE,iBAAiB,EAAE;IACrB;MACE,4BAA4B;UACxB,mBAAmB;MACvB,gBAAgB;MAChB,mBAAmB,EAAE;IACvB;MACE,4BAA4B;UACxB,mBAAmB,EAAE;IAC3B;MACE,iBAAiB,EAAE;IACrB;MACE,iBAAiB,EAAE;IACrB;MACE,iBAAiB,EAAE;IACrB;MACE,gBAAgB,EAAE;IACpB;MACE,YAAY;MACZ,YAAY;MACZ,uBAAuB;SACpB,oBAAoB;MACvB,0BAA0B;MAC1B,kBAAkB,EAAE;IACtB;MACE,aAAa;MACb,YAAY;MACZ,uBAAuB;SACpB,oBAAoB;MACvB,0BAA0B;MAC1B,kBAAkB,EAAE","file":"index.scss","sourcesContent":[".container {\n  display: block;\n  background-color: #3a3779; }\n  .container .loginareacolor {\n    background-color: #fbfbfb;\n    width: 352px;\n    height: 650px;\n    top: 50%;\n    left: 50%;\n    margin-left: -176px;\n    margin-top: -325px;\n    position: absolute; }\n    .container .loginareacolor .flexboxcontainer {\n      margin: 0;\n      padding: 0;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row wrap;\n              flex-direction: row wrap;\n      -ms-flex-pack: distribute;\n          justify-content: space-around; }\n      .container .loginareacolor .flexboxcontainer .flexboxitem {\n        -webkit-box-flex: 1;\n            -ms-flex-positive: 1;\n                flex-grow: 1;\n        width: 117.33333px; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .logo {\n          margin-top: 30px;\n          width: 138px;\n          height: 71px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .loginandregisterheading {\n          -webkit-box-flex: 2;\n              -ms-flex-positive: 2;\n                  flex-grow: 2;\n          font-family: \"Roboto\", sans-serif;\n          width: 75px;\n          height: 17px;\n          font-size: 22px;\n          font-weight: bold;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 3.5px;\n          text-align: left;\n          color: #000000;\n          margin-left: 47px;\n          margin-top: 18px; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .togglebuttonmin {\n          width: 16px;\n          height: 2px;\n          -o-object-fit: contain;\n             object-fit: contain;\n          background-color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .togglebuttoncross {\n          width: 18px;\n          height: 18px;\n          -o-object-fit: contain;\n             object-fit: contain;\n          margin-top: 10px; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .user {\n          font-family: \"Roboto\", sans-serif;\n          margin-left: 46px;\n          width: 34px;\n          height: 9px;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .input {\n          font-family: \"Roboto\", sans-serif;\n          padding: 10px 18px 11px 18px;\n          -ms-flex-item-align: center;\n              align-self: center;\n          border-style: none;\n          width: 138px;\n          height: 31px;\n          background-color: #e8e8e8;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .password {\n          width: 75px;\n          height: 9px;\n          margin-left: 46px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .signup {\n          margin-left: 48px;\n          font-family: \"Roboto\", sans-serif;\n          width: 87px;\n          height: 10px;\n          font-size: 10px;\n          font-weight: 300;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: normal;\n          text-align: left;\n          color: #000000; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .googlelogin {\n          margin-left: 44px;\n          width: 95px;\n          height: 28px;\n          -o-object-fit: contain;\n             object-fit: contain; }\n        .container .loginareacolor .flexboxcontainer .flexboxitem .loginbottom {\n          margin-right: -60px;\n          height: 9px;\n          font-family: \"Roboto\", sans-serif;\n          font-size: 12px;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal;\n          line-height: normal;\n          letter-spacing: 1.9px;\n          text-align: center;\n          color: #3a3779; }\n    .container .loginareacolor .ksztat2container {\n      margin-top: 30px; }\n    .container .loginareacolor .flexboxtogglebutton {\n      -ms-flex-item-align: center;\n          align-self: center;\n      text-align: end;\n      margin-right: 27px; }\n    .container .loginareacolor .flexlogin {\n      -ms-flex-item-align: center;\n          align-self: center; }\n    .container .loginareacolor .inputusercontainer {\n      margin-top: 28px; }\n    .container .loginareacolor .inputemailcontainer {\n      margin-top: 19px; }\n    .container .loginareacolor .inputpasswordcontainer {\n      margin-top: 19px; }\n    .container .loginareacolor .signupgoogletextcontainer {\n      margin-top: 5px; }\n    .container .loginareacolor .rowksztat2 {\n      width: 84px;\n      height: 1px;\n      -o-object-fit: contain;\n         object-fit: contain;\n      background-color: #000000;\n      margin-left: 47px; }\n    .container .loginareacolor .rowksztat22 {\n      width: 127px;\n      height: 1px;\n      -o-object-fit: contain;\n         object-fit: contain;\n      background-color: #000000;\n      margin-left: 47px; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
-	"container": "index--container--2Y8RV60H"
+	"container": "index--container--2Y8RV60H",
+	"loginareacolor": "index--loginareacolor--Inj2G3i7",
+	"flexboxcontainer": "index--flexboxcontainer--BLw75Wrh",
+	"flexboxitem": "index--flexboxitem--1vYAKYN5",
+	"logo": "index--logo--3B07NlNC",
+	"loginandregisterheading": "index--loginandregisterheading--1OK2fq2m",
+	"togglebuttonmin": "index--togglebuttonmin--7AeEwsKK",
+	"togglebuttoncross": "index--togglebuttoncross--Mepy7c-G",
+	"user": "index--user--3LcmPS9m",
+	"input": "index--input--1Lq_r69R",
+	"password": "index--password--1iXgqxCx",
+	"signup": "index--signup--1EZd-egE",
+	"googlelogin": "index--googlelogin--1iEdtjx4",
+	"loginbottom": "index--loginbottom--3YJWqERr",
+	"ksztat2container": "index--ksztat2container--3OjkEu6e",
+	"flexboxtogglebutton": "index--flexboxtogglebutton--3Cd29Fxy",
+	"flexlogin": "index--flexlogin--1nWSCYnh",
+	"inputusercontainer": "index--inputusercontainer--Rzcb7_9w",
+	"inputemailcontainer": "index--inputemailcontainer--OO8UPROi",
+	"inputpasswordcontainer": "index--inputpasswordcontainer--3ivO6GVs",
+	"signupgoogletextcontainer": "index--signupgoogletextcontainer--3s0KOcfj",
+	"rowksztat2": "index--rowksztat2--2520HH5W",
+	"rowksztat22": "index--rowksztat22--f336SmGR"
 };
 
 /***/ }),
@@ -54739,6 +53512,1517 @@ function symbolObservablePonyfill(root) {
 
 	return result;
 };
+
+/***/ }),
+/* 405 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _lodash = __webpack_require__(38);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _step = __webpack_require__(390);
+
+var _step2 = _interopRequireDefault(_step);
+
+var _DataDisplay = __webpack_require__(36);
+
+var _DataDisplay2 = _interopRequireDefault(_DataDisplay);
+
+var _RoundedButton = __webpack_require__(17);
+
+var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
+
+
+//STYLES
+
+
+//COMPONENTS
+
+
+var buyerinfo = [{ name: "Name:", value: "Zain Fikri" }, {
+  name: "Address shipping:",
+  value: "Jalan Terusan Piranha, Malang, Jawa Timur, 63172"
+}, { name: "Product category:", value: "T-Shirt" }, { name: "Product name:", value: "Cotton30s" }, { name: "Base color:", value: "#020266" }, { name: "Size:", value: "M(10),L(20),XL(9)" }, { name: "Payment method:", value: "COD" }];
+
+//COMPONENT
+
+var Cart = function (_Component) {
+  _inherits(Cart, _Component);
+
+  function Cart() {
+    _classCallCheck(this, Cart);
+
+    return _possibleConstructorReturn(this, (Cart.__proto__ || Object.getPrototypeOf(Cart)).apply(this, arguments));
+  }
+
+  _createClass(Cart, [{
+    key: "renderInformation",
+    value: function renderInformation() {
+      if (buyerinfo) return _lodash2.default.map(buyerinfo, function (data, i) {
+        return _react2.default.createElement(_DataDisplay2.default, { name: data.name, value: data.value, key: i });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: _step2.default.container },
+        _react2.default.createElement(
+          "div",
+          { className: _step2.default.info },
+          _react2.default.createElement(
+            "h1",
+            null,
+            "Cart"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: _step2.default.wrapper },
+          _react2.default.createElement(
+            "div",
+            { className: _step2.default.cartcontainer },
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.cartflex },
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.title },
+                "Previews Design"
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: _step2.default.cartcontainer },
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.cartflex },
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.preview },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.pic },
+                  "GAMBAR MASUK SINI"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.cartflex },
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.title },
+                "Information"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.infoorder },
+                this.renderInformation()
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.title },
+                "Total Cost"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.margincost },
+                "Rp. 2.800.000"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.editorder },
+                _react2.default.createElement(
+                  "div",
+                  { className: _step2.default.flexgrowitem + " " + _step2.default.widthitem },
+                  _react2.default.createElement(
+                    "div",
+                    { className: _step2.default.editorderitem },
+                    _react2.default.createElement("img", { className: _step2.default.img, src: "/img/cross.svg" })
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    {
+                      className: _step2.default.editorderitem + " " + _step2.default.sizeorderitem
+                    },
+                    _react2.default.createElement(
+                      "p",
+                      { className: _step2.default.editordertext },
+                      "cancel order"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: _step2.default.flexgrowitem },
+                  _react2.default.createElement(
+                    "div",
+                    { className: _step2.default.editorderitem },
+                    _react2.default.createElement("img", {
+                      className: _step2.default.img,
+                      src: "/img/ic-save-black-24-dp.png"
+                    })
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    {
+                      className: _step2.default.editorderitem + " " + _step2.default.sizeorderitem
+                    },
+                    _react2.default.createElement(
+                      "p",
+                      { className: _step2.default.editordertext },
+                      "save pdf"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: _step2.default.flexgrowitem },
+                  _react2.default.createElement(
+                    "div",
+                    { className: _step2.default.editorderitem },
+                    _react2.default.createElement("img", {
+                      className: _step2.default.img,
+                      src: "/img/ic-mode-edit-black-36-dp.png"
+                    })
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    {
+                      className: _step2.default.editorderitem + " " + _step2.default.sizeorderitem
+                    },
+                    _react2.default.createElement(
+                      "p",
+                      { className: _step2.default.editordertext },
+                      "edit information"
+                    )
+                  )
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: _step2.default.down },
+          _react2.default.createElement(
+            _RoundedButton2.default,
+            {
+              to: "/drophere/order/4",
+              className: _step2.default.button,
+              primary: true
+            },
+            "GO TO PAYMENT"
+          )
+        )
+      );
+    }
+  }]);
+
+  return Cart;
+}(_react.Component);
+
+exports.default = Cart;
+
+/***/ }),
+/* 406 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _lodash = __webpack_require__(38);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _step = __webpack_require__(389);
+
+var _step2 = _interopRequireDefault(_step);
+
+var _DataDisplay = __webpack_require__(36);
+
+var _DataDisplay2 = _interopRequireDefault(_DataDisplay);
+
+var _RoundedButton = __webpack_require__(17);
+
+var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
+
+
+//STYLES
+
+
+//COMPONENTS
+
+
+//INNER_CONFIG
+var DATA = [{ name: 'Name', value: 'Zain Fikri' }, { name: 'Phone', value: 'Zain Fikri' }, { name: 'Email', value: 'Zain Fikri' }, { name: 'Company, Role', value: 'Zain Fikri' }, { name: 'Shipping Address', value: 'Zain Fikri' }, { name: 'Product Category', value: 'Zain Fikri' }, { name: 'Product Name', value: 'Cotton 30s' }, { name: 'Size and Quality', value: _react2.default.createElement(
+    "div",
+    { className: _step2.default.sizequality },
+    _react2.default.createElement(
+      "div",
+      { className: _step2.default.size },
+      _react2.default.createElement(
+        "span",
+        null,
+        "M"
+      ),
+      _react2.default.createElement(
+        "span",
+        null,
+        "10"
+      )
+    ),
+    _react2.default.createElement(
+      "div",
+      { className: _step2.default.size },
+      _react2.default.createElement(
+        "span",
+        null,
+        "L"
+      ),
+      _react2.default.createElement(
+        "span",
+        null,
+        "20"
+      )
+    ),
+    _react2.default.createElement(
+      "div",
+      { className: _step2.default.size },
+      _react2.default.createElement(
+        "span",
+        null,
+        "XL"
+      ),
+      _react2.default.createElement(
+        "span",
+        null,
+        "9"
+      )
+    )
+  ) }, { name: 'Total Cost', value: 'Zain Fikri' }, { name: 'Payment Method', value: 'Zain Fikri' }];
+
+//COMPONENT
+
+var CheckoutOrder = function (_Component) {
+  _inherits(CheckoutOrder, _Component);
+
+  function CheckoutOrder() {
+    _classCallCheck(this, CheckoutOrder);
+
+    return _possibleConstructorReturn(this, (CheckoutOrder.__proto__ || Object.getPrototypeOf(CheckoutOrder)).apply(this, arguments));
+  }
+
+  _createClass(CheckoutOrder, [{
+    key: "renderContent",
+    value: function renderContent() {
+      if (DATA) return _lodash2.default.map(DATA, function (data, i) {
+        return _react2.default.createElement(_DataDisplay2.default, { name: data.name, value: data.value, key: i });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: _step2.default.container },
+        _react2.default.createElement(
+          "form",
+          null,
+          _react2.default.createElement(
+            "div",
+            { className: _step2.default.up },
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.content },
+              this.renderContent()
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.info },
+              _react2.default.createElement(
+                "h1",
+                null,
+                "Checkout Order"
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: _step2.default.down },
+            _react2.default.createElement(
+              _RoundedButton2.default,
+              { to: "/drophere/order/1", className: _step2.default.button },
+              "BACK"
+            ),
+            _react2.default.createElement(
+              _RoundedButton2.default,
+              { to: "/drophere/order/3", className: _step2.default.button, primary: true },
+              "NEXT"
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return CheckoutOrder;
+}(_react.Component);
+
+exports.default = CheckoutOrder;
+
+/***/ }),
+/* 407 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _lodash = __webpack_require__(38);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _dropdown = __webpack_require__(128);
+
+var _dropdown2 = _interopRequireDefault(_dropdown);
+
+var _input = __webpack_require__(45);
+
+var _input2 = _interopRequireDefault(_input);
+
+var _step = __webpack_require__(392);
+
+var _step2 = _interopRequireDefault(_step);
+
+var _DataDisplay = __webpack_require__(36);
+
+var _DataDisplay2 = _interopRequireDefault(_DataDisplay);
+
+var _RoundedButton = __webpack_require__(17);
+
+var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
+
+
+//STYLES
+
+
+//COMPONENTS
+
+
+//COMPONENT
+var Confirmation = function (_Component) {
+  _inherits(Confirmation, _Component);
+
+  function Confirmation() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Confirmation);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Confirmation.__proto__ || Object.getPrototypeOf(Confirmation)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      bankName: "Mandiri",
+      bankAccount: "",
+      accountName: ""
+    }, _this.handleChange = function (name, value) {
+      _this.setState(_extends({}, _this.state, _defineProperty({}, name, value)));
+    }, _this.bank = [{ value: "Mandiri", label: "Mandiri" }, { value: "BCA", label: "BCA" }, { value: "BNI", label: "BNI" }, { value: "BTN", label: "BTN" }], _this.DATA = [{ name: _react2.default.createElement(
+        'p',
+        null,
+        'Order Number'
+      ), value: _react2.default.createElement(
+        'p',
+        { className: _step2.default.text },
+        '#0097'
+      ) }, { name: _react2.default.createElement(
+        'p',
+        null,
+        'To Bank Account'
+      ), value: function value() {
+        return _react2.default.createElement(_dropdown2.default, { source: _this.bank, value: _this.state.bankName, onChange: _this.handleChange.bind(_this, "bankName") });
+      } }, { name: _react2.default.createElement(
+        'p',
+        null,
+        'From Bank Account'
+      ), value: function value() {
+        return _react2.default.createElement(_input2.default, { type: 'text', value: _this.state.bankAccount, onChange: _this.handleChange.bind(_this, "bankAccount") });
+      } }, { name: _react2.default.createElement(
+        'p',
+        null,
+        'Account Name'
+      ), value: function value() {
+        return _react2.default.createElement(_input2.default, { type: 'text', value: _this.state.accountName, onChange: _this.handleChange.bind(_this, "accountName") });
+      } }], _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Confirmation, [{
+    key: 'renderContent',
+    value: function renderContent() {
+      if (this.DATA) return _lodash2.default.map(this.DATA, function (data, i) {
+        return _react2.default.createElement(_DataDisplay2.default, { name: data.name, value: typeof data.value === 'function' ? data.value() : data.value, key: i });
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: _step2.default.container },
+        _react2.default.createElement(
+          'div',
+          { className: _step2.default.wrapper },
+          _react2.default.createElement(
+            'div',
+            { className: _step2.default.content },
+            this.renderContent(),
+            _react2.default.createElement(_dropdown2.default, { source: this.bank, value: this.state.bankName, onChange: this.handleChange })
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _step2.default.down },
+          _react2.default.createElement(
+            _RoundedButton2.default,
+            { className: _step2.default.button, to: '/drophere/order/6', primary: true },
+            'SUBMIT'
+          )
+        )
+      );
+    }
+  }]);
+
+  return Confirmation;
+}(_react.Component);
+
+exports.default = Confirmation;
+
+/***/ }),
+/* 408 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _input = __webpack_require__(45);
+
+var _input2 = _interopRequireDefault(_input);
+
+var _step = __webpack_require__(388);
+
+var _step2 = _interopRequireDefault(_step);
+
+var _RoundedButton = __webpack_require__(17);
+
+var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
+
+
+//STYLES
+
+
+//COMPONETNS
+
+
+//INNER_CONFIG
+var DRAG_ENTER = 0;
+var DRAG_OVER = 1;
+var DRAG_LEAVE = 2;
+var DRAG_DROP = 3;
+
+//COMPONENT
+
+var DragDesign = function (_Component) {
+  _inherits(DragDesign, _Component);
+
+  function DragDesign() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, DragDesign);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = DragDesign.__proto__ || Object.getPrototypeOf(DragDesign)).call.apply(_ref, [this].concat(args))), _this), _this.onFileUploadChange = function (e) {
+      e.preventDefault();
+
+      _this.handleFileUpload(e.target.files[0]);
+    }, _this.handleFileUpload = function (file) {
+      console.log('uploading file ', file.name, ' ...');
+    }, _this.state = {
+      uploading: false,
+      dragStateId: -1
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(DragDesign, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      window.ondragenter = function (e) {
+        e.preventDefault();
+        _this2.setState({ dragStateId: DRAG_ENTER });
+      };
+      window.ondragover = function (e) {
+        e.preventDefault();
+        if (_this2.state.dragStateId != DRAG_OVER) _this2.setState({ dragStateId: DRAG_OVER });
+      };
+      window.ondragleave = function (e) {
+        e.preventDefault();
+        _this2.setState({ dragStateId: DRAG_LEAVE });
+      };
+      window.ondrop = function (e) {
+        e.preventDefault();
+
+        _this2.setState({ dragStateId: DRAG_DROP, uploading: true });
+        _this2.handleFileUpload(e.dataTransfer.files.item(0));
+      };
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      window.ondragenter = undefined;
+      window.ondragover = undefined;
+      window.ondragleave = undefined;
+      window.ondrop = undefined;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var dragStateId = this.state.dragStateId;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: _step2.default.container },
+        _react2.default.createElement(
+          'div',
+          { className: _step2.default.up },
+          _react2.default.createElement(
+            'div',
+            { className: _step2.default['drop-container'] + ' ' + (dragStateId === DRAG_OVER || dragStateId == DRAG_ENTER ? _step2.default['on-drag-over'] : '') },
+            _react2.default.createElement(
+              'span',
+              null,
+              'DRAG YOUR DESIGN HERE'
+            ),
+            _react2.default.createElement(
+              'span',
+              { className: _step2.default.or },
+              'OR'
+            ),
+            _react2.default.createElement(
+              'label',
+              { 'for': 'upload-file' },
+              _react2.default.createElement(
+                'div',
+                { className: _step2.default.button, onClick: function onClick(e) {} },
+                'UPLOAD DESIGN'
+              ),
+              _react2.default.createElement('input', {
+                type: 'file', name: 'upload-file',
+                id: 'upload-file', disabled: this.state.uploading,
+                onChange: this.onFileUploadChange
+              })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _step2.default.info },
+            _react2.default.createElement(
+              'h1',
+              null,
+              'Design'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Requirements:',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement(
+                'ol',
+                null,
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Lorem impsum dolor'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Lorem impsum dolor'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Lorem impsum dolor'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Lorem impsum dolor'
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _step2.default.down },
+          _react2.default.createElement(
+            _RoundedButton2.default,
+            { to: '/drophere/order/0', className: _step2.default.button },
+            'BACK'
+          ),
+          _react2.default.createElement(
+            _RoundedButton2.default,
+            { to: '/drophere/order/2', className: _step2.default.button, primary: true },
+            'NEXT'
+          )
+        )
+      );
+    }
+  }]);
+
+  return DragDesign;
+}(_react.Component);
+
+exports.default = DragDesign;
+
+/***/ }),
+/* 409 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _input = __webpack_require__(45);
+
+var _input2 = _interopRequireDefault(_input);
+
+var _radio = __webpack_require__(352);
+
+var _dropdown = __webpack_require__(128);
+
+var _dropdown2 = _interopRequireDefault(_dropdown);
+
+var _step = __webpack_require__(387);
+
+var _step2 = _interopRequireDefault(_step);
+
+var _radioButtonTheme = __webpack_require__(386);
+
+var _radioButtonTheme2 = _interopRequireDefault(_radioButtonTheme);
+
+var _dropdownTheme = __webpack_require__(383);
+
+var _dropdownTheme2 = _interopRequireDefault(_dropdownTheme);
+
+var _dropdownSizeTheme = __webpack_require__(382);
+
+var _dropdownSizeTheme2 = _interopRequireDefault(_dropdownSizeTheme);
+
+var _inputQuantityTheme = __webpack_require__(385);
+
+var _inputQuantityTheme2 = _interopRequireDefault(_inputQuantityTheme);
+
+var _RoundedButton = __webpack_require__(17);
+
+var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
+
+
+//STYLES
+
+
+//COMPONENTS
+
+
+//COMPONENT
+var DrophereForm = function (_Component) {
+  _inherits(DrophereForm, _Component);
+
+  function DrophereForm(props) {
+    _classCallCheck(this, DrophereForm);
+
+    var _this = _possibleConstructorReturn(this, (DrophereForm.__proto__ || Object.getPrototypeOf(DrophereForm)).call(this, props));
+
+    _this.cities = [{ value: "SBY", label: "Surabaya" }, { value: "MLG", label: "Malang" }, { value: "JKT", label: "Jakarta" }, { value: "MKS", label: "Makassar" }];
+    _this.regions = [{ value: "Wonosari", label: "Wonosari" }, { value: "Wonokromo", label: "Wonokromo" }, { value: "Simpang", label: "Simpang" }];
+    _this.sizes = [{ value: "S", label: "S" }, { value: "M", label: "M" }, { value: "L", label: "L" }, { value: "XL", label: "XL" }];
+
+    _this.handleChange = function (name, value) {
+      _this.setState(_extends({}, _this.state, _defineProperty({}, name, value)));
+    };
+
+    _this.state = {
+      name: "",
+      phone: "",
+      email: "",
+      company: "",
+      role: "",
+      city: "SBY",
+      region: "Wonosari",
+      postalCode: "",
+      category: "",
+      productName: "",
+      color: "",
+      size: "",
+      quantity: ""
+    };
+    return _this;
+  }
+
+  _createClass(DrophereForm, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: _step2.default.container },
+        _react2.default.createElement(
+          "div",
+          { className: _step2.default.wrapper },
+          _react2.default.createElement(
+            "form",
+            { className: _step2.default.form },
+            _react2.default.createElement(_input2.default, {
+              type: "text",
+              name: "name",
+              label: "Name",
+              value: this.state.name,
+              onChange: this.handleChange.bind(this, "name")
+            }),
+            _react2.default.createElement(_input2.default, {
+              type: "tel",
+              name: "phone",
+              label: "Phone",
+              value: this.state.phone,
+              onChange: this.handleChange.bind(this, "phone")
+            }),
+            _react2.default.createElement(_input2.default, {
+              type: "email",
+              name: "email",
+              label: "Email",
+              value: this.state.email,
+              onChange: this.handleChange.bind(this, "email")
+            }),
+            _react2.default.createElement(_input2.default, {
+              type: "text",
+              name: "company",
+              label: "Company",
+              value: this.state.company,
+              onChange: this.handleChange.bind(this, "company")
+            }),
+            _react2.default.createElement(
+              "p",
+              null,
+              "Role"
+            ),
+            _react2.default.createElement(
+              _radio.RadioGroup,
+              {
+                name: "role",
+                value: this.state.role,
+                onChange: this.handleChange.bind(this, "role")
+              },
+              _react2.default.createElement(_radio.RadioButton, {
+                theme: _radioButtonTheme2.default,
+                label: "Business Owner",
+                value: "busowner"
+              }),
+              _react2.default.createElement(_radio.RadioButton, {
+                theme: _radioButtonTheme2.default,
+                label: "Management",
+                value: "management"
+              }),
+              _react2.default.createElement(_radio.RadioButton, { theme: _radioButtonTheme2.default, label: "Staf", value: "staf" }),
+              _react2.default.createElement(_radio.RadioButton, { theme: _radioButtonTheme2.default, label: "Others", value: "other" })
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.textmargin },
+              "Shipping Address"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.text },
+              "City"
+            ),
+            _react2.default.createElement(_dropdown2.default, {
+              theme: _dropdownTheme2.default,
+              source: this.cities,
+              value: this.state.city,
+              onChange: this.handleChange.bind(this, "city")
+            }),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.text },
+              "Region"
+            ),
+            _react2.default.createElement(_dropdown2.default, {
+              theme: _dropdownTheme2.default,
+              source: this.regions,
+              value: this.state.region,
+              onChange: this.handleChange.bind(this, "region")
+            }),
+            _react2.default.createElement(_input2.default, {
+              type: "text",
+              className: _step2.default.postalcodeandcolor,
+              name: "postalCode",
+              label: "Postal Code",
+              value: this.state.postalCode,
+              onChange: this.handleChange.bind(this, "postalCode")
+            }),
+            _react2.default.createElement(
+              "p",
+              null,
+              "Product Category"
+            ),
+            _react2.default.createElement(
+              _radio.RadioGroup,
+              {
+                name: "category",
+                value: this.state.category,
+                onChange: this.handleChange.bind(this, "category")
+              },
+              _react2.default.createElement(_radio.RadioButton, { theme: _radioButtonTheme2.default, label: "T-Shirt", value: "t-shirt" }),
+              _react2.default.createElement(_radio.RadioButton, { theme: _radioButtonTheme2.default, label: "Hoodie", value: "hoodie" }),
+              _react2.default.createElement(_radio.RadioButton, { theme: _radioButtonTheme2.default, label: "Jacket", value: "jacket" }),
+              _react2.default.createElement(_radio.RadioButton, { theme: _radioButtonTheme2.default, label: "Jersey", value: "jersey" })
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.textmargin },
+              "Product Name"
+            ),
+            _react2.default.createElement(
+              _radio.RadioGroup,
+              {
+                name: "productName",
+                value: this.state.productName,
+                onChange: this.handleChange.bind(this, "productName")
+              },
+              _react2.default.createElement(_radio.RadioButton, {
+                theme: _radioButtonTheme2.default,
+                label: "Cotton 30s",
+                value: "cotton30s"
+              }),
+              _react2.default.createElement(_radio.RadioButton, {
+                theme: _radioButtonTheme2.default,
+                label: "Cotton 30s",
+                value: "cotton40s"
+              }),
+              _react2.default.createElement(_radio.RadioButton, {
+                theme: _radioButtonTheme2.default,
+                label: "Cotton 30s",
+                value: "cotton50s"
+              }),
+              _react2.default.createElement(_radio.RadioButton, {
+                theme: _radioButtonTheme2.default,
+                label: "Cotton 30s",
+                value: "cotton60s"
+              })
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.textmargin },
+              "Base Color"
+            ),
+            _react2.default.createElement(_input2.default, {
+              type: "text",
+              className: _step2.default.postalcodeandcolor,
+              name: "color",
+              label: "Base Color",
+              value: this.state.color,
+              onChange: this.handleChange.bind(this, "color")
+            }),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.flexcontainer },
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  "Size"
+                ),
+                _react2.default.createElement(_dropdown2.default, {
+                  theme: _dropdownSizeTheme2.default,
+                  source: this.sizes,
+                  value: this.state.size,
+                  onChange: this.handleChange.bind(this, "size")
+                }),
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.smalltext },
+                  "Add size"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  "Quantity"
+                ),
+                _react2.default.createElement(_input2.default, {
+                  type: "number",
+                  name: "quantity",
+                  hint: "1",
+                  theme: _inputQuantityTheme2.default,
+                  value: this.state.quantity,
+                  onChange: this.handleChange.bind(this, "quantity")
+                })
+              )
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              "Size Guideline"
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.flexcontainer },
+              _react2.default.createElement("div", { className: _step2.default.flexitem }),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "P"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "L"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.flexcontainer },
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "M"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "72"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "30"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.flexcontainer },
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "L"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "74"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "31"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.flexcontainer },
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "XL"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "76"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "32"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.flexcontainer },
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "XXL"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "78"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "33"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.textmargin },
+              "Price Guideline"
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.flexcontainer },
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "M"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "Rp. 70.000/pcs"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.flexcontainer },
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "L"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "Rp. 70.000/pcs"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.flexcontainer },
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "XM"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "Rp. 70.000/pcs"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.flexcontainer },
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "XXL"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: _step2.default.flexitem },
+                _react2.default.createElement(
+                  "p",
+                  { className: _step2.default.sizetext },
+                  "Rp. 75.000/pcs"
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "p",
+          { className: _step2.default.orderformtext },
+          "Order Form"
+        ),
+        _react2.default.createElement("hr", { className: _step2.default.rowform }),
+        _react2.default.createElement(
+          _RoundedButton2.default,
+          { to: "/drophere/order/1", className: _step2.default.button, primary: true },
+          "NEXT"
+        )
+      );
+    }
+  }]);
+
+  return DrophereForm;
+}(_react.Component);
+
+exports.default = DrophereForm;
+
+/***/ }),
+/* 410 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _lodash = __webpack_require__(38);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _step = __webpack_require__(391);
+
+var _step2 = _interopRequireDefault(_step);
+
+var _DataDisplay = __webpack_require__(36);
+
+var _DataDisplay2 = _interopRequireDefault(_DataDisplay);
+
+var _RoundedButton = __webpack_require__(17);
+
+var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
+
+
+//STYLES
+
+
+//COMPONENTS
+
+
+//COMPONENT
+var Payment = function (_Component) {
+  _inherits(Payment, _Component);
+
+  function Payment() {
+    _classCallCheck(this, Payment);
+
+    return _possibleConstructorReturn(this, (Payment.__proto__ || Object.getPrototypeOf(Payment)).apply(this, arguments));
+  }
+
+  _createClass(Payment, [{
+    key: "renderPayment",
+    value: function renderPayment() {
+      if (paymentinfo) return _lodash2.default.map(paymentinfo, function (data, i) {
+        return _react2.default.createElement(_DataDisplay2.default, { value: data.value, key: i });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: _step2.default.container },
+        _react2.default.createElement(
+          "div",
+          { className: _step2.default.infoflex },
+          _react2.default.createElement(
+            "h1",
+            null,
+            "Payment"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: _step2.default.wrapper },
+          _react2.default.createElement(
+            "div",
+            { className: _step2.default.contentflex },
+            _react2.default.createElement(
+              "p",
+              null,
+              "Order number: #0097"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: _step2.default.content },
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.title },
+              "Checkout Successful"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.text },
+              "Complete The Payment"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.smallertext },
+              "Remaining time of your payment"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.time },
+              "05 : 59 : 50"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.text + ' ' + _step2.default.margintext },
+              "Total cost to be paid"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.cost },
+              "Rp. 2.800.000"
+            ),
+            _react2.default.createElement(
+              "p",
+              { className: _step2.default.text + ' ' + _step2.default.margintext },
+              "Please transfer to the following Setel's bank account number"
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: _step2.default.bank },
+              _react2.default.createElement("img", null),
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.text },
+                "Lowokwaru"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.text + ' ' + _step2.default.accnumber },
+                "165 524 789 26"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: _step2.default.nomargin },
+                "PT. Setel"
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: _step2.default.down },
+          _react2.default.createElement(
+            _RoundedButton2.default,
+            { className: _step2.default.button, to: "/drophere/order/5", primary: true },
+            "CONFIRMATION"
+          )
+        )
+      );
+    }
+  }]);
+
+  return Payment;
+}(_react.Component);
+
+exports.default = Payment;
 
 /***/ })
 /******/ ]);
