@@ -104,20 +104,19 @@
       font-size: 14px;
     }
   }
-}
-
-.infoflex {
-  display: flex;
-  justify-content: flex-end;
-  h1 {
-    width: 207px;
-    border-bottom: solid 1px #000000;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    letter-spacing: normal;
-    text-align: left;
-    margin-right: 2%;
-    color: #000000;
+  .infoflex {
+    display: flex;
+    justify-content: flex-end;
+    h1 {
+      width: 207px;
+      border-bottom: solid 1px #000000;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      letter-spacing: normal;
+      text-align: left;
+      margin-right: 2%;
+      color: #000000;
+    }
   }
 }
