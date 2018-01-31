@@ -1,5 +1,181 @@
-@import '../../../assets/css/config.scss';
+@import "../../../assets/css/config.scss";
+$widthlogin: 352px;
+$heightlogin: 650px;
+@mixin center($width, $height) {
+  width: $width;
+  height: $height;
+  top: 50%;
+  left: 50%;
+  margin-left: -($width/2);
+  margin-top: -($height/2);
+  position: absolute;
+}
 
 .container {
   display: block;
+  background-color: #3a3779;
+  .loginareacolor {
+    background-color: #fbfbfb;
+    @include center($widthlogin, $heightlogin);
+    .flexboxcontainer {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: row wrap;
+      justify-content: space-around;
+      .flexboxitem {
+        flex-grow: 1;
+        width: $widthlogin/3;
+        .logo {
+          margin-top: 30px;
+          width: 138px;
+          height: 71px;
+          object-fit: contain;
+        }
+        .loginandregisterheading {
+          flex-grow: 2;
+          font-family: "Roboto", sans-serif;
+          width: 75px;
+          height: 17px;
+          font-size: 22px;
+          font-weight: bold;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: normal;
+          letter-spacing: 3.5px;
+          text-align: left;
+          color: #000000;
+          margin-left: 47px;
+          margin-top: 18px;
+        }
+        .togglebuttonmin {
+          width: 16px;
+          height: 2px;
+          object-fit: contain;
+          background-color: #000000;
+        }
+        .togglebuttoncross {
+          width: 18px;
+          height: 18px;
+          object-fit: contain;
+          margin-top: 10px;
+        }
+        .user {
+          font-family: "Roboto", sans-serif;
+          margin-left: 46px;
+          width: 34px;
+          height: 9px;
+          font-size: 12px;
+          font-weight: 300;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: normal;
+          letter-spacing: 1.9px;
+          text-align: left;
+          color: #000000;
+        }
+        .input {
+          font-family: "Roboto", sans-serif;
+          padding: 10px 18px 11px 18px;
+          align-self: center;
+          border-style: none;
+          width: 138px;
+          height: 31px;
+          background-color: #e8e8e8;
+          font-size: 12px;
+          font-weight: 300;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: normal;
+          letter-spacing: 1.9px;
+          text-align: left;
+          color: #000000;
+        }
+        .password {
+          width: 75px;
+          height: 9px;
+          margin-left: 46px;
+          font-family: "Roboto", sans-serif;
+          font-size: 12px;
+          font-weight: 300;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: normal;
+          letter-spacing: 1.9px;
+          text-align: left;
+          color: #000000;
+        }
+        .signup {
+          margin-left: 48px;
+          font-family: "Roboto", sans-serif;
+          width: 87px;
+          height: 10px;
+          font-size: 10px;
+          font-weight: 300;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          text-align: left;
+          color: #000000;
+        }
+        .googlelogin {
+          margin-left: 44px;
+          width: 95px;
+          height: 28px;
+          object-fit: contain;
+        }
+        .loginbottom {
+          margin-right: -60px;
+          height: 9px;
+          font-family: "Roboto", sans-serif;
+          font-size: 12px;
+          font-weight: normal;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: normal;
+          letter-spacing: 1.9px;
+          text-align: center;
+          color: #3a3779;
+        }
+      }
+    }
+    .ksztat2container {
+      margin-top: 30px;
+    }
+    .flexboxtogglebutton {
+      align-self: center;
+      text-align: end;
+      margin-right: 27px;
+    }
+    .flexlogin {
+      align-self: center;
+    }
+    .inputusercontainer {
+      margin-top: 28px;
+    }
+    .inputemailcontainer{
+      margin-top: 19px;
+    }
+    .inputpasswordcontainer {
+      margin-top: 19px;
+    }
+    .signupgoogletextcontainer {
+      margin-top: 5px;
+    }
+    .rowksztat2 {
+      width: 84px;
+      height: 1px;
+      object-fit: contain;
+      background-color: #000000;
+      margin-left: 47px;
+    }
+    .rowksztat22 {
+      width: 127px;
+      height: 1px;
+      object-fit: contain;
+      background-color: #000000;
+      margin-left: 47px;
+    }
+  }
 }

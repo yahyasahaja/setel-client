@@ -10,7 +10,7 @@ import DataDisplay from "../../../components/DataDisplay"
 import RoundedButton from "../../../components/RoundedButton"
 
 //COMPONENT
-export default class Drophere extends Component {
+export default class Payment extends Component {
   renderPayment() {
     if (paymentinfo) return _.map(paymentinfo, (data, i) => {
       return <DataDisplay value={data.value} key={i} />

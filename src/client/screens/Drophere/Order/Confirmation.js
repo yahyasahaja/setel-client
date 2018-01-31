@@ -12,7 +12,7 @@ import DataDisplay from '../../../components/DataDisplay'
 import RoundedButton from '../../../components/RoundedButton'
 
 //COMPONENT
-export default class Drophere extends Component {
+export default class Confirmation extends Component {
   state = {
     bankName: "Mandiri",
     bankAccount: "",
