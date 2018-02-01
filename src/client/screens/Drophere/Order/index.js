@@ -7,13 +7,17 @@ import { connect } from 'react-redux'
 import styles from './css/index.scss'
 
 //COMPONETNS
-import DrophereForm from './DrophereForm'
-import DragDesign from './DragDesign'
-import CheckoutOrder from './CheckoutOrder'
-import Cart from './Cart'
+import SelectCategories from './SelectCategories'
+import SelectMaterial from './SelectMaterial'
+import SelectColorSize from './SelectColorSize'
+import UploadDesign from './UploadDesign'
+import OrderDetails from './OrderDetails'
+import Cod from './COD'
 import Payment from './Payment'
 import Confirmation from './Confirmation'
+import Completed from './Completed'
 import Menu from '../../../components/DrophereMenu/Desktop'
+
 
 //REDUX_ACTIONS
 import actions from '../../../services/actions'
@@ -51,12 +55,15 @@ class Order extends Component {
       <Menu />
       <div className={styles.content}>
       <Switch>
-        <Route path="/drophere/order/0" exact component={DrophereForm} />
-        <Route path="/drophere/order/1" exact component={DragDesign} />
-        <Route path="/drophere/order/2" exact component={CheckoutOrder} />
-        <Route path="/drophere/order/3" exact component={Cart} />
-        <Route path="/drophere/order/4" exact component={Payment} />
-        <Route path="/drophere/order/5" exact component={Confirmation} />
+        <Route path="/drophere/order/0" exact component={SelectCategories} />
+        <Route path="/drophere/order/1" exact component={SelectMaterial} />
+        <Route path="/drophere/order/2" exact component={SelectColorSize} />
+        <Route path="/drophere/order/3" exact component={UploadDesign} />
+        <Route path="/drophere/order/4" exact component={OrderDetails} />
+        <Route path="/drophere/order/5" exact component={Cod} />
+        <Route path="/drophere/order/6" exact component={Payment}/>
+        <Route path="/drophere/order/7" exact component={Confirmation}/>
+        <Route path="/drophere/order/8" exact component={Completed}/>
       </Switch>
       </div>
       </div>

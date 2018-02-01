@@ -15,7 +15,7 @@ const DRAG_LEAVE = 2
 const DRAG_DROP = 3
 
 //COMPONENT
-export default class DragDesign extends Component {
+export default class UploadDesign extends Component {
   componentDidMount() {
     window.ondragenter = e => {
       e.preventDefault()
