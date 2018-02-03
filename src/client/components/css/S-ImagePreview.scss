@@ -1,0 +1,25 @@
+.imageGroup{
+    text-align: center;    
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    .imageWrapper{
+        width: 104px;
+        height: 118px;
+        background-color: #e6e6e6;
+        display: inline-block;
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .imageLabel{        
+        font-size: 16px;    
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        margin: 16px auto;
+    }
+}
