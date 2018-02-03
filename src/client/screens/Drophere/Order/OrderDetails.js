@@ -5,7 +5,7 @@ import { RadioGroup, RadioButton } from "react-toolbox/lib/radio"
 import Dropdown from "react-toolbox/lib/dropdown"
 
 //STYLES
-import styles from "./css/step0.scss"
+import styles from "./css/order-details.scss"
 import radiotheme from "./css/radio-button-theme.scss"
 import dropdowntheme from "./css/dropdown-theme.scss"
 import sizetheme from "./css/dropdown-size-theme.scss"
