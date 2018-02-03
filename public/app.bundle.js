@@ -27057,13 +27057,17 @@ var _input = __webpack_require__(25);
 
 var _input2 = _interopRequireDefault(_input);
 
-var _lodash = __webpack_require__(33);
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
 var _dropdown = __webpack_require__(36);
 
 var _dropdown2 = _interopRequireDefault(_dropdown);
+
+var _font_icon = __webpack_require__(637);
+
+var _font_icon2 = _interopRequireDefault(_font_icon);
+
+var _SelectMaterial = __webpack_require__(651);
+
+var _SelectMaterial2 = _interopRequireDefault(_SelectMaterial);
 
 var _DataDisplay = __webpack_require__(29);
 
@@ -27072,6 +27076,14 @@ var _DataDisplay2 = _interopRequireDefault(_DataDisplay);
 var _RoundedButton = __webpack_require__(15);
 
 var _RoundedButton2 = _interopRequireDefault(_RoundedButton);
+
+var _DrophereProgress = __webpack_require__(636);
+
+var _DrophereProgress2 = _interopRequireDefault(_DrophereProgress);
+
+var _SImagePreview = __webpack_require__(638);
+
+var _SImagePreview2 = _interopRequireDefault(_SImagePreview);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27092,18 +27104,61 @@ var SelectMaterial = function (_Component) {
     _inherits(SelectMaterial, _Component);
 
     function SelectMaterial() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, SelectMaterial);
 
-        return _possibleConstructorReturn(this, (SelectMaterial.__proto__ || Object.getPrototypeOf(SelectMaterial)).apply(this, arguments));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SelectMaterial.__proto__ || Object.getPrototypeOf(SelectMaterial)).call.apply(_ref, [this].concat(args))), _this), _this.materials = {
+            cotton1: null,
+            cotton2: null,
+            cotton3: null
+        }, _this.imageList = function () {
+            return Object.keys(_this.materials).map(function (key) {
+                _react2.default.createElement(_SImagePreview2.default, { text: key, src: _this.materials[key] });
+            });
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(SelectMaterial, [{
         key: "render",
         value: function render() {
             return _react2.default.createElement(
-                "h1",
-                null,
-                "Hello React!"
+                "div",
+                { className: _SelectMaterial2.default.container },
+                _react2.default.createElement(
+                    "div",
+                    { className: _SelectMaterial2.default.progressBar },
+                    _react2.default.createElement(_DrophereProgress2.default, null)
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: _SelectMaterial2.default.navigation },
+                    _react2.default.createElement(_font_icon2.default, { value: "keyboard_arrow_left", className: _SelectMaterial2.default.arrow }),
+                    _react2.default.createElement(
+                        "span",
+                        null,
+                        "Choose Material"
+                    ),
+                    _react2.default.createElement(_font_icon2.default, { value: "keyboard_arrow_right", className: _SelectMaterial2.default.arrow })
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: _SelectMaterial2.default.materials },
+                    _react2.default.createElement(
+                        "div",
+                        { className: _SelectMaterial2.default.previewMaterials },
+                        _react2.default.createElement(_SImagePreview2.default, null),
+                        _react2.default.createElement(_SImagePreview2.default, null),
+                        _react2.default.createElement(_SImagePreview2.default, null),
+                        _react2.default.createElement(_SImagePreview2.default, null)
+                    )
+                )
             );
         }
     }]);
@@ -27134,9 +27189,17 @@ var _input = __webpack_require__(25);
 
 var _input2 = _interopRequireDefault(_input);
 
-var _step = __webpack_require__(618);
+var _font_icon = __webpack_require__(637);
 
-var _step2 = _interopRequireDefault(_step);
+var _font_icon2 = _interopRequireDefault(_font_icon);
+
+var _UploadDesign = __webpack_require__(652);
+
+var _UploadDesign2 = _interopRequireDefault(_UploadDesign);
+
+var _DrophereProgress = __webpack_require__(636);
+
+var _DrophereProgress2 = _interopRequireDefault(_DrophereProgress);
 
 var _RoundedButton = __webpack_require__(15);
 
@@ -27157,6 +27220,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 //COMPONETNS
 
 
+// import { lchmod } from 'fs'
+
 //INNER_CONFIG
 var DRAG_ENTER = 0;
 var DRAG_OVER = 1;
@@ -27164,22 +27229,55 @@ var DRAG_LEAVE = 2;
 var DRAG_DROP = 3;
 
 //COMPONENT
+var ListNote = function ListNote(_ref) {
+  var _ref$notes = _ref.notes,
+      notes = _ref$notes === undefined ? [] : _ref$notes;
+  return _react2.default.createElement(
+    'ol',
+    null,
+    notes.map(function (val, i) {
+      return _react2.default.createElement(
+        'li',
+        { key: i },
+        val
+      );
+    })
+  );
+};
 
-var UploadDesign = function (_Component) {
-  _inherits(UploadDesign, _Component);
+var DesignNote = function DesignNote() {
+  var notes = ["Lorem", "Ipsum", "Adalah", "Doa"];
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'div',
+      { className: _UploadDesign2.default.title },
+      'Requirment:'
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: _UploadDesign2.default.points },
+      _react2.default.createElement(ListNote, { notes: notes })
+    )
+  );
+};
 
-  function UploadDesign() {
-    var _ref;
+var UploadArea = function (_Component) {
+  _inherits(UploadArea, _Component);
+
+  function UploadArea() {
+    var _ref2;
 
     var _temp, _this, _ret;
 
-    _classCallCheck(this, UploadDesign);
+    _classCallCheck(this, UploadArea);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = UploadDesign.__proto__ || Object.getPrototypeOf(UploadDesign)).call.apply(_ref, [this].concat(args))), _this), _this.onFileUploadChange = function (e) {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = UploadArea.__proto__ || Object.getPrototypeOf(UploadArea)).call.apply(_ref2, [this].concat(args))), _this), _this.onFileUploadChange = function (e) {
       e.preventDefault();
 
       _this.handleFileUpload(e.target.files[0]);
@@ -27191,7 +27289,7 @@ var UploadDesign = function (_Component) {
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
-  _createClass(UploadDesign, [{
+  _createClass(UploadArea, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
       var _this2 = this;
@@ -27231,13 +27329,13 @@ var UploadDesign = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: _step2.default.container },
+        { className: _UploadDesign2.default.dragContainer },
         _react2.default.createElement(
           'div',
-          { className: _step2.default.up },
+          { className: _UploadDesign2.default.up },
           _react2.default.createElement(
             'div',
-            { className: _step2.default['drop-container'] + ' ' + (dragStateId === DRAG_OVER || dragStateId == DRAG_ENTER ? _step2.default['on-drag-over'] : '') },
+            { className: _UploadDesign2.default['drop-container'] + ' ' + (dragStateId === DRAG_OVER || dragStateId == DRAG_ENTER ? _UploadDesign2.default['on-drag-over'] : '') },
             _react2.default.createElement(
               'span',
               null,
@@ -27245,7 +27343,7 @@ var UploadDesign = function (_Component) {
             ),
             _react2.default.createElement(
               'span',
-              { className: _step2.default.or },
+              { className: _UploadDesign2.default.or },
               'OR'
             ),
             _react2.default.createElement(
@@ -27253,7 +27351,7 @@ var UploadDesign = function (_Component) {
               { 'for': 'upload-file' },
               _react2.default.createElement(
                 'div',
-                { className: _step2.default.button, onClick: function onClick(e) {} },
+                { className: _UploadDesign2.default.button, onClick: function onClick(e) {} },
                 'UPLOAD DESIGN'
               ),
               _react2.default.createElement('input', {
@@ -27262,59 +27360,74 @@ var UploadDesign = function (_Component) {
                 onChange: this.onFileUploadChange
               })
             )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: _step2.default.info },
-            _react2.default.createElement(
-              'h1',
-              null,
-              'Design'
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              'Requirements:',
-              _react2.default.createElement('br', null),
-              _react2.default.createElement(
-                'ol',
-                null,
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Lorem impsum dolor'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Lorem impsum dolor'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Lorem impsum dolor'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Lorem impsum dolor'
-                )
-              )
-            )
           )
+        )
+      );
+    }
+  }]);
+
+  return UploadArea;
+}(_react.Component);
+
+var UploadDesign = function (_Component2) {
+  _inherits(UploadDesign, _Component2);
+
+  function UploadDesign() {
+    _classCallCheck(this, UploadDesign);
+
+    return _possibleConstructorReturn(this, (UploadDesign.__proto__ || Object.getPrototypeOf(UploadDesign)).apply(this, arguments));
+  }
+
+  _createClass(UploadDesign, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: _UploadDesign2.default.container },
+        _react2.default.createElement(
+          'div',
+          { className: _UploadDesign2.default.progressBar },
+          _react2.default.createElement(_DrophereProgress2.default, null)
         ),
         _react2.default.createElement(
           'div',
-          { className: _step2.default.down },
+          { className: _UploadDesign2.default.navigation },
+          _react2.default.createElement(_font_icon2.default, { value: 'keyboard_arrow_left', className: _UploadDesign2.default.arrow }),
           _react2.default.createElement(
-            _RoundedButton2.default,
-            { to: '/drophere/order/0', className: _step2.default.button },
-            'BACK'
+            'span',
+            null,
+            'Upload Design'
           ),
+          _react2.default.createElement(_font_icon2.default, { value: 'keyboard_arrow_right', className: _UploadDesign2.default.arrow })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _UploadDesign2.default.uploadContainer },
+          _react2.default.createElement(
+            'span',
+            null,
+            'Front'
+          ),
+          _react2.default.createElement(UploadArea, null),
+          _react2.default.createElement(
+            'span',
+            null,
+            'Back'
+          ),
+          _react2.default.createElement(UploadArea, null)
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _UploadDesign2.default.detailContainer },
+          _react2.default.createElement(DesignNote, null)
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
           _react2.default.createElement(
             _RoundedButton2.default,
-            { to: '/drophere/order/2', className: _step2.default.button, primary: true },
-            'NEXT'
+            null,
+            'Get a Qoute'
           )
         )
       );
@@ -36205,9 +36318,21 @@ var _dropdown = __webpack_require__(36);
 
 var _dropdown2 = _interopRequireDefault(_dropdown);
 
+var _font_icon = __webpack_require__(637);
+
+var _font_icon2 = _interopRequireDefault(_font_icon);
+
+var _COD = __webpack_require__(648);
+
+var _COD2 = _interopRequireDefault(_COD);
+
 var _DataDisplay = __webpack_require__(29);
 
 var _DataDisplay2 = _interopRequireDefault(_DataDisplay);
+
+var _DrophereProgress = __webpack_require__(636);
+
+var _DrophereProgress2 = _interopRequireDefault(_DrophereProgress);
 
 var _RoundedButton = __webpack_require__(15);
 
@@ -36241,9 +36366,42 @@ var Cod = function (_Component) {
         key: "render",
         value: function render() {
             return _react2.default.createElement(
-                "h1",
-                null,
-                "Hello React!"
+                "div",
+                { className: _COD2.default.container },
+                _react2.default.createElement(
+                    "div",
+                    { className: _COD2.default['progress-bar'] },
+                    _react2.default.createElement(_DrophereProgress2.default, null)
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: _COD2.default['navigation'] },
+                    _react2.default.createElement(_font_icon2.default, { value: "keyboard_arrow_left", className: _COD2.default.arrow }),
+                    _react2.default.createElement(
+                        "span",
+                        null,
+                        "Payment"
+                    ),
+                    _react2.default.createElement(_font_icon2.default, { value: "keyboard_arrow_right", className: _COD2.default.arrow })
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: _COD2.default.cod },
+                    _react2.default.createElement(
+                        "div",
+                        { className: _COD2.default.message },
+                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptatibus voluptatem \n                        blanditiis laboriosam quo, vero ab veniam, alias ducimus nobis omnis dolore molestias reprehenderit,\n                        numquam beatae quidem neque optio assumenda!"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: _COD2.default.button },
+                        _react2.default.createElement(
+                            _RoundedButton2.default,
+                            { to: "/" },
+                            "Back To Home"
+                        )
+                    )
+                )
             );
         }
     }]);
@@ -36282,6 +36440,10 @@ var _dropdown = __webpack_require__(36);
 
 var _dropdown2 = _interopRequireDefault(_dropdown);
 
+var _Completed = __webpack_require__(649);
+
+var _Completed2 = _interopRequireDefault(_Completed);
+
 var _DataDisplay = __webpack_require__(29);
 
 var _DataDisplay2 = _interopRequireDefault(_DataDisplay);
@@ -36318,9 +36480,40 @@ var Completed = function (_Component) {
         key: "render",
         value: function render() {
             return _react2.default.createElement(
-                "h1",
-                null,
-                "Hello React!"
+                "div",
+                { className: _Completed2.default.container },
+                _react2.default.createElement(
+                    "div",
+                    { className: _Completed2.default.navigation },
+                    "Completed"
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: _Completed2.default.content },
+                    _react2.default.createElement(
+                        "div",
+                        { className: _Completed2.default.message },
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "Terima Kasih Pesanan Anda akan segera di proses"
+                        ),
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "Untuk informasi atau pertanyaan lebih lanjut silahkan hubungi admin"
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: _Completed2.default['button-container'] },
+                        _react2.default.createElement(
+                            _RoundedButton2.default,
+                            null,
+                            "Back To Home"
+                        )
+                    )
+                )
             );
         }
     }]);
@@ -36361,9 +36554,13 @@ var _input = __webpack_require__(25);
 
 var _input2 = _interopRequireDefault(_input);
 
-var _step = __webpack_require__(620);
+var _Confirmation = __webpack_require__(650);
 
-var _step2 = _interopRequireDefault(_step);
+var _Confirmation2 = _interopRequireDefault(_Confirmation);
+
+var _DrophereProgress = __webpack_require__(636);
+
+var _DrophereProgress2 = _interopRequireDefault(_DrophereProgress);
 
 var _DataDisplay = __webpack_require__(29);
 
@@ -36411,40 +36608,65 @@ var Confirmation = function (_Component) {
       accountName: ""
     }, _this.handleChange = function (name, value) {
       _this.setState(_extends({}, _this.state, _defineProperty({}, name, value)));
-    }, _this.bank = [{ value: "Mandiri", label: "Mandiri" }, { value: "BCA", label: "BCA" }, { value: "BNI", label: "BNI" }, { value: "BTN", label: "BTN" }], _this.DATA = [{ name: _react2.default.createElement(
+    }, _this.bank = [{ value: "Mandiri", label: "Mandiri" }, { value: "BCA", label: "BCA" }, { value: "BNI", label: "BNI" }, { value: "BTN", label: "BTN" }], _this.DATA = [{
+      name: _react2.default.createElement(
         'p',
         null,
         'Order Number'
-      ), value: _react2.default.createElement(
+      ),
+      value: _react2.default.createElement(
         'p',
-        { className: _step2.default.text },
+        { className: _Confirmation2.default.text },
         '#0097'
-      ) }, { name: _react2.default.createElement(
+      )
+    }, {
+      name: _react2.default.createElement(
         'p',
         null,
         'To Bank Account'
-      ), value: function value() {
-        return _react2.default.createElement(_dropdown2.default, { source: _this.bank, value: _this.state.bankName, onChange: _this.handleChange.bind(_this, "bankName") });
-      } }, { name: _react2.default.createElement(
+      ),
+      value: function value() {
+        return _react2.default.createElement(_dropdown2.default, { source: _this.bank,
+          value: _this.state.bankName,
+          onChange: _this.handleChange.bind(_this, "bankName") });
+      }
+    }, {
+      name: _react2.default.createElement(
         'p',
         null,
         'From Bank Account'
-      ), value: function value() {
-        return _react2.default.createElement(_input2.default, { type: 'text', value: _this.state.bankAccount, onChange: _this.handleChange.bind(_this, "bankAccount") });
-      } }, { name: _react2.default.createElement(
+      ),
+      value: function value() {
+        return _react2.default.createElement(_input2.default, {
+          type: 'text',
+          value: _this.state.bankAccount,
+          onChange: _this.handleChange.bind(_this, "bankAccount") });
+      }
+    }, {
+      name: _react2.default.createElement(
         'p',
         null,
         'Account Name'
-      ), value: function value() {
-        return _react2.default.createElement(_input2.default, { type: 'text', value: _this.state.accountName, onChange: _this.handleChange.bind(_this, "accountName") });
-      } }], _temp), _possibleConstructorReturn(_this, _ret);
+      ),
+      value: function value() {
+        return _react2.default.createElement(_input2.default, {
+          type: 'text',
+          value: _this.state.accountName,
+          onChange: _this.handleChange.bind(_this, "accountName")
+        });
+      }
+    }], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Confirmation, [{
     key: 'renderContent',
     value: function renderContent() {
       if (this.DATA) return _lodash2.default.map(this.DATA, function (data, i) {
-        return _react2.default.createElement(_DataDisplay2.default, { name: data.name, value: typeof data.value === 'function' ? data.value() : data.value, key: i });
+        return _react2.default.createElement(_DataDisplay2.default, {
+          name: data.name,
+          value: typeof data.value === 'function' ? data.value() : data.value,
+          key: i
+        });
       });
     }
   }, {
@@ -36452,24 +36674,32 @@ var Confirmation = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: _step2.default.container },
+        { className: _Confirmation2.default.container },
         _react2.default.createElement(
           'div',
-          { className: _step2.default.wrapper },
-          _react2.default.createElement(
-            'div',
-            { className: _step2.default.content },
-            this.renderContent(),
-            _react2.default.createElement(_dropdown2.default, { source: this.bank, value: this.state.bankName, onChange: this.handleChange })
-          )
+          { className: _Confirmation2.default.navigation },
+          'Confirmation Payment'
         ),
         _react2.default.createElement(
           'div',
-          { className: _step2.default.down },
+          { className: _Confirmation2.default.content },
+          this.renderContent()
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _Confirmation2.default.captha },
+          'Ini Ceritanya Captha'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _Confirmation2.default.down },
           _react2.default.createElement(
             _RoundedButton2.default,
-            { className: _step2.default.button, to: '/drophere/order/6', primary: true },
-            'SUBMIT'
+            {
+              className: _Confirmation2.default.button,
+              to: '/drophere/order/6', primary: true
+            },
+            'Confirm'
           )
         )
       );
@@ -39665,50 +39895,9 @@ exports.locals = {
 };
 
 /***/ }),
-/* 278 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(4)();
-// imports
-
-
-// module
-exports.push([module.i, ".step1--container--lO3vqsi2 {\n  display: block;\n  padding: 20px;\n  height: 100%;\n  padding-bottom: 40px; }\n  .step1--container--lO3vqsi2 .step1--up--2EZMlmz- {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 90%;\n    padding: 30px 20px; }\n    .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--drop-container--3zzxFkV5 {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      background: #ecf2f3;\n      border: solid 1px #d2d7d8;\n      border-radius: 10px;\n      width: 65%;\n      height: 400px; }\n      .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--drop-container--3zzxFkV5 .step1--or--25tTJel8 {\n        margin: 10px 0; }\n      .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--drop-container--3zzxFkV5 label .step1--button--3etAi5Z5 {\n        padding: 5px 20px;\n        border: solid 1px #acacac;\n        border-radius: 10px;\n        color: #acacac;\n        cursor: pointer; }\n        .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--drop-container--3zzxFkV5 label .step1--button--3etAi5Z5:hover {\n          border-color: #3a3779;\n          background: #3a3779;\n          color: white; }\n      .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--drop-container--3zzxFkV5 label input {\n        display: none; }\n    .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--on-drag-over--2u1uHfui {\n      background: #3a3779;\n      color: white; }\n      .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--on-drag-over--2u1uHfui label .step1--button--3etAi5Z5 {\n        color: white;\n        border-color: white; }\n        .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--on-drag-over--2u1uHfui label .step1--button--3etAi5Z5:hover {\n          border-color: white;\n          color: white; }\n    .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--info--2JFEGCoE {\n      display: block;\n      margin-left: 5%;\n      width: 25%; }\n      .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--info--2JFEGCoE h1 {\n        border-bottom: 2px solid #5a5a5a;\n        font-weight: 400; }\n      .step1--container--lO3vqsi2 .step1--up--2EZMlmz- .step1--info--2JFEGCoE ol {\n        margin: 10px 0;\n        padding: 0 20px; }\n  .step1--container--lO3vqsi2 .step1--down--2vaOKN77 {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n    .step1--container--lO3vqsi2 .step1--down--2vaOKN77 .step1--button--3etAi5Z5 {\n      display: block; }\n      .step1--container--lO3vqsi2 .step1--down--2vaOKN77 .step1--button--3etAi5Z5 a, .step1--container--lO3vqsi2 .step1--down--2vaOKN77 .step1--button--3etAi5Z5 button {\n        padding: 5px 50px; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/step1.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,cAAc;EACd,aAAa;EACb,qBAAqB,EAAE;EACvB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,YAAY;IACZ,mBAAmB,EAAE;IACrB;MACE,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,yBAAyB;UACrB,sBAAsB;cAClB,wBAAwB;MAChC,0BAA0B;UACtB,uBAAuB;cACnB,oBAAoB;MAC5B,6BAA6B;MAC7B,8BAA8B;UAC1B,2BAA2B;cACvB,uBAAuB;MAC/B,oBAAoB;MACpB,0BAA0B;MAC1B,oBAAoB;MACpB,WAAW;MACX,cAAc,EAAE;MAChB;QACE,eAAe,EAAE;MACnB;QACE,kBAAkB;QAClB,0BAA0B;QAC1B,oBAAoB;QACpB,eAAe;QACf,gBAAgB,EAAE;QAClB;UACE,sBAAsB;UACtB,oBAAoB;UACpB,aAAa,EAAE;MACnB;QACE,cAAc,EAAE;IACpB;MACE,oBAAoB;MACpB,aAAa,EAAE;MACf;QACE,aAAa;QACb,oBAAoB,EAAE;QACtB;UACE,oBAAoB;UACpB,aAAa,EAAE;IACrB;MACE,eAAe;MACf,gBAAgB;MAChB,WAAW,EAAE;MACb;QACE,iCAAiC;QACjC,iBAAiB,EAAE;MACrB;QACE,eAAe;QACf,gBAAgB,EAAE;EACxB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,sBAAsB;QAClB,mBAAmB;YACf,0BAA0B,EAAE;IACpC;MACE,eAAe,EAAE;MACjB;QACE,kBAAkB,EAAE","file":"step1.scss","sourcesContent":[".container {\n  display: block;\n  padding: 20px;\n  height: 100%;\n  padding-bottom: 40px; }\n  .container .up {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 90%;\n    padding: 30px 20px; }\n    .container .up .drop-container {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      background: #ecf2f3;\n      border: solid 1px #d2d7d8;\n      border-radius: 10px;\n      width: 65%;\n      height: 400px; }\n      .container .up .drop-container .or {\n        margin: 10px 0; }\n      .container .up .drop-container label .button {\n        padding: 5px 20px;\n        border: solid 1px #acacac;\n        border-radius: 10px;\n        color: #acacac;\n        cursor: pointer; }\n        .container .up .drop-container label .button:hover {\n          border-color: #3a3779;\n          background: #3a3779;\n          color: white; }\n      .container .up .drop-container label input {\n        display: none; }\n    .container .up .on-drag-over {\n      background: #3a3779;\n      color: white; }\n      .container .up .on-drag-over label .button {\n        color: white;\n        border-color: white; }\n        .container .up .on-drag-over label .button:hover {\n          border-color: white;\n          color: white; }\n    .container .up .info {\n      display: block;\n      margin-left: 5%;\n      width: 25%; }\n      .container .up .info h1 {\n        border-bottom: 2px solid #5a5a5a;\n        font-weight: 400; }\n      .container .up .info ol {\n        margin: 10px 0;\n        padding: 0 20px; }\n  .container .down {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n    .container .down .button {\n      display: block; }\n      .container .down .button a, .container .down .button button {\n        padding: 5px 50px; }\n"],"sourceRoot":"webpack://"}]);
-
-// exports
-exports.locals = {
-	"container": "step1--container--lO3vqsi2",
-	"up": "step1--up--2EZMlmz-",
-	"drop-container": "step1--drop-container--3zzxFkV5",
-	"or": "step1--or--25tTJel8",
-	"button": "step1--button--3etAi5Z5",
-	"on-drag-over": "step1--on-drag-over--2u1uHfui",
-	"info": "step1--info--2JFEGCoE",
-	"down": "step1--down--2vaOKN77"
-};
-
-/***/ }),
+/* 278 */,
 /* 279 */,
-/* 280 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(4)();
-// imports
-
-
-// module
-exports.push([module.i, ".step5--container--lp7FW-0S {\n  display: block;\n  width: 100%;\n  height: 100%; }\n  .step5--container--lp7FW-0S .step5--wrapper--C1JKAp8E {\n    width: 811px;\n    height: 600px;\n    border: solid 1px #b7b7b7;\n    margin: 86px 348px 40px 207px;\n    padding: 43px 136px 32px 71px; }\n  .step5--container--lp7FW-0S .step5--down--f_yPzVkr {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    margin-right: 105px;\n    margin-bottom: 55px; }\n    .step5--container--lp7FW-0S .step5--down--f_yPzVkr .step5--button--1eQu4UH- {\n      width: 165px;\n      height: 42px;\n      font-size: 16px;\n      text-align: center; }\n\np {\n  color: black;\n  font-weight: 300; }\n\n.step5--text--3PWHoEN_ {\n  color: black;\n  font-weight: normal; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/step5.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,YAAY;EACZ,aAAa,EAAE;EACf;IACE,aAAa;IACb,cAAc;IACd,0BAA0B;IAC1B,8BAA8B;IAC9B,8BAA8B,EAAE;EAClC;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,sBAAsB;QAClB,mBAAmB;YACf,0BAA0B;IAClC,oBAAoB;IACpB,oBAAoB,EAAE;IACtB;MACE,aAAa;MACb,aAAa;MACb,gBAAgB;MAChB,mBAAmB,EAAE;;AAE3B;EACE,aAAa;EACb,iBAAiB,EAAE;;AAErB;EACE,aAAa;EACb,oBAAoB,EAAE","file":"step5.scss","sourcesContent":[".container {\n  display: block;\n  width: 100%;\n  height: 100%; }\n  .container .wrapper {\n    width: 811px;\n    height: 600px;\n    border: solid 1px #b7b7b7;\n    margin: 86px 348px 40px 207px;\n    padding: 43px 136px 32px 71px; }\n  .container .down {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    margin-right: 105px;\n    margin-bottom: 55px; }\n    .container .down .button {\n      width: 165px;\n      height: 42px;\n      font-size: 16px;\n      text-align: center; }\n\np {\n  color: black;\n  font-weight: 300; }\n\n.text {\n  color: black;\n  font-weight: normal; }\n"],"sourceRoot":"webpack://"}]);
-
-// exports
-exports.locals = {
-	"container": "step5--container--lp7FW-0S",
-	"wrapper": "step5--wrapper--C1JKAp8E",
-	"down": "step5--down--f_yPzVkr",
-	"button": "step5--button--1eQu4UH-",
-	"text": "step5--text--3PWHoEN_"
-};
-
-/***/ }),
+/* 280 */,
 /* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -66173,69 +66362,9 @@ if(false) {
 }
 
 /***/ }),
-/* 618 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(278);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(5)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step1.scss", function() {
-			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step1.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
+/* 618 */,
 /* 619 */,
-/* 620 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(280);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(5)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step5.scss", function() {
-			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./step5.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
+/* 620 */,
 /* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -67906,6 +68035,653 @@ if(false) {
 	if(!content.locals) {
 		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./payment.scss", function() {
 			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./payment.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 636 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(112);
+
+var _drophereProgress = __webpack_require__(647);
+
+var _drophereProgress2 = _interopRequireDefault(_drophereProgress);
+
+var _config = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"D://Kerja//PROJECT//setel-client//src//client//config\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
+
+
+//STYLES
+
+
+//CONFIG
+
+
+//COMPONENT
+var DrophereProgress = function (_Component) {
+  _inherits(DrophereProgress, _Component);
+
+  function DrophereProgress() {
+    _classCallCheck(this, DrophereProgress);
+
+    return _possibleConstructorReturn(this, (DrophereProgress.__proto__ || Object.getPrototypeOf(DrophereProgress)).apply(this, arguments));
+  }
+
+  _createClass(DrophereProgress, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: _drophereProgress2.default.container },
+        _react2.default.createElement(ProgressBar, { step: this.props.currentStep })
+      );
+    }
+  }]);
+
+  return DrophereProgress;
+}(_react.Component);
+
+var ProgressBar = function (_Component2) {
+  _inherits(ProgressBar, _Component2);
+
+  function ProgressBar() {
+    var _ref;
+
+    var _temp, _this2, _ret;
+
+    _classCallCheck(this, ProgressBar);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_ref = ProgressBar.__proto__ || Object.getPrototypeOf(ProgressBar)).call.apply(_ref, [this].concat(args))), _this2), _this2.isFinished = function (stepFinished) {
+      var step = _this2.props.step;
+
+      if (stepFinished >= step) return '#37347a';
+      return '#e2e2e2';
+    }, _temp), _possibleConstructorReturn(_this2, _ret);
+  }
+
+  _createClass(ProgressBar, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          _props$step = _props.step,
+          step = _props$step === undefined ? 0 : _props$step,
+          _props$height = _props.height,
+          height = _props$height === undefined ? 16 : _props$height;
+
+      return _react2.default.createElement(
+        'div',
+        { className: _drophereProgress2.default.progressBarContainer },
+        _react2.default.createElement(
+          'div',
+          { className: _drophereProgress2.default.stepGroup },
+          _react2.default.createElement(
+            'div',
+            { className: _drophereProgress2.default.label },
+            '1. Choose product'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _drophereProgress2.default.step },
+            _react2.default.createElement(
+              'svg',
+              null,
+              _react2.default.createElement('line', { x1: '50%', y1: height / 2, x2: '100%', y2: height / 2, stroke: this.isFinished(1) }),
+              _react2.default.createElement('circle', { cx: '50%', cy: height / 2, r: height / 2, fill: '#37347a' })
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _drophereProgress2.default.stepGroup },
+          _react2.default.createElement(
+            'div',
+            { className: _drophereProgress2.default.label },
+            '2. Upload design'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _drophereProgress2.default.step },
+            _react2.default.createElement(
+              'svg',
+              null,
+              _react2.default.createElement('line', { x1: '0%', y1: height / 2, x2: '50%', y2: height / 2, stroke: this.isFinished(3) }),
+              _react2.default.createElement('line', { x1: '50%', y1: height / 2, x2: '100%', y2: height / 2, stroke: this.isFinished(4) }),
+              _react2.default.createElement('circle', { cx: '50%', cy: height / 2, r: height / 2, fill: '#37347a' })
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _drophereProgress2.default.stepGroup },
+          _react2.default.createElement(
+            'div',
+            { className: _drophereProgress2.default.label },
+            '3. Order details'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _drophereProgress2.default.step },
+            _react2.default.createElement(
+              'svg',
+              null,
+              _react2.default.createElement('line', { x1: '0%', y1: height / 2, x2: '50%', y2: height / 2, stroke: this.isFinished(4) }),
+              _react2.default.createElement('line', { x1: '50%', y1: height / 2, x2: '100%', y2: height / 2, stroke: this.isFinished(5) }),
+              _react2.default.createElement('circle', { cx: '50%', cy: height / 2, r: height / 2, fill: '#37347a' })
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _drophereProgress2.default.stepGroup },
+          _react2.default.createElement(
+            'div',
+            { className: _drophereProgress2.default.label },
+            '4. Payment'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _drophereProgress2.default.step },
+            _react2.default.createElement(
+              'svg',
+              null,
+              _react2.default.createElement('line', { x1: '0%', y1: height / 2, x2: '50%', y2: height / 2, stroke: this.isFinished(5) }),
+              _react2.default.createElement('circle', { cx: '50%', cy: height / 2, r: height / 2, fill: '#37347a' })
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return ProgressBar;
+}(_react.Component);
+
+exports.default = (0, _reactRedux.connect)(function (state) {
+  //mapStateToProps
+  return _defineProperty({}, _config.DROPHERE_STEP, state.step[_config.DROPHERE_STEP]);
+})(DrophereProgress);
+
+/***/ }),
+/* 637 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FontIcon = undefined;
+
+var _FontIcon = __webpack_require__(201);
+
+exports.default = _FontIcon.FontIcon;
+exports.FontIcon = _FontIcon.FontIcon;
+
+/***/ }),
+/* 638 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _SImagePreview = __webpack_require__(646);
+
+var _SImagePreview2 = _interopRequireDefault(_SImagePreview);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Spreview = function (_Component) {
+    _inherits(Spreview, _Component);
+
+    function Spreview() {
+        _classCallCheck(this, Spreview);
+
+        return _possibleConstructorReturn(this, (Spreview.__proto__ || Object.getPrototypeOf(Spreview)).apply(this, arguments));
+    }
+
+    _createClass(Spreview, [{
+        key: 'render',
+        value: function render() {
+            var _props = this.props,
+                _props$text = _props.text,
+                text = _props$text === undefined ? 'image caption' : _props$text,
+                _props$src = _props.src,
+                src = _props$src === undefined ? 'http://s.id/1aTc' : _props$src,
+                _props$alt = _props.alt,
+                alt = _props$alt === undefined ? 'no image reference' : _props$alt;
+
+
+            return _react2.default.createElement(
+                'div',
+                { className: _SImagePreview2.default.imageGroup },
+                _react2.default.createElement(
+                    'div',
+                    { className: _SImagePreview2.default.imageWrapper },
+                    _react2.default.createElement('img', { src: src, alt: alt })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: _SImagePreview2.default.imageLabel },
+                    text
+                )
+            );
+        }
+    }]);
+
+    return Spreview;
+}(_react.Component);
+
+exports.default = Spreview;
+
+/***/ }),
+/* 639 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
+// imports
+
+
+// module
+exports.push([module.i, ".S-ImagePreview--imageGroup--3a_LOeMN {\n  text-align: center;\n  margin-top: 8px;\n  margin-bottom: 8px; }\n  .S-ImagePreview--imageGroup--3a_LOeMN .S-ImagePreview--imageWrapper--3ZobCzwf {\n    width: 104px;\n    height: 118px;\n    background-color: #e6e6e6;\n    display: inline-block; }\n    .S-ImagePreview--imageGroup--3a_LOeMN .S-ImagePreview--imageWrapper--3ZobCzwf img {\n      width: 100%;\n      height: 100%; }\n  .S-ImagePreview--imageGroup--3a_LOeMN .S-ImagePreview--imageLabel--2XXkZdlS {\n    font-size: 16px;\n    width: 100%;\n    display: inline-block;\n    text-align: center;\n    margin: 16px auto; }\n", "", {"version":3,"sources":["/./src/client/components/css/S-ImagePreview.scss"],"names":[],"mappings":"AAAA;EACE,mBAAmB;EACnB,gBAAgB;EAChB,mBAAmB,EAAE;EACrB;IACE,aAAa;IACb,cAAc;IACd,0BAA0B;IAC1B,sBAAsB,EAAE;IACxB;MACE,YAAY;MACZ,aAAa,EAAE;EACnB;IACE,gBAAgB;IAChB,YAAY;IACZ,sBAAsB;IACtB,mBAAmB;IACnB,kBAAkB,EAAE","file":"S-ImagePreview.scss","sourcesContent":[".imageGroup {\n  text-align: center;\n  margin-top: 8px;\n  margin-bottom: 8px; }\n  .imageGroup .imageWrapper {\n    width: 104px;\n    height: 118px;\n    background-color: #e6e6e6;\n    display: inline-block; }\n    .imageGroup .imageWrapper img {\n      width: 100%;\n      height: 100%; }\n  .imageGroup .imageLabel {\n    font-size: 16px;\n    width: 100%;\n    display: inline-block;\n    text-align: center;\n    margin: 16px auto; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"imageGroup": "S-ImagePreview--imageGroup--3a_LOeMN",
+	"imageWrapper": "S-ImagePreview--imageWrapper--3ZobCzwf",
+	"imageLabel": "S-ImagePreview--imageLabel--2XXkZdlS"
+};
+
+/***/ }),
+/* 640 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
+// imports
+
+
+// module
+exports.push([module.i, ".drophere-progress--container--1qEj143f {\n  width: 100%;\n  height: 100px;\n  margin-bottom: 24px;\n  border-bottom: 1px solid #8c8c8c; }\n  .drophere-progress--container--1qEj143f .drophere-progress--progressBarContainer--DtwgVd0c {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n    .drophere-progress--container--1qEj143f .drophere-progress--progressBarContainer--DtwgVd0c .drophere-progress--stepGroup--2IA1y7nT {\n      width: 25%; }\n      .drophere-progress--container--1qEj143f .drophere-progress--progressBarContainer--DtwgVd0c .drophere-progress--stepGroup--2IA1y7nT .drophere-progress--label--38u8uOy3 {\n        width: 100%;\n        display: inline-block;\n        text-align: center; }\n      .drophere-progress--container--1qEj143f .drophere-progress--progressBarContainer--DtwgVd0c .drophere-progress--stepGroup--2IA1y7nT .drophere-progress--step--3CSvrapl {\n        width: 100%;\n        margin: 8px auto; }\n        .drophere-progress--container--1qEj143f .drophere-progress--progressBarContainer--DtwgVd0c .drophere-progress--stepGroup--2IA1y7nT .drophere-progress--step--3CSvrapl svg {\n          width: 100%;\n          height: 16px; }\n          .drophere-progress--container--1qEj143f .drophere-progress--progressBarContainer--DtwgVd0c .drophere-progress--stepGroup--2IA1y7nT .drophere-progress--step--3CSvrapl svg line {\n            stroke-width: 4px; }\n", "", {"version":3,"sources":["/./src/client/components/css/drophere-progress.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,cAAc;EACd,oBAAoB;EACpB,iCAAiC,EAAE;EACnC;IACE,YAAY;IACZ,qBAAqB;IACrB,qBAAqB;IACrB,cAAc,EAAE;IAChB;MACE,WAAW,EAAE;MACb;QACE,YAAY;QACZ,sBAAsB;QACtB,mBAAmB,EAAE;MACvB;QACE,YAAY;QACZ,iBAAiB,EAAE;QACnB;UACE,YAAY;UACZ,aAAa,EAAE;UACf;YACE,kBAAkB,EAAE","file":"drophere-progress.scss","sourcesContent":[".container {\n  width: 100%;\n  height: 100px;\n  margin-bottom: 24px;\n  border-bottom: 1px solid #8c8c8c; }\n  .container .progressBarContainer {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n    .container .progressBarContainer .stepGroup {\n      width: 25%; }\n      .container .progressBarContainer .stepGroup .label {\n        width: 100%;\n        display: inline-block;\n        text-align: center; }\n      .container .progressBarContainer .stepGroup .step {\n        width: 100%;\n        margin: 8px auto; }\n        .container .progressBarContainer .stepGroup .step svg {\n          width: 100%;\n          height: 16px; }\n          .container .progressBarContainer .stepGroup .step svg line {\n            stroke-width: 4px; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "drophere-progress--container--1qEj143f",
+	"progressBarContainer": "drophere-progress--progressBarContainer--DtwgVd0c",
+	"stepGroup": "drophere-progress--stepGroup--2IA1y7nT",
+	"label": "drophere-progress--label--38u8uOy3",
+	"step": "drophere-progress--step--3CSvrapl"
+};
+
+/***/ }),
+/* 641 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
+// imports
+
+
+// module
+exports.push([module.i, ".COD--container--1L--kYiD {\n  width: 100%;\n  padding: 0px 40px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n  .COD--container--1L--kYiD .COD--navigation--RcHPHazQ {\n    width: 100%;\n    margin-bottom: 30px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    vertical-align: middle; }\n    .COD--container--1L--kYiD .COD--navigation--RcHPHazQ * {\n      font-size: 32px; }\n      .COD--container--1L--kYiD .COD--navigation--RcHPHazQ *:not(.COD--arrow--eh06qcW0) {\n        font-size: 16px; }\n      .COD--container--1L--kYiD .COD--navigation--RcHPHazQ *:last-child {\n        visibility: hidden; }\n  .COD--container--1L--kYiD .COD--cod--2jA7PLX8 {\n    width: 100%;\n    padding: 30px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n    .COD--container--1L--kYiD .COD--cod--2jA7PLX8 .COD--message--3xD7wxXH {\n      text-align: center;\n      font-size: 16px;\n      margin: 10px auto; }\n    .COD--container--1L--kYiD .COD--cod--2jA7PLX8 .COD--button--1Vuldexo {\n      margin: 30px auto; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/COD.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,kBAAkB;EAClB,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,6BAA6B;EAC7B,8BAA8B;MAC1B,2BAA2B;UACvB,uBAAuB;EAC/B,yBAAyB;MACrB,sBAAsB;UAClB,wBAAwB;EAChC,0BAA0B;MACtB,uBAAuB;UACnB,oBAAoB,EAAE;EAC9B;IACE,YAAY;IACZ,oBAAoB;IACpB,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,0BAA0B;QACtB,uBAAuB;YACnB,+BAA+B;IACvC,0BAA0B;QACtB,uBAAuB;YACnB,oBAAoB;IAC5B,uBAAuB,EAAE;IACzB;MACE,gBAAgB,EAAE;MAClB;QACE,gBAAgB,EAAE;MACpB;QACE,mBAAmB,EAAE;EAC3B;IACE,YAAY;IACZ,cAAc;IACd,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,6BAA6B;IAC7B,8BAA8B;QAC1B,2BAA2B;YACvB,uBAAuB;IAC/B,0BAA0B;QACtB,uBAAuB;YACnB,oBAAoB,EAAE;IAC9B;MACE,mBAAmB;MACnB,gBAAgB;MAChB,kBAAkB,EAAE;IACtB;MACE,kBAAkB,EAAE","file":"COD.scss","sourcesContent":[".container {\n  width: 100%;\n  padding: 0px 40px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n  .container .navigation {\n    width: 100%;\n    margin-bottom: 30px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    vertical-align: middle; }\n    .container .navigation * {\n      font-size: 32px; }\n      .container .navigation *:not(.arrow) {\n        font-size: 16px; }\n      .container .navigation *:last-child {\n        visibility: hidden; }\n  .container .cod {\n    width: 100%;\n    padding: 30px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n    .container .cod .message {\n      text-align: center;\n      font-size: 16px;\n      margin: 10px auto; }\n    .container .cod .button {\n      margin: 30px auto; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "COD--container--1L--kYiD",
+	"navigation": "COD--navigation--RcHPHazQ",
+	"arrow": "COD--arrow--eh06qcW0",
+	"cod": "COD--cod--2jA7PLX8",
+	"message": "COD--message--3xD7wxXH",
+	"button": "COD--button--1Vuldexo"
+};
+
+/***/ }),
+/* 642 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
+// imports
+
+
+// module
+exports.push([module.i, ".Completed--container--36qbzr32 {\n  height: 100%;\n  width: 100%;\n  padding: 0 40px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-line-pack: justify;\n      align-content: space-between; }\n  .Completed--container--36qbzr32 .Completed--navigation--ibMqIv9N {\n    padding: 10px 0px;\n    font-size: 16px;\n    text-align: center;\n    border-bottom: 1px solid #8d8d8d;\n    margin-bottom: 10px; }\n  .Completed--container--36qbzr32 .Completed--content--1gC8JGll {\n    margin: 10px auto;\n    padding: 20px 0px;\n    text-align: center; }\n    .Completed--container--36qbzr32 .Completed--content--1gC8JGll .Completed--message--OmIPwDPN {\n      font-size: 16px;\n      text-align: center;\n      margin-bottom: 20px; }\n    .Completed--container--36qbzr32 .Completed--content--1gC8JGll .Completed--button-container--gQUmNd9u {\n      margin-top: 50px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/Completed.scss"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,YAAY;EACZ,gBAAgB;EAChB,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,6BAA6B;EAC7B,8BAA8B;MAC1B,2BAA2B;UACvB,uBAAuB;EAC/B,yBAAyB;MACrB,sBAAsB;UAClB,wBAAwB;EAChC,4BAA4B;MACxB,6BAA6B,EAAE;EACnC;IACE,kBAAkB;IAClB,gBAAgB;IAChB,mBAAmB;IACnB,iCAAiC;IACjC,oBAAoB,EAAE;EACxB;IACE,kBAAkB;IAClB,kBAAkB;IAClB,mBAAmB,EAAE;IACrB;MACE,gBAAgB;MAChB,mBAAmB;MACnB,oBAAoB,EAAE;IACxB;MACE,iBAAiB;MACjB,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,yBAAyB;UACrB,sBAAsB;cAClB,wBAAwB,EAAE","file":"Completed.scss","sourcesContent":[".container {\n  height: 100%;\n  width: 100%;\n  padding: 0 40px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-line-pack: justify;\n      align-content: space-between; }\n  .container .navigation {\n    padding: 10px 0px;\n    font-size: 16px;\n    text-align: center;\n    border-bottom: 1px solid #8d8d8d;\n    margin-bottom: 10px; }\n  .container .content {\n    margin: 10px auto;\n    padding: 20px 0px;\n    text-align: center; }\n    .container .content .message {\n      font-size: 16px;\n      text-align: center;\n      margin-bottom: 20px; }\n    .container .content .button-container {\n      margin-top: 50px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "Completed--container--36qbzr32",
+	"navigation": "Completed--navigation--ibMqIv9N",
+	"content": "Completed--content--1gC8JGll",
+	"message": "Completed--message--OmIPwDPN",
+	"button-container": "Completed--button-container--gQUmNd9u"
+};
+
+/***/ }),
+/* 643 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
+// imports
+
+
+// module
+exports.push([module.i, ".Confirmation--container--2ONsfpkb {\n  width: 100%;\n  height: 100%;\n  padding: 0 30px; }\n  .Confirmation--container--2ONsfpkb .Confirmation--navigation--4ZF5qYMr {\n    width: 100%;\n    display: inline-block;\n    padding: 20px 0;\n    text-align: center;\n    font-size: 16px;\n    border-bottom: 1px solid #a0a0a0; }\n  .Confirmation--container--2ONsfpkb .Confirmation--content--3eaA3Dtl {\n    width: 80%;\n    padding: 20px;\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n    .Confirmation--container--2ONsfpkb .Confirmation--content--3eaA3Dtl > div {\n      margin: 20px auto; }\n      .Confirmation--container--2ONsfpkb .Confirmation--content--3eaA3Dtl > div * {\n        padding: 0;\n        margin: 0; }\n  .Confirmation--container--2ONsfpkb .Confirmation--captha--2kQSVb8y {\n    width: 160px;\n    height: 80px;\n    margin: 20px auto;\n    text-align: center;\n    vertical-align: center;\n    border: 1px solid black; }\n  .Confirmation--container--2ONsfpkb .Confirmation--down--2KS6dS_W {\n    width: 100%;\n    text-align: center;\n    margin-top: 30px; }\n    .Confirmation--container--2ONsfpkb .Confirmation--down--2KS6dS_W .Confirmation--button--2h-O7yZU {\n      display: inline-block;\n      font-size: 14px;\n      text-align: center;\n      width: 160px; }\n\np {\n  color: black;\n  font-weight: 300; }\n\n.Confirmation--text--3p8tr1l8 {\n  color: black;\n  font-weight: normal; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/Confirmation.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,aAAa;EACb,gBAAgB,EAAE;EAClB;IACE,YAAY;IACZ,sBAAsB;IACtB,gBAAgB;IAChB,mBAAmB;IACnB,gBAAgB;IAChB,iCAAiC,EAAE;EACrC;IACE,WAAW;IACX,cAAc;IACd,kBAAkB;IAClB,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,6BAA6B;IAC7B,8BAA8B;QAC1B,2BAA2B;YACvB,uBAAuB;IAC/B,sBAAsB;QAClB,mBAAmB;YACf,0BAA0B,EAAE;IACpC;MACE,kBAAkB,EAAE;MACpB;QACE,WAAW;QACX,UAAU,EAAE;EAClB;IACE,aAAa;IACb,aAAa;IACb,kBAAkB;IAClB,mBAAmB;IACnB,uBAAuB;IACvB,wBAAwB,EAAE;EAC5B;IACE,YAAY;IACZ,mBAAmB;IACnB,iBAAiB,EAAE;IACnB;MACE,sBAAsB;MACtB,gBAAgB;MAChB,mBAAmB;MACnB,aAAa,EAAE;;AAErB;EACE,aAAa;EACb,iBAAiB,EAAE;;AAErB;EACE,aAAa;EACb,oBAAoB,EAAE","file":"Confirmation.scss","sourcesContent":[".container {\n  width: 100%;\n  height: 100%;\n  padding: 0 30px; }\n  .container .navigation {\n    width: 100%;\n    display: inline-block;\n    padding: 20px 0;\n    text-align: center;\n    font-size: 16px;\n    border-bottom: 1px solid #a0a0a0; }\n  .container .content {\n    width: 80%;\n    padding: 20px;\n    margin: 20px auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n    .container .content > div {\n      margin: 20px auto; }\n      .container .content > div * {\n        padding: 0;\n        margin: 0; }\n  .container .captha {\n    width: 160px;\n    height: 80px;\n    margin: 20px auto;\n    text-align: center;\n    vertical-align: center;\n    border: 1px solid black; }\n  .container .down {\n    width: 100%;\n    text-align: center;\n    margin-top: 30px; }\n    .container .down .button {\n      display: inline-block;\n      font-size: 14px;\n      text-align: center;\n      width: 160px; }\n\np {\n  color: black;\n  font-weight: 300; }\n\n.text {\n  color: black;\n  font-weight: normal; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "Confirmation--container--2ONsfpkb",
+	"navigation": "Confirmation--navigation--4ZF5qYMr",
+	"content": "Confirmation--content--3eaA3Dtl",
+	"captha": "Confirmation--captha--2kQSVb8y",
+	"down": "Confirmation--down--2KS6dS_W",
+	"button": "Confirmation--button--2h-O7yZU",
+	"text": "Confirmation--text--3p8tr1l8"
+};
+
+/***/ }),
+/* 644 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
+// imports
+
+
+// module
+exports.push([module.i, ".SelectMaterial--container--3TKZQ1RJ {\n  padding: 0px 40px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n  .SelectMaterial--container--3TKZQ1RJ .SelectMaterial--progressBar--TN_YOWWM {\n    width: 100%; }\n  .SelectMaterial--container--3TKZQ1RJ .SelectMaterial--navigation--2GAE9tk7 {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    vertical-align: middle; }\n    .SelectMaterial--container--3TKZQ1RJ .SelectMaterial--navigation--2GAE9tk7 * {\n      font-size: 32px; }\n      .SelectMaterial--container--3TKZQ1RJ .SelectMaterial--navigation--2GAE9tk7 *:not(.SelectMaterial--arrow--cTotc4P-) {\n        font-size: 16px; }\n  .SelectMaterial--container--3TKZQ1RJ .SelectMaterial--materials--1RbM1QRc {\n    width: 100%; }\n    .SelectMaterial--container--3TKZQ1RJ .SelectMaterial--materials--1RbM1QRc .SelectMaterial--previewMaterials--1G25CVGb {\n      padding: 30px 20px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      -webkit-box-align: start;\n          -ms-flex-align: start;\n              align-items: flex-start;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap; }\n      .SelectMaterial--container--3TKZQ1RJ .SelectMaterial--materials--1RbM1QRc .SelectMaterial--previewMaterials--1G25CVGb > * {\n        max-width: 33.33%; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/SelectMaterial.scss"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,6BAA6B;EAC7B,8BAA8B;MAC1B,2BAA2B;UACvB,uBAAuB,EAAE;EACjC;IACE,YAAY,EAAE;EAChB;IACE,YAAY;IACZ,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,0BAA0B;QACtB,uBAAuB;YACnB,+BAA+B;IACvC,0BAA0B;QACtB,uBAAuB;YACnB,oBAAoB;IAC5B,uBAAuB,EAAE;IACzB;MACE,gBAAgB,EAAE;MAClB;QACE,gBAAgB,EAAE;EACxB;IACE,YAAY,EAAE;IACd;MACE,mBAAmB;MACnB,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,+BAA+B;MAC/B,8BAA8B;UAC1B,wBAAwB;cACpB,oBAAoB;MAC5B,0BAA0B;UACtB,uBAAuB;cACnB,+BAA+B;MACvC,yBAAyB;UACrB,sBAAsB;cAClB,wBAAwB;MAChC,oBAAoB;UAChB,gBAAgB,EAAE;MACtB;QACE,kBAAkB,EAAE","file":"SelectMaterial.scss","sourcesContent":[".container {\n  padding: 0px 40px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n  .container .progressBar {\n    width: 100%; }\n  .container .navigation {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    vertical-align: middle; }\n    .container .navigation * {\n      font-size: 32px; }\n      .container .navigation *:not(.arrow) {\n        font-size: 16px; }\n  .container .materials {\n    width: 100%; }\n    .container .materials .previewMaterials {\n      padding: 30px 20px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      -webkit-box-align: start;\n          -ms-flex-align: start;\n              align-items: flex-start;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap; }\n      .container .materials .previewMaterials > * {\n        max-width: 33.33%; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "SelectMaterial--container--3TKZQ1RJ",
+	"progressBar": "SelectMaterial--progressBar--TN_YOWWM",
+	"navigation": "SelectMaterial--navigation--2GAE9tk7",
+	"arrow": "SelectMaterial--arrow--cTotc4P-",
+	"materials": "SelectMaterial--materials--1RbM1QRc",
+	"previewMaterials": "SelectMaterial--previewMaterials--1G25CVGb"
+};
+
+/***/ }),
+/* 645 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
+// imports
+
+
+// module
+exports.push([module.i, ".UploadDesign--container--trh_xrjd {\n  padding: 0px 40px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n  .UploadDesign--container--trh_xrjd .UploadDesign--detailContainer--3cIKYO53 {\n    width: 400px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n    .UploadDesign--container--trh_xrjd .UploadDesign--detailContainer--3cIKYO53 .UploadDesign--title--3-poM4_O {\n      font-size: 16px; }\n    .UploadDesign--container--trh_xrjd .UploadDesign--detailContainer--3cIKYO53 .UploadDesign--points--3hDZIoiJ ol {\n      padding-left: 20px; }\n    .UploadDesign--container--trh_xrjd .UploadDesign--detailContainer--3cIKYO53 .UploadDesign--points--3hDZIoiJ li {\n      font-size: 16px; }\n  .UploadDesign--container--trh_xrjd .UploadDesign--progressBar--30FBpAG0 {\n    width: 100%; }\n  .UploadDesign--container--trh_xrjd .UploadDesign--navigation--1DI6A1tF {\n    width: 100%;\n    margin-bottom: 30px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    vertical-align: middle; }\n    .UploadDesign--container--trh_xrjd .UploadDesign--navigation--1DI6A1tF * {\n      font-size: 32px; }\n      .UploadDesign--container--trh_xrjd .UploadDesign--navigation--1DI6A1tF *:not(.UploadDesign--arrow--Crs1pt88) {\n        font-size: 16px; }\n  .UploadDesign--container--trh_xrjd .UploadDesign--uploadContainer--3HywqgnO {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n    .UploadDesign--container--trh_xrjd .UploadDesign--uploadContainer--3HywqgnO > span {\n      font-size: 16px; }\n    .UploadDesign--container--trh_xrjd .UploadDesign--uploadContainer--3HywqgnO .UploadDesign--dragContainer--3jdjvZPM {\n      height: 100%;\n      width: 100%;\n      text-align: center; }\n      .UploadDesign--container--trh_xrjd .UploadDesign--uploadContainer--3HywqgnO .UploadDesign--dragContainer--3jdjvZPM .UploadDesign--up--2aDA27ag {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        height: 90%;\n        padding: 20px;\n        padding-top: 10px; }\n        .UploadDesign--container--trh_xrjd .UploadDesign--uploadContainer--3HywqgnO .UploadDesign--dragContainer--3jdjvZPM .UploadDesign--up--2aDA27ag .UploadDesign--drop-container--4vK-MJFA {\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-pack: center;\n              -ms-flex-pack: center;\n                  justify-content: center;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n          -webkit-box-orient: vertical;\n          -webkit-box-direction: normal;\n              -ms-flex-direction: column;\n                  flex-direction: column;\n          background: #ecf2f3;\n          border: solid 1px #d2d7d8;\n          border-radius: 10px;\n          width: 65%;\n          height: 400px; }\n          .UploadDesign--container--trh_xrjd .UploadDesign--uploadContainer--3HywqgnO .UploadDesign--dragContainer--3jdjvZPM .UploadDesign--up--2aDA27ag .UploadDesign--drop-container--4vK-MJFA .UploadDesign--or--3TWzVGyz {\n            margin: 10px 0; }\n          .UploadDesign--container--trh_xrjd .UploadDesign--uploadContainer--3HywqgnO .UploadDesign--dragContainer--3jdjvZPM .UploadDesign--up--2aDA27ag .UploadDesign--drop-container--4vK-MJFA label .UploadDesign--button--2gUAIVk- {\n            padding: 5px 20px;\n            border: solid 1px #acacac;\n            border-radius: 10px;\n            color: #acacac;\n            cursor: pointer; }\n            .UploadDesign--container--trh_xrjd .UploadDesign--uploadContainer--3HywqgnO .UploadDesign--dragContainer--3jdjvZPM .UploadDesign--up--2aDA27ag .UploadDesign--drop-container--4vK-MJFA label .UploadDesign--button--2gUAIVk-:hover {\n              border-color: #3a3779;\n              background: #3a3779;\n              color: white; }\n          .UploadDesign--container--trh_xrjd .UploadDesign--uploadContainer--3HywqgnO .UploadDesign--dragContainer--3jdjvZPM .UploadDesign--up--2aDA27ag .UploadDesign--drop-container--4vK-MJFA label input {\n            display: none; }\n        .UploadDesign--container--trh_xrjd .UploadDesign--uploadContainer--3HywqgnO .UploadDesign--dragContainer--3jdjvZPM .UploadDesign--up--2aDA27ag .UploadDesign--on-drag-over--wvSWLCIu {\n          background: #3a3779;\n          color: white; }\n          .UploadDesign--container--trh_xrjd .UploadDesign--uploadContainer--3HywqgnO .UploadDesign--dragContainer--3jdjvZPM .UploadDesign--up--2aDA27ag .UploadDesign--on-drag-over--wvSWLCIu label .UploadDesign--button--2gUAIVk- {\n            color: white;\n            border-color: white; }\n            .UploadDesign--container--trh_xrjd .UploadDesign--uploadContainer--3HywqgnO .UploadDesign--dragContainer--3jdjvZPM .UploadDesign--up--2aDA27ag .UploadDesign--on-drag-over--wvSWLCIu label .UploadDesign--button--2gUAIVk-:hover {\n              border-color: white;\n              color: white; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/UploadDesign.scss"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,6BAA6B;EAC7B,8BAA8B;MAC1B,2BAA2B;UACvB,uBAAuB;EAC/B,yBAAyB;MACrB,sBAAsB;UAClB,wBAAwB;EAChC,0BAA0B;MACtB,uBAAuB;UACnB,oBAAoB,EAAE;EAC9B;IACE,aAAa;IACb,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,6BAA6B;IAC7B,8BAA8B;QAC1B,2BAA2B;YACvB,uBAAuB;IAC/B,wBAAwB;QACpB,qBAAqB;YACjB,4BAA4B,EAAE;IACtC;MACE,gBAAgB,EAAE;IACpB;MACE,mBAAmB,EAAE;IACvB;MACE,gBAAgB,EAAE;EACtB;IACE,YAAY,EAAE;EAChB;IACE,YAAY;IACZ,oBAAoB;IACpB,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,0BAA0B;QACtB,uBAAuB;YACnB,+BAA+B;IACvC,0BAA0B;QACtB,uBAAuB;YACnB,oBAAoB;IAC5B,uBAAuB,EAAE;IACzB;MACE,gBAAgB,EAAE;MAClB;QACE,gBAAgB,EAAE;EACxB;IACE,YAAY;IACZ,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,6BAA6B;IAC7B,8BAA8B;QAC1B,2BAA2B;YACvB,uBAAuB;IAC/B,yBAAyB;QACrB,sBAAsB;YAClB,wBAAwB;IAChC,0BAA0B;QACtB,uBAAuB;YACnB,oBAAoB,EAAE;IAC9B;MACE,gBAAgB,EAAE;IACpB;MACE,aAAa;MACb,YAAY;MACZ,mBAAmB,EAAE;MACrB;QACE,qBAAqB;QACrB,qBAAqB;QACrB,cAAc;QACd,yBAAyB;YACrB,sBAAsB;gBAClB,wBAAwB;QAChC,0BAA0B;YACtB,uBAAuB;gBACnB,oBAAoB;QAC5B,YAAY;QACZ,cAAc;QACd,kBAAkB,EAAE;QACpB;UACE,qBAAqB;UACrB,qBAAqB;UACrB,cAAc;UACd,yBAAyB;cACrB,sBAAsB;kBAClB,wBAAwB;UAChC,0BAA0B;cACtB,uBAAuB;kBACnB,oBAAoB;UAC5B,6BAA6B;UAC7B,8BAA8B;cAC1B,2BAA2B;kBACvB,uBAAuB;UAC/B,oBAAoB;UACpB,0BAA0B;UAC1B,oBAAoB;UACpB,WAAW;UACX,cAAc,EAAE;UAChB;YACE,eAAe,EAAE;UACnB;YACE,kBAAkB;YAClB,0BAA0B;YAC1B,oBAAoB;YACpB,eAAe;YACf,gBAAgB,EAAE;YAClB;cACE,sBAAsB;cACtB,oBAAoB;cACpB,aAAa,EAAE;UACnB;YACE,cAAc,EAAE;QACpB;UACE,oBAAoB;UACpB,aAAa,EAAE;UACf;YACE,aAAa;YACb,oBAAoB,EAAE;YACtB;cACE,oBAAoB;cACpB,aAAa,EAAE","file":"UploadDesign.scss","sourcesContent":[".container {\n  padding: 0px 40px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n  .container .detailContainer {\n    width: 400px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n    .container .detailContainer .title {\n      font-size: 16px; }\n    .container .detailContainer .points ol {\n      padding-left: 20px; }\n    .container .detailContainer .points li {\n      font-size: 16px; }\n  .container .progressBar {\n    width: 100%; }\n  .container .navigation {\n    width: 100%;\n    margin-bottom: 30px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    vertical-align: middle; }\n    .container .navigation * {\n      font-size: 32px; }\n      .container .navigation *:not(.arrow) {\n        font-size: 16px; }\n  .container .uploadContainer {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n    .container .uploadContainer > span {\n      font-size: 16px; }\n    .container .uploadContainer .dragContainer {\n      height: 100%;\n      width: 100%;\n      text-align: center; }\n      .container .uploadContainer .dragContainer .up {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        height: 90%;\n        padding: 20px;\n        padding-top: 10px; }\n        .container .uploadContainer .dragContainer .up .drop-container {\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-pack: center;\n              -ms-flex-pack: center;\n                  justify-content: center;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n          -webkit-box-orient: vertical;\n          -webkit-box-direction: normal;\n              -ms-flex-direction: column;\n                  flex-direction: column;\n          background: #ecf2f3;\n          border: solid 1px #d2d7d8;\n          border-radius: 10px;\n          width: 65%;\n          height: 400px; }\n          .container .uploadContainer .dragContainer .up .drop-container .or {\n            margin: 10px 0; }\n          .container .uploadContainer .dragContainer .up .drop-container label .button {\n            padding: 5px 20px;\n            border: solid 1px #acacac;\n            border-radius: 10px;\n            color: #acacac;\n            cursor: pointer; }\n            .container .uploadContainer .dragContainer .up .drop-container label .button:hover {\n              border-color: #3a3779;\n              background: #3a3779;\n              color: white; }\n          .container .uploadContainer .dragContainer .up .drop-container label input {\n            display: none; }\n        .container .uploadContainer .dragContainer .up .on-drag-over {\n          background: #3a3779;\n          color: white; }\n          .container .uploadContainer .dragContainer .up .on-drag-over label .button {\n            color: white;\n            border-color: white; }\n            .container .uploadContainer .dragContainer .up .on-drag-over label .button:hover {\n              border-color: white;\n              color: white; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "UploadDesign--container--trh_xrjd",
+	"detailContainer": "UploadDesign--detailContainer--3cIKYO53",
+	"title": "UploadDesign--title--3-poM4_O",
+	"points": "UploadDesign--points--3hDZIoiJ",
+	"progressBar": "UploadDesign--progressBar--30FBpAG0",
+	"navigation": "UploadDesign--navigation--1DI6A1tF",
+	"arrow": "UploadDesign--arrow--Crs1pt88",
+	"uploadContainer": "UploadDesign--uploadContainer--3HywqgnO",
+	"dragContainer": "UploadDesign--dragContainer--3jdjvZPM",
+	"up": "UploadDesign--up--2aDA27ag",
+	"drop-container": "UploadDesign--drop-container--4vK-MJFA",
+	"or": "UploadDesign--or--3TWzVGyz",
+	"button": "UploadDesign--button--2gUAIVk-",
+	"on-drag-over": "UploadDesign--on-drag-over--wvSWLCIu"
+};
+
+/***/ }),
+/* 646 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(639);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js??ref--1-1!../../../../node_modules/postcss-loader/lib/index.js!../../../../node_modules/sass-loader/lib/loader.js!./S-ImagePreview.scss", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js??ref--1-1!../../../../node_modules/postcss-loader/lib/index.js!../../../../node_modules/sass-loader/lib/loader.js!./S-ImagePreview.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 647 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(640);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js??ref--1-1!../../../../node_modules/postcss-loader/lib/index.js!../../../../node_modules/sass-loader/lib/loader.js!./drophere-progress.scss", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js??ref--1-1!../../../../node_modules/postcss-loader/lib/index.js!../../../../node_modules/sass-loader/lib/loader.js!./drophere-progress.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 648 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(641);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./COD.scss", function() {
+			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./COD.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 649 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(642);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./Completed.scss", function() {
+			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./Completed.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 650 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(643);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./Confirmation.scss", function() {
+			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./Confirmation.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 651 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(644);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./SelectMaterial.scss", function() {
+			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./SelectMaterial.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 652 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(645);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./UploadDesign.scss", function() {
+			var newContent = require("!!../../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../../node_modules/postcss-loader/lib/index.js!../../../../../../node_modules/sass-loader/lib/loader.js!./UploadDesign.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});

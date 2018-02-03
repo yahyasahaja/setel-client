@@ -1,12 +1,15 @@
 //MODULES
 import React, { Component }  from 'react'
 import Input from 'react-toolbox/lib/input'
+import FontIcon from 'react-toolbox/lib/font_icon'
 
 //STYLES
-import styles from './css/step1.scss'
+import styles from './css/UploadDesign.scss'
 
 //COMPONETNS
+import ProgressBar from '../../../components/DrophereProgress'
 import RoundedButton from '../../../components/RoundedButton'
+// import { lchmod } from 'fs'
 
 //INNER_CONFIG
 const DRAG_ENTER = 0
@@ -14,8 +17,36 @@ const DRAG_OVER = 1
 const DRAG_LEAVE = 2
 const DRAG_DROP = 3
 
+
 //COMPONENT
-export default class UploadDesign extends Component {
+const ListNote = ({notes = []}) => (
+  <ol>
+    {notes.map((val, i) => (
+      <li key={i}>{val}</li>
+    ))}
+  </ol>
+)
+
+const DesignNote = () => {
+  let notes = [
+    "Lorem",
+    "Ipsum",
+    "Adalah",
+    "Doa"
+  ]  
+  return (
+    <div>
+      <div className={styles.title}>
+        Requirment:
+      </div>
+      <div className={styles.points}>      
+          <ListNote notes={notes}/>      
+      </div>
+    </div>
+  )
+}
+
+class UploadArea extends Component {
   componentDidMount() {
     window.ondragenter = e => {
       e.preventDefault()
@@ -64,7 +95,7 @@ export default class UploadDesign extends Component {
     let { dragStateId } = this.state
 
     return (
-      <div className={styles.container}>
+      <div className={styles.dragContainer}>
         <div className={styles.up}>
           <div className={`${styles['drop-container']} ${
             dragStateId === DRAG_OVER || dragStateId == DRAG_ENTER ? styles['on-drag-over'] : ''
@@ -81,27 +112,40 @@ export default class UploadDesign extends Component {
               onChange={this.onFileUploadChange}
             />
             </label>
-          </div>
-
-          <div className={styles.info}>
-            <h1>Design</h1>
-            <p>
-              Requirements:<br />
-              <ol>
-                <li>Lorem impsum dolor</li>
-                <li>Lorem impsum dolor</li>
-                <li>Lorem impsum dolor</li>
-                <li>Lorem impsum dolor</li>
-              </ol>
-            </p>
-          </div>
-        </div>
-
-        <div className={styles.down}>
-          <RoundedButton to="/drophere/order/0" className={styles.button}>BACK</RoundedButton>
-          <RoundedButton to="/drophere/order/2" className={styles.button} primary>NEXT</RoundedButton>
+          </div>          
         </div>
       </div>
     )
   }
+}
+
+export default class UploadDesign extends Component{
+  render(){
+    return(
+    <div className={styles.container}>    
+      <div className={styles.progressBar}>
+        <ProgressBar />      
+      </div>   
+      <div className={styles.navigation}>
+        <FontIcon value="keyboard_arrow_left" className={styles.arrow}/>
+            <span>Upload Design</span>
+        <FontIcon value="keyboard_arrow_right" className={styles.arrow}/>
+      </div>     
+      <div className={styles.uploadContainer}>
+        <span>Front</span>
+        <UploadArea />
+        <span>Back</span>
+        <UploadArea />
+      </div>
+      <div className={styles.detailContainer}>
+        <DesignNote />
+      </div>
+      <div>
+        <RoundedButton>
+          Get a Qoute
+        </RoundedButton>
+      </div>
+    </div>
+    )    
+  } 
 }
