@@ -12,7 +12,7 @@ import styles from './css/COD.scss'
 import DataDisplay from '../../../components/DataDisplay'
 import ProgressBar from '../../../components/DrophereProgress'
 import RoundedButton from '../../../components/RoundedButton'
-
+import OrderNavigation from '../../../components/OrderNavigation'
 export default class Cod extends Component{
     render(){
         return(
@@ -21,9 +21,12 @@ export default class Cod extends Component{
                     <ProgressBar />
                 </div>
                 <div className={styles['navigation']}>
-                    <FontIcon value="keyboard_arrow_left" className={styles.arrow}/>
-                        <span>Payment</span>
-                    <FontIcon value="keyboard_arrow_right" className={styles.arrow}/>
+                    <OrderNavigation
+                        text="Payment"
+                        prevLink="/drophere/order/4"
+                        nextLink="/drophere/order/5"
+                        rightArrow="hidden"
+                    />
                 </div>
                 <div className={styles.cod}>
                     <div className={styles.message}>
@@ -32,7 +35,7 @@ export default class Cod extends Component{
                         numquam beatae quidem neque optio assumenda!`}
                     </div>
                     <div className={styles.button}>
-                        <RoundedButton to="/">
+                        <RoundedButton to="/" primary>
                             Back To Home
                         </RoundedButton>
                     </div>

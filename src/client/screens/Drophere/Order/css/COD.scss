@@ -7,21 +7,7 @@
     align-items: center;
 
     .navigation{
-        width: 100%;
-        margin-bottom: 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        vertical-align: middle;
-        * {
-            font-size: 32px;                
-            &:not(.arrow){
-                font-size: 16px;
-            }
-            &:last-child{
-                visibility: hidden;
-            }
-        }            
+        width: 100%;                   
       }
 
       .cod{

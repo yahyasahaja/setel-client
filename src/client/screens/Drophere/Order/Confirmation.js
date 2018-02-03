@@ -94,7 +94,7 @@ export default class Confirmation extends Component {
         <div className={styles.down}>
           <RoundedButton 
             className={styles.button} 
-            to="/drophere/order/6" primary
+              to="/drophere/order/8" primary
             >Confirm</RoundedButton>
         </div>
       </div>

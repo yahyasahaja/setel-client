@@ -1,0 +1,16 @@
+.order-navigation{
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: middle;
+    * {
+        font-size: 32px;                
+        color : #3a3779;
+        &:not(.arrow){
+            font-size: 16px;
+            color: #313131;
+        }
+    }            
+  }

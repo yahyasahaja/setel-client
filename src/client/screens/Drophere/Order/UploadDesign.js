@@ -9,6 +9,7 @@ import styles from './css/UploadDesign.scss'
 //COMPONETNS
 import ProgressBar from '../../../components/DrophereProgress'
 import RoundedButton from '../../../components/RoundedButton'
+import OrderNavigation from '../../../components/OrderNavigation'
 // import { lchmod } from 'fs'
 
 //INNER_CONFIG
@@ -127,9 +128,10 @@ export default class UploadDesign extends Component{
         <ProgressBar />      
       </div>   
       <div className={styles.navigation}>
-        <FontIcon value="keyboard_arrow_left" className={styles.arrow}/>
-            <span>Upload Design</span>
-        <FontIcon value="keyboard_arrow_right" className={styles.arrow}/>
+        <OrderNavigation 
+         text="Upload Design"
+         nextLink="/drophere/order/4"
+         prevLink="/drophere/order/2"/>
       </div>     
       <div className={styles.uploadContainer}>
         <span>Front</span>
@@ -141,7 +143,7 @@ export default class UploadDesign extends Component{
         <DesignNote />
       </div>
       <div>
-        <RoundedButton>
+        <RoundedButton to="/drophere/order/4" primary>
           Get a Qoute
         </RoundedButton>
       </div>

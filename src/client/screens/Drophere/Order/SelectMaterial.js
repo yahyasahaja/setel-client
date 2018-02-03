@@ -13,6 +13,7 @@ import DataDisplay from '../../../components/DataDisplay'
 import RoundedButton from '../../../components/RoundedButton'
 import Progress from '../../../components/DrophereProgress'
 import Simg from  '../../../components/S-ImagePreview'
+import OrderNavigation from  '../../../components/OrderNavigation'
 
 
 export default class SelectMaterial extends Component{
@@ -23,9 +24,11 @@ export default class SelectMaterial extends Component{
     }
 
     imageList  = () => (
-        Object.keys(this.materials).map((key) => {
-            <Simg text={key} src={this.materials[key]}/>
-        })
+        <div>                     
+            {Object.keys(this.materials).map((key) => {
+                <Simg text={key} src={this.materials[key]}/>
+            })}
+        </div>
     )
             
     render(){
@@ -34,17 +37,18 @@ export default class SelectMaterial extends Component{
                 <div className={styles.progressBar}>
                     <Progress/>
                 </div>                                
-                <div className={styles.navigation}>
-                        <FontIcon value="keyboard_arrow_left" className={styles.arrow}/>
-                            <span>Choose Material</span>
-                        <FontIcon value="keyboard_arrow_right" className={styles.arrow}/>
-                </div>                                    
+                <div>
+                    <OrderNavigation 
+                      text="Choose Material"
+                      nextLink="/drophere/order/2"
+                      prevLink="/drophere/order/0"/>
+                </div>                
                 <div className={styles.materials}>                    
                     <div className={styles.previewMaterials}>                        
-                        <Simg />
-                        <Simg />
-                        <Simg />                        
-                        <Simg />    
+                        <Simg />       
+                        <Simg />       
+                        <Simg />       
+                        <Simg />   
                     </div>
                 </div>
             </div>

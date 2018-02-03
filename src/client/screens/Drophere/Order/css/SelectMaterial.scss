@@ -5,21 +5,7 @@
 
     .progressBar{
         width: 100%;
-    }
-    
-    .navigation{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        vertical-align: middle;
-        * {
-            font-size: 32px;                
-            &:not(.arrow){
-                font-size: 16px;
-            }
-        }            
-    }
+    }    
     
     .materials{
         width: 100%;        
