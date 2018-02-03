@@ -1,9 +1,10 @@
 //MODULES
 import React, { Component } from "react"
 import _ from "lodash"
+import { Link } from 'react-router-dom'
 
 //STYLES
-import styles from "./css/step4.scss"
+import styles from "./css/payment.scss"
 
 //COMPONENTS
 import DataDisplay from "../../../components/DataDisplay"
@@ -20,18 +21,21 @@ export default class Payment extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <div className={styles.infoflex}>
-          <h1>Payment</h1>
-        </div>
         <div className={styles.wrapper}>
+          <hr className={styles.row} />
+          <div className={styles.payment}>
+            <Link to="/drophere/order/5">
+              <img src="/img/ic-chevron-left-black-36-dp.png" className={styles.arrow} />
+            </Link>
+            <p className={styles.text}>Payment</p>
+            <div></div>
+          </div>
           <div className={styles.contentflex}>
             <p>Order number: #0097</p>
           </div>
           <div className={styles.content}>
             <p className={styles.title}>Checkout Successful</p>
             <p className={styles.text}>Complete The Payment</p>
-            <p className={styles.smallertext}>Remaining time of your payment</p>
-            <p className={styles.time}>05 : 59 : 50</p>
             <p className={styles.text + ' ' + styles.margintext}>Total cost to be paid</p>
             <p className={styles.cost}>Rp. 2.800.000</p>
             <p className={styles.text + ' ' + styles.margintext}>Please transfer to the following Setel's bank account number</p>
@@ -44,7 +48,7 @@ export default class Payment extends Component {
           </div>
         </div>
         <div className={styles.down}>
-          <RoundedButton className={styles.button} to="/drophere/order/5" primary>CONFIRMATION</RoundedButton>
+          <RoundedButton className={styles.button} to="/drophere/order/7" primary>Confirmation</RoundedButton>
         </div>
       </div >
     )

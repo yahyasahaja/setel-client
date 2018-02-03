@@ -18,6 +18,7 @@ $max-width: 100%;
                 display: flex;
                 justify-content: space-between;
                 width: $max-width;
+                align-items: center;
                 .text {
                     font-size: 16px;
                     line-height: 3;
