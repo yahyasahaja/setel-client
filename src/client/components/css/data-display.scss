@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  margin: 35px 0px;
+  font-size: 12pt;
+  width: 100%;
+
+  .name {
+    display: block;
+    width: 250px;
+    font-weight: 300;
+  }
+
+  .value {
+    display: block;
+    font-weight: normal;
+  }
+}

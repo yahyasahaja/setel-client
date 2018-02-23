@@ -1,0 +1,120 @@
+@import '../../../../assets/css/config.scss';
+
+.container {  
+  width: 100%;
+  padding: 0px 40px;
+  padding-bottom: 60px;  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;
+
+  .detailContainer{
+    width: 400px;    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;    
+
+    .title{
+        font-size: 16px;
+    }
+
+    .points{
+        ol{
+            padding-left: 20px;
+        }
+        li{
+            font-size: 16px;
+        }        
+    }
+  }
+
+  .progressBar{
+      width: 100%;
+  }
+
+  .navigation{
+    width: 100%;    
+  }
+
+  .uploadContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    & > span{
+        font-size: 16px;
+    }
+
+    .dragContainer{            
+        height: 100%;
+        width: 100%;              
+        text-align: center;
+
+        .up {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90%;
+            padding: 20px;
+            padding-top: 10px;
+            
+        
+            .drop-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: #ecf2f3;
+            border: solid 1px #d2d7d8;
+            border-radius: 10px;
+            width: 65%;
+            height: 400px;
+            
+            .or {
+                margin: 10px 0;
+            }
+        
+            label {
+                .button {
+                padding: 5px 20px;
+                border: solid 1px #acacac;
+                border-radius: 10px;
+                color: #acacac;
+                cursor: pointer;
+        
+                &:hover {
+                    border-color: $primary-color;
+                    background: $primary-color;
+                    color: white;
+                }
+                }
+        
+                input {
+                display: none;
+                }
+            }
+            }
+        
+            .on-drag-over {
+            background: $primary-color;
+            color: white;
+        
+            label {
+                .button {
+                color: white;
+                border-color: white;
+        
+                &:hover {
+                    border-color: white;
+                    color: white;
+                }
+                }
+            }
+            }    
+        }
+    }  
+  }
+}

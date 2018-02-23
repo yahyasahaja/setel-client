@@ -1,0 +1,27 @@
+.text {
+  opacity: 0.6;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: rgba(76, 76, 76, 0.6);
+}
+
+.field {
+  margin-left: 13px;
+}
+
+.radio {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  border: solid 0.5px #7d7d7d;
+}
+
+.radioChecked {
+  width: 15px;
+  height: 15px;
+}

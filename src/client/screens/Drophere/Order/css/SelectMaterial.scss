@@ -1,0 +1,32 @@
+.container{
+    padding: 0px 40px;
+    display: flex;
+    flex-direction: column;
+
+    .progressBar{
+        width: 100%;
+    }    
+    
+    .materials{
+        width: 100%;        
+        
+        .previewMaterials{
+            padding: 30px 20px;
+            display: flex;            
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;            
+            
+            & >  * {                
+                border: 1px solid transparent;
+                
+                &:hover, &[class=active] {
+                    border: 1px solid #aaa;                    
+                    cursor: pointer;
+                }               
+                max-width: 33.33%;
+            }
+        }
+    }
+}

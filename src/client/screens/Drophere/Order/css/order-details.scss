@@ -1,0 +1,69 @@
+@import '../../../../assets/css/config.scss';
+.container {
+    background: white;
+    height: 100%;
+    .wrapper {
+        padding: 16px 213px 19px 100px;
+        max-width: 100%;
+        margin: auto;
+        height: 100%;
+        .row {
+            width: 490px;
+            height: 1px;
+            background-color: #8c8c8c;
+        }
+        .quoteflex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .arrow {
+                width: 12px;
+                height: 18px;
+            }
+            .text {
+                font-size: 16px;
+                line-height: 3;
+                color: #313131;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+            }
+        }
+        .form {
+            width: 100%;
+            p {
+                font-size: 16px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 1.5;
+                letter-spacing: normal;
+                text-align: left;
+                color: rgba(0, 0, 0, 0.38);
+            }
+            .text {
+                margin-left: 10px;
+            }
+            .textmargin {
+                margin-top: 34px;
+            }
+            .postalcodeandcolor {
+                width: 20%;
+                margin-left: 10px;
+            }
+            .smalltext {
+                font-size: 11px;
+            }
+            .flexbutton {
+                display: flex;
+                justify-content: center;
+                .button {
+                    margin-top: 20px;
+                    width: 165px;
+                    height: 42px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

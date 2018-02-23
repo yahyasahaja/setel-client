@@ -1,0 +1,105 @@
+@import "../../../../assets/css/config.scss";
+.container {
+  display: block;
+  .wrapper {
+    width: 60%;
+    .cartcontainer {
+      display: flex;
+      flex-direction: row wrap;
+      justify-content: space-between;
+      .cartflex {
+      
+        .title {
+          margin-left: 30px;
+          font-size: 18px;
+          font-weight: normal;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: 1.33;
+          letter-spacing: normal;
+          text-align: left;
+          color: #000000;
+        }
+        .margincost {
+          margin-left: 30px;
+          font-size: 15px;
+        }
+        .preview {
+          width: 503px;
+          height: 508px;
+          border: solid 1px hsl(0, 0%, 72%);
+          margin: 6px 30px 76px 39px;
+          padding: 25px;
+          .pic {
+            margin: auto;
+            text-align: center;
+            width: 100%;
+          }
+        }
+        .infoorder {
+          margin-left: 30px;
+          width: 100%;
+        }
+        .editorder {
+          margin-left: 30px;
+          margin-top: 40px;
+          display: flex;
+          justify-content: flex-start;
+          width: 400px;
+          .flexgrowitem {
+            flex-grow: 2;
+            display: flex;
+            .editorderitem {
+              width: 30px;
+              align-self: center;
+              .img {
+                width: 17px;
+                height: 17px;
+                object-fit: contain;
+              }
+            }
+            .sizeorderitem {
+              width: 70px;
+            }
+          }
+          .widthitem {
+            width: 100%;
+          }
+          .saveedit {
+            flex-grow: 1;
+          }
+          .editordertext {
+            width: 100px;
+            font-size: 12px;
+            font-weight: 100;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.5;
+            letter-spacing: normal;
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+  .info {
+    display: flex;
+    justify-content: flex-end;
+    h1 {
+      border-bottom: 2px solid #5a5a5a;
+      font-weight: 400;
+      width: 207px;
+    }
+  }
+  .down {
+    display: flex;
+    justify-content: flex-end;
+    .button {
+      width: 165px;
+      height: 42px;
+      text-align: center;
+      margin-right: 105px;
+      margin-top: 50px;
+    }
+  }
+}

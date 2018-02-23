@@ -1,0 +1,96 @@
+@import '../../../../assets/css/config.scss';
+
+.container {
+  display: block;
+  padding: 20px;
+  height: 100%;
+  padding-bottom: 40px;
+
+  .up {
+    display: flex;
+    height: 90%;
+    padding: 30px 20px;
+
+    .drop-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: #ecf2f3;
+      border: solid 1px #d2d7d8;
+      border-radius: 10px;
+      width: 65%;
+      height: 400px;
+      
+      .or {
+        margin: 10px 0;
+      }
+
+      label {
+        .button {
+          padding: 5px 20px;
+          border: solid 1px #acacac;
+          border-radius: 10px;
+          color: #acacac;
+          cursor: pointer;
+  
+          &:hover {
+            border-color: $primary-color;
+            background: $primary-color;
+            color: white;
+          }
+        }
+
+        input {
+          display: none;
+        }
+      }
+    }
+
+    .on-drag-over {
+      background: $primary-color;
+      color: white;
+
+      label {
+        .button {
+          color: white;
+          border-color: white;
+
+          &:hover {
+            border-color: white;
+            color: white;
+          }
+        }
+      }
+    }
+
+    .info {
+      display: block;
+      margin-left: 5%;
+      width: 25%;
+
+      h1 {
+        border-bottom: 2px solid #5a5a5a;
+        font-weight: 400;
+      }
+
+      ol {
+        margin: 10px 0;
+        padding: 0 20px;
+      }
+    }
+  }
+
+  .down {
+    display: flex;
+    justify-content: flex-end;
+    
+    .button {
+      display: block;;
+
+      a, button {
+        padding: 5px 50px;
+      }
+    }
+  }
+}
