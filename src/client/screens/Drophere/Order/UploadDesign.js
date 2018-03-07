@@ -1,7 +1,13 @@
 //MODULES
 import React, { Component }  from 'react'
-import Input from 'react-toolbox/lib/input'
-import FontIcon from 'react-toolbox/lib/font_icon'
+import {
+  Input,
+  FontIcon,  
+  Snackbar
+} from 'react-toolbox'
+import { connect } from 'react-redux'
+import { updateFormData, gotoNextStep } from '../../../services/actions'
+import { withRouter } from 'react-router-dom'
 
 //STYLES
 import styles from './css/UploadDesign.scss'
@@ -9,6 +15,7 @@ import styles from './css/UploadDesign.scss'
 //COMPONETNS
 import ProgressBar from '../../../components/DrophereProgress'
 import RoundedButton from '../../../components/RoundedButton'
+import OrderNavigation from '../../../components/OrderNavigation'
 // import { lchmod } from 'fs'
 
 //INNER_CONFIG
@@ -76,7 +83,8 @@ class UploadArea extends Component {
   }
 
   handleFileUpload = file => {
-    console.log('uploading file ', file.name, ' ...')
+    console.log('uploading file ', file.name, ' ...')    
+    console.log(this.props.dispatch(updateFormData('drophereOrder', 'design', file)))
   }
 
   componentWillUnmount() {
@@ -119,7 +127,27 @@ class UploadArea extends Component {
   }
 }
 
-export default class UploadDesign extends Component{
+class UploadDesign extends Component{
+
+  state = {
+    Snackbar: false
+  }
+
+  handleSnackbar = () => this.setState({
+    ...this.state,
+    Snackbar: !this.state.Snackbar
+  })
+
+  submit = () => {
+    let { gotoNextStep, history, file = '', state } = this.props            
+    if(file.design){                                     
+      gotoNextStep('drophereOrder')
+      history.push("/drophere/order/4")      
+      return
+    }              
+    this.handleSnackbar()                
+  }
+
   render(){
     return(
     <div className={styles.container}>    
@@ -127,25 +155,46 @@ export default class UploadDesign extends Component{
         <ProgressBar />      
       </div>   
       <div className={styles.navigation}>
-        <FontIcon value="keyboard_arrow_left" className={styles.arrow}/>
-            <span>Upload Design</span>
-        <FontIcon value="keyboard_arrow_right" className={styles.arrow}/>
+        <OrderNavigation 
+         text="Upload Design"
+         nextLink="/drophere/order/4"
+         prevLink="/drophere/order/2"/>
       </div>     
-      <div className={styles.uploadContainer}>
-        <span>Front</span>
-        <UploadArea />
-        <span>Back</span>
-        <UploadArea />
+      <div className={styles.uploadContainer}>        
+        <UploadArea />                
       </div>
       <div className={styles.detailContainer}>
         <DesignNote />
       </div>
       <div>
-        <RoundedButton>
-          Get a Qoute
+        <RoundedButton         
+        primary        
+        onClick={this.submit}
+        >Get a Qoute
         </RoundedButton>
+      </div>      
+      <div>
+      <Snackbar          
+          active={this.state.Snackbar}
+          label = "No File Uploaded"
+          action = "Got It !"
+          timeout = "2000"
+          onTimeout = {this.handleSnackbar}
+          onClick = {this.handleSnackbar}
+          type = "warning"
+        />                
       </div>
     </div>
     )    
   } 
 }
+
+UploadArea= connect()(UploadArea)
+UploadDesign = withRouter(connect(
+  state => ({
+    file: state.formData.drophereOrder,    
+  }), 
+  { gotoNextStep }
+)(UploadDesign))
+
+export default UploadDesign

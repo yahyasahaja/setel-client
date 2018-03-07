@@ -36,7 +36,7 @@ class Order extends Component {
   componentWillReceiveProps(nextProps) {
     //If there's no any current match and [DROPHERE_STEP] props, just let it update)
     let orderStepIdOnURL = nextProps.match.params.orderId
-    let step = nextProps[DROPHERE_STEP]
+    let step = nextProps[DROPHERE_STEP] || 0;
 
     if (!step) return
     
@@ -74,6 +74,6 @@ class Order extends Component {
 export default connect(state => {
   //mapStateToProps
   return {
-    [DROPHERE_STEP]: state.step[DROPHERE_STEP],
+    [DROPHERE_STEP]: state.step.drophereOrder || {},
   }
 }, actions)(Order)

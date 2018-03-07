@@ -5,21 +5,7 @@
 
     .progressBar{
         width: 100%;
-    }
-    
-    .navigation{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        vertical-align: middle;
-        * {
-            font-size: 32px;                
-            &:not(.arrow){
-                font-size: 16px;
-            }
-        }            
-    }
+    }    
     
     .materials{
         width: 100%;        
@@ -32,7 +18,13 @@
             align-items: flex-start;
             flex-wrap: wrap;            
             
-            & > * {
+            & >  * {                
+                border: 1px solid transparent;
+                
+                &:hover, &[class=active] {
+                    border: 1px solid #aaa;                    
+                    cursor: pointer;
+                }               
                 max-width: 33.33%;
             }
         }

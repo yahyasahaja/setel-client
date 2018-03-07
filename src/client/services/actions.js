@@ -29,6 +29,7 @@ export const initStep = (id, currentStep, maxStep, maxCurrentStep) => (
 //formData
 export const updateFormData = (id, key, value) => ({
   type: UPDATE_FORM_DATA,
+  id,
   key,
   value
 })

@@ -6,14 +6,14 @@ import { connect } from 'react-redux'
 import styles from './css/drophere-progress.scss'
 
 //CONFIG
-import { DROPHERE_STEP } from '../screens/Drophere/Order/config.js'
+import { DROPHERE_STEP } from '../config'
 
 //COMPONENT
 class DrophereProgress extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <ProgressBar step={this.props.currentStep}/>
+        <ProgressBar step={this.props.step[DROPHERE_STEP]}/>
       </div>
     )
   }
@@ -82,10 +82,7 @@ class ProgressBar extends Component{
   }
 } 
 
-export default connect(state => {
-  //mapStateToProps
-  return {
-    [DROPHERE_STEP]: state.step[DROPHERE_STEP],
-  }
-})(DrophereProgress)
+export default connect(state => ({  
+    step: state.step.drophereOrder || {},  
+}))(DrophereProgress)
 

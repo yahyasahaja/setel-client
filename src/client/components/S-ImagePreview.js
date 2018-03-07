@@ -8,11 +8,13 @@ export default class Spreview extends Component{
         let {
             text = 'image caption',             
             src = 'http://s.id/1aTc', 
-            alt = 'no image reference'            
+            alt = 'no image reference',                                    
+            onClick,
+            style
         } = this.props
 
         return (
-            <div className={styles.imageGroup}>
+            <div style={style} className={styles.imageGroup} onClick={onClick}>
                 <div className={styles.imageWrapper}>                
                     <img src={src} alt={alt} />
                 </div>

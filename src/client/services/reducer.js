@@ -22,7 +22,7 @@ const selectedReducer = (state = {}, action) => {
 const stepReducer = (state = null, action) => {
   //props: currentStep, maxCurrentStep, maxStep
 
-  if (action.type = INIT_STEP) return {
+  if (action.type === INIT_STEP) return {
     ...state,
     [action.id]: action.init
   }
@@ -36,7 +36,7 @@ const stepReducer = (state = null, action) => {
   }
 
   if (action.type == GOTO_NEXT_STEP) {
-    let nextStep = action.step + 1
+    let nextStep = action.step + 1    
     return {
       ...state,
       [action.id]: {
@@ -61,13 +61,14 @@ const stepReducer = (state = null, action) => {
   return state
 }
 
-const formDataReducer = (state = {}, action) => {
-  if (action.type === UPDATE_SELECTED) 
+const formDataReducer = (state = {}, action) => {      
+  if (action.type === UPDATE_FORM_DATA) {            
     return { ...state, [action.id]: {
+      ...state[action.id],
       [action.key]: action.value,
-    }}
-  
-  return state
+    }}      
+  }
+  return state  
 }
 
 //COMBINED
@@ -77,4 +78,3 @@ export default combineReducers({
   formData: formDataReducer,
 })
 
-//INI ADALAH STATE
