@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import styles from './css/drophere-progress.scss'
 
 //CONFIG
-import { DROPHERE_STEP } from 'D://Kerja//PROJECT//setel-client//src//client//config'
+import { DROPHERE_STEP } from '../screens/Drophere/Order/config.js'
 
 //COMPONENT
 class DrophereProgress extends Component {

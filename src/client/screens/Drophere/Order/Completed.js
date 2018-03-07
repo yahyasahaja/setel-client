@@ -24,7 +24,7 @@ export default class Completed extends Component{
                         <p>Untuk informasi atau pertanyaan lebih lanjut silahkan hubungi admin</p>
                     </div>
                     <div className={styles['button-container']}> 
-                        <RoundedButton>
+                        <RoundedButton to ="/drophere" primary>
                             Back To Home
                         </RoundedButton>
                     </div>

@@ -9,11 +9,6 @@ $max-width: 100%;
         .content {
             max-width: $max-width;
             margin: auto;
-            .row {
-                width: 490px;
-                height: 1px;
-                background-color: #8c8c8c;
-            }
             .flexcontainer {
                 display: flex;
                 justify-content: space-between;
@@ -34,8 +29,8 @@ $max-width: 100%;
             }
             .colorsizewrapper {
                 margin: auto;
-                width: 417px;
-                height: 290px;
+                width: 440px;
+                height: 310px;
                 border: solid 1px #b7b7b7;
                 padding: 5px 11px 11px 6px;
                 .colorsizecontent {

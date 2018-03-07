@@ -15,14 +15,16 @@ import DataDisplay from '../../../components/DataDisplay'
 import RoundedButton from '../../../components/RoundedButton'
 import SelectMaterial from './SelectMaterial'
 import UploadDesign from './UploadDesign'
+import DrophereProgress from "../../../components/DrophereProgress";
 
 export default class SelectColorSize extends Component {
     state = {
-        sizeS: '0',
-        sizeM: '0',
-        sizeL: '0',
-        sizeXL: '0',
-        sizeXXL: '0'
+        sizeS: 0,
+        sizeM: 0,
+        sizeL: 0,
+        sizeXL: 0,
+        sizeXXL: 0,
+        total: 0
     }
     handleChange = (name, value) => {
         this.setState(
@@ -32,12 +34,22 @@ export default class SelectColorSize extends Component {
         )
     }
 
+    setTotalSize = () => {
+        this.setState(
+            {
+                total: this.state.sizeS + this.state.sizeM + this.state.sizeL + this.state.sizeXL + this.state.sizeXXL
+            }
+        )
+    }
+
+
+
     render() {
         return (
             <div className={styles.container}>
                 <div className={styles.wrapper}>
                     <div className={styles.content}>
-                        <hr className={styles.row} />
+                        <DrophereProgress />
                         <div className={styles.flexcontainer}>
                             <Link to="/drophere/order/1">
                                 <img src="/img/ic-chevron-left-black-36-dp.png" className={styles.arrow} />
@@ -67,6 +79,7 @@ export default class SelectColorSize extends Component {
                                         <p>L</p>
                                         <p>XL</p>
                                         <p>XXL</p>
+                                        <p></p>
                                     </div>
                                     <div className={styles.sizeflex + " " + styles.marginsize}>
                                         <Input type="number" theme={numbertheme} value={this.state.sizeS} onChange={this.handleChange.bind(this, 'sizeS')} />
@@ -74,6 +87,7 @@ export default class SelectColorSize extends Component {
                                         <Input type="number" theme={numbertheme} value={this.state.sizeL} onChange={this.handleChange.bind(this, 'sizeL')} />
                                         <Input type="number" theme={numbertheme} value={this.state.sizeXL} onChange={this.handleChange.bind(this, 'sizeXL')} />
                                         <Input type="number" theme={numbertheme} value={this.state.sizeXXL} onChange={this.handleChange.bind(this, 'sizeXXL')} />
+                                        <p className={styles.texttotal}>Total: <br/>0</p>
                                     </div>
                                     <div>
                                         <p className={styles.italictext}>Size Chart</p>
@@ -84,7 +98,7 @@ export default class SelectColorSize extends Component {
                         <div className={styles.addupload}>
                             <img src="/img/blackcross.svg" className={styles.add} />
                             <p className={styles.addtext}>Add another product</p>
-                        </div>
+                        </div> 
                         <div className={styles.centeredbutton}>
                             <RoundedButton className={styles.button} to="/drophere/order/3" primary>Upload Design</RoundedButton>
                         </div>

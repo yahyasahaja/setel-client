@@ -60,10 +60,9 @@ class Order extends Component {
         <Route path="/drophere/order/2" exact component={SelectColorSize} />
         <Route path="/drophere/order/3" exact component={UploadDesign} />
         <Route path="/drophere/order/4" exact component={OrderDetails} />
-        <Route path="/drophere/order/5" exact component={Cod} />
+        <Route path="/drophere/order/5" exact component={Confirmation}/>
         <Route path="/drophere/order/6" exact component={Payment}/>
-        <Route path="/drophere/order/7" exact component={Confirmation}/>
-        <Route path="/drophere/order/8" exact component={Completed}/>
+        <Route path="/drophere/order/7" exact component={Completed}/>
       </Switch>
       </div>
       </div>

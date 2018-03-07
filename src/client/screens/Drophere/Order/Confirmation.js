@@ -86,7 +86,6 @@ export default class Confirmation extends Component {
         </div>
         <div className={styles.content}>
           {this.renderContent()}
-          {/* <Dropdown source={this.bank} value={this.state.bankName} onChange={this.handleChange} /> */}
         </div>        
         <div className={styles.captha}>
           Ini Ceritanya Captha

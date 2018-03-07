@@ -14,12 +14,11 @@ import quantitytheme from "./css/input-quantity-theme.scss"
 
 //COMPONENTS
 import RoundedButton from "../../../components/RoundedButton"
+import DrophereProgress from "../../../components/DrophereProgress";
 
 //COMPONENT
 export default class OrderDetails extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
+    state = {
       name: "",
       phone: "",
       email: "",
@@ -30,7 +29,6 @@ export default class OrderDetails extends Component {
       postalCode: "",
       paymentMethod: "",
     }
-  }
 
   cities = [
     { value: "SBY", label: "Surabaya" },
@@ -51,12 +49,13 @@ export default class OrderDetails extends Component {
       [name]: value
     })
   }
+  
 
   render() {
     return (
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <hr className={styles.row} />
+          <DrophereProgress/>
           <div className={styles.quoteflex}>
             <Link to="/drophere/order/3">
               <img src="/img/ic-chevron-left-black-36-dp.png" className={styles.arrow} />
@@ -111,6 +110,7 @@ export default class OrderDetails extends Component {
               onChange={this.handleChange.bind(this, "region")}
             />
             <Input
+            
               type="text"
               className={styles.postalcodeandcolor}
               name="postalCode"
