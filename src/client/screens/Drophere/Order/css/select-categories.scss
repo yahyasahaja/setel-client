@@ -22,11 +22,13 @@
                 flex-wrap: wrap;
                 justify-content: center;
                 height: 120px;
-                .clothes {
-                    width: 104px;
-                    height: 118px;
-                    object-fit: contain;
-                    margin: 20px;
+                &>* {
+                    border: 1px solid transparent;
+                    &:hover,
+                    &[class=active] {
+                        border: 1px solid #aaa;
+                        cursor: pointer;
+                    }
                 }
             }
             .marginflexcontainer {

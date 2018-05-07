@@ -27,71 +27,6 @@ $max-width: 100%;
                     height: 18px;
                 }
             }
-            .colorsizewrapper {
-                margin: auto;
-                width: 440px;
-                height: 310px;
-                border: solid 1px #b7b7b7;
-                padding: 5px 11px 11px 6px;
-                .colorsizecontent {
-                    width: 100%;
-                    margin: auto;
-                    display: flex;
-                    height: 100%;
-                    .clotheswrapper {
-                        width: 105px;
-                        height: 120px;
-                        .clothes {
-                            width: 104px;
-                            height: 118px;
-                            object-fit: contain;
-                        }
-                    }
-                    .choosecolorsizewrapper {
-                        width: 100%;
-                        height: 100%;
-                        padding-left: 33px;
-                        .tshirtflex {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: flex-start;
-                            padding-bottom: 10px;
-                            .close {
-                                width: 14px;
-                                height: 14px;
-                                align-self: center;
-                            }
-                        }
-                        .sizeflex {
-                            display: flex;
-                            justify-content: space-around;
-                        }
-                        .marginsize {
-                            margin-left: 11px;
-                            padding-bottom: 15px;
-                        }
-                        .italictext {
-                            font-style: italic;
-                        }
-                    }
-                }
-            }
-            .addupload {
-                margin-top: 10px;
-                text-align: center;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                .add {
-                    width: 18px;
-                    height: 18px;
-                    object-fit: contain;
-                    margin-right: 5px;
-                }
-                .addtext {
-                    color: #3a3779;
-                }
-            }
             .centeredbutton{
                 margin-top: 50px;
                 display: flex;
@@ -101,8 +36,73 @@ $max-width: 100%;
                     height: 42px;
                     text-align: center;
                 }
-            }
-            
+            }            
         }
+    }
+}
+
+.colorsizewrapper {
+    margin: auto;
+    width: 440px;
+    height: 310px;
+    border: solid 1px #b7b7b7;
+    padding: 5px 11px 11px 6px;
+    .colorsizecontent {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        height: 100%;
+        .clotheswrapper {
+            width: 105px;
+            height: 120px;
+            .clothes {
+                width: 104px;
+                height: 118px;
+                object-fit: contain;
+            }
+        }
+        .choosecolorsizewrapper {
+            width: 100%;
+            height: 100%;
+            padding-left: 33px;
+            .tshirtflex {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                padding-bottom: 10px;
+                .close {
+                    width: 14px;
+                    height: 14px;
+                    align-self: center;
+                }
+            }
+            .sizeflex {
+                display: flex;
+                justify-content: space-around;
+            }
+            .marginsize {
+                margin-left: 11px;
+                padding-bottom: 15px;
+            }
+            .italictext {
+                font-style: italic;
+            }
+        }
+    }
+}
+.addupload {
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .add {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+        margin-right: 5px;
+    }
+    .addtext {
+        color: #3a3779;
     }
 }
