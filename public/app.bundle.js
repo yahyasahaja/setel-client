@@ -45101,6 +45101,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -45153,6 +45155,8 @@ var _actions = __webpack_require__(35);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -45184,22 +45188,7 @@ var OrderDetails = function (_Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = OrderDetails.__proto__ || Object.getPrototypeOf(OrderDetails)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      name: "",
-      phone: "",
-      email: "",
-      company: "",
-      role: "",
-      city: "SBY",
-      region: "Wonosari",
-      postalCode: "",
-      paymentMethod: ""
-    }, _this.cities = [{ value: "SBY", label: "Surabaya" }, { value: "MLG", label: "Malang" }, { value: "JKT", label: "Jakarta" }, { value: "MKS", label: "Makassar" }], _this.regions = [{ value: "Wonosari", label: "Wonosari" }, { value: "Wonokromo", label: "Wonokromo" }, { value: "Simpang", label: "Simpang" }], _this.handleChange = function (name, value) {
-      var _this$props = _this.props,
-          gotoNextStep = _this$props.gotoNextStep,
-          updateFormData = _this$props.updateFormData,
-          history = _this$props.history;
-    }, _temp), _possibleConstructorReturn(_this, _ret);
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = OrderDetails.__proto__ || Object.getPrototypeOf(OrderDetails)).call.apply(_ref, [this].concat(args))), _this), _this.cities = [{ value: "SBY", label: "Surabaya" }, { value: "MLG", label: "Malang" }, { value: "JKT", label: "Jakarta" }, { value: "MKS", label: "Makassar" }], _this.regions = [{ value: "Wonosari", label: "Wonosari" }, { value: "Wonokromo", label: "Wonokromo" }, { value: "Simpang", label: "Simpang" }], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(OrderDetails, [{
@@ -45246,9 +45235,36 @@ var Order = function (_Component2) {
   _inherits(Order, _Component2);
 
   function Order() {
+    var _ref2;
+
+    var _temp2, _this2, _ret2;
+
     _classCallCheck(this, Order);
 
-    return _possibleConstructorReturn(this, (Order.__proto__ || Object.getPrototypeOf(Order)).apply(this, arguments));
+    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Order.__proto__ || Object.getPrototypeOf(Order)).call.apply(_ref2, [this].concat(args))), _this2), _this2.state = {
+      name: "",
+      phone: "",
+      email: "",
+      company: "",
+      role: "",
+      city: "SBY",
+      region: "Wonosari",
+      postalCode: "",
+      paymentMethod: ""
+    }, _this2.handleChange = function (name, value) {
+      var _this2$props = _this2.props,
+          gotoNextStep = _this2$props.gotoNextStep,
+          updateFormData = _this2$props.updateFormData,
+          history = _this2$props.history;
+
+      return _extends({}, _this2.props.orderInfo.info, _defineProperty({}, name, value));
+
+      updateFormData('drophereOrder', 'info', _this2.handleChange(name, value));
+    }, _temp2), _possibleConstructorReturn(_this2, _ret2);
   }
 
   _createClass(Order, [{
@@ -45725,6 +45741,10 @@ exports.default = SelectCategories;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -45777,9 +45797,9 @@ var _store2 = _interopRequireDefault(_store);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -45883,13 +45903,13 @@ var SIZE = [{
     name: 'XXL'
 }];
 
-var size = {
-    sizeS: 0,
-    sizeM: 0,
-    sizeL: 0,
-    sizeXL: 0,
-    sizeXXL: 0
-};
+// const size = {
+//     sizeS: 0,
+//     sizeM: 0,
+//     sizeL: 0,
+//     sizeXL:0,
+//     sizeXXL: 0
+// }
 
 var Product = function (_Component2) {
     _inherits(Product, _Component2);
@@ -45907,12 +45927,12 @@ var Product = function (_Component2) {
 
         return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Product.__proto__ || Object.getPrototypeOf(Product)).call.apply(_ref2, [this].concat(args))), _this2), _this2.valueWhenChange = function (key, value) {
             var product = _this2.props.product.products;
-            return [].concat(_toConsumableArray(product), [_extends({}, product.size, _defineProperty({}, key, value))]);
+            return _extends({}, product), _extends({}, product.size, _defineProperty({}, key, value));
         }, _this2.setValue = function (key, value) {
             var updateFormData = _this2.props.updateFormData;
 
 
-            updateFormData('drophereOrder', 'products', _this2.valueWhenChange(key, value));
+            updateFormData('drophereOrder', 'product', _this2.valueWhenChange(key, value));
         }, _this2.valueColorWhenChange = function (color, event) {
             product = _this2.props.product.products;
             return [].concat(_toConsumableArray(product), [[product.colors, color]]);
@@ -45920,7 +45940,7 @@ var Product = function (_Component2) {
             var updateFormData = _this2.props.updateFormData;
 
 
-            updateFormData('drophereOrder', 'products', _this2.valueColorWhenChange(color, event));
+            updateFormData('drophereOrder', 'product', _this2.valueColorWhenChange(color, event));
         }, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
 
@@ -45970,7 +45990,7 @@ var Product = function (_Component2) {
                             _react2.default.createElement(
                                 'div',
                                 null,
-                                _react2.default.createElement(_reactColor.CompactPicker, { color: product.products.colors, onChange: this.valueColorWhenChange.bind(this), onChangeComplete: this.setColor.bind(this) })
+                                _react2.default.createElement(_reactColor.CompactPicker, { onChange: this.valueColorWhenChange.bind(this), onChangeComplete: this.setColor.bind(this) })
                             ),
                             _react2.default.createElement(
                                 'div',
@@ -45981,11 +46001,11 @@ var Product = function (_Component2) {
                             _react2.default.createElement(
                                 'div',
                                 { className: _selectColorSize2.default.sizeflex + " " + _selectColorSize2.default.marginsize },
-                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, value: product.product.size.s, onChange: this.setValue.bind(this, 's') }),
-                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, value: product.product.size.m, onChange: this.setValue.bind(this, 'm') }),
-                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, value: product.product.size.l, onChange: this.setValue.bind(this, 'l') }),
-                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, value: product.product.size.xl, onChange: this.setValue.bind(this, 'xl') }),
-                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, value: product.product.size.xxl, onChange: this.setValue.bind(this, 'xxl') }),
+                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 's') }),
+                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 'm') }),
+                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 'l') }),
+                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 'xl') }),
+                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 'xxl') }),
                                 _react2.default.createElement(
                                     'p',
                                     { className: _selectColorSize2.default.texttotal },
@@ -46029,6 +46049,7 @@ Product = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (sta
         product: state.formData.drophereOrder
     };
 }, { updateFormData: _actions.updateFormData, gotoNextStep: _actions.gotoNextStep })(Product));
+exports.default = SelectColorSize;
 
 /***/ }),
 /* 377 */

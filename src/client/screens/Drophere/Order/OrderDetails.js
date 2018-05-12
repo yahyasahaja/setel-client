@@ -23,17 +23,7 @@ import {gotoNextStep, updateFormData} from '../../../services/actions'
 
 //COMPONENT
 export default class OrderDetails extends Component {
-  state = {
-    name: "",
-    phone: "",
-    email: "",
-    company: "",
-    role: "",
-    city: "SBY",
-    region: "Wonosari",
-    postalCode: "",
-    paymentMethod: "",
-  }
+  
 
   cities = [
     { value: "SBY", label: "Surabaya" },
@@ -47,10 +37,6 @@ export default class OrderDetails extends Component {
     { value: "Wonokromo", label: "Wonokromo" },
     { value: "Simpang", label: "Simpang" }
   ]
-
-  handleChange = (name, value) => {
-    let { gotoNextStep, updateFormData, history } = this.props
-  } 
 
 
   render() {
@@ -75,6 +61,28 @@ export default class OrderDetails extends Component {
 }
 
 class Order extends Component {
+  state = {
+    name: "",
+    phone: "",
+    email: "",
+    company: "",
+    role: "",
+    city: "SBY",
+    region: "Wonosari",
+    postalCode: "",
+    paymentMethod: "",
+  }
+
+  handleChange = (name, value) => {
+    let { gotoNextStep, updateFormData, history } = this.props
+    return{
+      ...this.props.orderInfo.info,
+      [name]: value
+    }
+
+    updateFormData('drophereOrder', 'info', this.handleChange(name, value))
+  } 
+
   render() {
     return (
       <div>

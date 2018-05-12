@@ -77,13 +77,13 @@ const SIZE = [
     }
 ]
 
-const size = {
-    sizeS: 0,
-    sizeM: 0,
-    sizeL: 0,
-    sizeXL:0,
-    sizeXXL: 0
-}
+// const size = {
+//     sizeS: 0,
+//     sizeM: 0,
+//     sizeL: 0,
+//     sizeXL:0,
+//     sizeXXL: 0
+// }
 
 class Product extends Component {
 
@@ -97,13 +97,14 @@ class Product extends Component {
 
     valueWhenChange = (key, value) => {
         let product = this.props.product.products
-        return[
-            ...product,
+        return({
+            ...product
+            },
             {
                 ...product.size,
                 [key]:value
             }
-        ]
+        )
 
     }
 
@@ -112,7 +113,7 @@ class Product extends Component {
             updateFormData,
         } = this.props
 
-        updateFormData('drophereOrder', 'products', this.valueWhenChange(key, value))
+        updateFormData('drophereOrder', 'product', this.valueWhenChange(key, value))
     }
 
     valueColorWhenChange = (color, event) =>{
@@ -131,7 +132,7 @@ class Product extends Component {
             updateFormData
         } = this.props
 
-        updateFormData('drophereOrder', 'products', this.valueColorWhenChange(color,event))
+        updateFormData('drophereOrder', 'product', this.valueColorWhenChange(color,event))
     }
 
     
@@ -152,18 +153,18 @@ class Product extends Component {
                                 <img src="/img/cross.svg" className={styles.close} />
                             </div>
                             <div>
-                                <CompactPicker color={product.products.colors} onChange={this.valueColorWhenChange.bind(this)} onChangeComplete = {this.setColor.bind(this)} />
+                                <CompactPicker  onChange={this.valueColorWhenChange.bind(this)} onChangeComplete = {this.setColor.bind(this)} />
                             </div>
                             <div className={styles.sizeflex}>
                                 {this.mappingSize()}
                                 <p></p>
                             </div>
                             <div className={styles.sizeflex + " " + styles.marginsize}>
-                                <Input type="number" theme={numbertheme} value={product.product.size.s} onChange={this.setValue.bind(this, 's')} />
-                                <Input type="number" theme={numbertheme} value={product.product.size.m} onChange={this.setValue.bind(this, 'm')} />
-                                <Input type="number" theme={numbertheme} value={product.product.size.l} onChange={this.setValue.bind(this, 'l')} />
-                                <Input type="number" theme={numbertheme} value={product.product.size.xl} onChange={this.setValue.bind(this, 'xl')} />
-                                <Input type="number" theme={numbertheme} value={product.product.size.xxl} onChange={this.setValue.bind(this, 'xxl')} />
+                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 's')} />
+                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'm')} />
+                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'l')} />
+                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'xl')} />
+                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'xxl')} />
                                 <p className={styles.texttotal}>Total: <br />0</p>
                             </div>
                             <div>
@@ -187,3 +188,4 @@ Product = withRouter(connect(
         product: state.formData.drophereOrder
     }),{updateFormData, gotoNextStep})
 (Product))
+export default SelectColorSize
