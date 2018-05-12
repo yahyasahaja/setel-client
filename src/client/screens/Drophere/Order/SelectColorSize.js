@@ -96,10 +96,8 @@ class Product extends Component {
     
 
     valueWhenChange = (key, value) => {
-        let product = this.props.product.products
-        return({
-            ...product
-            },
+        let product = this.props.products
+        return(
             {
                 ...product.size,
                 [key]:value
@@ -117,14 +115,11 @@ class Product extends Component {
     }
 
     valueColorWhenChange = (color, event) =>{
-        product = this.props.product.products
-        return[
-            ...product,
-            [
-                product.colors,
+        product = this.props.products
+        return({
+                ...product.color,
                 color
-            ]
-        ]
+        })
     }
 
     setColor = (color, event) =>{
@@ -185,7 +180,7 @@ class Product extends Component {
 SelectColorSize = connect(null, {gotoNextStep})(SelectColorSize)
 Product = withRouter(connect(
     state =>({
-        product: state.formData.drophereOrder
+        products: state.products.drophereOrder
     }),{updateFormData, gotoNextStep})
 (Product))
 export default SelectColorSize
