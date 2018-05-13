@@ -36,7 +36,7 @@ class SelectMaterial extends Component{
                     this.submit(key)                    
                 }}
                 style={(() => {
-                    if(key == (this.props.material ? this.props.material.material : '' )){                        
+                    if(key == (this.props.material)){                        
                         return {
                             border: "1px solid #37347a"
                         }
@@ -46,14 +46,14 @@ class SelectMaterial extends Component{
         )        
     )
 
-    submit = (key) => {
+    submit = (value) => {
         let { 
             updateDrophereOrderProduct , 
             gotoNextStep,
             history,             
         } = this.props
             
-            console.log(updateDrophereOrderProduct(0, "material_id", key))
+            console.log(updateDrophereOrderProduct(0, "material_id", value))
             gotoNextStep("drophereOrder")
             history.push("/drophere/order/2")
              
@@ -82,15 +82,8 @@ class SelectMaterial extends Component{
 }
 
 SelectMaterial = withRouter(connect(
-    state => {
-        try{
-            return {
-                material: state.formData.drophereOrder
-            }
-        }
-        catch(e){
-            return {}
-        }
+    state => {        
+        material: state.formData.drophereOrder ? state.formData.drophereOrder.products[0].material_id : {}
     },
     { gotoNextStep, updateDrophereOrderProduct  }
 )(SelectMaterial))

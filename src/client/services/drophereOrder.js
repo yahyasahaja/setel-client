@@ -19,9 +19,8 @@ export const updateDrophereOrderProduct = (id, key, value) => ({
     value
 })
 
-export const updateDrophereOrderAddress = (id, key, value) => ({
-    type: UPDATE_DROPHERE_ORDER_ADDRESS,
-    id,
+export const updateDrophereOrderAddress = (key, value) => ({
+    type: UPDATE_DROPHERE_ORDER_ADDRESS,    
     key, 
     value
 })

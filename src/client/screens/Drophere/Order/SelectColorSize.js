@@ -20,7 +20,7 @@ import DrophereProgress from "../../../components/DrophereProgress"
 //REDUX
 import {gotoNextStep, updateFormData} from '../../../services/actions'
 import store from '../../../services/store'
-
+import {updateDrophereOrderProduct} from '../../../services/drophereOrder'
 
 class SelectColorSize extends Component {
     
@@ -106,12 +106,12 @@ class Product extends Component {
 
     }
 
-    setValue = (key, value) => {
+    setValue = (id, key, value) => {
         let {
-            updateFormData,
+            updateDrophereOrderProduct,
         } = this.props
 
-        updateFormData('drophereOrder', 'product', this.valueWhenChange(key, value))
+        updateDrophereOrderProduct(id, 'size', this.valueWhenChange(key, value))
     }
 
     valueColorWhenChange = (color, event) =>{
@@ -124,10 +124,10 @@ class Product extends Component {
 
     setColor = (color, event) =>{
         let {
-            updateFormData
+            updateDrophereOrderProduct
         } = this.props
 
-        updateFormData('drophereOrder', 'product', this.valueColorWhenChange(color,event))
+        updateDrophereOrderProduct('drophereOrder', 'products', this.valueColorWhenChange(color,event))
     }
 
     
@@ -155,7 +155,12 @@ class Product extends Component {
                                 <p></p>
                             </div>
                             <div className={styles.sizeflex + " " + styles.marginsize}>
-                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 's')} />
+                                {/* <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 's')} /> */}
+                                <Input type="number" theme={numbertheme}  onChange={value => {
+                                        this.setValue(0, 's', value)
+                                    }} 
+                                    value = {this.props.products[0] ? this.props.products[0].size.s : ''}
+                                />
                                 <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'm')} />
                                 <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'l')} />
                                 <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'xl')} />
@@ -180,7 +185,7 @@ class Product extends Component {
 SelectColorSize = connect(null, {gotoNextStep})(SelectColorSize)
 Product = withRouter(connect(
     state =>({
-        products: state.products.drophereOrder
-    }),{updateFormData, gotoNextStep})
+        products: state.formData.drophereOrder ? state.formData.drophereOrder.products : {}
+    }),{updateDrophereOrderProduct, gotoNextStep})
 (Product))
 export default SelectColorSize
