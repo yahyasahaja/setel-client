@@ -5,7 +5,8 @@ import app from './reducer'
 const defaultStateTree = {
     selected: {},
     step: {},
-    formData: {}
+    formData: {},
+    products:{}
 }
 
 //STORE

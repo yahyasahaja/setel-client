@@ -1,11 +1,11 @@
 @import "../../../../assets/css/config.scss";
 .container {
     display: block;
-    height: 100%;
-    width: 100%;
     .wrapper {
         width: 749px;
         height: 770px;
+        height: 100%;
+        width: 100%;
         .payment {
             display: flex;
             justify-content: space-between;
@@ -49,11 +49,9 @@
                 margin-top: 39px;
                 color: #000000;
             }
-            
             .margintext {
                 margin-top: 73px;
             }
-            
             .cost {
                 font-size: 24px;
                 font-weight: bold;
@@ -94,6 +92,7 @@
         }
     }
     .down {
+        margin-top: 30px;
         display: flex;
         justify-content: center;
         .button {

@@ -3,15 +3,11 @@
     background: white;
     height: 100%;
     .wrapper {
-        padding: 16px 213px 19px 100px;
+        padding: 16px 100px 19px 100px;
         max-width: 100%;
         margin: auto;
         height: 100%;
-        .row {
-            width: 490px;
-            height: 1px;
-            background-color: #8c8c8c;
-        }
+
         .quoteflex {
             display: flex;
             justify-content: space-between;

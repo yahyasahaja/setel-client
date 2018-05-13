@@ -101,7 +101,7 @@ class ConfirmationPayment extends Component {
     if(form.confirmation_toBank &&
        form.confirmation_fromBank &&
        form.confirmation_accountName) {                    
-        this.props.gotoNextStep('drophereOrder')                    
+        this.props.gotoNextStep('drophereOrder')                               
         this.props.history.push("/drophere/order/8")
       }
     this.handleSnackbar();        
@@ -116,7 +116,6 @@ class ConfirmationPayment extends Component {
         </div>
         <div className={styles.content}>
           {this.renderContent()}
-          {/* <Dropdown source={this.bank} value={this.state.bankName} onChange={this.handleChange} /> */}
         </div>        
         <div className={styles.captha}>
           Ini Ceritanya Captha

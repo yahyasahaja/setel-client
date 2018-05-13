@@ -1,6 +1,4 @@
 @import '../../../../assets/css/config.scss';
-
-
 .container {
     display: block;
     height: 100%;
@@ -11,11 +9,6 @@
             max-width: 100%;
             margin: auto;
             text-align: center;
-            .row {
-                width: 490px;
-                height: 1px;
-                background-color: #8c8c8c;
-            }
             .text {
                 font-size: 16px;
                 line-height: 3;
@@ -28,18 +21,17 @@
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                
-                .flexitem {
-                    height: 120px;
-                    .clothes {
-                        width: 104px;
-                        height: 118px;
-                        object-fit: contain;
-                        margin: 20px;
+                height: 120px;
+                &>* {
+                    border: 1px solid transparent;
+                    &:hover,
+                    &[class=active] {
+                        border: 1px solid #aaa;
+                        cursor: pointer;
                     }
                 }
             }
-            .marginflexcontainer{
+            .marginflexcontainer {
                 margin-top: 90px;
             }
         }

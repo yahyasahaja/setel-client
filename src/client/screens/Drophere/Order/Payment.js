@@ -9,6 +9,7 @@ import styles from "./css/payment.scss"
 //COMPONENTS
 import DataDisplay from "../../../components/DataDisplay"
 import RoundedButton from "../../../components/RoundedButton"
+import DrophereProgress from "../../../components/DrophereProgress";
 
 //COMPONENT
 export default class Payment extends Component {
@@ -22,7 +23,7 @@ export default class Payment extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <hr className={styles.row} />
+          <DrophereProgress/>
           <div className={styles.payment}>
             <Link to="/drophere/order/5">
               <img src="/img/ic-chevron-left-black-36-dp.png" className={styles.arrow} />
