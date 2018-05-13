@@ -77,7 +77,7 @@ class ConfirmationPayment extends Component {
           type="text" 
           value={this.props.confirmation ? this.props.confirmation.confirmation_accountName : ''} 
           onChange={(value) => (
-            this.props.updateFormData('drophereOrder', 'confirmation_accountName', value)
+            this.props.updateFormData('drophereOrder', 'confirmation_accountName', value)            
           )}          
         /> 
       )
@@ -146,8 +146,8 @@ class ConfirmationPayment extends Component {
 
 const Confirmation = withRouter(connect(
   state => ({
-    confirmation: state.formData.drophereOrder
-  }),
+    confirmation: state.formData.drophereOrder,    
+  }),  
   { updateFormData, gotoNextStep }  
 )(ConfirmationPayment))
 

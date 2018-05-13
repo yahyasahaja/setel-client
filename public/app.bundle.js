@@ -32033,7 +32033,7 @@ var SelectMaterial = function (_Component) {
                 ),
                 _react2.default.createElement(
                     "div",
-                    { onClick: this.eta },
+                    null,
                     _react2.default.createElement(_OrderNavigation2.default, {
                         text: "Choose Material",
                         nextLink: "/drophere/order/2",
@@ -43406,7 +43406,43 @@ var AppRouter = function (_Component) {
 exports.default = AppRouter;
 
 /***/ }),
+<<<<<<< HEAD
+/* 346 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _redux = __webpack_require__(181);
+
+var _reduxPromise = __webpack_require__(860);
+
+var _reduxPromise2 = _interopRequireDefault(_reduxPromise);
+
+var _reducer = __webpack_require__(385);
+
+var _reducer2 = _interopRequireDefault(_reducer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var defaultStateTree = {
+    selected: {},
+    step: {},
+    formData: {}
+
+    //STORE
+};var store = window.store = (0, _redux.createStore)(_reducer2.default, defaultStateTree, (0, _redux.applyMiddleware)(_reduxPromise2.default));
+exports.default = store;
+
+/***/ }),
+/* 347 */
+=======
 /* 348 */
+>>>>>>> 24d9f00ce6d6c4487fc7d3057f2b8bc9f161ab29
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag

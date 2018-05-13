@@ -65,7 +65,7 @@ class SelectMaterial extends Component{
                 <div className={styles.progressBar}>
                     <Progress/>
                 </div>                                
-                <div onClick={this.eta}>
+                <div>
                     <OrderNavigation 
                       text="Choose Material"
                       nextLink="/drophere/order/2"
