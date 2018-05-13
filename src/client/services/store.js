@@ -10,7 +10,7 @@ const defaultStateTree = {
 }
 
 //STORE
-const store = createStore(
+const store = window.store = createStore(
     app,
     defaultStateTree,    
     applyMiddleware(ReduxPromise)

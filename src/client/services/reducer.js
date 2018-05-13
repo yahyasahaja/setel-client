@@ -11,6 +11,14 @@ import {
   UPDATE_FORM_DATA,
 } from './actions'
 
+//DROPHERE ORDER ACTION
+import drophereOrder, {
+  UPDATE_DROPHERE_ORDER,
+  UPDATE_DROPHERE_ORDER_PRODUCT,
+  UPDATE_DROPHERE_ORDER_ADDRESS
+} from './drophereOrder'
+
+
 //REDUCER
 const selectedReducer = (state = {}, action) => {
   if (action.type === UPDATE_SELECTED) 
@@ -68,6 +76,16 @@ const formDataReducer = (state = {}, action) => {
       [action.key]: action.value,
     }}      
   }
+  else if( 
+      action.type === UPDATE_DROPHERE_ORDER ||
+      action.type === UPDATE_DROPHERE_ORDER_PRODUCT ||
+      action.type === UPDATE_DROPHERE_ORDER_ADDRESS 
+    ){
+      return {
+        ...state,
+        drophereOrder: drophereOrder(undefined, action)
+      }
+    }
   return state  
 }
 

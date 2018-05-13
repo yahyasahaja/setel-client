@@ -6,6 +6,7 @@ import FontIcon from 'react-toolbox/lib/font_icon'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { gotoNextStep, updateFormData } from '../../../services/actions'
+import { updateDrophereOrderProduct } from '../../../services/drophereOrder'
 
 //STYLES
 import styles from './css/SelectMaterial.scss'
@@ -47,12 +48,12 @@ class SelectMaterial extends Component{
 
     submit = (key) => {
         let { 
-            updateFormData, 
+            updateDrophereOrderProduct , 
             gotoNextStep,
             history,             
         } = this.props
             
-            console.log(updateFormData("drophereOrder", "material", key))
+            console.log(updateDrophereOrderProduct(0, "material_id", key))
             gotoNextStep("drophereOrder")
             history.push("/drophere/order/2")
              
@@ -81,10 +82,17 @@ class SelectMaterial extends Component{
 }
 
 SelectMaterial = withRouter(connect(
-    state => ({
-        material: state.formData.drophereOrder,        
-    }),
-    { gotoNextStep, updateFormData }
+    state => {
+        try{
+            return {
+                material: state.formData.drophereOrder
+            }
+        }
+        catch(e){
+            return {}
+        }
+    },
+    { gotoNextStep, updateDrophereOrderProduct  }
 )(SelectMaterial))
 
 export default SelectMaterial

@@ -31303,22 +31303,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var defaultStateTree = {
     selected: {},
     step: {},
-    formData: {
-        // product:{
-        //     product1: {
-        //         size:{
-        //             sizeS: 0,
-        //             sizeM: 0,
-        //             sizeL: 0,
-        //             sizeXL: 0,
-        //             sizeXXL: 0,
-        //         }
-        //     }
-        // }
-    }
+    formData: {},
+    products: {}
 
     //STORE
-};var store = (0, _redux.createStore)(_reducer2.default, defaultStateTree, (0, _redux.applyMiddleware)(_reduxPromise2.default));
+};var store = window.store = (0, _redux.createStore)(_reducer2.default, defaultStateTree, (0, _redux.applyMiddleware)(_reduxPromise2.default));
 exports.default = store;
 
 /***/ }),
@@ -31943,6 +31932,8 @@ var _reactRouterDom = __webpack_require__(18);
 
 var _actions = __webpack_require__(35);
 
+var _drophereOrder = __webpack_require__(929);
+
 var _SelectMaterial = __webpack_require__(904);
 
 var _SelectMaterial2 = _interopRequireDefault(_SelectMaterial);
@@ -32018,12 +32009,12 @@ var SelectMaterial = function (_Component) {
             });
         }, _this.submit = function (key) {
             var _this$props = _this.props,
-                updateFormData = _this$props.updateFormData,
+                updateDrophereOrderProduct = _this$props.updateDrophereOrderProduct,
                 gotoNextStep = _this$props.gotoNextStep,
                 history = _this$props.history;
 
 
-            console.log(updateFormData("drophereOrder", "material", key));
+            console.log(updateDrophereOrderProduct(0, "material_id", key));
             gotoNextStep("drophereOrder");
             history.push("/drophere/order/2");
         }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -32065,10 +32056,14 @@ var SelectMaterial = function (_Component) {
 }(_react.Component);
 
 SelectMaterial = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
-    return {
-        material: state.formData.drophereOrder
-    };
-}, { gotoNextStep: _actions.gotoNextStep, updateFormData: _actions.updateFormData })(SelectMaterial));
+    try {
+        return {
+            material: state.formData.drophereOrder
+        };
+    } catch (e) {
+        return {};
+    }
+}, { gotoNextStep: _actions.gotoNextStep, updateDrophereOrderProduct: _drophereOrder.updateDrophereOrderProduct })(SelectMaterial));
 
 exports.default = SelectMaterial;
 
@@ -45797,8 +45792,6 @@ var _store2 = _interopRequireDefault(_store);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -45926,16 +45919,18 @@ var Product = function (_Component2) {
         }
 
         return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Product.__proto__ || Object.getPrototypeOf(Product)).call.apply(_ref2, [this].concat(args))), _this2), _this2.valueWhenChange = function (key, value) {
-            var product = _this2.props.product.products;
-            return _extends({}, product), _extends({}, product.size, _defineProperty({}, key, value));
+            var product = _this2.props.products;
+            return _extends({}, product.size, _defineProperty({}, key, value));
         }, _this2.setValue = function (key, value) {
             var updateFormData = _this2.props.updateFormData;
 
 
             updateFormData('drophereOrder', 'product', _this2.valueWhenChange(key, value));
         }, _this2.valueColorWhenChange = function (color, event) {
-            product = _this2.props.product.products;
-            return [].concat(_toConsumableArray(product), [[product.colors, color]]);
+            product = _this2.props.products;
+            return _extends({}, product.color, {
+                color: color
+            });
         }, _this2.setColor = function (color, event) {
             var updateFormData = _this2.props.updateFormData;
 
@@ -46046,7 +46041,7 @@ var Product = function (_Component2) {
 SelectColorSize = (0, _reactRedux.connect)(null, { gotoNextStep: _actions.gotoNextStep })(SelectColorSize);
 Product = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
     return {
-        product: state.formData.drophereOrder
+        products: state.products.drophereOrder
     };
 }, { updateFormData: _actions.updateFormData, gotoNextStep: _actions.gotoNextStep })(Product));
 exports.default = SelectColorSize;
@@ -47071,9 +47066,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //ACTIONS
 
 
+//DROPHERE ORDER ACTION
+
+
 var _redux = __webpack_require__(182);
 
 var _actions = __webpack_require__(35);
+
+var _drophereOrder = __webpack_require__(929);
+
+var _drophereOrder2 = _interopRequireDefault(_drophereOrder);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -47123,6 +47127,10 @@ var formDataReducer = function formDataReducer() {
 
   if (action.type === _actions.UPDATE_FORM_DATA) {
     return _extends({}, state, _defineProperty({}, action.id, _extends({}, state[action.id], _defineProperty({}, action.key, action.value))));
+  } else if (action.type === _drophereOrder.UPDATE_DROPHERE_ORDER || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_PRODUCT || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_ADDRESS) {
+    return _extends({}, state, {
+      drophereOrder: (0, _drophereOrder2.default)(undefined, action)
+    });
   }
   return state;
 };
@@ -87826,6 +87834,99 @@ else {
 
 })(Math);
 
+
+/***/ }),
+/* 929 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.updateDrophereOrderAddress = exports.updateDrophereOrderProduct = exports.updateDrophereOrder = exports.UPDATE_DROPHERE_ORDER_ADDRESS = exports.UPDATE_DROPHERE_ORDER_PRODUCT = exports.UPDATE_DROPHERE_ORDER = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _redux = __webpack_require__(182);
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+//dropherOrder Action-TYPE
+var UPDATE_DROPHERE_ORDER = exports.UPDATE_DROPHERE_ORDER = 'updateDrophereOrder';
+var UPDATE_DROPHERE_ORDER_PRODUCT = exports.UPDATE_DROPHERE_ORDER_PRODUCT = 'updateDrophereOrderProduct';
+var UPDATE_DROPHERE_ORDER_ADDRESS = exports.UPDATE_DROPHERE_ORDER_ADDRESS = 'updateDrophereOrderAddress';
+
+//drophereorder ACTION
+var updateDrophereOrder = exports.updateDrophereOrder = function updateDrophereOrder(key, value) {
+    return {
+        type: UPDATE_DROPHERE_ORDER,
+        key: key,
+        value: value
+    };
+};
+
+var updateDrophereOrderProduct = exports.updateDrophereOrderProduct = function updateDrophereOrderProduct(id, key, value) {
+    return {
+        type: UPDATE_DROPHERE_ORDER_PRODUCT,
+        id: id,
+        key: key,
+        value: value
+    };
+};
+
+var updateDrophereOrderAddress = exports.updateDrophereOrderAddress = function updateDrophereOrderAddress(id, key, value) {
+    return {
+        type: UPDATE_DROPHERE_ORDER_ADDRESS,
+        id: id,
+        key: key,
+        value: value
+    };
+};
+
+//drophereorder REDUCER
+var productReducer = function productReducer() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var action = arguments[1];
+
+    if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT) {
+        return [].concat(_toConsumableArray(state), [state[action.id] = _extends({}, state[action.id], _defineProperty({}, action.key, action.value))]);
+    }
+    return state;
+};
+
+var addressReducer = function addressReducer() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var action = arguments[1];
+
+    if (action.type === UPDATE_DROPHERE_ORDER_ADDRESS) {
+        return _extends({}, state, _defineProperty({}, action.key, action.value));
+    }
+    return state;
+};
+
+var drophereOrder = function drophereOrder() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var action = arguments[1];
+
+    if (action.type == UPDATE_DROPHERE_ORDER) {
+        return _extends({}, state, _defineProperty({}, action.key, action.value));
+    } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT) {
+        return _extends({}, state, {
+            products: productReducer(undefined, action)
+        });
+    } else if (action.type === UPDATE_DROPHERE_ORDER_ADDRESS) {
+        return _extends({}, state, {
+            adress: addressReducer(undefined, action)
+        });
+    }
+    return state;
+};
+
+exports.default = drophereOrder;
 
 /***/ })
 /******/ ]);
