@@ -31628,7 +31628,7 @@ var SelectMaterial = function (_Component) {
                 ),
                 _react2.default.createElement(
                     "div",
-                    { onClick: this.eta },
+                    null,
                     _react2.default.createElement(_OrderNavigation2.default, {
                         text: "Choose Material",
                         nextLink: "/drophere/order/2",
@@ -43319,7 +43319,7 @@ var defaultStateTree = {
     formData: {}
 
     //STORE
-};var store = (0, _redux.createStore)(_reducer2.default, defaultStateTree, (0, _redux.applyMiddleware)(_reduxPromise2.default));
+};var store = window.store = (0, _redux.createStore)(_reducer2.default, defaultStateTree, (0, _redux.applyMiddleware)(_reduxPromise2.default));
 exports.default = store;
 
 /***/ }),
