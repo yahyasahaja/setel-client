@@ -31303,19 +31303,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var defaultStateTree = {
     selected: {},
     step: {},
-    formData: {
-        // product:{
-        //     product1: {
-        //         size:{
-        //             sizeS: 0,
-        //             sizeM: 0,
-        //             sizeL: 0,
-        //             sizeXL: 0,
-        //             sizeXXL: 0,
-        //         }
-        //     }
-        // }
-    }
+    formData: {},
+    products: {}
 
     //STORE
 };var store = (0, _redux.createStore)(_reducer2.default, defaultStateTree, (0, _redux.applyMiddleware)(_reduxPromise2.default));
@@ -45178,17 +45167,9 @@ var OrderDetails = function (_Component) {
   _inherits(OrderDetails, _Component);
 
   function OrderDetails() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
     _classCallCheck(this, OrderDetails);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = OrderDetails.__proto__ || Object.getPrototypeOf(OrderDetails)).call.apply(_ref, [this].concat(args))), _this), _this.cities = [{ value: "SBY", label: "Surabaya" }, { value: "MLG", label: "Malang" }, { value: "JKT", label: "Jakarta" }, { value: "MKS", label: "Makassar" }], _this.regions = [{ value: "Wonosari", label: "Wonosari" }, { value: "Wonokromo", label: "Wonokromo" }, { value: "Simpang", label: "Simpang" }], _temp), _possibleConstructorReturn(_this, _ret);
+    return _possibleConstructorReturn(this, (OrderDetails.__proto__ || Object.getPrototypeOf(OrderDetails)).apply(this, arguments));
   }
 
   _createClass(OrderDetails, [{
@@ -45235,37 +45216,40 @@ var Order = function (_Component2) {
   _inherits(Order, _Component2);
 
   function Order() {
-    var _ref2;
+    var _ref;
 
-    var _temp2, _this2, _ret2;
+    var _temp, _this2, _ret;
 
     _classCallCheck(this, Order);
 
-    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
 
-    return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Order.__proto__ || Object.getPrototypeOf(Order)).call.apply(_ref2, [this].concat(args))), _this2), _this2.state = {
-      name: "",
-      phone: "",
-      email: "",
-      company: "",
-      role: "",
-      city: "SBY",
-      region: "Wonosari",
-      postalCode: "",
-      paymentMethod: ""
+    return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_ref = Order.__proto__ || Object.getPrototypeOf(Order)).call.apply(_ref, [this].concat(args))), _this2), _this2.cities = [{ value: "SBY", label: "Surabaya" }, { value: "MLG", label: "Malang" }, { value: "JKT", label: "Jakarta" }, { value: "MKS", label: "Makassar" }], _this2.regions = [{ value: "Wonosari", label: "Wonosari" }, { value: "Wonokromo", label: "Wonokromo" }, { value: "Simpang", label: "Simpang" }], _this2.setValue = function (name, value) {
+      order = _this2.props.order;
+      return _extends({}, order, _defineProperty({}, name, value));
     }, _this2.handleChange = function (name, value) {
       var _this2$props = _this2.props,
           gotoNextStep = _this2$props.gotoNextStep,
           updateFormData = _this2$props.updateFormData,
           history = _this2$props.history;
 
-      return _extends({}, _this2.props.orderInfo.info, _defineProperty({}, name, value));
 
-      updateFormData('drophereOrder', 'info', _this2.handleChange(name, value));
-    }, _temp2), _possibleConstructorReturn(_this2, _ret2);
+      updateFormData('drophereOrder', 'info', _this2.setValue(name, value));
+    }, _temp), _possibleConstructorReturn(_this2, _ret);
   }
+  // state = {
+  //   name: "",
+  //   phone: "",
+  //   email: "",
+  //   company: "",
+  //   role: "",
+  //   city: "SBY",
+  //   region: "Wonosari",
+  //   postalCode: "",
+  //   paymentMethod: "",
+  // }
 
   _createClass(Order, [{
     key: "render",
@@ -45280,28 +45264,24 @@ var Order = function (_Component2) {
             type: "text",
             name: "name",
             label: "Name",
-            value: this.state.name,
             onChange: this.handleChange.bind(this, "name")
           }),
           _react2.default.createElement(_input2.default, {
             type: "tel",
             name: "phone",
             label: "Phone",
-            value: this.state.phone,
             onChange: this.handleChange.bind(this, "phone")
           }),
           _react2.default.createElement(_input2.default, {
             type: "email",
             name: "email",
             label: "Email",
-            value: this.state.email,
             onChange: this.handleChange.bind(this, "email")
           }),
           _react2.default.createElement(_input2.default, {
             type: "text",
             name: "company",
             label: "Company",
-            value: this.state.company,
             onChange: this.handleChange.bind(this, "company")
           }),
           _react2.default.createElement(
@@ -45317,7 +45297,6 @@ var Order = function (_Component2) {
           _react2.default.createElement(_dropdown2.default, {
             theme: _dropdownTheme2.default,
             source: this.cities,
-            value: this.state.city,
             onChange: this.handleChange.bind(this, "city")
           }),
           _react2.default.createElement(
@@ -45328,7 +45307,6 @@ var Order = function (_Component2) {
           _react2.default.createElement(_dropdown2.default, {
             theme: _dropdownTheme2.default,
             source: this.regions,
-            value: this.state.region,
             onChange: this.handleChange.bind(this, "region")
           }),
           _react2.default.createElement(_input2.default, {
@@ -45337,7 +45315,6 @@ var Order = function (_Component2) {
             className: _orderDetails2.default.postalcodeandcolor,
             name: "postalCode",
             label: "Postal Code",
-            value: this.state.postalCode,
             onChange: this.handleChange.bind(this, "postalCode")
           }),
           _react2.default.createElement(
@@ -45349,7 +45326,6 @@ var Order = function (_Component2) {
             _radio.RadioGroup,
             {
               name: "category",
-              value: this.state.paymentMethod,
               onChange: this.handleChange.bind(this, "paymentMethod")
             },
             _react2.default.createElement(_radio.RadioButton, { theme: _radioButtonTheme2.default, label: "COD", value: "cod" }),
@@ -45373,7 +45349,7 @@ var Order = function (_Component2) {
 }(_react.Component);
 
 Order = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
-  orderInfo: state.formData.drophereOrder;
+  order: state.formData.drophereOrder;
 }, { gotoNextStep: _actions.gotoNextStep, updateFormData: _actions.updateFormData }))(Order);
 
 /***/ }),
@@ -45797,8 +45773,6 @@ var _store2 = _interopRequireDefault(_store);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -45926,16 +45900,18 @@ var Product = function (_Component2) {
         }
 
         return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Product.__proto__ || Object.getPrototypeOf(Product)).call.apply(_ref2, [this].concat(args))), _this2), _this2.valueWhenChange = function (key, value) {
-            var product = _this2.props.product.products;
-            return _extends({}, product), _extends({}, product.size, _defineProperty({}, key, value));
+            var product = _this2.props.products;
+            return _extends({}, product.size, _defineProperty({}, key, value));
         }, _this2.setValue = function (key, value) {
             var updateFormData = _this2.props.updateFormData;
 
 
             updateFormData('drophereOrder', 'product', _this2.valueWhenChange(key, value));
         }, _this2.valueColorWhenChange = function (color, event) {
-            product = _this2.props.product.products;
-            return [].concat(_toConsumableArray(product), [[product.colors, color]]);
+            product = _this2.props.products;
+            return _extends({}, product.color, {
+                color: color
+            });
         }, _this2.setColor = function (color, event) {
             var updateFormData = _this2.props.updateFormData;
 
@@ -46046,7 +46022,7 @@ var Product = function (_Component2) {
 SelectColorSize = (0, _reactRedux.connect)(null, { gotoNextStep: _actions.gotoNextStep })(SelectColorSize);
 Product = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
     return {
-        product: state.formData.drophereOrder
+        products: state.products.drophereOrder
     };
 }, { updateFormData: _actions.updateFormData, gotoNextStep: _actions.gotoNextStep })(Product));
 exports.default = SelectColorSize;
