@@ -4,6 +4,7 @@ import { combineReducers } from 'redux'
 export const UPDATE_DROPHERE_ORDER  = 'updateDrophereOrder'
 export const UPDATE_DROPHERE_ORDER_PRODUCT = 'updateDrophereOrderProduct'
 export const UPDATE_DROPHERE_ORDER_ADDRESS = 'updateDrophereOrderAddress'
+export const UPDATE_DROPHERE_ORDER_PRODUCT_SIZE = 'updateDrophereOrderProductSize'
 
 //drophereorder ACTION
 export const updateDrophereOrder = (key, value) => ({
@@ -25,7 +26,23 @@ export const updateDrophereOrderAddress = (key, value) => ({
     value
 })
 
+export const updateDrophereOrderProductSize = (id, key, value) => ({
+    type: UPDATE_DROPHERE_ORDER_ADDRESS,    
+    key, 
+    value
+})
+
 //drophereorder REDUCER
+const sizeReducer = (state = {}, action) => {
+    if(action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE){
+        return {
+            ...state, 
+            [action.key]: action.value
+        }
+    }
+    return state
+}
+
 const productReducer = (state = [], action) => {
     if(action.type === UPDATE_DROPHERE_ORDER_PRODUCT){
         return [
@@ -33,6 +50,15 @@ const productReducer = (state = [], action) => {
             state[action.id] = {
                 ...state[action.id],
                 [action.key]: action.value
+            }
+        ]
+    }
+    else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE){
+        return [
+            ...state,
+            state[action.id] = {
+                ...state[action.id],
+                size: sizeReducer(undefined, action)
             }
         ]
     }
@@ -57,7 +83,8 @@ const drophereOrder = (state = {}, action) => {
             [action.key]: action.value
         }
     }
-    else if(action.type === UPDATE_DROPHERE_ORDER_PRODUCT){
+    else if(action.type === UPDATE_DROPHERE_ORDER_PRODUCT ||
+            action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE){
         return {
             ...state,
             products: productReducer(undefined, action)

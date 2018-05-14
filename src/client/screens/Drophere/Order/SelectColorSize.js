@@ -187,7 +187,7 @@ class Product extends Component {
     }
 }
 
-SelectColorSize = connect(null, {gotoNextStep})(SelectColorSize)
+SelectColorSize = withRouter(connect(null, {gotoNextStep})(SelectColorSize))
 Product = withRouter(connect(
     state =>({
         products: state.formData.drophereOrder ? state.formData.drophereOrder.products : {}
