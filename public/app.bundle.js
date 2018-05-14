@@ -45913,8 +45913,8 @@ var SelectColorSize = function (_Component) {
         }
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SelectColorSize.__proto__ || Object.getPrototypeOf(SelectColorSize)).call.apply(_ref, [this].concat(args))), _this), _this.submit = function () {
-            (0, _actions.gotoNextStep)('drophereOrder');
-            history.push("/drophere/order/3");
+            _this.props.gotoNextStep('drophereOrder');
+            _this.props.history.push("/drophere/order/3");
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
@@ -46131,7 +46131,7 @@ var Product = function (_Component2) {
     return Product;
 }(_react.Component);
 
-SelectColorSize = (0, _reactRedux.connect)(null, { gotoNextStep: _actions.gotoNextStep })(SelectColorSize);
+SelectColorSize = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(null, { gotoNextStep: _actions.gotoNextStep })(SelectColorSize));
 Product = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
     return {
         products: state.formData.drophereOrder ? state.formData.drophereOrder.products : {}

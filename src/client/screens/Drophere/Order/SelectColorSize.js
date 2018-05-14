@@ -25,8 +25,8 @@ import {updateDrophereOrderProduct} from '../../../services/drophereOrder'
 class SelectColorSize extends Component {
     
     submit = () => {
-        gotoNextStep('drophereOrder')
-        history.push("/drophere/order/3")
+        this.props.gotoNextStep('drophereOrder')
+        this.props.history.push("/drophere/order/3")
     }
 
     render() {
@@ -182,7 +182,7 @@ class Product extends Component {
     }
 }
 
-SelectColorSize = connect(null, {gotoNextStep})(SelectColorSize)
+SelectColorSize = withRouter(connect(null, {gotoNextStep})(SelectColorSize))
 Product = withRouter(connect(
     state =>({
         products: state.formData.drophereOrder ? state.formData.drophereOrder.products : {}
