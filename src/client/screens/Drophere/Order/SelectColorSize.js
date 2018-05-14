@@ -20,11 +20,15 @@ import DrophereProgress from "../../../components/DrophereProgress"
 //REDUX
 import {gotoNextStep, updateFormData} from '../../../services/actions'
 import store from '../../../services/store'
-
+import {updateDrophereOrderProduct} from '../../../services/drophereOrder'
 
 class SelectColorSize extends Component {
     
     submit = () => {
+        let {
+            gotoNextStep,
+            history
+        } = this.props
         gotoNextStep('drophereOrder')
         history.push("/drophere/order/3")
     }
@@ -72,18 +76,8 @@ const SIZE = [
     {
         name: 'XL'
     },
-    {
-        name: 'XXL'
-    }
 ]
 
-// const size = {
-//     sizeS: 0,
-//     sizeM: 0,
-//     sizeL: 0,
-//     sizeXL:0,
-//     sizeXXL: 0
-// }
 
 class Product extends Component {
 
@@ -98,7 +92,7 @@ class Product extends Component {
     valueWhenChange = (key, value) => {
         let product = this.props.products
         return(
-            {
+            { 
                 ...product.size,
                 [key]:value
             }
@@ -106,12 +100,12 @@ class Product extends Component {
 
     }
 
-    setValue = (key, value) => {
+    setValue = (id, key, value) => {
         let {
-            updateFormData,
+            updateDrophereOrderProduct,
         } = this.props
 
-        updateFormData('drophereOrder', 'product', this.valueWhenChange(key, value))
+        updateDrophereOrderProduct(id, 'size', this.valueWhenChange(key, value))
     }
 
     valueColorWhenChange = (color, event) =>{
@@ -122,12 +116,12 @@ class Product extends Component {
         })
     }
 
-    setColor = (color, event) =>{
+    setColor = (id, color, event) =>{
         let {
-            updateFormData
+            updateDrophereOrderProduct
         } = this.props
 
-        updateFormData('drophereOrder', 'product', this.valueColorWhenChange(color,event))
+        updateDrophereOrderProduct(id, 'color', this.valueColorWhenChange(color,event))
     }
 
     
@@ -155,12 +149,28 @@ class Product extends Component {
                                 <p></p>
                             </div>
                             <div className={styles.sizeflex + " " + styles.marginsize}>
-                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 's')} />
-                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'm')} />
-                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'l')} />
-                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'xl')} />
-                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'xxl')} />
-                                <p className={styles.texttotal}>Total: <br />0</p>
+                                {/* <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 's')} /> */}
+                                <Input type="number" theme={numbertheme}  onChange={value => {
+                                        this.setValue(0, 's', value)
+                                    }} 
+                                    value = { this.props.products[0] && this.props.products[0].size ? this.props.products[0].size.s : 0}
+                                />
+                                <Input type="number" theme={numbertheme}  onChange={ value => {
+                                    this.setValue(0, 'm', value)
+                                }}
+                                    value = {this.props.products[0] && this.props.products[0].size ? this.props.products[0].size.m : 0}
+                                 />
+                                <Input type="number" theme={numbertheme}  onChange={value => {
+                                    this.setValue(0, 'l', value)
+                                }}
+                                    value = {this.props.products[0] && this.props.products[0].size ? this.props.products[0].size.l : 0}
+                                 />
+                                 <Input type="number" theme={numbertheme}  onChange={value => {
+                                    this.setValue(0, 'xl', value)
+                                }}
+                                    value = {this.props.products[0] && this.props.products[0].size ? this.props.products[0].size.xl : 0}
+                                 />
+                                <p className={styles.texttotal}>Total: <br /></p>
                             </div>
                             <div>
                                 <p className={styles.italictext}>Size Chart</p>
@@ -180,7 +190,7 @@ class Product extends Component {
 SelectColorSize = connect(null, {gotoNextStep})(SelectColorSize)
 Product = withRouter(connect(
     state =>({
-        products: state.products.drophereOrder
-    }),{updateFormData, gotoNextStep})
+        products: state.formData.drophereOrder ? state.formData.drophereOrder.products : {}
+    }),{updateDrophereOrderProduct, gotoNextStep})
 (Product))
 export default SelectColorSize

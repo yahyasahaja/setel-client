@@ -16,7 +16,7 @@ import Simg from '../../../components/S-ImagePreview'
 
 //ACTION REDUX
 import { gotoNextStep, updateFormData } from '../../../services/actions'
-
+import {updateDrophereOrderProduct} from '../../../services/drophereOrder'
 
 //STORE
 import DrophereProgress from "../../../components/DrophereProgress";
@@ -75,11 +75,11 @@ class SelectCategories extends Component {
 
     submit(data){
         let {
-            updateFormData,
+            updateDrophereOrderProduct,
             goToNextStep,
             history
         } = this.props
-        updateFormData('drophereOrder', 'category', data)
+        updateDrophereOrderProduct(0, 'category_id', data)
         gotoNextStep("drophereOrder")
         history.push("/drophere/order/1")
     }
@@ -104,7 +104,7 @@ class SelectCategories extends Component {
 SelectCategories = withRouter(connect(
     state => ({
         category: state.formData.drophereOrder
-    }), {gotoNextStep, updateFormData})
+    }), {gotoNextStep, updateDrophereOrderProduct})
 (SelectCategories))
 
 export default SelectCategories

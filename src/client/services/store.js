@@ -6,11 +6,10 @@ const defaultStateTree = {
     selected: {},
     step: {},
     formData: {},
-    products:{}
 }
 
 //STORE
-const store = createStore(
+const store = window.store = createStore(
     app,
     defaultStateTree,    
     applyMiddleware(ReduxPromise)

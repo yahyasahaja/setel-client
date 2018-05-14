@@ -6,6 +6,7 @@ import FontIcon from 'react-toolbox/lib/font_icon'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { gotoNextStep, updateFormData } from '../../../services/actions'
+import { updateDrophereOrderProduct } from '../../../services/drophereOrder'
 
 //STYLES
 import styles from './css/SelectMaterial.scss'
@@ -35,7 +36,7 @@ class SelectMaterial extends Component{
                     this.submit(key)                    
                 }}
                 style={(() => {
-                    if(key == (this.props.material ? this.props.material.material : '' )){                        
+                    if(key == (this.props.material)){                        
                         return {
                             border: "1px solid #37347a"
                         }
@@ -45,14 +46,14 @@ class SelectMaterial extends Component{
         )        
     )
 
-    submit = (key) => {
+    submit = (value) => {
         let { 
-            updateFormData, 
+            updateDrophereOrderProduct , 
             gotoNextStep,
             history,             
         } = this.props
             
-            console.log(updateFormData("drophereOrder", "material", key))
+            console.log(updateDrophereOrderProduct(0, "material_id", value))
             gotoNextStep("drophereOrder")
             history.push("/drophere/order/2")
              
@@ -64,7 +65,7 @@ class SelectMaterial extends Component{
                 <div className={styles.progressBar}>
                     <Progress/>
                 </div>                                
-                <div onClick={this.eta}>
+                <div>
                     <OrderNavigation 
                       text="Choose Material"
                       nextLink="/drophere/order/2"
@@ -81,10 +82,10 @@ class SelectMaterial extends Component{
 }
 
 SelectMaterial = withRouter(connect(
-    state => ({
-        material: state.formData.drophereOrder,        
-    }),
-    { gotoNextStep, updateFormData }
+    state => {        
+        material: state.formData.drophereOrder ? state.formData.drophereOrder.products[0].material_id : {}
+    },
+    { gotoNextStep, updateDrophereOrderProduct  }
 )(SelectMaterial))
 
 export default SelectMaterial
