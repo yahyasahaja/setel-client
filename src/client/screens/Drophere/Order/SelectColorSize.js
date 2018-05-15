@@ -25,12 +25,8 @@ import {updateDrophereOrderProduct} from '../../../services/drophereOrder'
 class SelectColorSize extends Component {
     
     submit = () => {
-        let {
-            gotoNextStep,
-            history
-        } = this.props
-        gotoNextStep('drophereOrder')
-        history.push("/drophere/order/3")
+        this.props.gotoNextStep('drophereOrder')
+        this.props.history.push("/drophere/order/3")
     }
 
     render() {

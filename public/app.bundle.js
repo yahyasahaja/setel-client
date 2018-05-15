@@ -24053,20 +24053,21 @@ module.exports = function(module) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.updateDrophereOrderAddress = exports.updateDrophereOrderProduct = exports.updateDrophereOrder = exports.UPDATE_DROPHERE_ORDER_ADDRESS = exports.UPDATE_DROPHERE_ORDER_PRODUCT = exports.UPDATE_DROPHERE_ORDER = undefined;
+exports.updateDrophereOrderProductSize = exports.updateDrophereOrderAddress = exports.updateDrophereOrderProduct = exports.updateDrophereOrder = exports.UPDATE_DROPHERE_ORDER_PRODUCT_SIZE = exports.UPDATE_DROPHERE_ORDER_ADDRESS = exports.UPDATE_DROPHERE_ORDER_PRODUCT = exports.UPDATE_DROPHERE_ORDER = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _redux = __webpack_require__(117);
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //dropherOrder Action-TYPE
 var UPDATE_DROPHERE_ORDER = exports.UPDATE_DROPHERE_ORDER = 'updateDrophereOrder';
 var UPDATE_DROPHERE_ORDER_PRODUCT = exports.UPDATE_DROPHERE_ORDER_PRODUCT = 'updateDrophereOrderProduct';
 var UPDATE_DROPHERE_ORDER_ADDRESS = exports.UPDATE_DROPHERE_ORDER_ADDRESS = 'updateDrophereOrderAddress';
+var UPDATE_DROPHERE_ORDER_PRODUCT_SIZE = exports.UPDATE_DROPHERE_ORDER_PRODUCT_SIZE = 'updateDrophereOrderProductSize';
 
 //drophereorder ACTION
 var updateDrophereOrder = exports.updateDrophereOrder = function updateDrophereOrder(key, value) {
@@ -24094,13 +24095,33 @@ var updateDrophereOrderAddress = exports.updateDrophereOrderAddress = function u
     };
 };
 
+var updateDrophereOrderProductSize = exports.updateDrophereOrderProductSize = function updateDrophereOrderProductSize(id, key, value) {
+    return {
+        type: UPDATE_DROPHERE_ORDER_PRODUCT_SIZE,
+        key: key,
+        value: value
+    };
+};
+
 //drophereorder REDUCER
+var sizeReducer = function sizeReducer() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var action = arguments[1];
+
+    if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
+        return _extends({}, state, _defineProperty({}, action.key, action.value));
+    }
+    return state;
+};
+
 var productReducer = function productReducer() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var action = arguments[1];
 
     if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT) {
-        return [].concat(_toConsumableArray(state), [state[action.id] = _extends({}, state[action.id], _defineProperty({}, action.key, action.value))]);
+        return [].concat(_toConsumableArray(state), [state[action.id] = _extends({}, state[action.id], _defineProperty({}, action.key, _extends({}, state['products'][action.id][action.key], _defineProperty({}, action.key, action.value))))]);
+    } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
+        return [].concat(_toConsumableArray(state), [state[action.id] = _extends({}, state[action.id], _defineProperty({}, action.key, sizeReducer(undefined, action)))]);
     }
     return state;
 };
@@ -24121,13 +24142,13 @@ var drophereOrder = function drophereOrder() {
 
     if (action.type == UPDATE_DROPHERE_ORDER) {
         return _extends({}, state, _defineProperty({}, action.key, action.value));
-    } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT) {
+    } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT || action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
         return _extends({}, state, {
             products: productReducer(undefined, action)
         });
     } else if (action.type === UPDATE_DROPHERE_ORDER_ADDRESS) {
         return _extends({}, state, {
-            adress: addressReducer(undefined, action)
+            address: addressReducer(undefined, action)
         });
     }
     return state;
@@ -31395,7 +31416,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var defaultStateTree = {
     selected: {},
     step: {},
-    formData: {}
+    formData: {
+        drophereOrder: {
+            products: [{
+                size: {
+                    s: 1
+                }
+            }]
+        }
+    }
 
     //STORE
 };var store = window.store = (0, _redux.createStore)(_reducer2.default, defaultStateTree, (0, _redux.applyMiddleware)(_reduxPromise2.default));
@@ -45901,17 +45930,8 @@ var SelectColorSize = function (_Component) {
         }
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SelectColorSize.__proto__ || Object.getPrototypeOf(SelectColorSize)).call.apply(_ref, [this].concat(args))), _this), _this.submit = function () {
-<<<<<<< HEAD
-            var _this$props = _this.props,
-                gotoNextStep = _this$props.gotoNextStep,
-                history = _this$props.history;
-
-            gotoNextStep('drophereOrder');
-            history.push("/drophere/order/3");
-=======
             _this.props.gotoNextStep('drophereOrder');
             _this.props.history.push("/drophere/order/3");
->>>>>>> eeaed9fce26794c74f6297c0f8fda58ecf047f51
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 

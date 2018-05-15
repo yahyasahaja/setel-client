@@ -27,7 +27,7 @@ export const updateDrophereOrderAddress = (key, value) => ({
 })
 
 export const updateDrophereOrderProductSize = (id, key, value) => ({
-    type: UPDATE_DROPHERE_ORDER_ADDRESS,    
+    type: UPDATE_DROPHERE_ORDER_PRODUCT_SIZE,    
     key, 
     value
 })
@@ -49,7 +49,10 @@ const productReducer = (state = [], action) => {
             ...state,
             state[action.id] = {
                 ...state[action.id],
-                [action.key]: action.value
+                [action.key] : {
+                    ...state['products'][action.id][action.key],
+                    [action.key]: action.value
+                }
             }
         ]
     }
@@ -58,7 +61,7 @@ const productReducer = (state = [], action) => {
             ...state,
             state[action.id] = {
                 ...state[action.id],
-                size: sizeReducer(undefined, action)
+                [action.key]: sizeReducer(undefined, action)
             }
         ]
     }
@@ -93,7 +96,7 @@ const drophereOrder = (state = {}, action) => {
     else if(action.type === UPDATE_DROPHERE_ORDER_ADDRESS){
         return {
             ...state,
-            adress: addressReducer(undefined, action)
+            address: addressReducer(undefined, action)
         }
     }
     return state
