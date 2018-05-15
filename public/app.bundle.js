@@ -26667,20 +26667,21 @@ exports.default = OrderNavigation;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.updateDrophereOrderAddress = exports.updateDrophereOrderProduct = exports.updateDrophereOrder = exports.UPDATE_DROPHERE_ORDER_ADDRESS = exports.UPDATE_DROPHERE_ORDER_PRODUCT = exports.UPDATE_DROPHERE_ORDER = undefined;
+exports.updateDrophereOrderProductSize = exports.updateDrophereOrderAddress = exports.updateDrophereOrderProduct = exports.updateDrophereOrder = exports.UPDATE_DROPHERE_ORDER_PRODUCT_SIZE = exports.UPDATE_DROPHERE_ORDER_ADDRESS = exports.UPDATE_DROPHERE_ORDER_PRODUCT = exports.UPDATE_DROPHERE_ORDER = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _redux = __webpack_require__(116);
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //dropherOrder Action-TYPE
 var UPDATE_DROPHERE_ORDER = exports.UPDATE_DROPHERE_ORDER = 'updateDrophereOrder';
 var UPDATE_DROPHERE_ORDER_PRODUCT = exports.UPDATE_DROPHERE_ORDER_PRODUCT = 'updateDrophereOrderProduct';
 var UPDATE_DROPHERE_ORDER_ADDRESS = exports.UPDATE_DROPHERE_ORDER_ADDRESS = 'updateDrophereOrderAddress';
+var UPDATE_DROPHERE_ORDER_PRODUCT_SIZE = exports.UPDATE_DROPHERE_ORDER_PRODUCT_SIZE = 'updateDrophereOrderProductSize';
 
 //drophereorder ACTION
 var updateDrophereOrder = exports.updateDrophereOrder = function updateDrophereOrder(key, value) {
@@ -26708,13 +26709,35 @@ var updateDrophereOrderAddress = exports.updateDrophereOrderAddress = function u
     };
 };
 
+var updateDrophereOrderProductSize = exports.updateDrophereOrderProductSize = function updateDrophereOrderProductSize(id, key, value) {
+    return {
+        type: UPDATE_DROPHERE_ORDER_PRODUCT_SIZE,
+        key: key,
+        value: value
+    };
+};
+
 //drophereorder REDUCER
+var sizeReducer = function sizeReducer() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var action = arguments[1];
+
+    if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
+        return _extends({}, state, _defineProperty({}, action.key, action.value));
+    }
+    return state;
+};
+
 var productReducer = function productReducer() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var action = arguments[1];
 
     if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT) {
         return [].concat(_toConsumableArray(state), [state[action.id] = _extends({}, state[action.id], _defineProperty({}, action.key, action.value))]);
+    } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
+        return [].concat(_toConsumableArray(state), [state[action.id] = _extends({}, state[action.id], {
+            size: sizeReducer(state[action.id] ? state[action.id].size : undefined, action)
+        })]);
     }
     return state;
 };
@@ -26735,7 +26758,7 @@ var drophereOrder = function drophereOrder() {
 
     if (action.type == UPDATE_DROPHERE_ORDER) {
         return _extends({}, state, _defineProperty({}, action.key, action.value));
-    } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT) {
+    } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT || action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
         return _extends({}, state, {
             products: productReducer(undefined, action)
         });
@@ -45880,8 +45903,6 @@ var _drophereOrder = __webpack_require__(121);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -46006,14 +46027,12 @@ var Product = function (_Component2) {
             args[_key2] = arguments[_key2];
         }
 
-        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Product.__proto__ || Object.getPrototypeOf(Product)).call.apply(_ref2, [this].concat(args))), _this2), _this2.valueWhenChange = function (key, value) {
-            var product = _this2.props.products;
-            return _extends({}, product.size, _defineProperty({}, key, value));
-        }, _this2.setValue = function (id, key, value) {
-            var updateDrophereOrderProduct = _this2.props.updateDrophereOrderProduct;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Product.__proto__ || Object.getPrototypeOf(Product)).call.apply(_ref2, [this].concat(args))), _this2), _this2.setValue = function (id, key, value) {
+            var updateDrophereOrderProductSize = _this2.props.updateDrophereOrderProductSize;
 
+            // updateDrophereOrderProduct(id, 'size', this.valueWhenChange(key, value))
 
-            updateDrophereOrderProduct(id, 'size', _this2.valueWhenChange(key, value));
+            console.log(updateDrophereOrderProductSize(id, key, value));
         }, _this2.valueColorWhenChange = function (color, event) {
             product = _this2.props.products;
             return _extends({}, product.color, {
@@ -46038,6 +46057,18 @@ var Product = function (_Component2) {
                 );
             });
         }
+
+        // valueWhenChange = (key, value) => {
+        //     let product = this.props.products
+        //     return(
+        //         {
+        //             ...product.size,
+        //             [key]:value
+        //         }
+        //     )
+
+        // }
+
     }, {
         key: 'render',
         value: function render() {
@@ -46090,7 +46121,11 @@ var Product = function (_Component2) {
                                     },
                                     value: this.props.products[0] ? this.props.products[0].size.s : ''
                                 }),
-                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 'm') }),
+                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: function onChange(value) {
+                                        _this3.setValue(0, 'm', value);
+                                    },
+                                    value: this.props.products[0] ? this.props.products[0].size.m : ''
+                                }),
                                 _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 'l') }),
                                 _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 'xl') }),
                                 _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 'xxl') }),
@@ -46136,7 +46171,11 @@ Product = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (sta
     return {
         products: state.formData.drophereOrder ? state.formData.drophereOrder.products : {}
     };
-}, { updateDrophereOrderProduct: _drophereOrder.updateDrophereOrderProduct, gotoNextStep: _actions.gotoNextStep })(Product));
+}, {
+    updateDrophereOrderProduct: _drophereOrder.updateDrophereOrderProduct,
+    gotoNextStep: _actions.gotoNextStep,
+    updateDrophereOrderProductSize: _drophereOrder.updateDrophereOrderProductSize
+})(Product));
 exports.default = SelectColorSize;
 
 /***/ }),
@@ -47220,7 +47259,7 @@ var formDataReducer = function formDataReducer() {
 
   if (action.type === _actions.UPDATE_FORM_DATA) {
     return _extends({}, state, _defineProperty({}, action.id, _extends({}, state[action.id], _defineProperty({}, action.key, action.value))));
-  } else if (action.type === _drophereOrder.UPDATE_DROPHERE_ORDER || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_PRODUCT || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_ADDRESS) {
+  } else if (action.type === _drophereOrder.UPDATE_DROPHERE_ORDER || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_PRODUCT || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_ADDRESS || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
     return _extends({}, state, {
       drophereOrder: (0, _drophereOrder2.default)(undefined, action)
     });

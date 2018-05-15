@@ -15,7 +15,8 @@ import {
 import drophereOrder, {
   UPDATE_DROPHERE_ORDER,
   UPDATE_DROPHERE_ORDER_PRODUCT,
-  UPDATE_DROPHERE_ORDER_ADDRESS
+  UPDATE_DROPHERE_ORDER_ADDRESS,
+  UPDATE_DROPHERE_ORDER_PRODUCT_SIZE
 } from './drophereOrder'
 
 
@@ -79,7 +80,8 @@ const formDataReducer = (state = {}, action) => {
   else if( 
       action.type === UPDATE_DROPHERE_ORDER ||
       action.type === UPDATE_DROPHERE_ORDER_PRODUCT ||
-      action.type === UPDATE_DROPHERE_ORDER_ADDRESS 
+      action.type === UPDATE_DROPHERE_ORDER_ADDRESS ||
+      action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE
     ){
       return {
         ...state,
