@@ -26712,15 +26712,15 @@ var updateDrophereOrderAddress = exports.updateDrophereOrderAddress = function u
 var updateDrophereOrderProductSize = exports.updateDrophereOrderProductSize = function updateDrophereOrderProductSize(id, key, value) {
     return {
         type: UPDATE_DROPHERE_ORDER_PRODUCT_SIZE,
+        id: id,
         key: key,
         value: value
     };
 };
 
 //drophereorder REDUCER
-var sizeReducer = function sizeReducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    var action = arguments[1];
+var sizeReducer = function sizeReducer(_ref, action) {
+    var state = _ref.size;
 
     if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
         return _extends({}, state, _defineProperty({}, action.key, action.value));
@@ -26733,11 +26733,22 @@ var productReducer = function productReducer() {
     var action = arguments[1];
 
     if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT) {
-        return [].concat(_toConsumableArray(state), [state[action.id] = _extends({}, state[action.id], _defineProperty({}, action.key, action.value))]);
+        var arr = [].concat(_toConsumableArray(state));
+        arr[action.id] = _extends({}, arr[action.id], _defineProperty({}, action.key, action.value));
+        return arr;
     } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
-        return [].concat(_toConsumableArray(state), [state[action.id] = _extends({}, state[action.id], {
-            size: sizeReducer(state[action.id] ? state[action.id].size : undefined, action)
-        })]);
+        var _arr = [].concat(_toConsumableArray(state));
+        _arr[action.id] = _extends({}, _arr[action.id], {
+            size: sizeReducer(_arr[action.id] || {}, action)
+        });
+        return _arr;
+        // return [
+        //     ...state,
+        //     state[action.id]= {
+        //         ...state[action.id],
+        //         size: sizeReducer(state[action.id] || {}, action)
+        //     }
+        // ]
     }
     return state;
 };
@@ -26760,11 +26771,11 @@ var drophereOrder = function drophereOrder() {
         return _extends({}, state, _defineProperty({}, action.key, action.value));
     } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT || action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
         return _extends({}, state, {
-            products: productReducer(undefined, action)
+            products: productReducer(state.products, action)
         });
     } else if (action.type === UPDATE_DROPHERE_ORDER_ADDRESS) {
         return _extends({}, state, {
-            adress: addressReducer(undefined, action)
+            adress: addressReducer(state.adress, action)
         });
     }
     return state;
@@ -32129,7 +32140,7 @@ var SelectMaterial = function (_Component) {
                 history = _this$props.history;
 
 
-            console.log(updateDrophereOrderProduct(0, "material_id", value));
+            updateDrophereOrderProduct(0, "material_id", value);
             gotoNextStep("drophereOrder");
             history.push("/drophere/order/2");
         }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -46126,9 +46137,21 @@ var Product = function (_Component2) {
                                     },
                                     value: this.props.products[0] ? this.props.products[0].size.m : ''
                                 }),
-                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 'l') }),
-                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 'xl') }),
-                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 'xxl') }),
+                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: function onChange(value) {
+                                        _this3.setValue(0, 'l', value);
+                                    },
+                                    value: this.props.products[0] ? this.props.products[0].size.l : ''
+                                }),
+                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: function onChange(value) {
+                                        _this3.setValue(0, 'xl', value);
+                                    },
+                                    value: this.props.products[0] ? this.props.products[0].size.xl : ''
+                                }),
+                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: function onChange(value) {
+                                        _this3.setValue(0, 'xxl', value);
+                                    },
+                                    value: this.props.products[0] ? this.props.products[0].size.xxl : ''
+                                }),
                                 _react2.default.createElement(
                                     'p',
                                     { className: _selectColorSize2.default.texttotal },
@@ -47261,7 +47284,7 @@ var formDataReducer = function formDataReducer() {
     return _extends({}, state, _defineProperty({}, action.id, _extends({}, state[action.id], _defineProperty({}, action.key, action.value))));
   } else if (action.type === _drophereOrder.UPDATE_DROPHERE_ORDER || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_PRODUCT || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_ADDRESS || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
     return _extends({}, state, {
-      drophereOrder: (0, _drophereOrder2.default)(undefined, action)
+      drophereOrder: (0, _drophereOrder2.default)(state.drophereOrder, action)
     });
   }
   return state;

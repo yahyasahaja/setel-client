@@ -53,7 +53,7 @@ class SelectMaterial extends Component{
             history,             
         } = this.props
             
-            console.log(updateDrophereOrderProduct(0, "material_id", value))
+            updateDrophereOrderProduct(0, "material_id", value)
             gotoNextStep("drophereOrder")
             history.push("/drophere/order/2")
              

@@ -156,8 +156,7 @@ class Product extends Component {
                                 {this.mappingSize()}
                                 <p></p>
                             </div>
-                            <div className={styles.sizeflex + " " + styles.marginsize}>
-                                {/* <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 's')} /> */}
+                            <div className={styles.sizeflex + " " + styles.marginsize}>                                
                                 <Input type="number" theme={numbertheme}  onChange={value => {
                                         this.setValue(0, 's', value)
                                     }} 
@@ -168,9 +167,21 @@ class Product extends Component {
                                     }} 
                                     value = {this.props.products[0] ? this.props.products[0].size.m : ''}
                                 />
-                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'l')} />
-                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'xl')} />
-                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'xxl')} />
+                                <Input type="number" theme={numbertheme}  onChange={value => {
+                                        this.setValue(0, 'l', value)
+                                    }} 
+                                    value = {this.props.products[0] ? this.props.products[0].size.l : ''}
+                                />
+                                <Input type="number" theme={numbertheme}  onChange={value => {
+                                        this.setValue(0, 'xl', value)
+                                    }} 
+                                    value = {this.props.products[0] ? this.props.products[0].size.xl : ''}
+                                />
+                                <Input type="number" theme={numbertheme}  onChange={value => {
+                                        this.setValue(0, 'xxl', value)
+                                    }} 
+                                    value = {this.props.products[0] ? this.props.products[0].size.xxl : ''}
+                                />
                                 <p className={styles.texttotal}>Total: <br />0</p>
                             </div>
                             <div>
