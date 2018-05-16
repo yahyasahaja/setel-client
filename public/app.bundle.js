@@ -24119,9 +24119,11 @@ var productReducer = function productReducer() {
     var action = arguments[1];
 
     if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT) {
-        return [].concat(_toConsumableArray(state), [state[action.id] = _extends({}, state[action.id], _defineProperty({}, action.key, _extends({}, state['products'][action.id][action.key], _defineProperty({}, action.key, action.value))))]);
+        return [].concat(_toConsumableArray(state), [state[action.id] = _extends({}, state[action.id], _defineProperty({}, action.key, action.value))]);
     } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
-        return [].concat(_toConsumableArray(state), [state[action.id] = _extends({}, state[action.id], _defineProperty({}, action.key, sizeReducer(undefined, action)))]);
+        return [].concat(_toConsumableArray(state), [state[action.id] = _extends({}, state[action.id], {
+            size: sizeReducer(state[action.id] ? state[action.id].size : undefined, action)
+        })]);
     }
     return state;
 };
@@ -24143,7 +24145,7 @@ var drophereOrder = function drophereOrder() {
     if (action.type == UPDATE_DROPHERE_ORDER) {
         return _extends({}, state, _defineProperty({}, action.key, action.value));
     } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT || action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
-        return _extends({}, state, {
+        return _extends({}, state['drophereOrder'], {
             products: productReducer(undefined, action)
         });
     } else if (action.type === UPDATE_DROPHERE_ORDER_ADDRESS) {
@@ -31416,15 +31418,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var defaultStateTree = {
     selected: {},
     step: {},
-    formData: {
-        drophereOrder: {
-            products: [{
-                size: {
-                    s: 1
-                }
-            }]
-        }
-    }
+    formData: {}
 
     //STORE
 };var store = window.store = (0, _redux.createStore)(_reducer2.default, defaultStateTree, (0, _redux.applyMiddleware)(_reduxPromise2.default));
@@ -45897,8 +45891,6 @@ var _drophereOrder = __webpack_require__(87);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -46013,14 +46005,12 @@ var Product = function (_Component2) {
             args[_key2] = arguments[_key2];
         }
 
-        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Product.__proto__ || Object.getPrototypeOf(Product)).call.apply(_ref2, [this].concat(args))), _this2), _this2.valueWhenChange = function (key, value) {
-            var product = _this2.props.products;
-            return _extends({}, product.size, _defineProperty({}, key, value));
-        }, _this2.setValue = function (id, key, value) {
-            var updateDrophereOrderProduct = _this2.props.updateDrophereOrderProduct;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Product.__proto__ || Object.getPrototypeOf(Product)).call.apply(_ref2, [this].concat(args))), _this2), _this2.setValue = function (id, key, value) {
+            var updateDrophereOrderProductSize = _this2.props.updateDrophereOrderProductSize;
 
+            // updateDrophereOrderProduct(id, 'size', this.valueWhenChange(key, value))
 
-            updateDrophereOrderProduct(id, 'size', _this2.valueWhenChange(key, value));
+            console.log(updateDrophereOrderProductSize(id, key, value));
         }, _this2.valueColorWhenChange = function (color, event) {
             product = _this2.props.products;
             return _extends({}, product.color, {
@@ -46045,6 +46035,18 @@ var Product = function (_Component2) {
                 );
             });
         }
+
+        // valueWhenChange = (key, value) => {
+        //     let product = this.props.products
+        //     return(
+        //         {
+        //             ...product.size,
+        //             [key]:value
+        //         }
+        //     )
+
+        // }
+
     }, {
         key: 'render',
         value: function render() {
@@ -46100,23 +46102,17 @@ var Product = function (_Component2) {
                                 _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: function onChange(value) {
                                         _this3.setValue(0, 'm', value);
                                     },
-                                    value: this.props.products[0] && this.props.products[0].size ? this.props.products[0].size.m : 0
+                                    value: this.props.products[0] ? this.props.products[0].size.m : 0
                                 }),
-                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: function onChange(value) {
-                                        _this3.setValue(0, 'l', value);
-                                    },
-                                    value: this.props.products[0] && this.props.products[0].size ? this.props.products[0].size.l : 0
-                                }),
-                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: function onChange(value) {
-                                        _this3.setValue(0, 'xl', value);
-                                    },
-                                    value: this.props.products[0] && this.props.products[0].size ? this.props.products[0].size.xl : 0
-                                }),
+                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 'l') }),
+                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 'xl') }),
+                                _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: this.setValue.bind(this, 'xxl') }),
                                 _react2.default.createElement(
                                     'p',
                                     { className: _selectColorSize2.default.texttotal },
                                     'Total: ',
-                                    _react2.default.createElement('br', null)
+                                    _react2.default.createElement('br', null),
+                                    '0'
                                 )
                             ),
                             _react2.default.createElement(
@@ -46153,7 +46149,11 @@ Product = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (sta
     return {
         products: state.formData.drophereOrder ? state.formData.drophereOrder.products : {}
     };
-}, { updateDrophereOrderProduct: _drophereOrder.updateDrophereOrderProduct, gotoNextStep: _actions.gotoNextStep })(Product));
+}, {
+    updateDrophereOrderProduct: _drophereOrder.updateDrophereOrderProduct,
+    gotoNextStep: _actions.gotoNextStep,
+    updateDrophereOrderProductSize: _drophereOrder.updateDrophereOrderProductSize
+})(Product));
 exports.default = SelectColorSize;
 
 /***/ }),
@@ -47237,7 +47237,7 @@ var formDataReducer = function formDataReducer() {
 
   if (action.type === _actions.UPDATE_FORM_DATA) {
     return _extends({}, state, _defineProperty({}, action.id, _extends({}, state[action.id], _defineProperty({}, action.key, action.value))));
-  } else if (action.type === _drophereOrder.UPDATE_DROPHERE_ORDER || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_PRODUCT || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_ADDRESS) {
+  } else if (action.type === _drophereOrder.UPDATE_DROPHERE_ORDER || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_PRODUCT || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_ADDRESS || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
     return _extends({}, state, {
       drophereOrder: (0, _drophereOrder2.default)(undefined, action)
     });

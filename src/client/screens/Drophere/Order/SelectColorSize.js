@@ -20,7 +20,7 @@ import DrophereProgress from "../../../components/DrophereProgress"
 //REDUX
 import {gotoNextStep, updateFormData} from '../../../services/actions'
 import store from '../../../services/store'
-import {updateDrophereOrderProduct} from '../../../services/drophereOrder'
+import { updateDrophereOrderProduct, updateDrophereOrderProductSize } from '../../../services/drophereOrder'
 
 class SelectColorSize extends Component {
     
@@ -85,23 +85,25 @@ class Product extends Component {
     
     
 
-    valueWhenChange = (key, value) => {
-        let product = this.props.products
-        return(
-            { 
-                ...product.size,
-                [key]:value
-            }
-        )
+    // valueWhenChange = (key, value) => {
+    //     let product = this.props.products
+    //     return(
+    //         {
+    //             ...product.size,
+    //             [key]:value
+    //         }
+    //     )
 
-    }
+    // }
 
     setValue = (id, key, value) => {
         let {
-            updateDrophereOrderProduct,
+            // updateDrophereOrderProduct,
+            updateDrophereOrderProductSize
         } = this.props
 
-        updateDrophereOrderProduct(id, 'size', this.valueWhenChange(key, value))
+        // updateDrophereOrderProduct(id, 'size', this.valueWhenChange(key, value))
+        console.log(updateDrophereOrderProductSize(id, key, value));
     }
 
     valueColorWhenChange = (color, event) =>{
@@ -151,22 +153,15 @@ class Product extends Component {
                                     }} 
                                     value = { this.props.products[0] && this.props.products[0].size ? this.props.products[0].size.s : 0}
                                 />
-                                <Input type="number" theme={numbertheme}  onChange={ value => {
-                                    this.setValue(0, 'm', value)
-                                }}
-                                    value = {this.props.products[0] && this.props.products[0].size ? this.props.products[0].size.m : 0}
-                                 />
                                 <Input type="number" theme={numbertheme}  onChange={value => {
-                                    this.setValue(0, 'l', value)
-                                }}
-                                    value = {this.props.products[0] && this.props.products[0].size ? this.props.products[0].size.l : 0}
-                                 />
-                                 <Input type="number" theme={numbertheme}  onChange={value => {
-                                    this.setValue(0, 'xl', value)
-                                }}
-                                    value = {this.props.products[0] && this.props.products[0].size ? this.props.products[0].size.xl : 0}
-                                 />
-                                <p className={styles.texttotal}>Total: <br /></p>
+                                        this.setValue(0, 'm', value)
+                                    }} 
+                                    value = {this.props.products[0] ? this.props.products[0].size.m : 0}
+                                />
+                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'l')} />
+                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'xl')} />
+                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'xxl')} />
+                                <p className={styles.texttotal}>Total: <br />0</p>
                             </div>
                             <div>
                                 <p className={styles.italictext}>Size Chart</p>
@@ -187,6 +182,10 @@ SelectColorSize = withRouter(connect(null, {gotoNextStep})(SelectColorSize))
 Product = withRouter(connect(
     state =>({
         products: state.formData.drophereOrder ? state.formData.drophereOrder.products : {}
-    }),{updateDrophereOrderProduct, gotoNextStep})
+    }),{
+        updateDrophereOrderProduct, 
+        gotoNextStep,
+        updateDrophereOrderProductSize
+    })
 (Product))
 export default SelectColorSize
