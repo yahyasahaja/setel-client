@@ -106,20 +106,20 @@ class Product extends Component {
         console.log(updateDrophereOrderProductSize(id, key, value));
     }
 
-    valueColorWhenChange = (color, event) =>{
-        product = this.props.products
-        return({
-                ...product.color,
-                color
-        })
-    }
+    // valueColorWhenChange = (color, event) =>{
+    //     product = this.props.products
+    //     return({
+    //             ...product.color,
+    //             color
+    //     })
+    // }
 
-    setColor = (id, color, event) =>{
+    setColor = (id, value) =>{
         let {
             updateDrophereOrderProduct
         } = this.props
 
-        updateDrophereOrderProduct(id, 'color', this.valueColorWhenChange(color,event))
+        console.log(updateDrophereOrderProduct(id, 'color', value))
     }
 
     
@@ -140,28 +140,40 @@ class Product extends Component {
                                 <img src="/img/cross.svg" className={styles.close} />
                             </div>
                             <div>
-                                <CompactPicker  onChange={this.valueColorWhenChange.bind(this)} onChangeComplete = {this.setColor.bind(this)} />
+                                <CompactPicker color={this.props.products[0] ? this.props.products[0].color : ''}     
+                                            onChangeComplete={color => {
+                                    this.setColor(0, color.hex)
+                                    }} />
                             </div>
                             <div className={styles.sizeflex}>
                                 {this.mappingSize()}
                                 <p></p>
                             </div>
-                            <div className={styles.sizeflex + " " + styles.marginsize}>
-                                {/* <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 's')} /> */}
+                            <div className={styles.sizeflex + " " + styles.marginsize}>                                
                                 <Input type="number" theme={numbertheme}  onChange={value => {
                                         this.setValue(0, 's', value)
                                     }} 
-                                    value = { this.props.products[0] && this.props.products[0].size ? this.props.products[0].size.s : 0}
+                                    value = { this.props.products[0] ? this.props.products[0].size.s : 0}
                                 />
                                 <Input type="number" theme={numbertheme}  onChange={value => {
                                         this.setValue(0, 'm', value)
                                     }} 
-                                    value = {this.props.products[0] ? this.props.products[0].size.m : 0}
+                                    value = {this.props.products[0] ?  this.props.products[0].size.m : 0}
                                 />
-                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'l')} />
-                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'xl')} />
-                                <Input type="number" theme={numbertheme}  onChange={this.setValue.bind(this, 'xxl')} />
-                                <p className={styles.texttotal}>Total: <br />0</p>
+                                <Input type="number" theme={numbertheme}  onChange={value => {
+                                        this.setValue(0, 'l', value)
+                                    }} 
+                                    value = {this.props.products[0] ? this.props.products[0].size.l : 0}
+                                />
+                                <Input type="number" theme={numbertheme}  onChange={value => {
+                                        this.setValue(0, 'xl', value)
+                                    }} 
+                                    value = {this.props.products[0] ? this.props.products[0].size.xl : 0}
+                                />
+                                <p className={styles.texttotal}>Total: <br />
+                                {this.props.products[0] ? Number.parseInt(this.props.products[0].size.s) + Number.parseInt(this.props.products[0].size.m) +
+        Number.parseInt(this.props.products[0].size.l) + Number.parseInt(this.props.products[0].size.xl) : 0}
+                                </p>
                             </div>
                             <div>
                                 <p className={styles.italictext}>Size Chart</p>

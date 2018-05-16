@@ -85,7 +85,7 @@ const formDataReducer = (state = {}, action) => {
     ){
       return {
         ...state,
-        drophereOrder: drophereOrder(undefined, action)
+        drophereOrder: drophereOrder(state.drophereOrder, action)
       }
     }
   return state  
