@@ -97,7 +97,7 @@ const drophereOrder = (state = {}, action) => {
     else if(action.type === UPDATE_DROPHERE_ORDER_ADDRESS){
         return {
             ...state,
-            adress: addressReducer(state.adress, action)
+            address: addressReducer(state.address, action)
         }
     }
     return state

@@ -20,9 +20,19 @@ import DrophereProgress from "../../../components/DrophereProgress";
 
 //ACTIONS
 import {gotoNextStep, updateFormData} from '../../../services/actions'
+import {updateDrophereOrderAddress} from '../../../services/drophereOrder'
 
 //COMPONENT
-export default class OrderDetails extends Component {
+class OrderDetails extends Component {
+
+  submit = () => {
+    let {
+      gotoNextStep,
+      history
+    } = this.props
+    gotoNextStep('drophereOrder')
+    history.push('drophereOrder/5')
+  }
 
   render() {
     return (
@@ -37,7 +47,10 @@ export default class OrderDetails extends Component {
             <Link to="/drophere/order/5">
               <img src="/img/ic-chevron-right-black-36-dp.png" className={styles.arrow} />
             </Link>
-            <Order />
+          </div>
+          <Order />
+          <div className={styles.flexbutton}>
+            <RoundedButton onClick={this.submit} primary className={styles.button}>Go To Payment</RoundedButton>
           </div>
         </div>
       </div>
@@ -45,18 +58,7 @@ export default class OrderDetails extends Component {
   }
 }
 
-class Order extends Component {
-  // state = {
-  //   name: "",
-  //   phone: "",
-  //   email: "",
-  //   company: "",
-  //   role: "",
-  //   city: "SBY",
-  //   region: "Wonosari",
-  //   postalCode: "",
-  //   paymentMethod: "",
-  // }
+export class Order extends Component {
 
   cities = [
     { value: "SBY", label: "Surabaya" },
@@ -71,88 +73,115 @@ class Order extends Component {
     { value: "Simpang", label: "Simpang" }
   ]
 
-  setValue = (name, value) => {
-    order = this.props.order
-    return{
-      ...order,
-      [name]: value
-    }
+  state={
+    selected: ''
   }
 
-  handleChange = (name, value) => {
+  handleChange = (key, value) => {
     let { gotoNextStep, updateFormData, history } = this.props
 
-    updateFormData('drophereOrder', 'info', this.setValue(name,value))
-  } 
+    console.log(updateFormData('drophereOrder', key, value))
+  }
 
   render() {
     return (
-      <div>
         <form className={styles.form}>
           <Input
             type="text"
             name="name"
             label="Name"
-            onChange={this.handleChange.bind(this, "name")}
+            value = {this.props.order.name}
+            onChange={ value => {
+              this.handleChange('name', value)
+            }}
           />
           <Input
             type="tel"
             name="phone"
             label="Phone"
-            onChange={this.handleChange.bind(this, "phone")}
+            value = {this.props.order.phone}
+            onChange={ value => {
+              this.handleChange('phone', value)
+            }}
           />
           <Input
             type="email"
             name="email"
             label="Email"
-            onChange={this.handleChange.bind(this, "email")}
+            value = {this.props.order.email}
+            onChange={ value => {
+              this.handleChange('email', value)
+            }}
           />
           <Input
             type="text"
-            name="company"
-            label="Company"
-            onChange={this.handleChange.bind(this, "company")}
+            name="organization"
+            label="Organization"
+            value = {this.props.order.organization}
+            onChange={ value => {
+              this.handleChange('organization', value)
+            }}
           />
-          <p className={styles.textmargin}>Shipping Address</p>
+          <Input
+            type="text"
+            name="detail_address"
+            label="Shipping Address"
+            value = {this.props.order.address ? this.props.order.address.detail_address : ''}
+            onChange={ value => {
+              console.log(this.props.updateDrophereOrderAddress('detail_address', value))
+            }}
+          />
           <p className={styles.text}>City</p>
           <Dropdown
             theme={dropdowntheme}
             source={this.cities}
-            onChange={this.handleChange.bind(this, "city")}
+            value = {this.props.order.address ? this.props.order.address.city : ''}
+            onChange = { (value) => (
+               console.log(this.props.updateDrophereOrderAddress('city', value))
+            )}
           />
-          <p className={styles.text}>Region</p>
+          <p className={styles.text}>Province</p>
           <Dropdown
             theme={dropdowntheme}
             source={this.regions}
-            onChange={this.handleChange.bind(this, "region")}
+            value = {this.props.order.address ? this.props.order.address.province : ''}
+            onChange = { value => (
+              console.log(this.props.updateDrophereOrderAddress('province', value))
+            )}
           />
           <Input
-
             type="text"
             className={styles.postalcodeandcolor}
             name="postalCode"
             label="Postal Code"
-            onChange={this.handleChange.bind(this, "postalCode")}
+            value = {this.props.order.address ? this.props.order.address.zipCode : ''}
+            onChange = { value => (
+              console.log(this.props.updateDrophereOrderAddress('zipCode', value))
+            )}
+
           />
           <p>Payment Method</p>
           <RadioGroup
-            name="category"
-            onChange={this.handleChange.bind(this, "paymentMethod")}
+            name="payment_method"
+            value = {this.props.order ? this.props.order.payment_method : ''}
+            onChange = { value => {
+              this.handleChange('payment_method', value)
+            }}
           >
             <RadioButton theme={radiotheme} label="COD" value="cod" />
             <RadioButton theme={radiotheme} label="Bank Transfer" value="transfer" />
           </RadioGroup>
-          <div className={styles.flexbutton}>
-            <RoundedButton to="/drophere/order/5" primary className={styles.button}>Go To Payment</RoundedButton>
-          </div>
+          
         </form>
-      </div>
+      
     )
   }
 }
 
+OrderDetails = withRouter(connect(null, {gotoNextStep})(OrderDetails))
 Order = withRouter(connect(
-  state => {
-    order: state.formData.drophereOrder
-  },{gotoNextStep, updateFormData}
-))(Order)
+  state => ({
+    order: state.formData.drophereOrder? state.formData.drophereOrder : {}
+  }),{gotoNextStep, updateFormData, updateDrophereOrderAddress}
+)(Order))
+export default OrderDetails

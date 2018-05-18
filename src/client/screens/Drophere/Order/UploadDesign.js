@@ -83,7 +83,7 @@ class UploadArea extends Component {
   }
 
   handleFileUpload = file => {
-    console.log('uploading file ', file.name, ' ...')    
+    console.log('uploading file ', file.name ? file.name : '', ' ...')    
     console.log(this.props.dispatch(updateFormData('drophereOrder', 'design', file)))
   }
 
