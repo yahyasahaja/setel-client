@@ -1,7 +1,9 @@
 //MODULES
 import React, { Component } from "react"
 import _ from "lodash"
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import {connect} from 'react-redux'
+
 
 //STYLES
 import styles from "./css/payment.scss"
@@ -10,6 +12,10 @@ import styles from "./css/payment.scss"
 import DataDisplay from "../../../components/DataDisplay"
 import RoundedButton from "../../../components/RoundedButton"
 import DrophereProgress from "../../../components/DrophereProgress";
+
+//ACTIONS
+import { gotoNextStep, updateFormData } from '../../../services/actions'
+import {updateDrophereOrderProduct} from '../../../services/drophereOrder'
 
 //COMPONENT
 export default class Payment extends Component {
@@ -38,7 +44,7 @@ export default class Payment extends Component {
             <p className={styles.title}>Checkout Successful</p>
             <p className={styles.text}>Complete The Payment</p>
             <p className={styles.text + ' ' + styles.margintext}>Total cost to be paid</p>
-            <p className={styles.cost}>Rp. 2.800.000</p>
+            <p className={styles.cost}>{}</p>
             <p className={styles.text + ' ' + styles.margintext}>Please transfer to the following Setel's bank account number</p>
             <div className={styles.bank}>
               <img />
@@ -55,3 +61,9 @@ export default class Payment extends Component {
     )
   }
 }
+
+Payment = withRouter(connect(
+  state => ({
+    payment: state.formData.drophereOrder
+  }), { gotoNextStep, updateFormData }
+)(Payment))

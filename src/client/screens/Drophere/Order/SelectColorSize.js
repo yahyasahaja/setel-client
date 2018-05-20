@@ -153,26 +153,26 @@ class Product extends Component {
                                 <Input type="number" theme={numbertheme}  onChange={value => {
                                         this.setValue(0, 's', value)
                                     }} 
-                                    value = { this.props.products[0] ? this.props.products[0].size.s : 0}
+                                    value = { this.props.products[0] ? this.props.products[0].size ? this.props.products[0].size.s : 0 : 0}
                                 />
                                 <Input type="number" theme={numbertheme}  onChange={value => {
                                         this.setValue(0, 'm', value)
                                     }} 
-                                    value = {this.props.products[0] ?  this.props.products[0].size.m : 0}
+                                    value = {this.props.products[0] ? this.props.products[0].size ?  this.props.products[0].size.m : 0 : 0}
                                 />
                                 <Input type="number" theme={numbertheme}  onChange={value => {
                                         this.setValue(0, 'l', value)
                                     }} 
-                                    value = {this.props.products[0] ? this.props.products[0].size.l : 0}
+                                    value = {this.props.products[0] ? this.props.products[0].size ? this.props.products[0].size.l : 0 : 0}
                                 />
                                 <Input type="number" theme={numbertheme}  onChange={value => {
                                         this.setValue(0, 'xl', value)
                                     }} 
-                                    value = {this.props.products[0] ? this.props.products[0].size.xl : 0}
+                                    value = {this.props.products[0] ? this.props.products[0].size ? this.props.products[0].size.xl : 0 : 0}
                                 />
                                 <p className={styles.texttotal}>Total: <br />
-                                {this.props.products[0] ? Number.parseInt(this.props.products[0].size.s) + Number.parseInt(this.props.products[0].size.m) +
-        Number.parseInt(this.props.products[0].size.l) + Number.parseInt(this.props.products[0].size.xl) : 0}
+                                {this.props.products[0] ? this.props.products[0].size ? Number.parseInt(this.props.products[0].size.s) + Number.parseInt(this.props.products[0].size.m) +
+        Number.parseInt(this.props.products[0].size.l) + Number.parseInt(this.props.products[0].size.xl) : 0 : 0}
                                 </p>
                             </div>
                             <div>
