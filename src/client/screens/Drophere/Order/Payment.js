@@ -18,11 +18,20 @@ import { gotoNextStep, updateFormData } from '../../../services/actions'
 import {updateDrophereOrderProduct} from '../../../services/drophereOrder'
 
 //COMPONENT
-export default class Payment extends Component {
+class Payment extends Component {
   renderPayment() {
     if (paymentinfo) return _.map(paymentinfo, (data, i) => {
       return <DataDisplay value={data.value} key={i} />
     })
+  }
+
+  submit = () =>{
+    let {
+      gotoNextStep,
+      history
+    } = this.props
+    gotoNextStep('drophereOrder')
+    history.push('/drophere/order/7')
   }
 
   render() {
@@ -44,7 +53,7 @@ export default class Payment extends Component {
             <p className={styles.title}>Checkout Successful</p>
             <p className={styles.text}>Complete The Payment</p>
             <p className={styles.text + ' ' + styles.margintext}>Total cost to be paid</p>
-            <p className={styles.cost}>{}</p>
+            <p className={styles.cost}>Rp. { this.props.payment && Object.values(this.props.payment[0].size).reduce((total, nextValue) => total + nextValue)} </p>
             <p className={styles.text + ' ' + styles.margintext}>Please transfer to the following Setel's bank account number</p>
             <div className={styles.bank}>
               <img />
@@ -55,7 +64,7 @@ export default class Payment extends Component {
           </div>
         </div>
         <div className={styles.down}>
-          <RoundedButton className={styles.button} to="/drophere/order/7" primary>Confirmation</RoundedButton>
+          <RoundedButton onClick = {this.submit} className={styles.button} primary>Confirmation</RoundedButton>
         </div>
       </div >
     )
@@ -65,5 +74,7 @@ export default class Payment extends Component {
 Payment = withRouter(connect(
   state => ({
     payment: state.formData.drophereOrder
-  }), { gotoNextStep, updateFormData }
+  }), { gotoNextStep }
 )(Payment))
+
+export default Payment

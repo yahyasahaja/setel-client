@@ -73,10 +73,6 @@ export class Order extends Component {
     { value: "Simpang", label: "Simpang" }
   ]
 
-  state={
-    selected: ''
-  }
-
   handleChange = (key, value) => {
     let { gotoNextStep, updateFormData, history } = this.props
 

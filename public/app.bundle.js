@@ -45372,9 +45372,7 @@ var Order = exports.Order = function (_Component2) {
       args[_key2] = arguments[_key2];
     }
 
-    return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Order.__proto__ || Object.getPrototypeOf(Order)).call.apply(_ref2, [this].concat(args))), _this2), _this2.cities = [{ value: "SBY", label: "Surabaya" }, { value: "MLG", label: "Malang" }, { value: "JKT", label: "Jakarta" }, { value: "MKS", label: "Makassar" }], _this2.regions = [{ value: "Wonosari", label: "Wonosari" }, { value: "Wonokromo", label: "Wonokromo" }, { value: "Simpang", label: "Simpang" }], _this2.state = {
-      selected: ''
-    }, _this2.handleChange = function (key, value) {
+    return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Order.__proto__ || Object.getPrototypeOf(Order)).call.apply(_ref2, [this].concat(args))), _this2), _this2.cities = [{ value: "SBY", label: "Surabaya" }, { value: "MLG", label: "Malang" }, { value: "JKT", label: "Jakarta" }, { value: "MKS", label: "Makassar" }], _this2.regions = [{ value: "Wonosari", label: "Wonosari" }, { value: "Wonokromo", label: "Wonokromo" }, { value: "Simpang", label: "Simpang" }], _this2.handleChange = function (key, value) {
       var _this2$props = _this2.props,
           gotoNextStep = _this2$props.gotoNextStep,
           updateFormData = _this2$props.updateFormData,
@@ -45575,9 +45573,24 @@ var Payment = function (_Component) {
   _inherits(Payment, _Component);
 
   function Payment() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, Payment);
 
-    return _possibleConstructorReturn(this, (Payment.__proto__ || Object.getPrototypeOf(Payment)).apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Payment.__proto__ || Object.getPrototypeOf(Payment)).call.apply(_ref, [this].concat(args))), _this), _this.submit = function () {
+      var _this$props = _this.props,
+          gotoNextStep = _this$props.gotoNextStep,
+          history = _this$props.history;
+
+      gotoNextStep('drophereOrder');
+      history.push('/drophere/order/7');
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Payment, [{
@@ -45639,7 +45652,15 @@ var Payment = function (_Component) {
               { className: _payment2.default.text + ' ' + _payment2.default.margintext },
               "Total cost to be paid"
             ),
-            _react2.default.createElement("p", { className: _payment2.default.cost }),
+            _react2.default.createElement(
+              "p",
+              { className: _payment2.default.cost },
+              "Rp. ",
+              this.props.payment && Object.values(this.props.payment[0].size).reduce(function (total, nextValue) {
+                return total + nextValue;
+              }),
+              " "
+            ),
             _react2.default.createElement(
               "p",
               { className: _payment2.default.text + ' ' + _payment2.default.margintext },
@@ -45672,7 +45693,7 @@ var Payment = function (_Component) {
           { className: _payment2.default.down },
           _react2.default.createElement(
             _RoundedButton2.default,
-            { className: _payment2.default.button, to: "/drophere/order/7", primary: true },
+            { onClick: this.submit, className: _payment2.default.button, primary: true },
             "Confirmation"
           )
         )
@@ -45683,14 +45704,13 @@ var Payment = function (_Component) {
   return Payment;
 }(_react.Component);
 
-exports.default = Payment;
-
-
 Payment = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
   return {
     payment: state.formData.drophereOrder
   };
-}, { gotoNextStep: _actions.gotoNextStep, updateFormData: _actions.updateFormData })(Payment));
+}, { gotoNextStep: _actions.gotoNextStep })(Payment));
+
+exports.default = Payment;
 
 /***/ }),
 /* 376 */
