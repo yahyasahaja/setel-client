@@ -45320,11 +45320,18 @@ var OrderDetails = function (_Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = OrderDetails.__proto__ || Object.getPrototypeOf(OrderDetails)).call.apply(_ref, [this].concat(args))), _this), _this.submit = function () {
       var _this$props = _this.props,
+          order = _this$props.order,
           gotoNextStep = _this$props.gotoNextStep,
           history = _this$props.history;
 
-      gotoNextStep('drophereOrder');
-      history.push('drophereOrder/5');
+      console.log(order);
+      if (order) {
+        if (order.payment_method) {
+          gotoNextStep('drophereOrder');
+          if (order.payment_method === "transfer") history.push("/drophere/order/5");
+          if (order.payment_method === "cod") history.push("/drophere/order/6");
+        }
+      }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -45514,7 +45521,11 @@ var Order = exports.Order = function (_Component2) {
   return Order;
 }(_react.Component);
 
-OrderDetails = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(null, { gotoNextStep: _actions.gotoNextStep })(OrderDetails));
+OrderDetails = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
+  return {
+    order: state.formData.drophereOrder ? state.formData.drophereOrder : {}
+  };
+}, { gotoNextStep: _actions.gotoNextStep })(OrderDetails));
 exports.Order = Order = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
   return {
     order: state.formData.drophereOrder ? state.formData.drophereOrder : {}
@@ -45672,11 +45683,7 @@ var Payment = function (_Component) {
             _react2.default.createElement(
               "p",
               { className: _payment2.default.cost },
-              "Rp. ",
-              this.props.payment && Object.values(this.props.payment[0].size).reduce(function (total, nextValue) {
-                return total + nextValue;
-              }),
-              " "
+              "Rp. XXXXXX "
             ),
             _react2.default.createElement(
               "p",

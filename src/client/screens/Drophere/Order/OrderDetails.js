@@ -27,11 +27,18 @@ class OrderDetails extends Component {
 
   submit = () => {
     let {
+      order,
       gotoNextStep,
       history
     } = this.props
-    gotoNextStep('drophereOrder')
-    history.push('drophereOrder/5')
+    console.log(order)
+    if(order){
+      if(order.payment_method){
+        gotoNextStep('drophereOrder')        
+        if(order.payment_method === "transfer") history.push("/drophere/order/5")    
+        if(order.payment_method === "cod") history.push("/drophere/order/6")    
+      }
+    }
   }
 
   render() {
@@ -174,7 +181,11 @@ export class Order extends Component {
   }
 }
 
-OrderDetails = withRouter(connect(null, {gotoNextStep})(OrderDetails))
+OrderDetails = withRouter(connect(
+  state => ({
+    order: state.formData.drophereOrder? state.formData.drophereOrder : {}
+  })
+  , {gotoNextStep})(OrderDetails))
 Order = withRouter(connect(
   state => ({
     order: state.formData.drophereOrder? state.formData.drophereOrder : {}

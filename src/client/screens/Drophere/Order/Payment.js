@@ -53,7 +53,8 @@ class Payment extends Component {
             <p className={styles.title}>Checkout Successful</p>
             <p className={styles.text}>Complete The Payment</p>
             <p className={styles.text + ' ' + styles.margintext}>Total cost to be paid</p>
-            <p className={styles.cost}>Rp. { this.props.payment && Object.values(this.props.payment[0].size).reduce((total, nextValue) => total + nextValue)} </p>
+            {/* <p className={styles.cost}>Rp. { this.props.payment && Object.values(this.props.payment[0].size).reduce((total, nextValue) => total + nextValue)} </p> */}
+            <p className={styles.cost}>Rp. XXXXXX </p>
             <p className={styles.text + ' ' + styles.margintext}>Please transfer to the following Setel's bank account number</p>
             <div className={styles.bank}>
               <img />
