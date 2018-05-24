@@ -79,12 +79,12 @@ class UploadArea extends Component {
   onFileUploadChange = e => {
     e.preventDefault()
     
-    this.handleFileUpload(e.target.files[0])
+    this.handleFileUpload(e.target.files[0].name)
   }
 
   handleFileUpload = file => {
     console.log('uploading file ', file.name ? file.name : '', ' ...')    
-    console.log(this.props.dispatch(updateFormData('drophereOrder', 'design', file)))
+    console.log(this.props.dispatch(updateFormData('drophereOrder', 'file_name', file)))
   }
 
   componentWillUnmount() {
@@ -140,7 +140,7 @@ class UploadDesign extends Component{
 
   submit = () => {
     let { gotoNextStep, history, file = '', state } = this.props            
-    if(file.design){                                     
+    if(file.file_name){                                     
       gotoNextStep('drophereOrder')
       history.push("/drophere/order/4")      
       return

@@ -32321,10 +32321,10 @@ var UploadArea = function (_Component) {
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = UploadArea.__proto__ || Object.getPrototypeOf(UploadArea)).call.apply(_ref2, [this].concat(args))), _this), _this.onFileUploadChange = function (e) {
       e.preventDefault();
 
-      _this.handleFileUpload(e.target.files[0]);
+      _this.handleFileUpload(e.target.files[0].name);
     }, _this.handleFileUpload = function (file) {
       console.log('uploading file ', file.name ? file.name : '', ' ...');
-      console.log(_this.props.dispatch((0, _actions.updateFormData)('drophereOrder', 'design', file)));
+      console.log(_this.props.dispatch((0, _actions.updateFormData)('drophereOrder', 'file_name', file)));
     }, _this.state = {
       uploading: false,
       dragStateId: -1
@@ -32439,7 +32439,7 @@ var UploadDesign = function (_Component2) {
           file = _this3$props$file === undefined ? '' : _this3$props$file,
           state = _this3$props.state;
 
-      if (file.design) {
+      if (file.file_name) {
         gotoNextStep('drophereOrder');
         history.push("/drophere/order/4");
         return;
