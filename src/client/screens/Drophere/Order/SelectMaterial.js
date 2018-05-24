@@ -6,7 +6,10 @@ import FontIcon from 'react-toolbox/lib/font_icon'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { gotoNextStep, updateFormData } from '../../../services/actions'
-import { updateDrophereOrderProduct } from '../../../services/drophereOrder'
+import { 
+    // updateDrophereOrderProduct,
+    updateDrophereOrder
+} from '../../../services/drophereOrder'
 
 //STYLES
 import styles from './css/SelectMaterial.scss'
@@ -22,9 +25,9 @@ import OrderNavigation from  '../../../components/OrderNavigation'
 class SelectMaterial extends Component{        
 
     materials = {
-        cotton1 : 'http://s.id/1aTc',
-        cotton2 : 'http://s.id/1aTc',
-        cotton3 : 'http://s.id/1aTc'       
+        cotton1 : '/img/kids-front-2.png',
+        cotton2 : '/img/kids-front-2.png',
+        cotton3 : '/img/kids-front-2.png'       
     }
 
     imageList  = () => (                        
@@ -48,12 +51,13 @@ class SelectMaterial extends Component{
 
     submit = (value) => {
         let { 
-            updateDrophereOrderProduct , 
+            // updateDrophereOrderProduct , 
+            updateDrophereOrder,
             gotoNextStep,
             history,             
         } = this.props
-            
-            updateDrophereOrderProduct(0, "material_id", value)
+            // updateDrophereOrderProduct(0, "material_id", value)
+            updateDrophereOrder("base_material", value)
             gotoNextStep("drophereOrder")
             history.push("/drophere/order/2")
              
@@ -83,9 +87,12 @@ class SelectMaterial extends Component{
 
 SelectMaterial = withRouter(connect(
     state => {        
-        material: state.formData.drophereOrder ? state.formData.drophereOrder.products[0].material_id : {}
-    },
-    { gotoNextStep, updateDrophereOrderProduct  }
+        material: state.formData.drophereOrder ? state.formData.drophereOrder.base_material : {}
+    }, { 
+        gotoNextStep, 
+        updateDrophereOrder
+        // updateDrophereOrderProduct  
+    }
 )(SelectMaterial))
 
 export default SelectMaterial

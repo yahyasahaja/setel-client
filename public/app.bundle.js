@@ -4703,7 +4703,7 @@ exports.Dropdown = ThemedDropdown;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.updateDrophereOrderProductSize = exports.updateDrophereOrderAddress = exports.updateDrophereOrderProduct = exports.updateDrophereOrder = exports.UPDATE_DROPHERE_ORDER_PRODUCT_SIZE = exports.UPDATE_DROPHERE_ORDER_ADDRESS = exports.UPDATE_DROPHERE_ORDER_PRODUCT = exports.UPDATE_DROPHERE_ORDER = undefined;
+exports.updateDrophereOrderProductSize = exports.updateDrophereOrderAddress = exports.deleteDrophereOrderProduct = exports.updateDrophereOrderProduct = exports.updateDrophereOrder = exports.UPDATE_DROPHERE_ORDER_PRODUCT_SIZE = exports.UPDATE_DROPHERE_ORDER_ADDRESS = exports.DELETE_DROPHERE_ORDER_PRODUCT = exports.UPDATE_DROPHERE_ORDER_PRODUCT = exports.UPDATE_DROPHERE_ORDER = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -4716,6 +4716,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //dropherOrder Action-TYPE
 var UPDATE_DROPHERE_ORDER = exports.UPDATE_DROPHERE_ORDER = 'updateDrophereOrder';
 var UPDATE_DROPHERE_ORDER_PRODUCT = exports.UPDATE_DROPHERE_ORDER_PRODUCT = 'updateDrophereOrderProduct';
+var DELETE_DROPHERE_ORDER_PRODUCT = exports.DELETE_DROPHERE_ORDER_PRODUCT = 'deleteDrophereOrderProduct';
 var UPDATE_DROPHERE_ORDER_ADDRESS = exports.UPDATE_DROPHERE_ORDER_ADDRESS = 'updateDrophereOrderAddress';
 var UPDATE_DROPHERE_ORDER_PRODUCT_SIZE = exports.UPDATE_DROPHERE_ORDER_PRODUCT_SIZE = 'updateDrophereOrderProductSize';
 
@@ -4734,6 +4735,13 @@ var updateDrophereOrderProduct = exports.updateDrophereOrderProduct = function u
         id: id,
         key: key,
         value: value
+    };
+};
+
+var deleteDrophereOrderProduct = exports.deleteDrophereOrderProduct = function deleteDrophereOrderProduct(id) {
+    return {
+        type: DELETE_DROPHERE_ORDER_PRODUCT,
+        id: id
     };
 };
 
@@ -4772,12 +4780,17 @@ var productReducer = function productReducer() {
         var arr = [].concat(_toConsumableArray(state));
         arr[action.id] = _extends({}, arr[action.id], _defineProperty({}, action.key, action.value));
         return arr;
-    } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
+    }
+    if (action.type === DELETE_DROPHERE_ORDER_PRODUCT) {
         var _arr = [].concat(_toConsumableArray(state));
-        _arr[action.id] = _extends({}, _arr[action.id], {
-            size: sizeReducer(_arr[action.id] || {}, action)
-        });
+        _arr.splice(action.id, 1);
         return _arr;
+    } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
+        var _arr2 = [].concat(_toConsumableArray(state));
+        _arr2[action.id] = _extends({}, _arr2[action.id], {
+            size: sizeReducer(_arr2[action.id] || {}, action)
+        });
+        return _arr2;
         // return [
         //     ...state,
         //     state[action.id]= {
@@ -4805,7 +4818,7 @@ var drophereOrder = function drophereOrder() {
 
     if (action.type == UPDATE_DROPHERE_ORDER) {
         return _extends({}, state, _defineProperty({}, action.key, action.value));
-    } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT || action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
+    } else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT || action.type === DELETE_DROPHERE_ORDER_PRODUCT || action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
         return _extends({}, state, {
             products: productReducer(state.products, action)
         });
@@ -32113,9 +32126,9 @@ var SelectMaterial = function (_Component) {
         }
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SelectMaterial.__proto__ || Object.getPrototypeOf(SelectMaterial)).call.apply(_ref, [this].concat(args))), _this), _this.materials = {
-            cotton1: 'http://s.id/1aTc',
-            cotton2: 'http://s.id/1aTc',
-            cotton3: 'http://s.id/1aTc'
+            cotton1: '/img/kids-front-2.png',
+            cotton2: '/img/kids-front-2.png',
+            cotton3: '/img/kids-front-2.png'
         }, _this.imageList = function () {
             return Object.keys(_this.materials).map(function (key) {
                 return _react2.default.createElement(_SImagePreview2.default, {
@@ -32134,12 +32147,12 @@ var SelectMaterial = function (_Component) {
             });
         }, _this.submit = function (value) {
             var _this$props = _this.props,
-                updateDrophereOrderProduct = _this$props.updateDrophereOrderProduct,
+                updateDrophereOrder = _this$props.updateDrophereOrder,
                 gotoNextStep = _this$props.gotoNextStep,
                 history = _this$props.history;
+            // updateDrophereOrderProduct(0, "material_id", value)
 
-
-            updateDrophereOrderProduct(0, "material_id", value);
+            updateDrophereOrder("base_material", value);
             gotoNextStep("drophereOrder");
             history.push("/drophere/order/2");
         }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -32181,8 +32194,12 @@ var SelectMaterial = function (_Component) {
 }(_react.Component);
 
 SelectMaterial = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
-    material: state.formData.drophereOrder ? state.formData.drophereOrder.products[0].material_id : {};
-}, { gotoNextStep: _actions.gotoNextStep, updateDrophereOrderProduct: _drophereOrder.updateDrophereOrderProduct })(SelectMaterial));
+    material: state.formData.drophereOrder ? state.formData.drophereOrder.base_material : {};
+}, {
+    gotoNextStep: _actions.gotoNextStep,
+    updateDrophereOrder: _drophereOrder.updateDrophereOrder
+    // updateDrophereOrderProduct  
+})(SelectMaterial));
 
 exports.default = SelectMaterial;
 
@@ -45761,6 +45778,10 @@ var _SImagePreview = __webpack_require__(192);
 
 var _SImagePreview2 = _interopRequireDefault(_SImagePreview);
 
+var _OrderNavigation = __webpack_require__(121);
+
+var _OrderNavigation2 = _interopRequireDefault(_OrderNavigation);
+
 var _actions = __webpack_require__(32);
 
 var _drophereOrder = __webpack_require__(60);
@@ -45851,11 +45872,12 @@ var SelectCategories = function (_Component) {
         key: "submit",
         value: function submit(data) {
             var _props = this.props,
-                updateDrophereOrderProduct = _props.updateDrophereOrderProduct,
+                updateDrophereOrder = _props.updateDrophereOrder,
                 goToNextStep = _props.goToNextStep,
                 history = _props.history;
+            // updateDrophereOrderProduct(0, 'category_id', data)
 
-            updateDrophereOrderProduct(0, 'category_id', data);
+            updateDrophereOrder('base_category', data.id);
             (0, _actions.gotoNextStep)("drophereOrder");
             history.push("/drophere/order/1");
         }
@@ -45872,11 +45894,12 @@ var SelectCategories = function (_Component) {
                         "div",
                         { className: _selectCategories2.default.content },
                         _react2.default.createElement(_DrophereProgress2.default, null),
-                        _react2.default.createElement(
-                            "p",
-                            { className: _selectCategories2.default.text },
-                            "Choose categories"
-                        ),
+                        _react2.default.createElement(_OrderNavigation2.default, {
+                            text: "Choose Categories",
+                            nextLink: "/drophere/order/1",
+                            prevLink: "/drophere/order/0",
+                            leftArrow: "hidden"
+                        }),
                         _react2.default.createElement(
                             "div",
                             { className: _selectCategories2.default.flexcontainer },
@@ -45895,7 +45918,11 @@ SelectCategories = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(func
     return {
         category: state.formData.drophereOrder
     };
-}, { gotoNextStep: _actions.gotoNextStep, updateDrophereOrderProduct: _drophereOrder.updateDrophereOrderProduct })(SelectCategories));
+}, {
+    gotoNextStep: _actions.gotoNextStep,
+    // updateDrophereOrderProduct
+    updateDrophereOrder: _drophereOrder.updateDrophereOrder
+})(SelectCategories));
 
 exports.default = SelectCategories;
 
@@ -45947,6 +45974,10 @@ var _SelectMaterial2 = _interopRequireDefault(_SelectMaterial);
 var _UploadDesign = __webpack_require__(194);
 
 var _UploadDesign2 = _interopRequireDefault(_UploadDesign);
+
+var _OrderNavigation = __webpack_require__(121);
+
+var _OrderNavigation2 = _interopRequireDefault(_OrderNavigation);
 
 var _DrophereProgress = __webpack_require__(44);
 
@@ -46011,29 +46042,12 @@ var SelectColorSize = function (_Component) {
                         'div',
                         { className: _selectColorSize2.default.content },
                         _react2.default.createElement(_DrophereProgress2.default, null),
-                        _react2.default.createElement(
-                            'div',
-                            { className: _selectColorSize2.default.flexcontainer },
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: '/drophere/order/1' },
-                                _react2.default.createElement('img', { src: '/img/ic-chevron-left-black-36-dp.png', className: _selectColorSize2.default.arrow })
-                            ),
-                            _react2.default.createElement(
-                                'p',
-                                { className: _selectColorSize2.default.text },
-                                'Choose Material'
-                            ),
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: '/drophere/order/3' },
-                                _react2.default.createElement('img', { src: '/img/ic-chevron-right-black-36-dp.png', className: _selectColorSize2.default.arrow })
-                            )
-                        ),
-                        _react2.default.createElement(Product, {
-                            src: '/img/kids-front-2.png',
-                            name: 'T-Shirt'
+                        _react2.default.createElement(_OrderNavigation2.default, {
+                            text: 'Choose Material',
+                            nextLink: '/drophere/order/3',
+                            prevLink: '/drophere/order/1'
                         }),
+                        _react2.default.createElement(Products, null),
                         _react2.default.createElement(
                             'div',
                             { className: _selectColorSize2.default.centeredbutton },
@@ -46062,13 +46076,74 @@ var SIZE = [{
     name: 'XL'
 }];
 
-var Product = function (_Component2) {
-    _inherits(Product, _Component2);
+var Products = function (_Component2) {
+    _inherits(Products, _Component2);
+
+    function Products() {
+        _classCallCheck(this, Products);
+
+        return _possibleConstructorReturn(this, (Products.__proto__ || Object.getPrototypeOf(Products)).apply(this, arguments));
+    }
+
+    _createClass(Products, [{
+        key: 'renderProduct',
+        value: function renderProduct() {
+            var _props$products = this.props.products,
+                products = _props$products === undefined ? [] : _props$products;
+
+            return products.map(function (products, id) {
+                return _react2.default.createElement(Product, {
+                    src: '/img/kids-front-2.png',
+                    name: 'T-Shirt',
+                    products: products,
+                    id: id
+                });
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _props = this.props,
+                updateDrophereOrderProduct = _props.updateDrophereOrderProduct,
+                _props$products2 = _props.products,
+                products = _props$products2 === undefined ? [] : _props$products2,
+                material = _props.material,
+                category = _props.category;
+
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'div',
+                    null,
+                    this.renderProduct()
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: _selectColorSize2.default.addupload },
+                    _react2.default.createElement(_reactToolbox.Button, {
+                        icon: 'add',
+                        label: 'Add Product',
+                        flat: true, primary: true,
+                        onClick: function onClick() {
+                            updateDrophereOrderProduct(products.length, 'material_id', material);
+                            updateDrophereOrderProduct(products.length, 'category_id', category);
+                        } })
+                )
+            );
+        }
+    }]);
+
+    return Products;
+}(_react.Component);
+
+var Product = function (_Component3) {
+    _inherits(Product, _Component3);
 
     function Product() {
         var _ref2;
 
-        var _temp2, _this2, _ret2;
+        var _temp2, _this3, _ret2;
 
         _classCallCheck(this, Product);
 
@@ -46076,18 +46151,17 @@ var Product = function (_Component2) {
             args[_key2] = arguments[_key2];
         }
 
-        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Product.__proto__ || Object.getPrototypeOf(Product)).call.apply(_ref2, [this].concat(args))), _this2), _this2.setValue = function (id, key, value) {
-            var updateDrophereOrderProductSize = _this2.props.updateDrophereOrderProductSize;
-
-            // updateDrophereOrderProduct(id, 'size', this.valueWhenChange(key, value))
-
-            console.log(updateDrophereOrderProductSize(id, key, value));
-        }, _this2.setColor = function (id, value) {
-            var updateDrophereOrderProduct = _this2.props.updateDrophereOrderProduct;
+        return _ret2 = (_temp2 = (_this3 = _possibleConstructorReturn(this, (_ref2 = Product.__proto__ || Object.getPrototypeOf(Product)).call.apply(_ref2, [this].concat(args))), _this3), _this3.setValue = function (id, key, value) {
+            var updateDrophereOrderProductSize = _this3.props.updateDrophereOrderProductSize;
 
 
-            console.log(updateDrophereOrderProduct(id, 'color', value));
-        }, _temp2), _possibleConstructorReturn(_this2, _ret2);
+            updateDrophereOrderProductSize(id, key, value);
+        }, _this3.setColor = function (id, value) {
+            var updateDrophereOrderProduct = _this3.props.updateDrophereOrderProduct;
+
+
+            updateDrophereOrderProduct(id, 'color', value);
+        }, _temp2), _possibleConstructorReturn(_this3, _ret2);
     }
 
     _createClass(Product, [{
@@ -46101,34 +46175,18 @@ var Product = function (_Component2) {
                 );
             });
         }
-
-        // valueWhenChange = (key, value) => {
-        //     let product = this.props.products
-        //     return(
-        //         {
-        //             ...product.size,
-        //             [key]:value
-        //         }
-        //     )
-
-        // }
-
-        // valueColorWhenChange = (color, event) =>{
-        //     product = this.props.products
-        //     return({
-        //             ...product.color,
-        //             color
-        //     })
-        // }
-
     }, {
         key: 'render',
         value: function render() {
-            var _this3 = this;
+            var _this4 = this;
+
+            var _props2 = this.props,
+                products = _props2.products,
+                id = _props2.id;
 
             return _react2.default.createElement(
                 'div',
-                null,
+                { className: _selectColorSize2.default.productContainer },
                 _react2.default.createElement(
                     'div',
                     { className: _selectColorSize2.default.colorsizewrapper },
@@ -46151,15 +46209,21 @@ var Product = function (_Component2) {
                                     null,
                                     this.props.name
                                 ),
-                                _react2.default.createElement('div', null),
-                                _react2.default.createElement('img', { src: '/img/cross.svg', className: _selectColorSize2.default.close })
+                                _react2.default.createElement('img', {
+                                    src: '/img/cross.svg',
+                                    style: { cursor: "pointer" },
+                                    className: _selectColorSize2.default.close,
+                                    onClick: function onClick() {
+                                        return _this4.props.deleteDrophereOrderProduct(id);
+                                    }
+                                })
                             ),
                             _react2.default.createElement(
                                 'div',
                                 null,
-                                _react2.default.createElement(_reactColor.CompactPicker, { color: this.props.products[0] ? this.props.products[0].color : '',
+                                _react2.default.createElement(_reactColor.CompactPicker, { color: products ? products.color : '',
                                     onChangeComplete: function onChangeComplete(color) {
-                                        _this3.setColor(0, color.hex);
+                                        _this4.setColor(id, color.hex);
                                     } })
                             ),
                             _react2.default.createElement(
@@ -46172,31 +46236,31 @@ var Product = function (_Component2) {
                                 'div',
                                 { className: _selectColorSize2.default.sizeflex + " " + _selectColorSize2.default.marginsize },
                                 _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: function onChange(value) {
-                                        _this3.setValue(0, 's', value);
+                                        _this4.setValue(id, 's', value);
                                     },
-                                    value: this.props.products[0] ? this.props.products[0].size ? this.props.products[0].size.s : 0 : 0
+                                    value: products.size ? products.size.s : 0
                                 }),
                                 _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: function onChange(value) {
-                                        _this3.setValue(0, 'm', value);
+                                        _this4.setValue(id, 'm', value);
                                     },
-                                    value: this.props.products[0] ? this.props.products[0].size ? this.props.products[0].size.m : 0 : 0
+                                    value: products.size ? products.size.m : 0
                                 }),
                                 _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: function onChange(value) {
-                                        _this3.setValue(0, 'l', value);
+                                        _this4.setValue(id, 'l', value);
                                     },
-                                    value: this.props.products[0] ? this.props.products[0].size ? this.props.products[0].size.l : 0 : 0
+                                    value: products.size ? products.size.l : 0
                                 }),
                                 _react2.default.createElement(_reactToolbox.Input, { type: 'number', theme: _inputNumberTheme2.default, onChange: function onChange(value) {
-                                        _this3.setValue(0, 'xl', value);
+                                        _this4.setValue(id, 'xl', value);
                                     },
-                                    value: this.props.products[0] ? this.props.products[0].size ? this.props.products[0].size.xl : 0 : 0
+                                    value: products.size ? products.size.xl : 0
                                 }),
                                 _react2.default.createElement(
                                     'p',
                                     { className: _selectColorSize2.default.texttotal },
                                     'Total: ',
                                     _react2.default.createElement('br', null),
-                                    this.props.products[0] ? this.props.products[0].size ? Number.parseInt(this.props.products[0].size.s) + Number.parseInt(this.props.products[0].size.m) + Number.parseInt(this.props.products[0].size.l) + Number.parseInt(this.props.products[0].size.xl) : 0 : 0
+                                    products ? products.size ? Number.parseInt(products.size.s || "0") + Number.parseInt(products.size.m || "0") + Number.parseInt(products.size.l || "0") + Number.parseInt(products.size.xl || "0") : 0 : 0
                                 )
                             ),
                             _react2.default.createElement(
@@ -46210,16 +46274,6 @@ var Product = function (_Component2) {
                             )
                         )
                     )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: _selectColorSize2.default.addupload },
-                    _react2.default.createElement('img', { src: '/img/blackcross.svg', className: _selectColorSize2.default.add }),
-                    _react2.default.createElement(
-                        'p',
-                        { className: _selectColorSize2.default.addtext },
-                        'Add another product'
-                    )
                 )
             );
         }
@@ -46229,15 +46283,25 @@ var Product = function (_Component2) {
 }(_react.Component);
 
 SelectColorSize = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(null, { gotoNextStep: _actions.gotoNextStep })(SelectColorSize));
-Product = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
+Products = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state) {
     return {
-        products: state.formData.drophereOrder ? state.formData.drophereOrder.products : {}
+        products: state.formData.drophereOrder ? state.formData.drophereOrder.products : [],
+        material: state.formData.drophereOrder ? state.formData.drophereOrder.base_material : '',
+        category: state.formData.drophereOrder ? state.formData.drophereOrder.base_category : ''
     };
 }, {
+    updateDrophereOrderProduct: _drophereOrder.updateDrophereOrderProduct
+})(Products));
+Product = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(
+// state =>({
+//     products: state.formData.drophereOrder ? state.formData.drophereOrder.products : [],        
+// })
+null, {
     updateDrophereOrderProduct: _drophereOrder.updateDrophereOrderProduct,
-    gotoNextStep: _actions.gotoNextStep,
+    deleteDrophereOrderProduct: _drophereOrder.deleteDrophereOrderProduct,
     updateDrophereOrderProductSize: _drophereOrder.updateDrophereOrderProductSize
 })(Product));
+
 exports.default = SelectColorSize;
 
 /***/ }),
@@ -47321,7 +47385,7 @@ var formDataReducer = function formDataReducer() {
 
   if (action.type === _actions.UPDATE_FORM_DATA) {
     return _extends({}, state, _defineProperty({}, action.id, _extends({}, state[action.id], _defineProperty({}, action.key, action.value))));
-  } else if (action.type === _drophereOrder.UPDATE_DROPHERE_ORDER || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_PRODUCT || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_ADDRESS || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_PRODUCT_SIZE) {
+  } else if (action.type === _drophereOrder.UPDATE_DROPHERE_ORDER || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_PRODUCT || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_ADDRESS || action.type === _drophereOrder.UPDATE_DROPHERE_ORDER_PRODUCT_SIZE || action.type === _drophereOrder.DELETE_DROPHERE_ORDER_PRODUCT) {
     return _extends({}, state, {
       drophereOrder: (0, _drophereOrder2.default)(state.drophereOrder, action)
     });
@@ -50699,11 +50763,12 @@ exports = module.exports = __webpack_require__(4)();
 
 
 // module
-exports.push([module.i, ".select-color-size--container--cW0fYQYu {\n  display: block;\n  width: 100%;\n  height: 100%; }\n  .select-color-size--container--cW0fYQYu .select-color-size--wrapper--1CLqzzB4 {\n    padding: 0px 114px 187px 77px; }\n    .select-color-size--container--cW0fYQYu .select-color-size--wrapper--1CLqzzB4 .select-color-size--content--1PErL-H9 {\n      max-width: 100%;\n      margin: auto; }\n      .select-color-size--container--cW0fYQYu .select-color-size--wrapper--1CLqzzB4 .select-color-size--content--1PErL-H9 .select-color-size--flexcontainer--2W0CN0XQ {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        width: 100%;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center; }\n        .select-color-size--container--cW0fYQYu .select-color-size--wrapper--1CLqzzB4 .select-color-size--content--1PErL-H9 .select-color-size--flexcontainer--2W0CN0XQ .select-color-size--text--2oEI6iAH {\n          font-size: 16px;\n          line-height: 3;\n          color: #313131;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal; }\n        .select-color-size--container--cW0fYQYu .select-color-size--wrapper--1CLqzzB4 .select-color-size--content--1PErL-H9 .select-color-size--flexcontainer--2W0CN0XQ .select-color-size--arrow--2e10Yrfv {\n          width: 12px;\n          height: 18px; }\n      .select-color-size--container--cW0fYQYu .select-color-size--wrapper--1CLqzzB4 .select-color-size--content--1PErL-H9 .select-color-size--centeredbutton--23ijYz7C {\n        margin-top: 50px;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center; }\n        .select-color-size--container--cW0fYQYu .select-color-size--wrapper--1CLqzzB4 .select-color-size--content--1PErL-H9 .select-color-size--centeredbutton--23ijYz7C .select-color-size--button--7g_gC2jM {\n          width: 165px;\n          height: 42px;\n          text-align: center; }\n\n.select-color-size--colorsizewrapper--1yWjl-ZD {\n  margin: auto;\n  width: 440px;\n  height: 310px;\n  border: solid 1px #b7b7b7;\n  padding: 5px 11px 11px 6px; }\n  .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 {\n    width: 100%;\n    margin: auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 100%; }\n    .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--clotheswrapper--1PBbehHC {\n      width: 105px;\n      height: 120px; }\n      .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--clotheswrapper--1PBbehHC .select-color-size--clothes--Td_YsBWr {\n        width: 104px;\n        height: 118px;\n        -o-object-fit: contain;\n           object-fit: contain; }\n    .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--choosecolorsizewrapper--2aDyaFBS {\n      width: 100%;\n      height: 100%;\n      padding-left: 33px; }\n      .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--choosecolorsizewrapper--2aDyaFBS .select-color-size--tshirtflex--2pFNiZs9 {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        -webkit-box-align: start;\n            -ms-flex-align: start;\n                align-items: flex-start;\n        padding-bottom: 10px; }\n        .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--choosecolorsizewrapper--2aDyaFBS .select-color-size--tshirtflex--2pFNiZs9 .select-color-size--close--3z5Dhrr7 {\n          width: 14px;\n          height: 14px;\n          -ms-flex-item-align: center;\n              align-self: center; }\n      .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--choosecolorsizewrapper--2aDyaFBS .select-color-size--sizeflex--10QTIBxZ {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-pack: distribute;\n            justify-content: space-around; }\n      .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--choosecolorsizewrapper--2aDyaFBS .select-color-size--marginsize--3NmOkfii {\n        margin-left: 11px;\n        padding-bottom: 15px; }\n      .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--choosecolorsizewrapper--2aDyaFBS .select-color-size--italictext--3klAnKk1 {\n        font-style: italic; }\n\n.select-color-size--addupload--33Ssx3UB {\n  margin-top: 10px;\n  text-align: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n  .select-color-size--addupload--33Ssx3UB .select-color-size--add--1v2LTgE1 {\n    width: 18px;\n    height: 18px;\n    -o-object-fit: contain;\n       object-fit: contain;\n    margin-right: 5px; }\n  .select-color-size--addupload--33Ssx3UB .select-color-size--addtext--3wuB7mQL {\n    color: #3a3779; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/select-color-size.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,YAAY;EACZ,aAAa,EAAE;EACf;IACE,8BAA8B,EAAE;IAChC;MACE,gBAAgB;MAChB,aAAa,EAAE;MACf;QACE,qBAAqB;QACrB,qBAAqB;QACrB,cAAc;QACd,0BAA0B;YACtB,uBAAuB;gBACnB,+BAA+B;QACvC,YAAY;QACZ,0BAA0B;YACtB,uBAAuB;gBACnB,oBAAoB,EAAE;QAC9B;UACE,gBAAgB;UAChB,eAAe;UACf,eAAe;UACf,oBAAoB;UACpB,mBAAmB;UACnB,qBAAqB,EAAE;QACzB;UACE,YAAY;UACZ,aAAa,EAAE;MACnB;QACE,iBAAiB;QACjB,qBAAqB;QACrB,qBAAqB;QACrB,cAAc;QACd,yBAAyB;YACrB,sBAAsB;gBAClB,wBAAwB,EAAE;QAClC;UACE,aAAa;UACb,aAAa;UACb,mBAAmB,EAAE;;AAE/B;EACE,aAAa;EACb,aAAa;EACb,cAAc;EACd,0BAA0B;EAC1B,2BAA2B,EAAE;EAC7B;IACE,YAAY;IACZ,aAAa;IACb,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,aAAa,EAAE;IACf;MACE,aAAa;MACb,cAAc,EAAE;MAChB;QACE,aAAa;QACb,cAAc;QACd,uBAAuB;WACpB,oBAAoB,EAAE;IAC7B;MACE,YAAY;MACZ,aAAa;MACb,mBAAmB,EAAE;MACrB;QACE,qBAAqB;QACrB,qBAAqB;QACrB,cAAc;QACd,0BAA0B;YACtB,uBAAuB;gBACnB,+BAA+B;QACvC,yBAAyB;YACrB,sBAAsB;gBAClB,wBAAwB;QAChC,qBAAqB,EAAE;QACvB;UACE,YAAY;UACZ,aAAa;UACb,4BAA4B;cACxB,mBAAmB,EAAE;MAC7B;QACE,qBAAqB;QACrB,qBAAqB;QACrB,cAAc;QACd,0BAA0B;YACtB,8BAA8B,EAAE;MACtC;QACE,kBAAkB;QAClB,qBAAqB,EAAE;MACzB;QACE,mBAAmB,EAAE;;AAE7B;EACE,iBAAiB;EACjB,mBAAmB;EACnB,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,yBAAyB;MACrB,sBAAsB;UAClB,wBAAwB;EAChC,0BAA0B;MACtB,uBAAuB;UACnB,oBAAoB,EAAE;EAC9B;IACE,YAAY;IACZ,aAAa;IACb,uBAAuB;OACpB,oBAAoB;IACvB,kBAAkB,EAAE;EACtB;IACE,eAAe,EAAE","file":"select-color-size.scss","sourcesContent":[".container {\n  display: block;\n  width: 100%;\n  height: 100%; }\n  .container .wrapper {\n    padding: 0px 114px 187px 77px; }\n    .container .wrapper .content {\n      max-width: 100%;\n      margin: auto; }\n      .container .wrapper .content .flexcontainer {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        width: 100%;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center; }\n        .container .wrapper .content .flexcontainer .text {\n          font-size: 16px;\n          line-height: 3;\n          color: #313131;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal; }\n        .container .wrapper .content .flexcontainer .arrow {\n          width: 12px;\n          height: 18px; }\n      .container .wrapper .content .centeredbutton {\n        margin-top: 50px;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center; }\n        .container .wrapper .content .centeredbutton .button {\n          width: 165px;\n          height: 42px;\n          text-align: center; }\n\n.colorsizewrapper {\n  margin: auto;\n  width: 440px;\n  height: 310px;\n  border: solid 1px #b7b7b7;\n  padding: 5px 11px 11px 6px; }\n  .colorsizewrapper .colorsizecontent {\n    width: 100%;\n    margin: auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 100%; }\n    .colorsizewrapper .colorsizecontent .clotheswrapper {\n      width: 105px;\n      height: 120px; }\n      .colorsizewrapper .colorsizecontent .clotheswrapper .clothes {\n        width: 104px;\n        height: 118px;\n        -o-object-fit: contain;\n           object-fit: contain; }\n    .colorsizewrapper .colorsizecontent .choosecolorsizewrapper {\n      width: 100%;\n      height: 100%;\n      padding-left: 33px; }\n      .colorsizewrapper .colorsizecontent .choosecolorsizewrapper .tshirtflex {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        -webkit-box-align: start;\n            -ms-flex-align: start;\n                align-items: flex-start;\n        padding-bottom: 10px; }\n        .colorsizewrapper .colorsizecontent .choosecolorsizewrapper .tshirtflex .close {\n          width: 14px;\n          height: 14px;\n          -ms-flex-item-align: center;\n              align-self: center; }\n      .colorsizewrapper .colorsizecontent .choosecolorsizewrapper .sizeflex {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-pack: distribute;\n            justify-content: space-around; }\n      .colorsizewrapper .colorsizecontent .choosecolorsizewrapper .marginsize {\n        margin-left: 11px;\n        padding-bottom: 15px; }\n      .colorsizewrapper .colorsizecontent .choosecolorsizewrapper .italictext {\n        font-style: italic; }\n\n.addupload {\n  margin-top: 10px;\n  text-align: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n  .addupload .add {\n    width: 18px;\n    height: 18px;\n    -o-object-fit: contain;\n       object-fit: contain;\n    margin-right: 5px; }\n  .addupload .addtext {\n    color: #3a3779; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".select-color-size--container--cW0fYQYu {\n  display: block;\n  width: 100%;\n  height: 100%; }\n  .select-color-size--container--cW0fYQYu .select-color-size--productContainer--2XSwUTOY {\n    margin-bottom: 20px; }\n  .select-color-size--container--cW0fYQYu .select-color-size--wrapper--1CLqzzB4 {\n    padding: 0px 114px 187px 77px;\n    margin-bottom: 20px; }\n    .select-color-size--container--cW0fYQYu .select-color-size--wrapper--1CLqzzB4 .select-color-size--content--1PErL-H9 {\n      max-width: 100%;\n      margin: auto; }\n      .select-color-size--container--cW0fYQYu .select-color-size--wrapper--1CLqzzB4 .select-color-size--content--1PErL-H9 .select-color-size--flexcontainer--2W0CN0XQ {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        width: 100%;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center; }\n        .select-color-size--container--cW0fYQYu .select-color-size--wrapper--1CLqzzB4 .select-color-size--content--1PErL-H9 .select-color-size--flexcontainer--2W0CN0XQ .select-color-size--text--2oEI6iAH {\n          font-size: 16px;\n          line-height: 3;\n          color: #313131;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal; }\n        .select-color-size--container--cW0fYQYu .select-color-size--wrapper--1CLqzzB4 .select-color-size--content--1PErL-H9 .select-color-size--flexcontainer--2W0CN0XQ .select-color-size--arrow--2e10Yrfv {\n          width: 12px;\n          height: 18px; }\n      .select-color-size--container--cW0fYQYu .select-color-size--wrapper--1CLqzzB4 .select-color-size--content--1PErL-H9 .select-color-size--centeredbutton--23ijYz7C {\n        margin-top: 50px;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center; }\n        .select-color-size--container--cW0fYQYu .select-color-size--wrapper--1CLqzzB4 .select-color-size--content--1PErL-H9 .select-color-size--centeredbutton--23ijYz7C .select-color-size--button--7g_gC2jM {\n          width: 165px;\n          height: 42px;\n          text-align: center; }\n\n.select-color-size--colorsizewrapper--1yWjl-ZD {\n  margin: auto;\n  width: 440px;\n  height: 310px;\n  border: solid 1px #b7b7b7;\n  padding: 5px 11px 11px 6px; }\n  .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 {\n    width: 100%;\n    margin: auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 100%; }\n    .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--clotheswrapper--1PBbehHC {\n      width: 105px;\n      height: 120px; }\n      .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--clotheswrapper--1PBbehHC .select-color-size--clothes--Td_YsBWr {\n        width: 104px;\n        height: 118px;\n        -o-object-fit: contain;\n           object-fit: contain; }\n    .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--choosecolorsizewrapper--2aDyaFBS {\n      width: 100%;\n      height: 100%;\n      padding-left: 33px; }\n      .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--choosecolorsizewrapper--2aDyaFBS .select-color-size--tshirtflex--2pFNiZs9 {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        -webkit-box-align: start;\n            -ms-flex-align: start;\n                align-items: flex-start;\n        padding-bottom: 10px; }\n        .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--choosecolorsizewrapper--2aDyaFBS .select-color-size--tshirtflex--2pFNiZs9 .select-color-size--close--3z5Dhrr7 {\n          width: 14px;\n          height: 14px;\n          -ms-flex-item-align: center;\n              align-self: center; }\n      .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--choosecolorsizewrapper--2aDyaFBS .select-color-size--sizeflex--10QTIBxZ {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-pack: distribute;\n            justify-content: space-around; }\n      .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--choosecolorsizewrapper--2aDyaFBS .select-color-size--marginsize--3NmOkfii {\n        margin-left: 11px;\n        padding-bottom: 15px; }\n      .select-color-size--colorsizewrapper--1yWjl-ZD .select-color-size--colorsizecontent--3U2wm_Z3 .select-color-size--choosecolorsizewrapper--2aDyaFBS .select-color-size--italictext--3klAnKk1 {\n        font-style: italic; }\n\n.select-color-size--addupload--33Ssx3UB {\n  margin-top: 10px;\n  text-align: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n  .select-color-size--addupload--33Ssx3UB .select-color-size--add--1v2LTgE1 {\n    width: 18px;\n    height: 18px;\n    -o-object-fit: contain;\n       object-fit: contain;\n    margin-right: 5px; }\n  .select-color-size--addupload--33Ssx3UB .select-color-size--addtext--3wuB7mQL {\n    color: #3a3779; }\n", "", {"version":3,"sources":["/./src/client/screens/Drophere/Order/css/select-color-size.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,YAAY;EACZ,aAAa,EAAE;EACf;IACE,oBAAoB,EAAE;EACxB;IACE,8BAA8B;IAC9B,oBAAoB,EAAE;IACtB;MACE,gBAAgB;MAChB,aAAa,EAAE;MACf;QACE,qBAAqB;QACrB,qBAAqB;QACrB,cAAc;QACd,0BAA0B;YACtB,uBAAuB;gBACnB,+BAA+B;QACvC,YAAY;QACZ,0BAA0B;YACtB,uBAAuB;gBACnB,oBAAoB,EAAE;QAC9B;UACE,gBAAgB;UAChB,eAAe;UACf,eAAe;UACf,oBAAoB;UACpB,mBAAmB;UACnB,qBAAqB,EAAE;QACzB;UACE,YAAY;UACZ,aAAa,EAAE;MACnB;QACE,iBAAiB;QACjB,qBAAqB;QACrB,qBAAqB;QACrB,cAAc;QACd,yBAAyB;YACrB,sBAAsB;gBAClB,wBAAwB,EAAE;QAClC;UACE,aAAa;UACb,aAAa;UACb,mBAAmB,EAAE;;AAE/B;EACE,aAAa;EACb,aAAa;EACb,cAAc;EACd,0BAA0B;EAC1B,2BAA2B,EAAE;EAC7B;IACE,YAAY;IACZ,aAAa;IACb,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,aAAa,EAAE;IACf;MACE,aAAa;MACb,cAAc,EAAE;MAChB;QACE,aAAa;QACb,cAAc;QACd,uBAAuB;WACpB,oBAAoB,EAAE;IAC7B;MACE,YAAY;MACZ,aAAa;MACb,mBAAmB,EAAE;MACrB;QACE,qBAAqB;QACrB,qBAAqB;QACrB,cAAc;QACd,0BAA0B;YACtB,uBAAuB;gBACnB,+BAA+B;QACvC,yBAAyB;YACrB,sBAAsB;gBAClB,wBAAwB;QAChC,qBAAqB,EAAE;QACvB;UACE,YAAY;UACZ,aAAa;UACb,4BAA4B;cACxB,mBAAmB,EAAE;MAC7B;QACE,qBAAqB;QACrB,qBAAqB;QACrB,cAAc;QACd,0BAA0B;YACtB,8BAA8B,EAAE;MACtC;QACE,kBAAkB;QAClB,qBAAqB,EAAE;MACzB;QACE,mBAAmB,EAAE;;AAE7B;EACE,iBAAiB;EACjB,mBAAmB;EACnB,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,yBAAyB;MACrB,sBAAsB;UAClB,wBAAwB;EAChC,0BAA0B;MACtB,uBAAuB;UACnB,oBAAoB,EAAE;EAC9B;IACE,YAAY;IACZ,aAAa;IACb,uBAAuB;OACpB,oBAAoB;IACvB,kBAAkB,EAAE;EACtB;IACE,eAAe,EAAE","file":"select-color-size.scss","sourcesContent":[".container {\n  display: block;\n  width: 100%;\n  height: 100%; }\n  .container .productContainer {\n    margin-bottom: 20px; }\n  .container .wrapper {\n    padding: 0px 114px 187px 77px;\n    margin-bottom: 20px; }\n    .container .wrapper .content {\n      max-width: 100%;\n      margin: auto; }\n      .container .wrapper .content .flexcontainer {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        width: 100%;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center; }\n        .container .wrapper .content .flexcontainer .text {\n          font-size: 16px;\n          line-height: 3;\n          color: #313131;\n          font-weight: normal;\n          font-style: normal;\n          font-stretch: normal; }\n        .container .wrapper .content .flexcontainer .arrow {\n          width: 12px;\n          height: 18px; }\n      .container .wrapper .content .centeredbutton {\n        margin-top: 50px;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center; }\n        .container .wrapper .content .centeredbutton .button {\n          width: 165px;\n          height: 42px;\n          text-align: center; }\n\n.colorsizewrapper {\n  margin: auto;\n  width: 440px;\n  height: 310px;\n  border: solid 1px #b7b7b7;\n  padding: 5px 11px 11px 6px; }\n  .colorsizewrapper .colorsizecontent {\n    width: 100%;\n    margin: auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 100%; }\n    .colorsizewrapper .colorsizecontent .clotheswrapper {\n      width: 105px;\n      height: 120px; }\n      .colorsizewrapper .colorsizecontent .clotheswrapper .clothes {\n        width: 104px;\n        height: 118px;\n        -o-object-fit: contain;\n           object-fit: contain; }\n    .colorsizewrapper .colorsizecontent .choosecolorsizewrapper {\n      width: 100%;\n      height: 100%;\n      padding-left: 33px; }\n      .colorsizewrapper .colorsizecontent .choosecolorsizewrapper .tshirtflex {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        -webkit-box-align: start;\n            -ms-flex-align: start;\n                align-items: flex-start;\n        padding-bottom: 10px; }\n        .colorsizewrapper .colorsizecontent .choosecolorsizewrapper .tshirtflex .close {\n          width: 14px;\n          height: 14px;\n          -ms-flex-item-align: center;\n              align-self: center; }\n      .colorsizewrapper .colorsizecontent .choosecolorsizewrapper .sizeflex {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-pack: distribute;\n            justify-content: space-around; }\n      .colorsizewrapper .colorsizecontent .choosecolorsizewrapper .marginsize {\n        margin-left: 11px;\n        padding-bottom: 15px; }\n      .colorsizewrapper .colorsizecontent .choosecolorsizewrapper .italictext {\n        font-style: italic; }\n\n.addupload {\n  margin-top: 10px;\n  text-align: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n  .addupload .add {\n    width: 18px;\n    height: 18px;\n    -o-object-fit: contain;\n       object-fit: contain;\n    margin-right: 5px; }\n  .addupload .addtext {\n    color: #3a3779; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
 	"container": "select-color-size--container--cW0fYQYu",
+	"productContainer": "select-color-size--productContainer--2XSwUTOY",
 	"wrapper": "select-color-size--wrapper--1CLqzzB4",
 	"content": "select-color-size--content--1PErL-H9",
 	"flexcontainer": "select-color-size--flexcontainer--2W0CN0XQ",

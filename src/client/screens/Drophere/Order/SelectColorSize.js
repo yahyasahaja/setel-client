@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {CompactPicker} from 'react-color'
-import {Input} from 'react-toolbox'
+import { Input, Button} from 'react-toolbox'
 
 //STYLES
 import styles from './css/select-color-size.scss'
@@ -15,12 +15,17 @@ import DataDisplay from '../../../components/DataDisplay'
 import RoundedButton from '../../../components/RoundedButton'
 import SelectMaterial from './SelectMaterial'
 import UploadDesign from './UploadDesign'
+import OrderNavigation from  '../../../components/OrderNavigation'
 import DrophereProgress from "../../../components/DrophereProgress"
 
 //REDUX
 import {gotoNextStep, updateFormData} from '../../../services/actions'
 import store from '../../../services/store'
-import { updateDrophereOrderProduct, updateDrophereOrderProductSize } from '../../../services/drophereOrder'
+import { 
+    updateDrophereOrderProduct, 
+    updateDrophereOrderProductSize,
+    deleteDrophereOrderProduct
+} from '../../../services/drophereOrder'
 
 class SelectColorSize extends Component {
     
@@ -35,19 +40,12 @@ class SelectColorSize extends Component {
                 <div className={styles.wrapper}>
                     <div className={styles.content}>
                         <DrophereProgress />
-                        <div className={styles.flexcontainer}>
-                            <Link to="/drophere/order/1">
-                                <img src="/img/ic-chevron-left-black-36-dp.png" className={styles.arrow} />
-                            </Link>
-                            <p className={styles.text}>Choose Material</p>
-                            <Link to="/drophere/order/3">
-                                <img src="/img/ic-chevron-right-black-36-dp.png" className={styles.arrow} />
-                            </Link>
-                        </div>
-                        <Product 
-                            src = "/img/kids-front-2.png"
-                            name = "T-Shirt"
-                            /> 
+                        <OrderNavigation 
+                            text="Choose Material"
+                            nextLink="/drophere/order/3"
+                            prevLink="/drophere/order/1"
+                        />                        
+                        <Products /> 
                         <div className={styles.centeredbutton}>
                             <RoundedButton className={styles.button} onClick={this.submit} primary>Upload Design</RoundedButton>
                         </div>
@@ -74,6 +72,46 @@ const SIZE = [
     },
 ]
 
+class Products extends Component {
+
+    renderProduct(){
+        let { products = [] } = this.props
+        return products.map((products, id) =>  
+            <Product 
+                src = "/img/kids-front-2.png"
+                name = "T-Shirt"
+                products={products}
+                id={id}
+            />
+        ) 
+    }
+    
+    render(){
+        let { 
+            updateDrophereOrderProduct,
+            products = [], 
+            material,
+            category
+        } = this.props
+        return (
+            <div>
+                <div>
+                    { this.renderProduct() }
+                </div>
+                <div className={styles.addupload}>
+                    <Button 
+                      icon='add' 
+                      label='Add Product' 
+                      flat primary 
+                      onClick={ () => {
+                        updateDrophereOrderProduct( products.length, 'material_id', material)
+                        updateDrophereOrderProduct( products.length, 'category_id', category)
+                      }}/>
+                </div>
+            </div>
+        )
+    }
+}
 
 class Product extends Component {
 
@@ -82,52 +120,27 @@ class Product extends Component {
             return <p>{size.name}</p>
         })
     }  
-    
-    
-
-    // valueWhenChange = (key, value) => {
-    //     let product = this.props.products
-    //     return(
-    //         {
-    //             ...product.size,
-    //             [key]:value
-    //         }
-    //     )
-
-    // }
 
     setValue = (id, key, value) => {
         let {
-            // updateDrophereOrderProduct,
             updateDrophereOrderProductSize
         } = this.props
 
-        // updateDrophereOrderProduct(id, 'size', this.valueWhenChange(key, value))
-        console.log(updateDrophereOrderProductSize(id, key, value));
+        updateDrophereOrderProductSize(id, key, value)
     }
-
-    // valueColorWhenChange = (color, event) =>{
-    //     product = this.props.products
-    //     return({
-    //             ...product.color,
-    //             color
-    //     })
-    // }
 
     setColor = (id, value) =>{
         let {
             updateDrophereOrderProduct
         } = this.props
 
-        console.log(updateDrophereOrderProduct(id, 'color', value))
-    }
-
-    
+        updateDrophereOrderProduct(id, 'color', value)
+    }    
 
     render() {
-
+        let { products, id } = this.props        
         return (
-            <div>
+            <div className={styles.productContainer}>
                 <div className={styles.colorsizewrapper}>
                     <div className={styles.colorsizecontent}>
                         <div className={styles.clotheswrapper}>
@@ -135,14 +148,18 @@ class Product extends Component {
                         </div>
                         <div className={styles.choosecolorsizewrapper}>
                             <div className={styles.tshirtflex}>
-                                <p>{this.props.name}</p>
-                                <div></div>
-                                <img src="/img/cross.svg" className={styles.close} />
+                                <p>{this.props.name}</p>                                
+                                <img 
+                                    src="/img/cross.svg" 
+                                    style={{ cursor: "pointer"}}
+                                    className={styles.close} 
+                                    onClick = {() => this.props.deleteDrophereOrderProduct(id)}
+                                />
                             </div>
                             <div>
-                                <CompactPicker color={this.props.products[0] ? this.props.products[0].color : ''}     
+                                <CompactPicker color={products ? products.color : ''}     
                                             onChangeComplete={color => {
-                                    this.setColor(0, color.hex)
+                                    this.setColor(id, color.hex)
                                     }} />
                             </div>
                             <div className={styles.sizeflex}>
@@ -151,28 +168,34 @@ class Product extends Component {
                             </div>
                             <div className={styles.sizeflex + " " + styles.marginsize}>                                
                                 <Input type="number" theme={numbertheme}  onChange={value => {
-                                        this.setValue(0, 's', value)
+                                        this.setValue(id, 's', value)
                                     }} 
-                                    value = { this.props.products[0] ? this.props.products[0].size ? this.props.products[0].size.s : 0 : 0}
+                                    value = { products.size ? products.size.s : 0 }
                                 />
                                 <Input type="number" theme={numbertheme}  onChange={value => {
-                                        this.setValue(0, 'm', value)
+                                        this.setValue(id, 'm', value)
                                     }} 
-                                    value = {this.props.products[0] ? this.props.products[0].size ?  this.props.products[0].size.m : 0 : 0}
+                                    value = { products.size ?  products.size.m : 0 }
                                 />
                                 <Input type="number" theme={numbertheme}  onChange={value => {
-                                        this.setValue(0, 'l', value)
+                                        this.setValue(id, 'l', value)
                                     }} 
-                                    value = {this.props.products[0] ? this.props.products[0].size ? this.props.products[0].size.l : 0 : 0}
+                                    value = { products.size ? products.size.l : 0 }
                                 />
                                 <Input type="number" theme={numbertheme}  onChange={value => {
-                                        this.setValue(0, 'xl', value)
+                                        this.setValue(id, 'xl', value)
                                     }} 
-                                    value = {this.props.products[0] ? this.props.products[0].size ? this.props.products[0].size.xl : 0 : 0}
+                                    value = { products.size ? products.size.xl : 0 }
                                 />
                                 <p className={styles.texttotal}>Total: <br />
-                                {this.props.products[0] ? this.props.products[0].size ? Number.parseInt(this.props.products[0].size.s) + Number.parseInt(this.props.products[0].size.m) +
-        Number.parseInt(this.props.products[0].size.l) + Number.parseInt(this.props.products[0].size.xl) : 0 : 0}
+                                {
+                                    products ? products.size ? 
+                                        Number.parseInt(products.size.s || "0") + 
+                                        Number.parseInt(products.size.m || "0") +
+                                        Number.parseInt(products.size.l || "0") + 
+                                        Number.parseInt(products.size.xl || "0") 
+                                        : 0 : 0
+                                }
                                 </p>
                             </div>
                             <div>
@@ -180,24 +203,32 @@ class Product extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className={styles.addupload}>
-                    <img src="/img/blackcross.svg" className={styles.add} />
-                    <p className={styles.addtext}>Add another product</p>
-                </div>
+                </div>                
             </div>
         )
     }
 }
 
-SelectColorSize = withRouter(connect(null, {gotoNextStep})(SelectColorSize))
+SelectColorSize = withRouter(connect(null, { gotoNextStep } )(SelectColorSize))
+Products = withRouter(connect(
+    state => ({
+        products: state.formData.drophereOrder ? state.formData.drophereOrder.products : [],
+        material: state.formData.drophereOrder ? state.formData.drophereOrder.base_material: '',
+        category: state.formData.drophereOrder ? state.formData.drophereOrder.base_category: '',
+    }), {
+        updateDrophereOrderProduct,         
+    })(Products)
+)
 Product = withRouter(connect(
-    state =>({
-        products: state.formData.drophereOrder ? state.formData.drophereOrder.products : {}
-    }),{
-        updateDrophereOrderProduct, 
-        gotoNextStep,
+    // state =>({
+    //     products: state.formData.drophereOrder ? state.formData.drophereOrder.products : [],        
+    // })
+    null ,{
+        updateDrophereOrderProduct,   
+        deleteDrophereOrderProduct,      
         updateDrophereOrderProductSize
     })
 (Product))
+
+
 export default SelectColorSize

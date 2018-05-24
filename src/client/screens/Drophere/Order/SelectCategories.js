@@ -13,10 +13,14 @@ import styles from './css/select-categories.scss'
 import DataDisplay from '../../../components/DataDisplay'
 import RoundedButton from '../../../components/RoundedButton'
 import Simg from '../../../components/S-ImagePreview'
+import OrderNavigation from  '../../../components/OrderNavigation'
 
 //ACTION REDUX
 import { gotoNextStep, updateFormData } from '../../../services/actions'
-import {updateDrophereOrderProduct} from '../../../services/drophereOrder'
+import { 
+    // updateDrophereOrderProduct,
+    updateDrophereOrder
+} from '../../../services/drophereOrder'
 
 //STORE
 import DrophereProgress from "../../../components/DrophereProgress";
@@ -75,11 +79,13 @@ class SelectCategories extends Component {
 
     submit(data){
         let {
-            updateDrophereOrderProduct,
+            // updateDrophereOrderProduct,
+            updateDrophereOrder,
             goToNextStep,
             history
         } = this.props
-        updateDrophereOrderProduct(0, 'category_id', data)
+        // updateDrophereOrderProduct(0, 'category_id', data)
+        updateDrophereOrder('base_category', data.id)
         gotoNextStep("drophereOrder")
         history.push("/drophere/order/1")
     }
@@ -90,7 +96,13 @@ class SelectCategories extends Component {
                 <div className={styles.wrapper}>
                     <div className={styles.content}>
                         <DrophereProgress/>
-                        <p className={styles.text}>Choose categories</p>
+                        <OrderNavigation 
+                            text="Choose Categories"
+                            nextLink="/drophere/order/1"
+                            prevLink="/drophere/order/0"
+                            leftArrow = 'hidden'                            
+                        />
+                        {/* <p className={styles.text}>Choose categories</p> */}
                         <div className={styles.flexcontainer}>
                             {this.renderCategories()}
                         </div>
@@ -104,7 +116,11 @@ class SelectCategories extends Component {
 SelectCategories = withRouter(connect(
     state => ({
         category: state.formData.drophereOrder
-    }), {gotoNextStep, updateDrophereOrderProduct})
+    }), {
+        gotoNextStep, 
+        // updateDrophereOrderProduct
+        updateDrophereOrder
+    })
 (SelectCategories))
 
 export default SelectCategories

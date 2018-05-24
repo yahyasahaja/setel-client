@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 //dropherOrder Action-TYPE
 export const UPDATE_DROPHERE_ORDER  = 'updateDrophereOrder'
 export const UPDATE_DROPHERE_ORDER_PRODUCT = 'updateDrophereOrderProduct'
+export const DELETE_DROPHERE_ORDER_PRODUCT = 'deleteDrophereOrderProduct'
 export const UPDATE_DROPHERE_ORDER_ADDRESS = 'updateDrophereOrderAddress'
 export const UPDATE_DROPHERE_ORDER_PRODUCT_SIZE = 'updateDrophereOrderProductSize'
 
@@ -19,6 +20,11 @@ export const updateDrophereOrderProduct = (id, key, value) => ({
     id,
     key, 
     value
+})
+
+export const deleteDrophereOrderProduct = (id) => ({
+    type: DELETE_DROPHERE_ORDER_PRODUCT,
+    id
 })
 
 export const updateDrophereOrderAddress = (key, value) => ({
@@ -50,6 +56,11 @@ const productReducer = (state = [], action) => {
         let arr = [ ...state ]         
         arr[action.id] = { ...arr[action.id] , [action.key]: action.value }
         return arr        
+    }
+    if(action.type === DELETE_DROPHERE_ORDER_PRODUCT){
+        let arr = [ ...state ]
+        arr.splice(action.id, 1)
+        return arr
     }
     else if (action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE){        
         let arr = [ ...state ]         
@@ -88,6 +99,7 @@ const drophereOrder = (state = {}, action) => {
         }
     }
     else if(action.type === UPDATE_DROPHERE_ORDER_PRODUCT ||
+            action.type === DELETE_DROPHERE_ORDER_PRODUCT ||
             action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE){
         return {
             ...state,

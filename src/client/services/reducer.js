@@ -16,7 +16,8 @@ import drophereOrder, {
   UPDATE_DROPHERE_ORDER,
   UPDATE_DROPHERE_ORDER_PRODUCT,
   UPDATE_DROPHERE_ORDER_ADDRESS,
-  UPDATE_DROPHERE_ORDER_PRODUCT_SIZE
+  UPDATE_DROPHERE_ORDER_PRODUCT_SIZE,
+  DELETE_DROPHERE_ORDER_PRODUCT
 } from './drophereOrder'
 
 
@@ -81,7 +82,8 @@ const formDataReducer = (state = {}, action) => {
       action.type === UPDATE_DROPHERE_ORDER ||
       action.type === UPDATE_DROPHERE_ORDER_PRODUCT ||
       action.type === UPDATE_DROPHERE_ORDER_ADDRESS ||
-      action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE
+      action.type === UPDATE_DROPHERE_ORDER_PRODUCT_SIZE ||
+      action.type === DELETE_DROPHERE_ORDER_PRODUCT
     ){
       return {
         ...state,
